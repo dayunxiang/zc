@@ -20,7 +20,7 @@ namespace PLC
         static private void Debug(object obj)
         {
             _logger.Debug(obj);
-            Console.WriteLine(obj);
+            //Console.WriteLine(obj);
         }
 
         /// <summary>
@@ -45,14 +45,56 @@ namespace PLC
         /// </summary>
         private void LoopRead()
         {
-            while (true)
+            try
             {
-                Read();
+                if(_task != null && _task.IsCanceled == false)
+                {
+                    while (true)
+                    {
+                        _token.ThrowIfCancellationRequested();
 
-                const int sleep = 1000;
-                Thread.Sleep(sleep);
+                        Read();
+                        const int sleep = 1000;
+                        Thread.Sleep(sleep);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug(ex);
+                _task = null;
+                _tokenSource = null;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Read()
+        {
+            try
+            {
+                Opc.Da.ItemValueResult[] itemValueResults = _server.Read(GetItems());
+
+                foreach (Opc.Da.ItemValueResult ivr in itemValueResults)
+                {
+                    if (ivr.ResultID == Opc.ResultID.S_OK)
+                    {
+                        //ItemDefine itemDefine = this.ItemDefines.SetValue(ivr.ItemPath, ivr.ItemName, ivr.Value);
+                        this.ItemDefines.SetValue(ivr.ItemPath, ivr.ItemName, ivr.Value);
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug(ex);
+            }
+        }
+
 
         /// <summary>
         /// 
@@ -61,15 +103,18 @@ namespace PLC
         {
             try
             {
-                while (_task != null && _task.IsCanceled == false)
+                if (_task != null && _task.IsCanceled == false)
+                {
                     while (true)
                     {
+                        ItemDefines.SetValue("", "abc",DateTime.Now);
                         Debug("read()...");
                         _token.ThrowIfCancellationRequested();
 
                         const int sleep = 1000;
                         Thread.Sleep(sleep);
                     }
+                }
             }
             catch (Exception ex)
             {
@@ -89,7 +134,7 @@ namespace PLC
         {
             if (_task == null)
             {
-                Action action = TestRead;
+                Action action = TestRead; // LoopRead
                 _tokenSource = new CancellationTokenSource();
                 _token = _tokenSource.Token;
                 _task = new Task(action, _token);
@@ -101,9 +146,12 @@ namespace PLC
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void StopLoop()
         {
-            if(_task != null)
+            if (_task != null)
             {
                 _tokenSource.Cancel();
                 //_tokenSource.Token.ThrowIfCancellationRequested();
@@ -190,31 +238,6 @@ namespace PLC
         }
 
 
-        public void Read()
-        {
-            try
-            {
-                Opc.Da.ItemValueResult[] itemValueResults = _server.Read(GetItems());
-
-                foreach (Opc.Da.ItemValueResult ivr in itemValueResults)
-                {
-                    if (ivr.ResultID == Opc.ResultID.S_OK)
-                    {
-                        //ItemDefine itemDefine = this.ItemDefines.SetValue(ivr.ItemPath, ivr.ItemName, ivr.Value);
-                        this.ItemDefines.SetValue(ivr.ItemPath, ivr.ItemName, ivr.Value);
-                    }
-                    else
-                    {
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug(ex);
-            }
-        }
-
 
         /// <summary>
         /// 
@@ -245,7 +268,7 @@ namespace PLC
         /// <returns></returns>
         public Opc.Da.Item[] GetItems()
         {
-            if(_items == null)
+            if (_items == null)
             {
                 _items = this.ItemDefines.Create();
             }

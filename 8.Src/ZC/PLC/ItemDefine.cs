@@ -35,5 +35,14 @@ namespace PLC
             Opc.Da.Item item = new Opc.Da.Item(itemIdentifier);
             return item;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return string.Format("Name={0}, Path={1}, Tag={2}", ItemName, ItemValue, Tag);
+        }
     }
 }

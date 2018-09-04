@@ -48,7 +48,7 @@ namespace PLC
         /// <param name="itemPath"></param>
         /// <param name="itemName"></param>
         /// <param name="value"></param>
-        internal void SetValue(string itemPath, string itemName, object value)
+        public void SetValue(string itemPath, string itemName, object value)
         {
             var itemDefine = Find(itemPath, itemName);
             itemDefine.ItemValue = value;
@@ -66,6 +66,20 @@ namespace PLC
             {
                 ValueChanged(this, new ValueChangedEventArgs(itemDefine));
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            foreach( var i in this)
+            {
+                sb.AppendFormat("{0}\r\n", i.ToString());
+            }
+            return sb.ToString();
         }
     }
 }
