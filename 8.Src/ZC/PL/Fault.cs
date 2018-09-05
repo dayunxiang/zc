@@ -6,10 +6,15 @@ using PLC;
 
 namespace PL
 {
-
     public class Fault
     {
+        public Fault(string address)
+        {
+
+        }
+
         public ItemDefine ItemDefine { get; set; }
+
         public bool IsFault
         {
             get

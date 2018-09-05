@@ -9,6 +9,13 @@ namespace PL
 
     public class Mark
     {
+        //private string p;
+
+        public Mark(string address)
+        {
+            // TODO: Complete member initialization
+            //this.p = p;
+        }
         public ItemDefine ItemDefine { get; set; }
         public bool IsMarked
         {

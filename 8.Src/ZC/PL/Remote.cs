@@ -9,6 +9,13 @@ namespace PL
 
     public class Remote
     {
+        //private string p;
+
+        public Remote(string address)
+        {
+            // TODO: Complete member initialization
+            //this.p = p;
+        }
         public ItemDefine ItemDefine { get; set; }
         public bool IsRemote
         {
