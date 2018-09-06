@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace PL
         static private Logger _logger = LogManager.GetCurrentClassLogger();
         private bool _isChecking = false;
         private PlController _plController = null;
+        private Timer _timer;
         #endregion //Members
 
         /// <summary>
@@ -165,13 +167,13 @@ namespace PL
                         //nothing
                         //
                     }
-                    else if(controllerStatusEnum == ControllerStatusEnum.Working)
+                    else if (controllerStatusEnum == ControllerStatusEnum.Working)
                     {
                         Debug.Assert(_plController != null);
 
                         _plController.Stop();
                         this.ControllerStatus.Value = ControllerStatusEnum.Completed;
-                        this.ZtPlcStatus.Write( ZtPlcStatusEnum.Completed);
+                        this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
 
                     }
                     else
@@ -194,6 +196,51 @@ namespace PL
             {
                 // manual, nothing
                 //
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Start()
+        {
+            if (_timer == null)
+            {
+                _timer = new Timer();
+                _timer.Interval = Config.CheckInterval;
+                _timer.Tick += _timer_Tick;
+                _timer.Start();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _timer_Tick(object sender, EventArgs e)
+        {
+            Check();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsStarted()
+        {
+            return _timer != null && _timer.Enabled;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Stop()
+        {
+            if (_timer != null)
+            {
+                _timer.Stop();
+                _timer = null;
             }
         }
     }

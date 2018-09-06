@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +18,19 @@ namespace PL
             //this.p = p;
         }
         public ItemDefine ItemDefine { get; set; }
+
         public bool IsRemote
         {
             get
             {
-                throw new NotImplementedException();
+                return RemoteUI.Checked;
             }
+        }
+
+        public CheckBox RemoteUI
+        {
+            get;
+            set;
         }
     }
 }

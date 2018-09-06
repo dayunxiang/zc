@@ -26,7 +26,7 @@ namespace PL
         /// </summary>
         private App()
         {
-            this.Controller = new AppController();
+            this.AppController = new AppController();
             this.Dams = InitDams();
         }
 
@@ -61,7 +61,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public AppController Controller
+        public AppController AppController
         {
             get;
             private set;

@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,29 @@ namespace PL
     {
         public ZtPlcStatusEnum Read()
         {
-            throw new NotImplementedException();
+            //todo:
+            if(ZtPlcStatusUI.Text.Length==0)
+            {
+                return ZtPlcStatusEnum.Stop;
+            }
+
+            int n = int.Parse(ZtPlcStatusUI.Text);
+            return (ZtPlcStatusEnum)n;
         }
 
         internal void Write(ZtPlcStatusEnum ztPlcStatusEnum)
         {
-            throw new NotImplementedException();
+            //todo:
+            this.ZtPlcStatusUI.Text = ((int)ztPlcStatusEnum).ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TextBox ZtPlcStatusUI
+        {
+            get;
+            set;
         }
     }
 }

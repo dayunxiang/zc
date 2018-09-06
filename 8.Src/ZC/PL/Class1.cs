@@ -15,12 +15,22 @@ namespace PL
         static Config()
         {
             DiscardGunsCloseDelay = 3;
+            CheckInterval = 2000;
         }
 
         /// <summary>
         /// 
         /// </summary>
         static public int DiscardGunsCloseDelay
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static public int CheckInterval
         {
             get;
             set;

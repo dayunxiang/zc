@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,26 @@ namespace PL
             // TODO: Complete member initialization
             //this.p = p;
         }
+
         public ItemDefine ItemDefine { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsMarked
         {
             get
             {
-                throw new NotImplementedException();
+                // todo: test
+                return MarkUI.Checked;
             }
         }
+
+        public CheckBox MarkUI
+        {
+            get;
+            set;
+        }
+
+
     }
 }
