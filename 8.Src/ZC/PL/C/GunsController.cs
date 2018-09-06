@@ -14,7 +14,7 @@ namespace PL
         //private DateTime _discardDt;
         //private GunList _previousGuns;
 
-        private GunList _guns;
+        private WorkGunGroup _workGunGroup;
         private PlOptions _plOptions;
         private DateTime _openDt;
         private DateTime _closeDt;
@@ -25,29 +25,60 @@ namespace PL
         /// 
         /// </summary>
         /// <param name="guns"></param>
-        public GunsController(GunList guns)
+        public GunsController(WorkGunGroup workGunGroup, PlOptions plOptions)
         {
             // todo: init options
-            _guns = guns;
+            _workGunGroup = workGunGroup;
+            _plOptions = plOptions;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isPassTail"></param>
+        /// <returns></returns>
+        public WorkGunGroup GetNextWorkGunGroup(out bool isPassTail)
+        {
+            isPassTail = false;
+
+            var tailGun = GetTailGun();
+            if(_workGunGroup.IsIncludeGun(tailGun))
+            {
+                isPassTail = true;
+            }
+
+            var lastGun = _workGunGroup.Last();
+            int count = _plOptions.GunCountPerGroup;
+
+            WorkGunGroup wgg = new WorkGunGroup();
+            while (count > 0)
+            {
+                var gun = GetNextGun(lastGun);
+                if(gun.CanUse())
+                {
+                    wgg.WorkGuns.Add(gun);
+                    count--;
+                }
+                wgg.SearchGuns.Add(gun);
+                lastGun = gun;
+            }
+            return wgg;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public GunList GetNextGuns()
+        private Gun GetTailGun()
         {
-            GunList r = new GunList();
-            var lastGun = _guns.Last();
-            int count = _plOptions.GunCountPerGroup;
-            while (count > 0)
+            DamList dams = App.GetApp().Dams.GetWorkDams(_plOptions);
+            if(dams.Count == 0)
             {
-                var gun = GetNextGun(lastGun);
-                r.Add(gun);
-                lastGun = gun;
-                count--;
+                throw new InvalidOperationException("dams count == 0");
             }
-            return r;
+            var lastDam = dams[dams.Count - 1];
+            var lastGun = lastDam.Guns.Last.Value;
+            return lastGun;
         }
 
         /// <summary>
@@ -75,7 +106,7 @@ namespace PL
         /// <returns></returns>
         private Dam GetNextGunDam()
         {
-            var lastGun = _guns.Last();
+            var lastGun = _workGunGroup.Last();
             var currentDam = lastGun.Dam;
             return GetNextDam(currentDam);
         }
@@ -109,7 +140,7 @@ namespace PL
         /// </summary>
         internal void Open()
         {
-            foreach (var gun in _guns)
+            foreach (var gun in _workGunGroup.WorkGuns)
             {
                 gun.Switch.Open();
             }
@@ -122,7 +153,7 @@ namespace PL
         /// </summary>
         internal void Close()
         {
-            foreach (var gun in _guns)
+            foreach (var gun in _workGunGroup.WorkGuns)
             {
                 gun.Switch.Close();
             }

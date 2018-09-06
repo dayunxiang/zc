@@ -12,6 +12,10 @@ namespace PL
 
     public class App
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         static public App GetApp()
         {
             return _app;
@@ -34,7 +38,7 @@ namespace PL
         {
             var r = new DamLinkedList();
 
-            var json = File.ReadAllText("1.json");
+            var json = File.ReadAllText("address.json");
             var damDefines = JsonConvert.DeserializeObject<List<DamDefine>>(json);
 
             LinkedListNode<Dam> lastDamNode = null;
@@ -47,7 +51,7 @@ namespace PL
                 }
                 else
                 {
-                    r.AddAfter(lastDamNode, dam);
+                    lastDamNode = r.AddAfter(lastDamNode, dam);
                 }
                 dam.DamNode = lastDamNode;
             }
@@ -63,6 +67,9 @@ namespace PL
             private set;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public DamLinkedList Dams
         {
             get;

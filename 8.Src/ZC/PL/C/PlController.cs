@@ -20,6 +20,7 @@ namespace PL
         private DateTime _endDt;
         private GunsController _discardGunsController;
         private GunsController _gunsController;
+        private int _cycleCount = 0;
         #endregion //Members
 
         /// <summary>
@@ -71,6 +72,7 @@ namespace PL
                 // 2. guns open
                 var gunsController = GetGunsController();
                 gunsController.Open();
+                _cycleCount = 1;
             }
         }
 
@@ -92,7 +94,6 @@ namespace PL
             //        n - work completed
             //
             //    n - return
-            throw new NotImplementedException();
             if (_discardGunsController != null)
             {
                 _discardGunsController.CanClose(Config.DiscardGunsCloseDelay);
@@ -106,21 +107,38 @@ namespace PL
 
             if (gunsCr == GunsCheckResult.Timeout)
             {
+                //todo: check cycle count 
+                //
+                bool isPassTail;
+                var nextGuns = gunsController.GetNextWorkGunGroup(out isPassTail);
+                if (isPassTail)
+                {
+                    this._cycleCount += 1;
+
+                    if(_cycleCount > this.PlOptions.CycleTimes)
+                    {
+                        gunsController.Close();
+                        return PlCheckResult.Completed;
+                    }
+                }
+
                 _discardGunsController = gunsController;
                 _discardGunsController.DiscardDt = DateTime.Now;
 
-                var nextGuns = gunsController.GetNextGuns();
-                var nextGunsController = new GunsController(nextGuns);
+                var nextGunsController = new GunsController(nextGuns, this.PlOptions);
                 _gunsController = nextGunsController;
                 nextGunsController.Open();
+
+                return PlCheckResult.Working;
             }
             else if (gunsCr == GunsCheckResult.Working)
             {
-
+                return PlCheckResult.Working;
             }
             else
             {
                 D("unknown gunsCheckResult: " + gunsCr);
+                return PlCheckResult.Working;
             }
 
         }
@@ -134,7 +152,7 @@ namespace PL
             if (_gunsController == null)
             {
                 var guns = App.GetApp().Dams.GetFirstGuns(this.PlOptions);
-                _gunsController = new GunsController(guns);
+                _gunsController = new GunsController(guns, this.PlOptions);
             }
             return _gunsController;
         }

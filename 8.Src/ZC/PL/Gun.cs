@@ -61,6 +61,11 @@ namespace PL
                 this.No == gun.No;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gun"></param>
+        /// <returns></returns>
         public bool Gt(Gun gun)
         {
             if(this.Dam.No > gun.Dam.No)
@@ -76,6 +81,11 @@ namespace PL
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gun"></param>
+        /// <returns></returns>
         public bool Lt(Gun gun)
         {
             if(this.Dam.No < gun.Dam.No)
@@ -89,6 +99,17 @@ namespace PL
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool CanUse()
+        {
+            return this.Fault.IsFault == false &&
+                this.Mark.IsMarked == false &&
+                this.Remote.IsRemote == true;
         }
     }
 }

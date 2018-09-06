@@ -22,32 +22,36 @@ namespace PL
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        internal GunList GetFirstGuns(int count)
+        internal WorkGunGroup GetFirstGuns(int count)
         {
-            if(this.Count == 0)
+            if (this.Count == 0)
             {
                 throw new InvalidOperationException("gun linked list count == 0");
             }
 
-            GunList r = new GunList();
+            WorkGunGroup wgg = new WorkGunGroup();
 
-            var current = this.First.Value;
+            //GunList r = new GunList();
+
+            var currentGun = this.First.Value;
             while (count > 0)
             {
-                Debug.Assert(current != null);
+                Debug.Assert(currentGun != null);
 
-                if(!current.Fault.IsFault)
+                if (currentGun.CanUse())
                 {
-                    r.Add(current);
+                    wgg.WorkGuns.Add(currentGun);
                     count--;
                 }
-                current = current.Next;
-                if(current == null)
+
+                wgg.SearchGuns.Add(currentGun);
+                currentGun = currentGun.Next;
+                if (currentGun == null)
                 {
                     break;
                 }
             }
-            return r;
+            return wgg;
         }
     }
 }

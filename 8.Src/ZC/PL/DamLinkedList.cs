@@ -23,11 +23,11 @@ namespace PL
         /// <param name="count"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public GunList GetFirstGuns(PlOptions options)
+        public WorkGunGroup GetFirstGuns(PlOptions options)
         {
             Dam firstDam = this.First.Value;
             var workDam = GetWorkDam(firstDam, options);
-            return workDam.GetFirstGuns(options.CycleTimes);
+            return workDam.GetFirstGuns(options.GunCountPerGroup);
         }
 
 
@@ -39,7 +39,7 @@ namespace PL
         /// <returns></returns>
         private Dam GetWorkDam(Dam dam, PlOptions options)
         {
-            if(options.IsWorkDam(dam))
+            if (options.IsWorkDam(dam))
             {
                 return dam;
             }
@@ -50,5 +50,55 @@ namespace PL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_plOptions"></param>
+        /// <returns></returns>
+        internal DamList GetWorkDams(PlOptions _plOptions)
+        {
+            if (_plOptions.CycleMode == CycleMode.AllDam)
+            {
+                return new DamList(this.ToArray());
+            }
+            else
+            {
+                var r = new DamList();
+
+                int[] mask = new int[] { 1, 2, 4, 8 };
+                int n = 0;
+                foreach (var dam in this)
+                {
+                    bool isSelected = (_plOptions.WorkDam & mask[n]) > 0;
+                    if (isSelected)
+                    {
+                        r.Add(dam);
+                    }
+                    n++;
+                }
+                return r;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class DamList : List<Dam>
+    {
+        public DamList()
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="collection"></param>
+        public DamList(IEnumerable<Dam> collection)
+            : base(collection)
+        {
+
+        }
     }
 }

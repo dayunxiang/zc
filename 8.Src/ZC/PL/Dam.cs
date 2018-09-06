@@ -82,7 +82,7 @@ namespace PL
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        public GunList GetFirstGuns(int count)
+        public WorkGunGroup GetFirstGuns(int count)
         {
             return Guns.GetFirstGuns(count);
         }
