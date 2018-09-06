@@ -11,10 +11,11 @@ namespace PL
 
     public class AppController
     {
+        #region Members
         static private Logger _logger = LogManager.GetCurrentClassLogger();
-
         private bool _isChecking = false;
         private PlController _plController = null;
+        #endregion //Members
 
         /// <summary>
         /// 
@@ -36,6 +37,11 @@ namespace PL
             _logger.Debug(msg);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="args"></param>
         static private void D(string msg, params object[] args)
         {
             _logger.Debug(msg, args);
@@ -67,18 +73,27 @@ namespace PL
             private set;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AppControllerStatus ControllerStatus
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public PlOptionsReader PlOptionsReader
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ZtPlcStatus ZtPlcStatus
         {
             get;
@@ -97,6 +112,7 @@ namespace PL
                 _isChecking = false;
             }
         }
+
         /// <summary>
         /// 
         /// </summary>

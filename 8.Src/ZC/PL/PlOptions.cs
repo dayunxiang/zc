@@ -34,5 +34,10 @@ namespace PL
         {
             throw new NotImplementedException();
         }
+
+        internal bool IsTimeout(DateTime _openDt)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

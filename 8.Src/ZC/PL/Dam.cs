@@ -20,6 +20,14 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
+        public int No
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name
         {
             get;

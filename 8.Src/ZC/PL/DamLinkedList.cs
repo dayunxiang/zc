@@ -7,7 +7,6 @@ using PLC;
 namespace PL
 {
 
-    //public class DamList : List<Dam>
     public class DamLinkedList : LinkedList<Dam>
     {
         /// <summary>

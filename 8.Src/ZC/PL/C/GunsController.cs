@@ -10,8 +10,16 @@ namespace PL
 {
     public class GunsController
     {
+        #region Members
+        //private DateTime _discardDt;
+        //private GunList _previousGuns;
+
         private GunList _guns;
         private PlOptions _plOptions;
+        private DateTime _openDt;
+        private DateTime _closeDt;
+
+        #endregion //Members
 
         /// <summary>
         /// 
@@ -27,16 +35,16 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Gun> GetNextGuns()
+        public GunList GetNextGuns()
         {
-            List<Gun> r = new List<Gun>();
-            var last = _guns.Last();
+            GunList r = new GunList();
+            var lastGun = _guns.Last();
             int count = _plOptions.GunCountPerGroup;
             while (count > 0)
             {
-                var gun = GetNextGun(last);
+                var gun = GetNextGun(lastGun);
                 r.Add(gun);
-                last = gun;
+                lastGun = gun;
                 count--;
             }
             return r;
@@ -99,12 +107,87 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        internal void Start()
+        internal void Open()
         {
             foreach (var gun in _guns)
             {
                 gun.Switch.Open();
             }
+
+            this._openDt = DateTime.Now;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal void Close()
+        {
+            foreach (var gun in _guns)
+            {
+                gun.Switch.Close();
+            }
+
+            this._closeDt = DateTime.Now;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal GunsCheckResult Check()
+        {
+            bool isTimeOut = _plOptions.IsTimeout(_openDt);
+            if(isTimeOut)
+            {
+                return GunsCheckResult.Timeout;
+            }
+            else
+            {
+                // todo: check fault gun
+                //
+                return GunsCheckResult.Working;
+            }
+        }
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //internal void ToNextGroup()
+        //{
+        //    // back current guns
+        //    _previousGuns = _guns;
+             
+        //    var nextGuns = GetNextGuns();
+        //    _guns = nextGuns;
+
+        //    Open();
+        //}
+
+        public DateTime DiscardDt { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool CanClose(int discardDelaySecond)
+        {
+            var tsDelay = TimeSpan.FromSeconds(discardDelaySecond);
+            var ts = DateTime.Now - this.DiscardDt;
+            if (ts < TimeSpan.Zero || ts >= tsDelay)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+    }
+
+    public enum GunsCheckResult
+    {
+        Working = 0,
+        Timeout = 1,
     }
 }

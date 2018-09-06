@@ -9,6 +9,7 @@ namespace PL.Hardware
 {
     public class GunDefine
     {
+        public int No { get; set; }
         public string Name { get; set; }
         public string Switch { get; set; }
         public string Mark { get; set; }
@@ -19,6 +20,7 @@ namespace PL.Hardware
         {
             return new Gun()
             {
+                No = this.No,
                 Name = this.Name,
                 Fault = new Fault(this.Fault),
                 Mark = new Mark(this.Mark),
@@ -35,6 +37,7 @@ namespace PL.Hardware
             this.GunDefines = new List<GunDefine>();
         }
         public string Name { get; set; }
+        public int No { get; set; }
         public List<GunDefine> GunDefines { get; set; }
 
 
@@ -48,6 +51,7 @@ namespace PL.Hardware
 
             var r = new Dam()
             {
+                No = this.No,
                 Name = this.Name,
                 Guns = guns,
             };
@@ -93,10 +97,12 @@ namespace PL.Hardware
 
             var damDefine = new DamDefine()
             {
+                No = 1,
                 Name = "BD-2"
             };
             var gunDefine1 = new GunDefine()
             {
+                No=1,
                 Name = "name1",
                 Fault = "fault1",
                 Mark = "mark1",
@@ -106,6 +112,7 @@ namespace PL.Hardware
 
             var gunDefine2 = new GunDefine()
             {
+                No = 2,
                 Name = "name2",
                 Fault = "fault2",
                 Mark = "mark2",

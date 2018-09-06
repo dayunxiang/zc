@@ -10,11 +10,15 @@ namespace PL
     public class Gun
     {
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Gun()
         {
 
         }
 
+        public int No { get; set; }
         public LinkedListNode<Gun> GunNode { get; set; }
         public Fault Fault { get; set; }
         public Mark Mark { get; set; }
@@ -22,6 +26,9 @@ namespace PL
         public Switch Switch { get; set; }
         public Dam Dam { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
 
         /// <summary>
@@ -41,6 +48,47 @@ namespace PL
                     return null;
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gun"></param>
+        /// <returns></returns>
+        public bool Eq(Gun gun)
+        {
+            return this.Dam.No == this.Dam.No &&
+                this.No == gun.No;
+        }
+
+        public bool Gt(Gun gun)
+        {
+            if(this.Dam.No > gun.Dam.No)
+            {
+                return true;
+            }
+
+            if(this.Dam.No == gun.Dam.No)
+            {
+                return this.No > gun.No;
+            }
+
+            return false;
+        }
+
+        public bool Lt(Gun gun)
+        {
+            if(this.Dam.No < gun.Dam.No)
+            {
+                return true;
+            }
+
+            if(this.Dam.No == gun.Dam.No)
+            {
+                return this.No < gun.No;
+            }
+
+            return false;
         }
     }
 }

@@ -8,47 +8,6 @@ using PLC;
 namespace PL
 {
 
-    //Spray
-    //public class GunList : List<Gun>
-    public class GunLinkedList : LinkedList<Gun>
-    {
-        public GunLinkedList()
-        {
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="count"></param>
-        /// <returns></returns>
-        internal GunList GetFirstGuns(int count)
-        {
-            if(this.Count == 0)
-            {
-                throw new InvalidOperationException("gun linked list count == 0");
-            }
-            GunList r = new GunList();
-
-            var current = this.First.Value;
-            while (count > 0)
-            {
-                Debug.Assert(current != null);
-
-                if(!current.Fault.IsFault)
-                {
-                    r.Add(current);
-                    count--;
-                }
-                current = current.Next;
-                if(current == null)
-                {
-                    break;
-                }
-            }
-            return r;
-        }
-    }
-
     public class GunList : List<Gun>
     {
 

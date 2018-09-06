@@ -6,4 +6,24 @@ using PLC;
 
 namespace PL
 {
+
+    public class Config
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        static Config()
+        {
+            DiscardGunsCloseDelay = 3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static public int DiscardGunsCloseDelay
+        {
+            get;
+            set;
+        }
+    }
 }
