@@ -1,0 +1,1564 @@
+﻿[
+    {
+        "Name" : "BD2",
+        "No" : 0,
+        "GunDefines" : [
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            },
+            {
+                "NO" : 11,
+                "Name" : "name11",
+                "Switch" : "switch11",
+                "Mark" : "mark11",
+                "Fault" : "fault11",
+                "Remote" : "remote11"
+            },
+            {
+                "NO" : 12,
+                "Name" : "name12",
+                "Switch" : "switch12",
+                "Mark" : "mark12",
+                "Fault" : "fault12",
+                "Remote" : "remote12"
+            },
+            {
+                "NO" : 13,
+                "Name" : "name13",
+                "Switch" : "switch13",
+                "Mark" : "mark13",
+                "Fault" : "fault13",
+                "Remote" : "remote13"
+            },
+            {
+                "NO" : 14,
+                "Name" : "name14",
+                "Switch" : "switch14",
+                "Mark" : "mark14",
+                "Fault" : "fault14",
+                "Remote" : "remote14"
+            },
+            {
+                "NO" : 15,
+                "Name" : "name15",
+                "Switch" : "switch15",
+                "Mark" : "mark15",
+                "Fault" : "fault15",
+                "Remote" : "remote15"
+            },
+            {
+                "NO" : 16,
+                "Name" : "name16",
+                "Switch" : "switch16",
+                "Mark" : "mark16",
+                "Fault" : "fault16",
+                "Remote" : "remote16"
+            },
+            {
+                "NO" : 17,
+                "Name" : "name17",
+                "Switch" : "switch17",
+                "Mark" : "mark17",
+                "Fault" : "fault17",
+                "Remote" : "remote17"
+            },
+            {
+                "NO" : 18,
+                "Name" : "name18",
+                "Switch" : "switch18",
+                "Mark" : "mark18",
+                "Fault" : "fault18",
+                "Remote" : "remote18"
+            },
+            {
+                "NO" : 19,
+                "Name" : "name19",
+                "Switch" : "switch19",
+                "Mark" : "mark19",
+                "Fault" : "fault19",
+                "Remote" : "remote19"
+            },
+            {
+                "NO" : 20,
+                "Name" : "name20",
+                "Switch" : "switch20",
+                "Mark" : "mark20",
+                "Fault" : "fault20",
+                "Remote" : "remote20"
+            },
+            {
+                "NO" : 21,
+                "Name" : "name21",
+                "Switch" : "switch21",
+                "Mark" : "mark21",
+                "Fault" : "fault21",
+                "Remote" : "remote21"
+            },
+            {
+                "NO" : 22,
+                "Name" : "name22",
+                "Switch" : "switch22",
+                "Mark" : "mark22",
+                "Fault" : "fault22",
+                "Remote" : "remote22"
+            },
+            {
+                "NO" : 23,
+                "Name" : "name23",
+                "Switch" : "switch23",
+                "Mark" : "mark23",
+                "Fault" : "fault23",
+                "Remote" : "remote23"
+            },
+            {
+                "NO" : 24,
+                "Name" : "name24",
+                "Switch" : "switch24",
+                "Mark" : "mark24",
+                "Fault" : "fault24",
+                "Remote" : "remote24"
+            },
+            {
+                "NO" : 25,
+                "Name" : "name25",
+                "Switch" : "switch25",
+                "Mark" : "mark25",
+                "Fault" : "fault25",
+                "Remote" : "remote25"
+            },
+            {
+                "NO" : 26,
+                "Name" : "name26",
+                "Switch" : "switch26",
+                "Mark" : "mark26",
+                "Fault" : "fault26",
+                "Remote" : "remote26"
+            },
+            {
+                "NO" : 27,
+                "Name" : "name27",
+                "Switch" : "switch27",
+                "Mark" : "mark27",
+                "Fault" : "fault27",
+                "Remote" : "remote27"
+            },
+            {
+                "NO" : 28,
+                "Name" : "name28",
+                "Switch" : "switch28",
+                "Mark" : "mark28",
+                "Fault" : "fault28",
+                "Remote" : "remote28"
+            },
+            {
+                "NO" : 29,
+                "Name" : "name29",
+                "Switch" : "switch29",
+                "Mark" : "mark29",
+                "Fault" : "fault29",
+                "Remote" : "remote29"
+            },
+            {
+                "NO" : 30,
+                "Name" : "name30",
+                "Switch" : "switch30",
+                "Mark" : "mark30",
+                "Fault" : "fault30",
+                "Remote" : "remote30"
+            },
+            {
+                "NO" : 31,
+                "Name" : "name31",
+                "Switch" : "switch31",
+                "Mark" : "mark31",
+                "Fault" : "fault31",
+                "Remote" : "remote31"
+            },
+            {
+                "NO" : 32,
+                "Name" : "name32",
+                "Switch" : "switch32",
+                "Mark" : "mark32",
+                "Fault" : "fault32",
+                "Remote" : "remote32"
+            },
+            {
+                "NO" : 33,
+                "Name" : "name33",
+                "Switch" : "switch33",
+                "Mark" : "mark33",
+                "Fault" : "fault33",
+                "Remote" : "remote33"
+            },
+            {
+                "NO" : 34,
+                "Name" : "name34",
+                "Switch" : "switch34",
+                "Mark" : "mark34",
+                "Fault" : "fault34",
+                "Remote" : "remote34"
+            },
+            {
+                "NO" : 35,
+                "Name" : "name35",
+                "Switch" : "switch35",
+                "Mark" : "mark35",
+                "Fault" : "fault35",
+                "Remote" : "remote35"
+            },
+            {
+                "NO" : 36,
+                "Name" : "name36",
+                "Switch" : "switch36",
+                "Mark" : "mark36",
+                "Fault" : "fault36",
+                "Remote" : "remote36"
+            },
+            {
+                "NO" : 37,
+                "Name" : "name37",
+                "Switch" : "switch37",
+                "Mark" : "mark37",
+                "Fault" : "fault37",
+                "Remote" : "remote37"
+            },
+            {
+                "NO" : 38,
+                "Name" : "name38",
+                "Switch" : "switch38",
+                "Mark" : "mark38",
+                "Fault" : "fault38",
+                "Remote" : "remote38"
+            },
+            {
+                "NO" : 39,
+                "Name" : "name39",
+                "Switch" : "switch39",
+                "Mark" : "mark39",
+                "Fault" : "fault39",
+                "Remote" : "remote39"
+            },
+            {
+                "NO" : 40,
+                "Name" : "name40",
+                "Switch" : "switch40",
+                "Mark" : "mark40",
+                "Fault" : "fault40",
+                "Remote" : "remote40"
+            },
+            {
+                "NO" : 41,
+                "Name" : "name41",
+                "Switch" : "switch41",
+                "Mark" : "mark41",
+                "Fault" : "fault41",
+                "Remote" : "remote41"
+            },
+            {
+                "NO" : 42,
+                "Name" : "name42",
+                "Switch" : "switch42",
+                "Mark" : "mark42",
+                "Fault" : "fault42",
+                "Remote" : "remote42"
+            },
+            {
+                "NO" : 43,
+                "Name" : "name43",
+                "Switch" : "switch43",
+                "Mark" : "mark43",
+                "Fault" : "fault43",
+                "Remote" : "remote43"
+            },
+            {
+                "NO" : 44,
+                "Name" : "name44",
+                "Switch" : "switch44",
+                "Mark" : "mark44",
+                "Fault" : "fault44",
+                "Remote" : "remote44"
+            },
+            {
+                "NO" : 45,
+                "Name" : "name45",
+                "Switch" : "switch45",
+                "Mark" : "mark45",
+                "Fault" : "fault45",
+                "Remote" : "remote45"
+            },
+            {
+                "NO" : 46,
+                "Name" : "name46",
+                "Switch" : "switch46",
+                "Mark" : "mark46",
+                "Fault" : "fault46",
+                "Remote" : "remote46"
+            },
+            {
+                "NO" : 47,
+                "Name" : "name47",
+                "Switch" : "switch47",
+                "Mark" : "mark47",
+                "Fault" : "fault47",
+                "Remote" : "remote47"
+            },
+            {
+                "NO" : 48,
+                "Name" : "name48",
+                "Switch" : "switch48",
+                "Mark" : "mark48",
+                "Fault" : "fault48",
+                "Remote" : "remote48"
+            }
+        ]
+    },
+    {
+        "Name" : "BD3",
+        "No" : 1,
+        "GunDefines" : [
+
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            },
+            {
+                "NO" : 11,
+                "Name" : "name11",
+                "Switch" : "switch11",
+                "Mark" : "mark11",
+                "Fault" : "fault11",
+                "Remote" : "remote11"
+            },
+            {
+                "NO" : 12,
+                "Name" : "name12",
+                "Switch" : "switch12",
+                "Mark" : "mark12",
+                "Fault" : "fault12",
+                "Remote" : "remote12"
+            },
+            {
+                "NO" : 13,
+                "Name" : "name13",
+                "Switch" : "switch13",
+                "Mark" : "mark13",
+                "Fault" : "fault13",
+                "Remote" : "remote13"
+            },
+            {
+                "NO" : 14,
+                "Name" : "name14",
+                "Switch" : "switch14",
+                "Mark" : "mark14",
+                "Fault" : "fault14",
+                "Remote" : "remote14"
+            },
+            {
+                "NO" : 15,
+                "Name" : "name15",
+                "Switch" : "switch15",
+                "Mark" : "mark15",
+                "Fault" : "fault15",
+                "Remote" : "remote15"
+            },
+            {
+                "NO" : 16,
+                "Name" : "name16",
+                "Switch" : "switch16",
+                "Mark" : "mark16",
+                "Fault" : "fault16",
+                "Remote" : "remote16"
+            },
+            {
+                "NO" : 17,
+                "Name" : "name17",
+                "Switch" : "switch17",
+                "Mark" : "mark17",
+                "Fault" : "fault17",
+                "Remote" : "remote17"
+            },
+            {
+                "NO" : 18,
+                "Name" : "name18",
+                "Switch" : "switch18",
+                "Mark" : "mark18",
+                "Fault" : "fault18",
+                "Remote" : "remote18"
+            },
+            {
+                "NO" : 19,
+                "Name" : "name19",
+                "Switch" : "switch19",
+                "Mark" : "mark19",
+                "Fault" : "fault19",
+                "Remote" : "remote19"
+            },
+            {
+                "NO" : 20,
+                "Name" : "name20",
+                "Switch" : "switch20",
+                "Mark" : "mark20",
+                "Fault" : "fault20",
+                "Remote" : "remote20"
+            },
+            {
+                "NO" : 21,
+                "Name" : "name21",
+                "Switch" : "switch21",
+                "Mark" : "mark21",
+                "Fault" : "fault21",
+                "Remote" : "remote21"
+            },
+            {
+                "NO" : 22,
+                "Name" : "name22",
+                "Switch" : "switch22",
+                "Mark" : "mark22",
+                "Fault" : "fault22",
+                "Remote" : "remote22"
+            },
+            {
+                "NO" : 23,
+                "Name" : "name23",
+                "Switch" : "switch23",
+                "Mark" : "mark23",
+                "Fault" : "fault23",
+                "Remote" : "remote23"
+            },
+            {
+                "NO" : 24,
+                "Name" : "name24",
+                "Switch" : "switch24",
+                "Mark" : "mark24",
+                "Fault" : "fault24",
+                "Remote" : "remote24"
+            },
+            {
+                "NO" : 25,
+                "Name" : "name25",
+                "Switch" : "switch25",
+                "Mark" : "mark25",
+                "Fault" : "fault25",
+                "Remote" : "remote25"
+            },
+            {
+                "NO" : 26,
+                "Name" : "name26",
+                "Switch" : "switch26",
+                "Mark" : "mark26",
+                "Fault" : "fault26",
+                "Remote" : "remote26"
+            },
+            {
+                "NO" : 27,
+                "Name" : "name27",
+                "Switch" : "switch27",
+                "Mark" : "mark27",
+                "Fault" : "fault27",
+                "Remote" : "remote27"
+            },
+            {
+                "NO" : 28,
+                "Name" : "name28",
+                "Switch" : "switch28",
+                "Mark" : "mark28",
+                "Fault" : "fault28",
+                "Remote" : "remote28"
+            },
+            {
+                "NO" : 29,
+                "Name" : "name29",
+                "Switch" : "switch29",
+                "Mark" : "mark29",
+                "Fault" : "fault29",
+                "Remote" : "remote29"
+            },
+            {
+                "NO" : 30,
+                "Name" : "name30",
+                "Switch" : "switch30",
+                "Mark" : "mark30",
+                "Fault" : "fault30",
+                "Remote" : "remote30"
+            },
+            {
+                "NO" : 31,
+                "Name" : "name31",
+                "Switch" : "switch31",
+                "Mark" : "mark31",
+                "Fault" : "fault31",
+                "Remote" : "remote31"
+            },
+            {
+                "NO" : 32,
+                "Name" : "name32",
+                "Switch" : "switch32",
+                "Mark" : "mark32",
+                "Fault" : "fault32",
+                "Remote" : "remote32"
+            },
+            {
+                "NO" : 33,
+                "Name" : "name33",
+                "Switch" : "switch33",
+                "Mark" : "mark33",
+                "Fault" : "fault33",
+                "Remote" : "remote33"
+            },
+            {
+                "NO" : 34,
+                "Name" : "name34",
+                "Switch" : "switch34",
+                "Mark" : "mark34",
+                "Fault" : "fault34",
+                "Remote" : "remote34"
+            },
+            {
+                "NO" : 35,
+                "Name" : "name35",
+                "Switch" : "switch35",
+                "Mark" : "mark35",
+                "Fault" : "fault35",
+                "Remote" : "remote35"
+            },
+            {
+                "NO" : 36,
+                "Name" : "name36",
+                "Switch" : "switch36",
+                "Mark" : "mark36",
+                "Fault" : "fault36",
+                "Remote" : "remote36"
+            },
+            {
+                "NO" : 37,
+                "Name" : "name37",
+                "Switch" : "switch37",
+                "Mark" : "mark37",
+                "Fault" : "fault37",
+                "Remote" : "remote37"
+            },
+            {
+                "NO" : 38,
+                "Name" : "name38",
+                "Switch" : "switch38",
+                "Mark" : "mark38",
+                "Fault" : "fault38",
+                "Remote" : "remote38"
+            },
+            {
+                "NO" : 39,
+                "Name" : "name39",
+                "Switch" : "switch39",
+                "Mark" : "mark39",
+                "Fault" : "fault39",
+                "Remote" : "remote39"
+            },
+            {
+                "NO" : 40,
+                "Name" : "name40",
+                "Switch" : "switch40",
+                "Mark" : "mark40",
+                "Fault" : "fault40",
+                "Remote" : "remote40"
+            },
+            {
+                "NO" : 41,
+                "Name" : "name41",
+                "Switch" : "switch41",
+                "Mark" : "mark41",
+                "Fault" : "fault41",
+                "Remote" : "remote41"
+            },
+            {
+                "NO" : 42,
+                "Name" : "name42",
+                "Switch" : "switch42",
+                "Mark" : "mark42",
+                "Fault" : "fault42",
+                "Remote" : "remote42"
+            },
+            {
+                "NO" : 43,
+                "Name" : "name43",
+                "Switch" : "switch43",
+                "Mark" : "mark43",
+                "Fault" : "fault43",
+                "Remote" : "remote43"
+            },
+            {
+                "NO" : 44,
+                "Name" : "name44",
+                "Switch" : "switch44",
+                "Mark" : "mark44",
+                "Fault" : "fault44",
+                "Remote" : "remote44"
+            },
+            {
+                "NO" : 45,
+                "Name" : "name45",
+                "Switch" : "switch45",
+                "Mark" : "mark45",
+                "Fault" : "fault45",
+                "Remote" : "remote45"
+            },
+            {
+                "NO" : 46,
+                "Name" : "name46",
+                "Switch" : "switch46",
+                "Mark" : "mark46",
+                "Fault" : "fault46",
+                "Remote" : "remote46"
+            },
+            {
+                "NO" : 47,
+                "Name" : "name47",
+                "Switch" : "switch47",
+                "Mark" : "mark47",
+                "Fault" : "fault47",
+                "Remote" : "remote47"
+            },
+            {
+                "NO" : 48,
+                "Name" : "name48",
+                "Switch" : "switch48",
+                "Mark" : "mark48",
+                "Fault" : "fault48",
+                "Remote" : "remote48"
+            }
+        ]
+    },
+    {
+        "Name" : "BD4",
+        "No" : 2,
+        "GunDefines" : [
+
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            },
+            {
+                "NO" : 11,
+                "Name" : "name11",
+                "Switch" : "switch11",
+                "Mark" : "mark11",
+                "Fault" : "fault11",
+                "Remote" : "remote11"
+            },
+            {
+                "NO" : 12,
+                "Name" : "name12",
+                "Switch" : "switch12",
+                "Mark" : "mark12",
+                "Fault" : "fault12",
+                "Remote" : "remote12"
+            },
+            {
+                "NO" : 13,
+                "Name" : "name13",
+                "Switch" : "switch13",
+                "Mark" : "mark13",
+                "Fault" : "fault13",
+                "Remote" : "remote13"
+            },
+            {
+                "NO" : 14,
+                "Name" : "name14",
+                "Switch" : "switch14",
+                "Mark" : "mark14",
+                "Fault" : "fault14",
+                "Remote" : "remote14"
+            },
+            {
+                "NO" : 15,
+                "Name" : "name15",
+                "Switch" : "switch15",
+                "Mark" : "mark15",
+                "Fault" : "fault15",
+                "Remote" : "remote15"
+            },
+            {
+                "NO" : 16,
+                "Name" : "name16",
+                "Switch" : "switch16",
+                "Mark" : "mark16",
+                "Fault" : "fault16",
+                "Remote" : "remote16"
+            },
+            {
+                "NO" : 17,
+                "Name" : "name17",
+                "Switch" : "switch17",
+                "Mark" : "mark17",
+                "Fault" : "fault17",
+                "Remote" : "remote17"
+            },
+            {
+                "NO" : 18,
+                "Name" : "name18",
+                "Switch" : "switch18",
+                "Mark" : "mark18",
+                "Fault" : "fault18",
+                "Remote" : "remote18"
+            },
+            {
+                "NO" : 19,
+                "Name" : "name19",
+                "Switch" : "switch19",
+                "Mark" : "mark19",
+                "Fault" : "fault19",
+                "Remote" : "remote19"
+            },
+            {
+                "NO" : 20,
+                "Name" : "name20",
+                "Switch" : "switch20",
+                "Mark" : "mark20",
+                "Fault" : "fault20",
+                "Remote" : "remote20"
+            },
+            {
+                "NO" : 21,
+                "Name" : "name21",
+                "Switch" : "switch21",
+                "Mark" : "mark21",
+                "Fault" : "fault21",
+                "Remote" : "remote21"
+            },
+            {
+                "NO" : 22,
+                "Name" : "name22",
+                "Switch" : "switch22",
+                "Mark" : "mark22",
+                "Fault" : "fault22",
+                "Remote" : "remote22"
+            },
+            {
+                "NO" : 23,
+                "Name" : "name23",
+                "Switch" : "switch23",
+                "Mark" : "mark23",
+                "Fault" : "fault23",
+                "Remote" : "remote23"
+            },
+            {
+                "NO" : 24,
+                "Name" : "name24",
+                "Switch" : "switch24",
+                "Mark" : "mark24",
+                "Fault" : "fault24",
+                "Remote" : "remote24"
+            },
+            {
+                "NO" : 25,
+                "Name" : "name25",
+                "Switch" : "switch25",
+                "Mark" : "mark25",
+                "Fault" : "fault25",
+                "Remote" : "remote25"
+            },
+            {
+                "NO" : 26,
+                "Name" : "name26",
+                "Switch" : "switch26",
+                "Mark" : "mark26",
+                "Fault" : "fault26",
+                "Remote" : "remote26"
+            },
+            {
+                "NO" : 27,
+                "Name" : "name27",
+                "Switch" : "switch27",
+                "Mark" : "mark27",
+                "Fault" : "fault27",
+                "Remote" : "remote27"
+            },
+            {
+                "NO" : 28,
+                "Name" : "name28",
+                "Switch" : "switch28",
+                "Mark" : "mark28",
+                "Fault" : "fault28",
+                "Remote" : "remote28"
+            },
+            {
+                "NO" : 29,
+                "Name" : "name29",
+                "Switch" : "switch29",
+                "Mark" : "mark29",
+                "Fault" : "fault29",
+                "Remote" : "remote29"
+            },
+            {
+                "NO" : 30,
+                "Name" : "name30",
+                "Switch" : "switch30",
+                "Mark" : "mark30",
+                "Fault" : "fault30",
+                "Remote" : "remote30"
+            },
+            {
+                "NO" : 31,
+                "Name" : "name31",
+                "Switch" : "switch31",
+                "Mark" : "mark31",
+                "Fault" : "fault31",
+                "Remote" : "remote31"
+            },
+            {
+                "NO" : 32,
+                "Name" : "name32",
+                "Switch" : "switch32",
+                "Mark" : "mark32",
+                "Fault" : "fault32",
+                "Remote" : "remote32"
+            },
+            {
+                "NO" : 33,
+                "Name" : "name33",
+                "Switch" : "switch33",
+                "Mark" : "mark33",
+                "Fault" : "fault33",
+                "Remote" : "remote33"
+            },
+            {
+                "NO" : 34,
+                "Name" : "name34",
+                "Switch" : "switch34",
+                "Mark" : "mark34",
+                "Fault" : "fault34",
+                "Remote" : "remote34"
+            },
+            {
+                "NO" : 35,
+                "Name" : "name35",
+                "Switch" : "switch35",
+                "Mark" : "mark35",
+                "Fault" : "fault35",
+                "Remote" : "remote35"
+            },
+            {
+                "NO" : 36,
+                "Name" : "name36",
+                "Switch" : "switch36",
+                "Mark" : "mark36",
+                "Fault" : "fault36",
+                "Remote" : "remote36"
+            },
+            {
+                "NO" : 37,
+                "Name" : "name37",
+                "Switch" : "switch37",
+                "Mark" : "mark37",
+                "Fault" : "fault37",
+                "Remote" : "remote37"
+            },
+            {
+                "NO" : 38,
+                "Name" : "name38",
+                "Switch" : "switch38",
+                "Mark" : "mark38",
+                "Fault" : "fault38",
+                "Remote" : "remote38"
+            },
+            {
+                "NO" : 39,
+                "Name" : "name39",
+                "Switch" : "switch39",
+                "Mark" : "mark39",
+                "Fault" : "fault39",
+                "Remote" : "remote39"
+            },
+            {
+                "NO" : 40,
+                "Name" : "name40",
+                "Switch" : "switch40",
+                "Mark" : "mark40",
+                "Fault" : "fault40",
+                "Remote" : "remote40"
+            },
+            {
+                "NO" : 41,
+                "Name" : "name41",
+                "Switch" : "switch41",
+                "Mark" : "mark41",
+                "Fault" : "fault41",
+                "Remote" : "remote41"
+            },
+            {
+                "NO" : 42,
+                "Name" : "name42",
+                "Switch" : "switch42",
+                "Mark" : "mark42",
+                "Fault" : "fault42",
+                "Remote" : "remote42"
+            },
+            {
+                "NO" : 43,
+                "Name" : "name43",
+                "Switch" : "switch43",
+                "Mark" : "mark43",
+                "Fault" : "fault43",
+                "Remote" : "remote43"
+            },
+            {
+                "NO" : 44,
+                "Name" : "name44",
+                "Switch" : "switch44",
+                "Mark" : "mark44",
+                "Fault" : "fault44",
+                "Remote" : "remote44"
+            },
+            {
+                "NO" : 45,
+                "Name" : "name45",
+                "Switch" : "switch45",
+                "Mark" : "mark45",
+                "Fault" : "fault45",
+                "Remote" : "remote45"
+            },
+            {
+                "NO" : 46,
+                "Name" : "name46",
+                "Switch" : "switch46",
+                "Mark" : "mark46",
+                "Fault" : "fault46",
+                "Remote" : "remote46"
+            },
+            {
+                "NO" : 47,
+                "Name" : "name47",
+                "Switch" : "switch47",
+                "Mark" : "mark47",
+                "Fault" : "fault47",
+                "Remote" : "remote47"
+            },
+            {
+                "NO" : 48,
+                "Name" : "name48",
+                "Switch" : "switch48",
+                "Mark" : "mark48",
+                "Fault" : "fault48",
+                "Remote" : "remote48"
+            }
+        ]
+    },
+    {
+        "Name" : "BDQ3",
+        "No" : 3,
+        "GunDefines" : [
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            },
+            {
+                "NO" : 11,
+                "Name" : "name11",
+                "Switch" : "switch11",
+                "Mark" : "mark11",
+                "Fault" : "fault11",
+                "Remote" : "remote11"
+            },
+            {
+                "NO" : 12,
+                "Name" : "name12",
+                "Switch" : "switch12",
+                "Mark" : "mark12",
+                "Fault" : "fault12",
+                "Remote" : "remote12"
+            },
+            {
+                "NO" : 13,
+                "Name" : "name13",
+                "Switch" : "switch13",
+                "Mark" : "mark13",
+                "Fault" : "fault13",
+                "Remote" : "remote13"
+            },
+            {
+                "NO" : 14,
+                "Name" : "name14",
+                "Switch" : "switch14",
+                "Mark" : "mark14",
+                "Fault" : "fault14",
+                "Remote" : "remote14"
+            },
+            {
+                "NO" : 15,
+                "Name" : "name15",
+                "Switch" : "switch15",
+                "Mark" : "mark15",
+                "Fault" : "fault15",
+                "Remote" : "remote15"
+            },
+            {
+                "NO" : 16,
+                "Name" : "name16",
+                "Switch" : "switch16",
+                "Mark" : "mark16",
+                "Fault" : "fault16",
+                "Remote" : "remote16"
+            },
+            {
+                "NO" : 17,
+                "Name" : "name17",
+                "Switch" : "switch17",
+                "Mark" : "mark17",
+                "Fault" : "fault17",
+                "Remote" : "remote17"
+            },
+            {
+                "NO" : 18,
+                "Name" : "name18",
+                "Switch" : "switch18",
+                "Mark" : "mark18",
+                "Fault" : "fault18",
+                "Remote" : "remote18"
+            },
+            {
+                "NO" : 19,
+                "Name" : "name19",
+                "Switch" : "switch19",
+                "Mark" : "mark19",
+                "Fault" : "fault19",
+                "Remote" : "remote19"
+            },
+            {
+                "NO" : 20,
+                "Name" : "name20",
+                "Switch" : "switch20",
+                "Mark" : "mark20",
+                "Fault" : "fault20",
+                "Remote" : "remote20"
+            },
+            {
+                "NO" : 21,
+                "Name" : "name21",
+                "Switch" : "switch21",
+                "Mark" : "mark21",
+                "Fault" : "fault21",
+                "Remote" : "remote21"
+            },
+            {
+                "NO" : 22,
+                "Name" : "name22",
+                "Switch" : "switch22",
+                "Mark" : "mark22",
+                "Fault" : "fault22",
+                "Remote" : "remote22"
+            },
+            {
+                "NO" : 23,
+                "Name" : "name23",
+                "Switch" : "switch23",
+                "Mark" : "mark23",
+                "Fault" : "fault23",
+                "Remote" : "remote23"
+            },
+            {
+                "NO" : 24,
+                "Name" : "name24",
+                "Switch" : "switch24",
+                "Mark" : "mark24",
+                "Fault" : "fault24",
+                "Remote" : "remote24"
+            },
+            {
+                "NO" : 25,
+                "Name" : "name25",
+                "Switch" : "switch25",
+                "Mark" : "mark25",
+                "Fault" : "fault25",
+                "Remote" : "remote25"
+            },
+            {
+                "NO" : 26,
+                "Name" : "name26",
+                "Switch" : "switch26",
+                "Mark" : "mark26",
+                "Fault" : "fault26",
+                "Remote" : "remote26"
+            },
+            {
+                "NO" : 27,
+                "Name" : "name27",
+                "Switch" : "switch27",
+                "Mark" : "mark27",
+                "Fault" : "fault27",
+                "Remote" : "remote27"
+            },
+            {
+                "NO" : 28,
+                "Name" : "name28",
+                "Switch" : "switch28",
+                "Mark" : "mark28",
+                "Fault" : "fault28",
+                "Remote" : "remote28"
+            },
+            {
+                "NO" : 29,
+                "Name" : "name29",
+                "Switch" : "switch29",
+                "Mark" : "mark29",
+                "Fault" : "fault29",
+                "Remote" : "remote29"
+            },
+            {
+                "NO" : 30,
+                "Name" : "name30",
+                "Switch" : "switch30",
+                "Mark" : "mark30",
+                "Fault" : "fault30",
+                "Remote" : "remote30"
+            },
+            {
+                "NO" : 31,
+                "Name" : "name31",
+                "Switch" : "switch31",
+                "Mark" : "mark31",
+                "Fault" : "fault31",
+                "Remote" : "remote31"
+            },
+            {
+                "NO" : 32,
+                "Name" : "name32",
+                "Switch" : "switch32",
+                "Mark" : "mark32",
+                "Fault" : "fault32",
+                "Remote" : "remote32"
+            },
+            {
+                "NO" : 33,
+                "Name" : "name33",
+                "Switch" : "switch33",
+                "Mark" : "mark33",
+                "Fault" : "fault33",
+                "Remote" : "remote33"
+            },
+            {
+                "NO" : 34,
+                "Name" : "name34",
+                "Switch" : "switch34",
+                "Mark" : "mark34",
+                "Fault" : "fault34",
+                "Remote" : "remote34"
+            },
+            {
+                "NO" : 35,
+                "Name" : "name35",
+                "Switch" : "switch35",
+                "Mark" : "mark35",
+                "Fault" : "fault35",
+                "Remote" : "remote35"
+            },
+            {
+                "NO" : 36,
+                "Name" : "name36",
+                "Switch" : "switch36",
+                "Mark" : "mark36",
+                "Fault" : "fault36",
+                "Remote" : "remote36"
+            },
+            {
+                "NO" : 37,
+                "Name" : "name37",
+                "Switch" : "switch37",
+                "Mark" : "mark37",
+                "Fault" : "fault37",
+                "Remote" : "remote37"
+            },
+            {
+                "NO" : 38,
+                "Name" : "name38",
+                "Switch" : "switch38",
+                "Mark" : "mark38",
+                "Fault" : "fault38",
+                "Remote" : "remote38"
+            },
+            {
+                "NO" : 39,
+                "Name" : "name39",
+                "Switch" : "switch39",
+                "Mark" : "mark39",
+                "Fault" : "fault39",
+                "Remote" : "remote39"
+            },
+            {
+                "NO" : 40,
+                "Name" : "name40",
+                "Switch" : "switch40",
+                "Mark" : "mark40",
+                "Fault" : "fault40",
+                "Remote" : "remote40"
+            },
+            {
+                "NO" : 41,
+                "Name" : "name41",
+                "Switch" : "switch41",
+                "Mark" : "mark41",
+                "Fault" : "fault41",
+                "Remote" : "remote41"
+            },
+            {
+                "NO" : 42,
+                "Name" : "name42",
+                "Switch" : "switch42",
+                "Mark" : "mark42",
+                "Fault" : "fault42",
+                "Remote" : "remote42"
+            },
+            {
+                "NO" : 43,
+                "Name" : "name43",
+                "Switch" : "switch43",
+                "Mark" : "mark43",
+                "Fault" : "fault43",
+                "Remote" : "remote43"
+            },
+            {
+                "NO" : 44,
+                "Name" : "name44",
+                "Switch" : "switch44",
+                "Mark" : "mark44",
+                "Fault" : "fault44",
+                "Remote" : "remote44"
+            },
+            {
+                "NO" : 45,
+                "Name" : "name45",
+                "Switch" : "switch45",
+                "Mark" : "mark45",
+                "Fault" : "fault45",
+                "Remote" : "remote45"
+            },
+            {
+                "NO" : 46,
+                "Name" : "name46",
+                "Switch" : "switch46",
+                "Mark" : "mark46",
+                "Fault" : "fault46",
+                "Remote" : "remote46"
+            },
+            {
+                "NO" : 47,
+                "Name" : "name47",
+                "Switch" : "switch47",
+                "Mark" : "mark47",
+                "Fault" : "fault47",
+                "Remote" : "remote47"
+            },
+            {
+                "NO" : 48,
+                "Name" : "name48",
+                "Switch" : "switch48",
+                "Mark" : "mark48",
+                "Fault" : "fault48",
+                "Remote" : "remote48"
+            }
+        ]
+    }
+]

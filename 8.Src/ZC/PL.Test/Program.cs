@@ -10,7 +10,7 @@ namespace PL.Test
     {
         static void Main(string[] args)
         {
-            PL.Hardware.Serializer.test();
+            //PL.Hardware.Serializer.test();
 
             var app = App.GetApp();
             Console.ReadKey();
