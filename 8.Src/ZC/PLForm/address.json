@@ -1,0 +1,348 @@
+﻿[
+    {
+        "Name" : "BD2",
+        "No" : 0,
+        "GunDefines" : [
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            }
+        ]
+    },
+    {
+        "Name" : "BD3",
+        "No" : 1,
+        "GunDefines" : [
+
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            }
+        ]
+    },
+    {
+        "Name" : "BD4",
+        "No" : 2,
+        "GunDefines" : [
+
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            }
+        ]
+    },
+    {
+        "Name" : "BDQ3",
+        "No" : 3,
+        "GunDefines" : [
+            {
+                "NO" : 1,
+                "Name" : "name1",
+                "Switch" : "switch1",
+                "Mark" : "mark1",
+                "Fault" : "fault1",
+                "Remote" : "remote1"
+            },
+            {
+                "NO" : 2,
+                "Name" : "name2",
+                "Switch" : "switch2",
+                "Mark" : "mark2",
+                "Fault" : "fault2",
+                "Remote" : "remote2"
+            },
+            {
+                "NO" : 3,
+                "Name" : "name3",
+                "Switch" : "switch3",
+                "Mark" : "mark3",
+                "Fault" : "fault3",
+                "Remote" : "remote3"
+            },
+            {
+                "NO" : 4,
+                "Name" : "name4",
+                "Switch" : "switch4",
+                "Mark" : "mark4",
+                "Fault" : "fault4",
+                "Remote" : "remote4"
+            },
+            {
+                "NO" : 5,
+                "Name" : "name5",
+                "Switch" : "switch5",
+                "Mark" : "mark5",
+                "Fault" : "fault5",
+                "Remote" : "remote5"
+            },
+            {
+                "NO" : 6,
+                "Name" : "name6",
+                "Switch" : "switch6",
+                "Mark" : "mark6",
+                "Fault" : "fault6",
+                "Remote" : "remote6"
+            },
+            {
+                "NO" : 7,
+                "Name" : "name7",
+                "Switch" : "switch7",
+                "Mark" : "mark7",
+                "Fault" : "fault7",
+                "Remote" : "remote7"
+            },
+            {
+                "NO" : 8,
+                "Name" : "name8",
+                "Switch" : "switch8",
+                "Mark" : "mark8",
+                "Fault" : "fault8",
+                "Remote" : "remote8"
+            },
+            {
+                "NO" : 9,
+                "Name" : "name9",
+                "Switch" : "switch9",
+                "Mark" : "mark9",
+                "Fault" : "fault9",
+                "Remote" : "remote9"
+            },
+            {
+                "NO" : 10,
+                "Name" : "name10",
+                "Switch" : "switch10",
+                "Mark" : "mark10",
+                "Fault" : "fault10",
+                "Remote" : "remote10"
+            }
+        ]
+    }
+]
