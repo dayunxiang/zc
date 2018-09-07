@@ -16,7 +16,7 @@ namespace PL
         {
             DiscardGunsCloseDelay = 3;
             CheckInterval = 2000;
-            Mock = true;
+            IsMock = true;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace PL
             set;
         }
 
-        static public bool Mock
+        static public bool IsMock
         {
             get;
             set;

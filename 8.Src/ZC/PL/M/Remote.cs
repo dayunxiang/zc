@@ -7,26 +7,58 @@ using PLC;
 
 namespace PL
 {
-
-    public class Remote
+    public class Remote : PlcAddress
     {
-        //private string p;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="address"></param>
         public Remote(string address)
+            :base(address)
         {
-            // TODO: Complete member initialization
-            //this.p = p;
         }
+
         public ItemDefine ItemDefine { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsRemote
         {
             get
             {
-                return RemoteUI.Checked;
+                if(Config.IsMock)
+                {
+                    return IsRemoteMock();
+                }
+                else
+                {
+                    return IsRemoteFact();
+                }
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsRemoteMock()
+        {
+            return RemoteUI.Checked;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsRemoteFact()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CheckBox RemoteUI
         {
             get;

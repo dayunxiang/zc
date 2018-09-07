@@ -8,16 +8,15 @@ using PLC;
 
 namespace PL
 {
-    public class Switch
+    public class Switch : PlcAddress
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="address"></param>
         public Switch(string address)
+            : base(address)
         {
-            // TODO: Complete member initialization
-            //this.p = p;
         }
 
         /// <summary>
@@ -32,8 +31,14 @@ namespace PL
         {
             get
             {
-                // todo: test
-                return SwitchUI.BackColor == Color.Green;
+                if (Config.IsMock)
+                {
+                    return IsOpenedMock();
+                }
+                else
+                {
+                    return IsOpenedFact();
+                }
             }
         }
 
@@ -42,8 +47,14 @@ namespace PL
         /// </summary>
         public void Open()
         {
-            // todo: test
-            this.SwitchUI.BackColor = Color.Green;
+            if (Config.IsMock)
+            {
+                OpenMock();
+            }
+            else
+            {
+                OpenFact();
+            }
         }
 
         /// <summary>
@@ -51,8 +62,68 @@ namespace PL
         /// </summary>
         public void Close()
         {
-            // todo: test
+            if (Config.IsMock)
+            {
+                CloseMock();
+            }
+            else
+            {
+                CloseFact();
+            }
+        }
+
+        #region fact
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsOpenedFact()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OpenFact()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CloseFact()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion //fact
+
+        #region mock
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsOpenedMock()
+        {
+            return SwitchUI.BackColor == Color.Green;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CloseMock()
+        {
             this.SwitchUI.BackColor = SystemColors.Control;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OpenMock()
+        {
+            this.SwitchUI.BackColor = Color.Green;
         }
 
         /// <summary>
@@ -63,5 +134,6 @@ namespace PL
             get;
             set;
         }
+        #endregion //mock
     }
 }

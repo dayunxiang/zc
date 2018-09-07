@@ -76,6 +76,8 @@
     <Compile Include="Defines\MarkStatusEnum.cs" />
     <Compile Include="C\PlCheckResult.cs" />
     <Compile Include="C\PlController.cs" />
+    <Compile Include="M\PlcAddress.cs" />
+    <Compile Include="M\WorkGunGroup.cs" />
     <Compile Include="PlOptions.cs" />
     <Compile Include="PlOptionsReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

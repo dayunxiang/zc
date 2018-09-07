@@ -8,17 +8,50 @@ using PLC;
 namespace PL
 {
 
-    public class AutoManualStatus
+    public class AutoManualStatus : PlcAddress
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="address"></param>
+        public AutoManualStatus(string address)
+            : base(address)
+        {
+
+        }
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public AutoManualStatusEnum Read()
         {
-            //todo:
-            return AutoManualUI.Checked ? 
+            if (Config.IsMock)
+            {
+                return ReadMock();
+            }
+            else
+            {
+                return ReadFact();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private AutoManualStatusEnum ReadMock()
+        {
+            return AutoManualUI.Checked ?
                 AutoManualStatusEnum.Auto : AutoManualStatusEnum.Manual;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private AutoManualStatusEnum ReadFact()
+        {
+            throw new NotImplementedException();
         }
 
 

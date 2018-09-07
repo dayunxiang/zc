@@ -15,7 +15,22 @@ namespace PL
         /// <returns></returns>
         public PlOptions Read()
         {
-            // todo:
+            if (Config.IsMock)
+            {
+                return ReadMock();
+            }
+            else
+            {
+                return ReadFact();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private PlOptions ReadMock()
+        {
             return new PlOptions()
             {
                 CycleMode = CycleMode.AllDam,
@@ -25,5 +40,16 @@ namespace PL
                 WorkDam = 0,
             };
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private PlOptions ReadFact()
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

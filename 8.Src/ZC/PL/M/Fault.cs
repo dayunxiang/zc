@@ -7,13 +7,14 @@ using PLC;
 
 namespace PL
 {
-    public class Fault
+    public class Fault : PlcAddress
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="address"></param>
         public Fault(string address)
+            :base(address)
         {
 
         }
@@ -27,8 +28,30 @@ namespace PL
         {
             get
             {
-                return FaultUI.Checked;
+                if(Config.IsMock)
+                {
+                    return IsFaultMock();
+                }
+                else
+                {
+                    return IsFaultFact();
+                }
             }
+        }
+
+        private bool IsFaultMock()
+        {
+                return FaultUI.Checked;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+
+        private bool IsFaultFact()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

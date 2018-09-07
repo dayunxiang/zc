@@ -8,14 +8,11 @@ using PLC;
 namespace PL
 {
 
-    public class Mark
+    public class Mark : PlcAddress
     {
-        //private string p;
-
         public Mark(string address)
+            : base(address)
         {
-            // TODO: Complete member initialization
-            //this.p = p;
         }
 
         public ItemDefine ItemDefine { get; set; }
@@ -26,11 +23,37 @@ namespace PL
         {
             get
             {
-                // todo: test
-                return MarkUI.Checked;
+                if (Config.IsMock)
+                {
+                    return IsMarkedMock();
+                }
+                else
+                {
+                    return IsMarkedFact();
+                }
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsMarkedMock()
+        {
+            return MarkUI.Checked;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsMarkedFact()
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public CheckBox MarkUI
         {
             get;
