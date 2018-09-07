@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using PLC;
 using NLog;
+using PL.Hardware;
 
 namespace PL
 {
@@ -22,11 +23,11 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public AppController()
+        public AppController(Address2 address2)
         {
-            this.ControllerStatus = new AppControllerStatus(ControllerStatusEnum.Idle);
-            this.AutoManualStatus = new AutoManualStatus();
-            this.ZtPlcStatus = new ZtPlcStatus();
+            this.ControllerStatus = new AppControllerStatus(address2.AppControlStatus, ControllerStatusEnum.Idle);
+            this.AutoManualStatus = new AutoManualStatus(address2.AutoManual);
+            this.ZtPlcStatus = new ZtPlcStatus(address2.ZtPlcStatus);
             this.PlOptionsReader = new PlOptionsReader();
         }
 

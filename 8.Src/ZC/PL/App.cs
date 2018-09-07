@@ -26,9 +26,21 @@ namespace PL
         /// </summary>
         private App()
         {
-            this.AppController = new AppController();
             this.Dams = InitDams();
+            this.Address2 = InitAddress2();
+            this.AppController = new AppController(this.Address2);
             //Lm.D("App()");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Address2 InitAddress2()
+        {
+            var json = File.ReadAllText("address2.json");
+            var a2 = JsonConvert.DeserializeObject<Address2>(json);
+            return a2;
         }
 
         /// <summary>
@@ -76,5 +88,10 @@ namespace PL
             get;
             private set;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Address2 Address2 { get; private set; }
     }
 }

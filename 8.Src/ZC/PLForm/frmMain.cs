@@ -38,7 +38,7 @@ namespace PLForm
             this.Text = AppConfigReader.Read<string>("MainText", "---");
             Lm.Logs.Add(new TxtLog(this.txtLog));
 
-            //App.GetApp().AppController.Start();
+            App.GetApp().AppController.Start();
         }
 
         /// <summary>

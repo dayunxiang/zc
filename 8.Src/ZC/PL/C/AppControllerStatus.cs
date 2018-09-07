@@ -7,13 +7,14 @@ using PLC;
 namespace PL
 {
 
-    public class AppControllerStatus
+    public class AppControllerStatus : PlcAddress
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="initValue"></param>
-        public AppControllerStatus(ControllerStatusEnum initValue)
+        public AppControllerStatus(string address, ControllerStatusEnum initValue)
+            : base(address)
         {
             _value = initValue;
             Write();

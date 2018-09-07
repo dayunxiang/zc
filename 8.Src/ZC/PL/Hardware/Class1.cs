@@ -7,6 +7,19 @@ using Newtonsoft.Json;
 
 namespace PL.Hardware
 {
+    public class Address2
+    {
+        public string AutoManual { get; set; }
+        public string ZtPlcStatus { get; set; }
+        public string AppControlStatus { get; set; }
+        public string CycleCount { get; set; }
+        public string PlTimeSecond { get; set; }
+        public string CycleMode { get; set; }
+        public string WorkDam { get; set; }
+        public string GunCountPerGroup { get; set; }
+
+    }
+
     public class GunDefine
     {
         public int No { get; set; }
@@ -129,6 +142,11 @@ namespace PL.Hardware
             var deserialDamDefines = JsonConvert.DeserializeObject<List<DamDefine>>(s);
             Console.WriteLine(deserialDamDefines.Count);
             Console.WriteLine(deserialDamDefines[0].Name);
+
+
+            var a2Json = JsonConvert.SerializeObject(new Address2());
+            Console.WriteLine(a2Json);
+
         }
     }
 }
