@@ -14,7 +14,7 @@ namespace PL
         /// </summary>
         /// <param name="address"></param>
         public Fault(string address)
-            :base(address)
+            : base(address)
         {
 
         }
@@ -28,7 +28,7 @@ namespace PL
         {
             get
             {
-                if(Config.IsMock)
+                if (Config.IsMock)
                 {
                     return IsFaultMock();
                 }
@@ -39,19 +39,24 @@ namespace PL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool IsFaultMock()
         {
-                return FaultUI.Checked;
+            return FaultUI.Checked;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-
         private bool IsFaultFact()
         {
-            throw new NotImplementedException();
+            var val = ReadFromOpc();
+            var n = Convert.ToInt32(val);
+            return n == (int)FaultStatusEnum.Fault;
         }
 
         /// <summary>

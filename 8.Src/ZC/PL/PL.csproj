@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\GlobalAssembly\NLog-v2.0.0.2000\NLog\.NET Framework 4.0\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="OpcNetApi, Version=2.1.106.0, Culture=neutral, PublicKeyToken=78aea80f6827b5ab, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\OpcNetApi\v4.0_2.1.106.0__78aea80f6827b5ab\OpcNetApi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />

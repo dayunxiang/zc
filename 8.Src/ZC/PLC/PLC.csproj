@@ -60,6 +60,7 @@
     <Compile Include="ItemDefineList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="SimpleOpcServer.cs" />
     <Compile Include="ValueChangedEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

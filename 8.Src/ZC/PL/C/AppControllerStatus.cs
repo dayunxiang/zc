@@ -46,7 +46,7 @@ namespace PL
         {
             // todo: write _value to plc
             //
-            //throw new NotImplementedException();
+            WriteToOpc((int)_value);
         }
 
         /// <summary>

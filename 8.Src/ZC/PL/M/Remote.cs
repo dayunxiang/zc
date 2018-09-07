@@ -53,7 +53,9 @@ namespace PL
         /// <returns></returns>
         private bool IsRemoteFact()
         {
-            throw new NotImplementedException();
+            var val = ReadFromOpc();
+            var n = Convert.ToInt32(val);
+            return n == (int)RemoteStatusEnum.Remote;
         }
 
         /// <summary>

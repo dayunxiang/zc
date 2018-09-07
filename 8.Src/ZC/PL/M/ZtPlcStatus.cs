@@ -42,7 +42,9 @@ namespace PL
         /// <returns></returns>
         private ZtPlcStatusEnum ReadFact()
         {
-            throw new NotImplementedException();
+            var v = ReadFromOpc();
+            var n = Convert.ToInt32(v);
+            return (ZtPlcStatusEnum)n;
         }
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace PL
         /// <param name="ztPlcStatusEnum"></param>
         private void WriteFact(ZtPlcStatusEnum ztPlcStatusEnum)
         {
-            throw new NotImplementedException();
+            WriteToOpc((int)ztPlcStatusEnum);
         }
 
         /// <summary>

@@ -51,7 +51,9 @@ namespace PL
         /// <returns></returns>
         private AutoManualStatusEnum ReadFact()
         {
-            throw new NotImplementedException();
+            var val = ReadFromOpc();
+            var n = Convert.ToInt32(val);
+            return (AutoManualStatusEnum)n;
         }
 
 

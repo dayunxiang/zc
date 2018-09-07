@@ -24,11 +24,20 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        static public SimpleOpcServer GetOpc()
+        {
+            return GetApp().Opc;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         private App()
         {
             this.Dams = InitDams();
             this.Address2 = InitAddress2();
             this.AppController = new AppController(this.Address2);
+            this.Opc = new SimpleOpcServer();
             //Lm.D("App()");
         }
 
@@ -93,5 +102,10 @@ namespace PL
         /// 
         /// </summary>
         public Address2 Address2 { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public SimpleOpcServer Opc { get; private set; }
     }
 }

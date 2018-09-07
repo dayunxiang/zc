@@ -27,5 +27,25 @@ namespace PL
             get;
             set;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public object ReadFromOpc()
+        {
+            return App.GetOpc().Read(this.Address);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool WriteToOpc(object value)
+        {
+            var r = App.GetOpc().Write(this.Address, value);
+            return r.ResultID == Opc.ResultID.S_OK;
+        }
     }
 }

@@ -47,9 +47,23 @@ namespace PL
         /// <returns></returns>
         private PlOptions ReadFact()
         {
-            throw new NotImplementedException();
+            var address2 = App.GetApp().Address2;
+            var opcServer = App.GetOpc();
+            List<string> itemNames = new List<string>();
+            itemNames.Add(address2.CycleCount);
+            itemNames.Add(address2.CycleMode);
+            itemNames.Add(address2.GunCountPerGroup);
+            itemNames.Add(address2.PlTimeSecond);
+            itemNames.Add(address2.WorkDam);
+            var values = opcServer.Read(itemNames.ToArray());
+
+            var plOptions = new PlOptions();
+            plOptions.CycleTimes = Convert.ToInt32(values[0]);
+            plOptions.CycleMode = (CycleMode)Convert.ToInt32(values[1]);
+            plOptions.GunCountPerGroup = Convert.ToInt32(values[2]);
+            plOptions.PlTimeSpan = TimeSpan.FromSeconds(Convert.ToInt32(values[3]));
+            plOptions.WorkDam = Convert.ToInt32(values[4]);
+            return plOptions;
         }
-
-
     }
 }

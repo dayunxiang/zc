@@ -49,7 +49,9 @@ namespace PL
         /// <returns></returns>
         private bool IsMarkedFact()
         {
-            throw new NotImplementedException();
+            var v = ReadFromOpc();
+            var n = Convert.ToInt32(v);
+            return n == (int)MarkStatusEnum.Marked;
         }
         /// <summary>
         /// 

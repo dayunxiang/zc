@@ -79,7 +79,9 @@ namespace PL
         /// <returns></returns>
         private bool IsOpenedFact()
         {
-            throw new NotImplementedException();
+            var val = ReadFromOpc();
+            var n = Convert.ToInt32(val);
+            return n == (int)GunStatus.Open;
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace PL
         /// </summary>
         private void OpenFact()
         {
-            throw new NotImplementedException();
+            WriteToOpc((int)GunStatus.Open);
         }
 
         /// <summary>
@@ -95,7 +97,7 @@ namespace PL
         /// </summary>
         private void CloseFact()
         {
-            throw new NotImplementedException();
+            WriteToOpc((int)GunStatus.Close);
         }
         #endregion //fact
 

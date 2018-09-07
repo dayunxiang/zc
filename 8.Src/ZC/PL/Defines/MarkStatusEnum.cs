@@ -9,7 +9,7 @@ namespace PL
 
     public enum MarkStatusEnum
     {
-        Enabled = 0,
-        Disabled = 1,
+        NotMarked = 0,
+        Marked = 1,
     }
 }
