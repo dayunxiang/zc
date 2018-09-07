@@ -120,6 +120,8 @@ namespace PL
         /// </summary>
         private void OnCheck()
         {
+            Lm.D("OnCheck()");
+
             if (AutoManualStatus.Read() == AutoManualStatusEnum.Auto)
             {
                 var controllerStatusEnum = this.ControllerStatus.Value;

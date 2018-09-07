@@ -46,6 +46,15 @@ namespace PL
             // todo: write _value to plc
             //
             //throw new NotImplementedException();
-        } 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsWorking()
+        {
+            return this.Value == ControllerStatusEnum.Working;
+        }
     }
 }

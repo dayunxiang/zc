@@ -28,6 +28,7 @@ namespace PL
         {
             this.AppController = new AppController();
             this.Dams = InitDams();
+            //Lm.D("App()");
         }
 
         /// <summary>
