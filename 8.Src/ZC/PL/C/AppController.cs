@@ -18,13 +18,15 @@ namespace PL
         private bool _isChecking = false;
         private PlController _plController = null;
         private Timer _timer;
+        private App _app;
         #endregion //Members
 
         /// <summary>
         /// 
         /// </summary>
-        public AppController(Address2 address2)
+        public AppController(App app, Address2 address2)
         {
+            this._app = app;
             this.ControllerStatus = new AppControllerStatus(address2.AppControlStatus, ControllerStatusEnum.Idle);
             this.AutoManualStatus = new AutoManualStatus(address2.AutoManual);
             this.ZtPlcStatus = new ZtPlcStatus(address2.ZtPlcStatus);
@@ -122,6 +124,17 @@ namespace PL
         private void OnCheck()
         {
             Lm.D("OnCheck()");
+
+            if (!_app.Opc.IsConnected())
+            {
+                bool success = _app.Opc.Connect();
+                if(success)
+                {
+                    this.ControllerStatus.Value = ControllerStatusEnum.Idle;
+                    this.ControllerStatus.Write();
+                }
+                return;
+            }
 
             if (AutoManualStatus.Read() == AutoManualStatusEnum.Auto)
             {

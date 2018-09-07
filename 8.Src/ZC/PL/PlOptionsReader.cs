@@ -12,6 +12,14 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
+        public PlOptionsReader()
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public PlOptions Read()
         {
@@ -48,7 +56,7 @@ namespace PL
         private PlOptions ReadFact()
         {
             var address2 = App.GetApp().Address2;
-            var opcServer = App.GetOpc();
+            var opcServer = App.GetApp().Opc;
             List<string> itemNames = new List<string>();
             itemNames.Add(address2.CycleCount);
             itemNames.Add(address2.CycleMode);

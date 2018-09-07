@@ -6,7 +6,6 @@ using PLC;
 
 namespace PL
 {
-
     public class Config
     {
         /// <summary>
@@ -16,7 +15,7 @@ namespace PL
         {
             DiscardGunsCloseDelay = 3;
             CheckInterval = 2000;
-            IsMock = true;
+            IsMock = false;
         }
 
         /// <summary>

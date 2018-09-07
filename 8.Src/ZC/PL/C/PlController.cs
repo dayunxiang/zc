@@ -81,7 +81,6 @@ namespace PL
         /// </summary>
         internal PlCheckResult Check()
         {
-            //throw new NotImplementedException();
             // 0. discard guns controller close
             //
             // 1. working guns timeout
@@ -157,39 +156,11 @@ namespace PL
             return _gunsController;
         }
 
-        /*
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="isToTail"></param>
-        /// <returns></returns>
-        private List<Gun> GetNextGuns(out bool isToTail)
-        {
-            // todo: set to tail
-            //
-            isToTail = false;
-            return GetGunsController().GetNextGuns();
-            //if(_gunsController == null)
-            //{
-            //    // not start
-            //    //
-            //}
-            //else
-            //{
-            //    // started
-            //    //
-            //    return _gunsController.GetNextGuns();
-            //}
-        } 
-        */
-
-
         /// <summary>
         /// 
         /// </summary>
         internal void Close()
         {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -197,7 +168,11 @@ namespace PL
         /// </summary>
         internal void Stop()
         {
-            throw new NotImplementedException();
+            if(IsWorking())
+            {
+                _gunsController.Close();
+                _gunsController = null;
+            }
         }
     }
 }

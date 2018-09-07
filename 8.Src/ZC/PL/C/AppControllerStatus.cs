@@ -17,7 +17,7 @@ namespace PL
             : base(address)
         {
             _value = initValue;
-            Write();
+            //Write();
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        private void Write()
+        public void Write()
         {
             // todo: write _value to plc
             //

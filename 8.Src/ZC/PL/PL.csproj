@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="C\GunsCheckResult.cs" />
     <Compile Include="M\AutoManualStatus.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Defines\AutoManualStatusEnum.cs" />

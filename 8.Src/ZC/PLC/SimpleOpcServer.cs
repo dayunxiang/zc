@@ -57,11 +57,11 @@ namespace PLC
         /// <returns></returns>
         private Opc.URL GetConnectUrl(string machine)
         {
-            //var machine = "localhost";
-            var url = string.Format(
-                    "opcda://{0}/RSLinx OPC Server/{a05bb6d5-2f8a-11d1-9bb0-080009d01446}",
-                    machine
-                    );
+            //var url = string.Format(
+            //        @"opcda://{0}/RSLinx OPC Server/{a05bb6d5-2f8a-11d1-9bb0-080009d01446}",
+            //        machine
+            //        );
+            var url = "opcda://" + machine + "/RSLinx OPC Server/{a05bb6d5-2f8a-11d1-9bb0-080009d01446}";
             return new Opc.URL(url);
         }
 

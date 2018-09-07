@@ -47,7 +47,7 @@ namespace PL
                 isPassTail = true;
             }
 
-            var lastGun = _workGunGroup.Last();
+            var lastGun = _workGunGroup.GetLastGun();
             int count = _plOptions.GunCountPerGroup;
 
             WorkGunGroup wgg = new WorkGunGroup();
@@ -106,7 +106,7 @@ namespace PL
         /// <returns></returns>
         private Dam GetNextGunDam()
         {
-            var lastGun = _workGunGroup.Last();
+            var lastGun = _workGunGroup.GetLastGun();
             var currentDam = lastGun.Dam;
             return GetNextDam(currentDam);
         }
@@ -176,6 +176,38 @@ namespace PL
             {
                 // todo: check fault gun
                 //
+                foreach(var gun in this._workGunGroup.WorkGuns)
+                {
+                    if(gun.Fault.IsFault)
+                    {
+                        Gun last = _workGunGroup.GetLastGun();
+                        Gun nextGun = GetNextGun(last);
+
+                        while (nextGun != null)
+                        {
+                            if(!nextGun.CanUse())
+                            {
+                                _workGunGroup.SearchGuns.Add(nextGun);
+                                nextGun = GetNextGun(nextGun);
+                            }
+                            else
+                            {
+                                _workGunGroup.WorkGuns.Add(nextGun);
+                                _workGunGroup.SearchGuns.Add(nextGun);
+                                nextGun.Switch.Open();
+
+                                // remove and close fault gun
+                                _workGunGroup.WorkGuns.Remove(gun);
+                                gun.Switch.Close();
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // nothing
+                    }
+                }
                 return GunsCheckResult.Working;
             }
         }
@@ -214,11 +246,5 @@ namespace PL
             }
 
         }
-    }
-
-    public enum GunsCheckResult
-    {
-        Working = 0,
-        Timeout = 1,
     }
 }

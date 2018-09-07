@@ -40,7 +40,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public Gun First()
+        public Gun GetFirstGun()
         {
             if (this.SearchGuns.Count > 0)
                 return this.SearchGuns.First();
@@ -52,7 +52,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public Gun Last()
+        public Gun GetLastGun()
         {
             if (this.SearchGuns.Count > 0)
                 return this.SearchGuns.Last();
