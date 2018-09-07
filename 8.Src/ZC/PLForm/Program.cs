@@ -14,6 +14,12 @@ namespace PLForm
         [STAThread]
         static void Main()
         {
+            if(Xdgk.Common.Diagnostics.HasPreInstance())
+            {
+                NUnit.UiKit.UserMessage.DisplayInfo("程序已经启动");
+                return;
+            }
+
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
 
@@ -36,6 +42,16 @@ namespace PLForm
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            ProcessException(e.ExceptionObject as Exception);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="ex"></param>
         static private void ProcessException(Exception ex)
         {
@@ -47,14 +63,5 @@ namespace PLForm
             Application.Exit();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            ProcessException(e.ExceptionObject as Exception);
-        }
     }
 }

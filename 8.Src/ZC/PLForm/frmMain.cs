@@ -36,7 +36,7 @@ namespace PLForm
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.Text = AppConfigReader.Read<string>("MainText", "---");
-            Lm.Logs.Add(new TxtLog(this.txtLog));
+            PLC.Lm.Logs.Add(new TxtLog(this.txtLog));
 
             App.GetApp().AppController.Start();
         }
@@ -91,7 +91,7 @@ namespace PLForm
         }
     }
 
-    public class TxtLog : ILog
+    public class TxtLog : PLC.ILog
     {
         private const int MAX = 10000;
         private int _count = 0;

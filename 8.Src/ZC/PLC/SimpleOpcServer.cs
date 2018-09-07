@@ -73,6 +73,7 @@ namespace PLC
         public bool Connect()
         {
             _server = new Opc.Da.Server(GetFactory(), GetConnectUrl("localhost"));
+            Lm.D("Connect...");
             try
             {
                 _server.Connect(GetConnectData());
@@ -83,7 +84,9 @@ namespace PLC
                 _server = null;
             }
 
-            return _server != null && _server.IsConnected;
+            bool success = _server != null && _server.IsConnected;
+            Lm.D("Connect: " + success);
+            return success;
         }
 
         /// <summary>
@@ -157,7 +160,24 @@ namespace PLC
         public Opc.Da.ItemValueResult[] Read(Opc.Da.Item[] items)
         {
             Opc.Da.ItemValueResult[] results = _server.Read(items);
+            LogReadInfo(items, results);
             return results;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="results"></param>
+        private void LogReadInfo(Opc.Da.Item[] items, Opc.Da.ItemValueResult[] results)
+        {
+            var sb = new StringBuilder();
+            sb.Append("read: ");
+            for (int i = 0; i < items.Length ; i++)
+            {
+                sb.AppendFormat("{0}->{1}({2})", items[i].ItemName, results[i].Value, results[i].ResultID);
+            }
+            Lm.D(sb.ToString());
         }
 
         /// <summary>
@@ -204,8 +224,27 @@ namespace PLC
         public Opc.IdentifiedResult[] Write(Opc.Da.ItemValue[] itemValues)
         {
             var r = _server.Write(itemValues);
+            LogWriteInfo(itemValues, r);
             return r;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LogWriteInfo(Opc.Da.ItemValue[] itemValues, Opc.IdentifiedResult[] results)
+        {
+            var sb = new StringBuilder();
+            sb.Append("write: ");
+            for (int i = 0; i < itemValues.Length; i++)
+            {
+                sb.AppendFormat("{0}({1})->{2}, ", 
+                    itemValues[i].ItemName, 
+                    itemValues[i].Value, 
+                    results[i].ResultID);
+            }
+            Lm.D(sb.ToString());
+        }
+
 
         /// <summary>
         /// 

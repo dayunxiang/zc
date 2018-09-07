@@ -9,7 +9,6 @@ namespace PL
 
     public class Gun
     {
-
         /// <summary>
         /// 
         /// </summary>
