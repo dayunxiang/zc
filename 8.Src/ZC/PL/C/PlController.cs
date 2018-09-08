@@ -95,9 +95,12 @@ namespace PL
             //    n - return
             if (_discardGunsController != null)
             {
-                _discardGunsController.CanClose(Config.DiscardGunsCloseDelay);
-                _discardGunsController.Close();
-                _discardGunsController = null;
+                var canClose = _discardGunsController.CanClose(Config.DiscardGunsCloseDelay);
+                if (canClose)
+                {
+                    _discardGunsController.Close();
+                    _discardGunsController = null;
+                }
             }
 
             var gunsController = GetGunsController();
