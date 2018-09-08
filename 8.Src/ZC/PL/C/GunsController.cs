@@ -175,8 +175,11 @@ namespace PL
             else
             {
                 // todo: check fault gun
+                // 1. foreach changed workGuns
                 //
-                foreach(var gun in this._workGunGroup.WorkGuns)
+                var workGunsCopy = this._workGunGroup.WorkGuns.ToList();
+                //foreach(var gun in this._workGunGroup.WorkGuns)
+                foreach(var gun in workGunsCopy)
                 {
                     if(gun.Fault.IsFault)
                     {
@@ -235,7 +238,10 @@ namespace PL
         public bool CanClose(int discardDelaySecond)
         {
             var tsDelay = TimeSpan.FromSeconds(discardDelaySecond);
+
             var ts = DateTime.Now - this.DiscardDt;
+            Lm.D(string.Format("tsDelay: {0}, ts: {1}, DiscardDt: {2}", tsDelay, ts, DiscardDt));
+
             if (ts < TimeSpan.Zero || ts >= tsDelay)
             {
                 return true;
