@@ -13,7 +13,7 @@ namespace PL
         /// </summary>
         static Config()
         {
-            DiscardGunsCloseDelay = 3;
+            DiscardGunsCloseDelay = 4;
             CheckInterval = 2000;
             IsMock = false;
         }
