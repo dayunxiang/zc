@@ -33,8 +33,9 @@
             this.tssAppStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.tsbClearLogs = new System.Windows.Forms.ToolStripButton();
+            this.tsbExit = new System.Windows.Forms.ToolStripButton();
+            this.tsbSaveLog = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,7 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSaveLog,
             this.tsbClearLogs,
             this.tsbExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -77,6 +79,16 @@
             this.toolStrip1.Size = new System.Drawing.Size(449, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbClearLogs
+            // 
+            this.tsbClearLogs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbClearLogs.Image = ((System.Drawing.Image)(resources.GetObject("tsbClearLogs.Image")));
+            this.tsbClearLogs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClearLogs.Name = "tsbClearLogs";
+            this.tsbClearLogs.Size = new System.Drawing.Size(60, 22);
+            this.tsbClearLogs.Text = "清除日志";
+            this.tsbClearLogs.Click += new System.EventHandler(this.tsbClearLogs_Click);
             // 
             // tsbExit
             // 
@@ -88,15 +100,15 @@
             this.tsbExit.Text = "退出";
             this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
-            // tsbClearLogs
+            // tsbSaveLog
             // 
-            this.tsbClearLogs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbClearLogs.Image = ((System.Drawing.Image)(resources.GetObject("tsbClearLogs.Image")));
-            this.tsbClearLogs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbClearLogs.Name = "tsbClearLogs";
-            this.tsbClearLogs.Size = new System.Drawing.Size(60, 22);
-            this.tsbClearLogs.Text = "清除日志";
-            this.tsbClearLogs.Click += new System.EventHandler(this.tsbClearLogs_Click);
+            this.tsbSaveLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSaveLog.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveLog.Image")));
+            this.tsbSaveLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveLog.Name = "tsbSaveLog";
+            this.tsbSaveLog.Size = new System.Drawing.Size(60, 22);
+            this.tsbSaveLog.Text = "保存日志";
+            this.tsbSaveLog.Click += new System.EventHandler(this.tsbSaveLog_Click);
             // 
             // frmMain
             // 
@@ -127,5 +139,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbClearLogs;
         private System.Windows.Forms.ToolStripButton tsbExit;
+        private System.Windows.Forms.ToolStripButton tsbSaveLog;
     }
 }

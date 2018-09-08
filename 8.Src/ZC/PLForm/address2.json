@@ -1,10 +1,10 @@
 ﻿{
-	"AutoManual" : "aaaaaaaaaaaa",
-	"ZtPlcStatus" : "aaaaaaaaaaa",
-	"AppControlStatus" : "aaaaaaaaaaa",
-	"CycleCount" : "aaaaaaaaaaa",
-	"PlTimeSecond" : "aaaaaaaaaaa",
-	"CycleMode" : "aaaaaaaaaaa",
-	"WorkDam" : "aaaaaaaaaaa",
-	"GunCountPerGroup" : "aaaaaaaaaaa"
+	"AutoManual" : "[a]Global_Control.AutoManual",
+	"ZtPlcStatus" : "[a]Global_Control.ztplcstatus",
+	"AppControlStatus" : "[a]Global_Control.AppControlStatus",
+	"CycleCount" : "[a]Global_Control.CycleCount",
+	"PlTimeSecond" : "[a]Global_Control.PLtimeSecond",
+	"CycleMode" : "[a]Global_Control.CycMode",
+	"WorkDam" : "[a]Global_Control.WorkDam",
+	"GunCountPerGroup" : "[a]Global_Control.GunCountPerGroup"
 }

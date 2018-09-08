@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -88,6 +89,16 @@ namespace PLForm
                 e.Cancel = true;
                 this.WindowState = FormWindowState.Minimized;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbSaveLog_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText(DateTime.Now.Minute.ToString(), this.txtLog.Text);           
         }
     }
 
