@@ -121,15 +121,66 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        string[] GetSubscriptionItemNames()
+        {
+            var r = new List<string>(2000);
+            foreach (var dam in _app.Dams.ToArray())
+            {
+                foreach(var gun in dam.Guns.ToArray())
+                {
+                    r.Add(gun.Switch.Address);
+                    r.Add(gun.Fault.Address);
+                    r.Add(gun.Remote.Address);
+                    r.Add(gun.Mark.Address);
+                }
+            }
+            var a2 = Address2.Instance;
+            r.Add(a2.AppControlStatus);
+            r.Add(a2.AutoManual);
+            r.Add(a2.CycleCount);
+            r.Add(a2.CycleMode);
+            r.Add(a2.GunCountPerGroup);
+            r.Add(a2.PlTimeSecond);
+            r.Add(a2.WorkDam);
+            r.Add(a2.ZtPlcStatus);
+            return r.ToArray();
+
+            //var guns = _app.Dams.First.Value.Guns.ToArray();
+            //foreach( var gun in guns)
+            //{
+            //    r.Add(gun.Fault.Address);
+            //    r.Add(gun.Remote.Address);
+            //    r.Add(gun.Mark.Address);
+            //}
+
+            //r.Add("[a]Global_Control.AutoManual");
+            //r.Add("[a]Global_Control.ztplcstatus");
+            //r.Add("[a]Global_Control.AppControlStatus");
+            //r.Add("[a]Global_Control.CycleCount");
+            //r.Add("[a]Global_Control.PLtimeSecond");
+            //r.Add("[a]Global_Control.CycMode");
+            //r.Add("[a]Global_Control.WorkDam");
+            //r.Add("[a]Global_Control.GunCountPerGroup");
+            //return r.ToArray();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void OnCheck()
         {
             Lm.D("OnCheck()");
 
             if (!_app.Opc.IsConnected())
             {
+                var subscriptionItemNames = GetSubscriptionItemNames();
                 bool success = _app.Opc.Connect();
                 if(success)
                 {
+                    var itemNames = GetSubscriptionItemNames();
+                    _app.Opc.AddSubscriptionItems(itemNames);
+
                     this.ControllerStatus.Value = ControllerStatusEnum.Idle;
                     this.ControllerStatus.Write();
                 }
