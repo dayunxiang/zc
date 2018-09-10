@@ -57,6 +57,10 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="C\GunsCheckResult.cs" />
+    <Compile Include="Hardware\Address2.cs" />
+    <Compile Include="Hardware\DamDefine.cs" />
+    <Compile Include="Hardware\GunDefine.cs" />
+    <Compile Include="Hardware\Serializer.cs" />
     <Compile Include="M\AutoManualStatus.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Defines\AutoManualStatusEnum.cs" />
