@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace PLC
 {
@@ -11,9 +12,11 @@ namespace PLC
     /// </summary>
     public class SimpleOpcServer
     {
+        static private Logger _logger = LogManager.GetCurrentClassLogger();
 
         private Opc.Da.Server _server;
         private ItemCache _itemCache;
+        private Opc.Da.Subscription _subscription;
 
         /// <summary>
         /// 
@@ -70,6 +73,7 @@ namespace PLC
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
+        //public bool Connect(string[] itemNames)
         public bool Connect()
         {
             _server = new Opc.Da.Server(GetFactory(), GetConnectUrl("localhost"));
@@ -77,6 +81,20 @@ namespace PLC
             try
             {
                 _server.Connect(GetConnectData());
+
+                // create subscription state
+                var state = new Opc.Da.SubscriptionState();
+                state.ClientHandle = null;
+                state.ServerHandle = null;
+                state.Name = "OPCSample";
+                state.Active = false;
+                state.UpdateRate = 1000;
+                state.KeepAlive = 0;
+                state.Deadband = 0;
+                state.Locale = null;
+                state.ClientHandle = Guid.NewGuid().ToString();
+
+                _subscription = (Opc.Da.Subscription)_server.CreateSubscription(state);
             }
             catch (Exception ex)
             {
@@ -87,6 +105,46 @@ namespace PLC
             bool success = _server != null && _server.IsConnected;
             Lm.D("Connect: " + success);
             return success;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemNames"></param>
+        public void AddSubscriptionItems(string[] itemNames)
+        {
+            _logger.Debug("AddSubscriptionItems - begin");
+
+            _itemCache.Clear();
+            var items = CreateSubscriptionItems(itemNames);
+            var itemResults =  _subscription.AddItems(items);
+
+            _itemCache.Set(_subscription.Items);
+
+            foreach (var itemResult in itemResults)
+            {
+                _logger.Debug("ItemName: {0}, ResultId: {1}", 
+                    itemResult.ItemName,
+                    itemResult.ResultID.ToString());
+            }
+            _logger.Debug("AddSubscriptionItems - end");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Opc.Da.Item[] CreateSubscriptionItems(string[] itemNames)
+        {
+            var r = new List<Opc.Da.Item>();
+            foreach (var itemName in itemNames)
+            {
+                var itemId = new Opc.ItemIdentifier(itemName);
+                var item = new Opc.Da.Item(itemId);
+                r.Add(item);
+            }
+
+            return r.ToArray();
         }
 
         /// <summary>
@@ -136,16 +194,10 @@ namespace PLC
         /// <returns></returns>
         public object[] Read(string[] itemNames)
         {
-            List<Opc.Da.Item> items = new List<Opc.Da.Item>(itemNames.Length);
-            foreach( var itemName in itemNames)
-            {
-                var item = _itemCache.Get(itemName);
-                items.Add(item);
-            }
-
-            var itemValueResults = Read(items.ToArray());
+            var items = _itemCache.Get(itemNames);
+            var itemValueResults = Read(items);
             List<object> values = new List<object> (itemNames.Length);
-            foreach( var itemValueResult in itemValueResults)
+            foreach (var itemValueResult in itemValueResults)
             {
                 //itemValueResult.Quality
                 values.Add(itemValueResult.Value);
@@ -157,12 +209,52 @@ namespace PLC
         /// 
         /// </summary>
         /// <param name="items"></param>
-        public Opc.Da.ItemValueResult[] Read(Opc.Da.Item[] items)
+        private Opc.Da.ItemValueResult[] Read(Opc.Da.Item[] items)
         {
-            Opc.Da.ItemValueResult[] results = _server.Read(items);
+            // use subsctiption read
+            //
+            return ReadFromSubscription(items);
+
+            // with server.read
+            //
+            //Opc.Da.ItemValueResult[] results = _server.Read(items);
+            //LogReadInfo(items, results);
+            //return results;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        private Opc.Da.ItemValueResult[] ReadFromSubscription(Opc.Da.Item[] items)
+        {
+            var results = _subscription.Read(items);
             LogReadInfo(items, results);
             return results;
         }
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="items"></param>
+        ///// <returns></returns>
+        //private Opc.Da.Item[] FindSubscriptionItems(Opc.Da.Item[] items)
+        //{
+        //    var r= new List<Opc.Da.Item>();
+        //    foreach (var item in items)
+        //    {
+        //        foreach (var subItem in _subscription.Items)
+        //        {
+        //            if(subItem.ItemName == item.ItemName)
+        //            {
+        //                r.Add(subItem);
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return r.ToArray ();
+        //}
 
         /// <summary>
         /// 
@@ -207,7 +299,9 @@ namespace PLC
                 var itemName = itemNames[i];
                 var value = values[i];
 
-                var itemValue = new Opc.Da.ItemValue(itemName);
+                var item = _itemCache.Get(itemName);
+
+                var itemValue = new Opc.Da.ItemValue(item);
                 itemValue.Value = value;
                 itemValues.Add(itemValue);
             }
@@ -215,6 +309,17 @@ namespace PLC
             var identifiedResults = Write(itemValues.ToArray());
             return identifiedResults;
         }
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="itemNames"></param>
+        ///// <param name="values"></param>
+        ///// <returns></returns>
+        //public Opc.IdentifiedResult[] WriteWithSub(string[] itemNames, object[] values)
+        //{
+
+        //}
 
         /// <summary>
         /// 
@@ -251,6 +356,9 @@ namespace PLC
         /// </summary>
         internal class ItemCache
         {
+            /// <summary>
+            /// 
+            /// </summary>
             private Dictionary<string, Opc.Da.Item> _dict = new Dictionary<string, Opc.Da.Item>(1000);
 
             /// <summary>
@@ -266,11 +374,60 @@ namespace PLC
                 }
                 else
                 {
-                    var identifier = new Opc.ItemIdentifier(itemName);
-                    var item = new Opc.Da.Item(identifier);
-                    _dict[itemName] = item;
-                    return item;
+                    //var identifier = new Opc.ItemIdentifier(itemName);
+                    //var item = new Opc.Da.Item(identifier);
+                    //_dict[itemName] = item;
+                    //return item;
+                    throw new ArgumentException(
+                        string.Format("cannot find item by name '{0}'", itemName)
+                        );
                 }
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="itemNames"></param>
+            /// <returns></returns>
+            public Opc.Da.Item[] Get(string [] itemNames)
+            {
+                List<Opc.Da.Item> r = new List<Opc.Da.Item>();
+                foreach (var itemName in itemNames)
+                {
+                    var item = Get(itemName);
+                    r.Add(item);
+                }
+                return r.ToArray();
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="itemName"></param>
+            /// <param name="item"></param>
+            public void Set(string itemName, Opc.Da.Item item)
+            {
+                this._dict[itemName] = item;
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="items"></param>
+            public void Set(Opc.Da.Item[] items)
+            {
+                foreach (var item in items)
+                {
+                    this.Set(item.ItemName, item);
+                }
+            }
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            internal void Clear()
+            {
+                this._dict.Clear();
             }
         }
     }
