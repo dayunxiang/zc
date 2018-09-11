@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: forLuoyang - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/forLuoyang.res" /d "NDEBUG" /d "_AFXDLL" "E:\my program\VC\forLuoyang\forLuoyang.rc"" 
+Creating temporary file "C:\Users\hhe\AppData\Local\Temp\RSPF512.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/forLuoyang.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\my program\VC\forLuoyang\forLuoyang.cpp"
+"E:\my program\VC\forLuoyang\forLuoyangDlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\hhe\AppData\Local\Temp\RSPF512.tmp" 
+Creating temporary file "C:\Users\hhe\AppData\Local\Temp\RSPF513.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/forLuoyang.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\my program\VC\forLuoyang\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\hhe\AppData\Local\Temp\RSPF513.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:no /pdb:"Release/forLuoyang.pdb" /machine:I386 /out:"Release/forLuoyang.exe"  ".\Release\forLuoyang.obj" ".\Release\forLuoyangDlg.obj" ".\Release\StdAfx.obj" ".\Release\forLuoyang.res" ".\CIPSoft.lib" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+forLuoyang.cpp
+forLuoyangDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+forLuoyang.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
