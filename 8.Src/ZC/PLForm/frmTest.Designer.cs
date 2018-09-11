@@ -1,6 +1,6 @@
 ﻿namespace PLForm
 {
-    partial class Form1
+    partial class frmTest
     {
         /// <summary>
         /// 必需的设计器变量。

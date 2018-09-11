@@ -170,7 +170,7 @@ namespace PL
         /// </summary>
         private void OnCheck()
         {
-            Lm.D("OnCheck()");
+            Lm.D("Check...");
 
             if (!_app.Opc.IsConnected())
             {

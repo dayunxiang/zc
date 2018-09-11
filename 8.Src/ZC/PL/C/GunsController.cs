@@ -240,7 +240,7 @@ namespace PL
             var tsDelay = TimeSpan.FromSeconds(discardDelaySecond);
 
             var ts = DateTime.Now - this.DiscardDt;
-            Lm.D(string.Format("tsDelay: {0}, ts: {1}, DiscardDt: {2}", tsDelay, ts, DiscardDt));
+            //Lm.D(string.Format("tsDelay: {0}, ts: {1}, DiscardDt: {2}", tsDelay, ts, DiscardDt));
 
             if (ts < TimeSpan.Zero || ts >= tsDelay)
             {

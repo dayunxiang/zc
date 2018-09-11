@@ -36,10 +36,25 @@ namespace PLForm
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = AppConfigReader.Read<string>("MainText", "---");
-            PLC.Lm.Logs.Add(new TxtLog(this.txtLog));
 
+            this.Text = AppConfigReader.Read<string>("MainText", "---");
+            this.Text +=" - " + Application.ProductVersion;
+
+            tssAppStatus.Text = "OPC 未连接";
+
+            PLC.Lm.Logs.Add(new TxtLog(this.txtLog));
+            App.GetApp().Opc.ConnectedEvent += Opc_ConnectedEvent;
             App.GetApp().AppController.Start();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Opc_ConnectedEvent(object sender, EventArgs e)
+        {
+            this.tssAppStatus.Text = "OPC 已连接, " + DateTime.Now.ToString();
         }
 
         /// <summary>
@@ -98,39 +113,21 @@ namespace PLForm
         /// <param name="e"></param>
         private void tsbSaveLog_Click(object sender, EventArgs e)
         {
-            File.WriteAllText(DateTime.Now.Minute.ToString(), this.txtLog.Text);           
-        }
-    }
-
-    public class TxtLog : PLC.ILog
-    {
-        private const int MAX = 10000;
-        private int _count = 0;
-        private RichTextBox _txt;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public TxtLog(RichTextBox txt)
-        {
-            _txt = txt;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="s"></param>
-        public void D(string s)
-        {
-            if(_count > MAX)
+            try
             {
-                _count = 0;
-                _txt.Clear();
+                var dt = DateTime.Now;
+                string fileName = string.Format (
+                    "{0}\\log\\{1}.txt", 
+                    Application.StartupPath,
+                    dt.ToString ("yyyy_MM_dd_HH_mm_ss")
+                    );
+                File.WriteAllText(fileName, this.txtLog.Text);
+                NUnit.UiKit.UserMessage.DisplayInfo("日志保存成功");
             }
-
-            var text = string.Format("{0} {1}{2}", DateTime.Now.ToString(), s, Environment.NewLine);
-            _txt.AppendText(text);
-            _count++;
+            catch(Exception ex)
+            {
+                ExceptionLogger.Log(ex);
+            }
         }
     }
 }

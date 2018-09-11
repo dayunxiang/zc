@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using PL;
 namespace PLForm
 {
-    public partial class Form1 : Form
+    public partial class frmTest : Form
     {
-        public Form1()
+        public frmTest()
         {
             InitializeComponent();
         }

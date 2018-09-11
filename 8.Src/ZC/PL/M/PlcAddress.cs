@@ -44,8 +44,15 @@ namespace PL
         /// <returns></returns>
         public bool WriteToOpc(object value)
         {
-            var r = App.GetApp().Opc.Write(this.Address, value);
-            return r.ResultID == Opc.ResultID.S_OK;
+            if (App.GetApp().Opc.IsConnected())
+            {
+                var r = App.GetApp().Opc.Write(this.Address, value);
+                return r.ResultID == Opc.ResultID.S_OK;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

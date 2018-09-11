@@ -3,15 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZC", "ZC\ZC.csproj", "{1CE153F3-1900-4988-8491-E63F443ECA0D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLC", "PLC\PLC.csproj", "{A6973E11-E96E-45C1-8A3F-3D2E6F07B64A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{6B441DA1-DFDF-4352-8B19-7F7222B6B406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.Test", "PL.Test\PL.Test.csproj", "{E6EE29D1-6873-42E4-8E40-55F256FE89C6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLForm", "PLForm\PLForm.csproj", "{EC4DD490-8BD9-4E1A-AF29-E93BA27FC5A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{3F3E1DCC-36F1-43C6-81C3-FB071C88D5BF}"
+	ProjectSection(SolutionItems) = preProject
+		Setups\PLForm\pl.iss = Setups\PLForm\pl.iss
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +20,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1CE153F3-1900-4988-8491-E63F443ECA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CE153F3-1900-4988-8491-E63F443ECA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CE153F3-1900-4988-8491-E63F443ECA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CE153F3-1900-4988-8491-E63F443ECA0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6973E11-E96E-45C1-8A3F-3D2E6F07B64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6973E11-E96E-45C1-8A3F-3D2E6F07B64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6973E11-E96E-45C1-8A3F-3D2E6F07B64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,10 +28,6 @@ Global
 		{6B441DA1-DFDF-4352-8B19-7F7222B6B406}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B441DA1-DFDF-4352-8B19-7F7222B6B406}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B441DA1-DFDF-4352-8B19-7F7222B6B406}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6EE29D1-6873-42E4-8E40-55F256FE89C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6EE29D1-6873-42E4-8E40-55F256FE89C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6EE29D1-6873-42E4-8E40-55F256FE89C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6EE29D1-6873-42E4-8E40-55F256FE89C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC4DD490-8BD9-4E1A-AF29-E93BA27FC5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC4DD490-8BD9-4E1A-AF29-E93BA27FC5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4DD490-8BD9-4E1A-AF29-E93BA27FC5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU

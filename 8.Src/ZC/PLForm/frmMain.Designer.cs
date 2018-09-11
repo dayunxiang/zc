@@ -33,9 +33,9 @@
             this.tssAppStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbSaveLog = new System.Windows.Forms.ToolStripButton();
             this.tsbClearLogs = new System.Windows.Forms.ToolStripButton();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
-            this.tsbSaveLog = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +80,16 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // tsbSaveLog
+            // 
+            this.tsbSaveLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSaveLog.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveLog.Image")));
+            this.tsbSaveLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveLog.Name = "tsbSaveLog";
+            this.tsbSaveLog.Size = new System.Drawing.Size(60, 22);
+            this.tsbSaveLog.Text = "保存日志";
+            this.tsbSaveLog.Click += new System.EventHandler(this.tsbSaveLog_Click);
+            // 
             // tsbClearLogs
             // 
             this.tsbClearLogs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -100,16 +110,6 @@
             this.tsbExit.Text = "退出";
             this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
-            // tsbSaveLog
-            // 
-            this.tsbSaveLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbSaveLog.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveLog.Image")));
-            this.tsbSaveLog.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSaveLog.Name = "tsbSaveLog";
-            this.tsbSaveLog.Size = new System.Drawing.Size(60, 22);
-            this.tsbSaveLog.Text = "保存日志";
-            this.tsbSaveLog.Click += new System.EventHandler(this.tsbSaveLog_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -118,6 +118,7 @@
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "frmMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);

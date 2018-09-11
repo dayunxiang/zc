@@ -21,6 +21,11 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
+        public event EventHandler ConnectedEvent;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public SimpleOpcServer()
         {
             _itemCache = new ItemCache();
@@ -73,11 +78,10 @@ namespace PLC
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        //public bool Connect(string[] itemNames)
         public bool Connect()
         {
             _server = new Opc.Da.Server(GetFactory(), GetConnectUrl("localhost"));
-            Lm.D("Connect...");
+            //Lm.D("Connect...");
             try
             {
                 _server.Connect(GetConnectData());
@@ -104,7 +108,23 @@ namespace PLC
 
             bool success = _server != null && _server.IsConnected;
             Lm.D("Connect: " + success);
+
+            if(success )
+            {
+                OnConnected();
+            }
             return success;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OnConnected()
+        {
+            if(ConnectedEvent != null)
+            {
+                ConnectedEvent(this, EventArgs.Empty);
+            }
         }
 
         /// <summary>
@@ -173,6 +193,7 @@ namespace PLC
         /// <param name="ex"></param>
         private void Debug(Exception ex)
         {
+            Lm.D(ex.ToString());
             Console.WriteLine(ex);
         }
 
@@ -229,9 +250,25 @@ namespace PLC
         /// <returns></returns>
         private Opc.Da.ItemValueResult[] ReadFromSubscription(Opc.Da.Item[] items)
         {
-            var results = _subscription.Read(items);
-            LogReadInfo(items, results);
-            return results;
+            if (IsConnected())
+            {
+                Opc.Da.ItemValueResult[] results = null;
+                try
+                {
+                    results = _subscription.Read(items);
+                    LogReadInfo(items, results);
+                    return results;
+                }
+                catch(Opc.ResultIDException resultIdEx)
+                {
+                    Lm.D(resultIdEx.ToString ());
+                    return new Opc.Da.ItemValueResult[0];
+                }
+            }
+            else
+            {
+                return new Opc.Da.ItemValueResult[0];
+            }
         }
 
         ///// <summary>
@@ -328,9 +365,24 @@ namespace PLC
         /// <returns></returns>
         public Opc.IdentifiedResult[] Write(Opc.Da.ItemValue[] itemValues)
         {
-            var r = _server.Write(itemValues);
-            LogWriteInfo(itemValues, r);
-            return r;
+            if (IsConnected())
+            {
+                try
+                {
+                    var r = _subscription.Write(itemValues);
+                    LogWriteInfo(itemValues, r);
+                    return r;
+                }
+                catch (Exception ex)
+                {
+                    Lm.D(ex.ToString());
+                    return new Opc.IdentifiedResult[0];
+                }
+            }
+            else
+            {
+                return new Opc.IdentifiedResult[0];
+            }
         }
 
         /// <summary>

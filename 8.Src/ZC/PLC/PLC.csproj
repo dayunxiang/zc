@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PLC</RootNamespace>
     <AssemblyName>PLC</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,15 +36,15 @@
     </Reference>
     <Reference Include="OpcNetApi, Version=2.1.106.0, Culture=neutral, PublicKeyToken=78aea80f6827b5ab, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Rockwell Software\RSLinx\OpcNetApi.dll</HintPath>
+      <HintPath>..\..\..\..\GlobalAssembly\Opc\1.30.3.0\OpcNetApi.dll</HintPath>
     </Reference>
     <Reference Include="OpcNetApi.Com, Version=2.1.106.0, Culture=neutral, PublicKeyToken=78aea80f6827b5ab, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Rockwell Software\RSLinx\OpcNetApi.Com.dll</HintPath>
+      <HintPath>..\..\..\..\GlobalAssembly\Opc\1.30.3.0\OpcNetApi.Com.dll</HintPath>
     </Reference>
     <Reference Include="OpcNetApi.Xml, Version=2.1.106.0, Culture=neutral, PublicKeyToken=78aea80f6827b5ab, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Rockwell Software\RSLinx\OpcNetApi.Xml.dll</HintPath>
+      <HintPath>..\..\..\..\GlobalAssembly\Opc\1.30.3.0\OpcNetApi.Xml.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

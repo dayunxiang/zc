@@ -173,6 +173,11 @@ namespace PL
         {
             if(IsWorking())
             {
+                if(_discardGunsController != null)
+                {
+                    _discardGunsController.Close();
+                    _discardGunsController = null;
+                }
                 _gunsController.Close();
                 _gunsController = null;
             }
