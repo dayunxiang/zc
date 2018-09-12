@@ -75,6 +75,7 @@ namespace PLForm
         private void tsbExit_Click(object sender, EventArgs e)
         {
             var appController = App.GetApp().AppController;
+            
             if (appController.ControllerStatus.IsWorking())
             {
                 var s = "工作中, 无法退出!";
@@ -86,7 +87,11 @@ namespace PLForm
                 if (UserMessage.Ask(s) == System.Windows.Forms.DialogResult.Yes)
                 {
                     _isClose = true;
-                    appController.ControllerStatus.Value = ControllerStatusEnum.NotRun;
+                    var opc = App.GetApp().Opc;
+                    if(opc.IsConnected())
+                    {
+                        appController.ControllerStatus.Value = ControllerStatusEnum.NotRun;
+                    }
                     Close();
                 }
             }
