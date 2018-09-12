@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{6B44
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLForm", "PLForm\PLForm.csproj", "{EC4DD490-8BD9-4E1A-AF29-E93BA27FC5A9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{3F3E1DCC-36F1-43C6-81C3-FB071C88D5BF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{3F3E1DCC-36F1-43C6-81C3-FB071C88D5BF}"
 	ProjectSection(SolutionItems) = preProject
 		Setups\PLForm\pl.iss = Setups\PLForm\pl.iss
 	EndProjectSection
