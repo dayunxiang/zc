@@ -25,6 +25,7 @@ x64/
 *.ilk
 *.meta
 *.obj
+*.exe
 *.pch
 *.pdb
 *.pgc
@@ -91,6 +92,7 @@ csx
 # Others
 [Bb]in
 [Oo]bj
+[Oo]utput
 sql
 TestResults
 [Tt]est[Rr]esult*
