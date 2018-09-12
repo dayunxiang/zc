@@ -170,99 +170,106 @@ namespace PL
         /// </summary>
         private void OnCheck()
         {
-            Lm.D("Check...");
-
-            if (!_app.Opc.IsConnected())
+            try
             {
-                var subscriptionItemNames = GetSubscriptionItemNames();
-                bool success = _app.Opc.Connect();
-                if(success)
-                {
-                    var itemNames = GetSubscriptionItemNames();
-                    _app.Opc.AddSubscriptionItems(itemNames);
+                Lm.D("Check...");
 
-                    this.ControllerStatus.Value = ControllerStatusEnum.Idle;
-                    this.ControllerStatus.Write();
-                }
-                return;
-            }
-
-            if (AutoManualStatus.Read() == AutoManualStatusEnum.Auto)
-            {
-                var controllerStatusEnum = this.ControllerStatus.Value;
-                var ztPlcStatusEnum = ZtPlcStatus.Read();
-                if (ztPlcStatusEnum == ZtPlcStatusEnum.Start)
+                if (!_app.Opc.IsConnected())
                 {
-                    #region start
-                    if (controllerStatusEnum == ControllerStatusEnum.Idle ||
-                        controllerStatusEnum == ControllerStatusEnum.Completed)
+                    var subscriptionItemNames = GetSubscriptionItemNames();
+                    bool success = _app.Opc.Connect();
+                    if (success)
                     {
-                        this.ControllerStatus.Value = ControllerStatusEnum.Working;
-                        var options = this.PlOptionsReader.Read();
-                        _plController = new PlController(options);
-                        _plController.Start();
+                        var itemNames = GetSubscriptionItemNames();
+                        _app.Opc.AddSubscriptionItems(itemNames);
+
+                        this.ControllerStatus.Value = ControllerStatusEnum.Idle;
+                        this.ControllerStatus.Write();
                     }
-                    else if (controllerStatusEnum == ControllerStatusEnum.Working)
+                    return;
+                }
+
+                if (AutoManualStatus.Read() == AutoManualStatusEnum.Auto)
+                {
+                    var controllerStatusEnum = this.ControllerStatus.Value;
+                    var ztPlcStatusEnum = ZtPlcStatus.Read();
+                    if (ztPlcStatusEnum == ZtPlcStatusEnum.Start)
                     {
-                        var checkResult = _plController.Check();
-                        if (checkResult == PlCheckResult.Completed)
+                        #region start
+                        if (controllerStatusEnum == ControllerStatusEnum.Idle ||
+                            controllerStatusEnum == ControllerStatusEnum.Completed)
                         {
-                            this.ControllerStatus.Value = ControllerStatusEnum.Completed;
-                            this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
-                            _plController.Close();
-                            _plController = null;
+                            this.ControllerStatus.Value = ControllerStatusEnum.Working;
+                            var options = this.PlOptionsReader.Read();
+                            _plController = new PlController(options);
+                            _plController.Start();
+                        }
+                        else if (controllerStatusEnum == ControllerStatusEnum.Working)
+                        {
+                            var checkResult = _plController.Check();
+                            if (checkResult == PlCheckResult.Completed)
+                            {
+                                this.ControllerStatus.Value = ControllerStatusEnum.Completed;
+                                this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
+                                _plController.Close();
+                                _plController = null;
+                            }
+                            else
+                            {
+                                // working
+                                //
+                            }
                         }
                         else
                         {
-                            // working
+                            // NotRun ?
+                            D("unknown controller status: {0}", controllerStatusEnum);
+                        }
+                        #endregion start
+                    }
+                    else if (ztPlcStatusEnum == ZtPlcStatusEnum.Stop)
+                    {
+                        #region stop
+                        if (controllerStatusEnum == ControllerStatusEnum.Idle ||
+                         controllerStatusEnum == ControllerStatusEnum.Completed)
+                        {
+                            //nothing
                             //
                         }
+                        else if (controllerStatusEnum == ControllerStatusEnum.Working)
+                        {
+                            Debug.Assert(_plController != null);
+
+                            _plController.Stop();
+                            this.ControllerStatus.Value = ControllerStatusEnum.Completed;
+                            this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
+
+                        }
+                        else
+                        {
+                            D("unknown controller status: {0}", controllerStatusEnum);
+                        }
+                        #endregion stop
                     }
-                    else
+                    else if (ztPlcStatusEnum == ZtPlcStatusEnum.Completed)
                     {
-                        // NotRun ?
-                        D("unknown controller status: {0}", controllerStatusEnum);
-                    }
-                    #endregion start
-                }
-                else if (ztPlcStatusEnum == ZtPlcStatusEnum.Stop)
-                {
-                    #region stop
-                    if (controllerStatusEnum == ControllerStatusEnum.Idle ||
-                     controllerStatusEnum == ControllerStatusEnum.Completed)
-                    {
-                        //nothing
+                        // nothind
                         //
                     }
-                    else if (controllerStatusEnum == ControllerStatusEnum.Working)
-                    {
-                        Debug.Assert(_plController != null);
-
-                        _plController.Stop();
-                        this.ControllerStatus.Value = ControllerStatusEnum.Completed;
-                        this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
-
-                    }
                     else
                     {
-                        D("unknown controller status: {0}", controllerStatusEnum);
+                        D("unknown ztPlcStatus: {0}", ztPlcStatusEnum);
                     }
-                    #endregion stop
-                }
-                else if (ztPlcStatusEnum == ZtPlcStatusEnum.Completed)
-                {
-                    // nothind
-                    //
                 }
                 else
                 {
-                    D("unknown ztPlcStatus: {0}", ztPlcStatusEnum);
+                    // manual, nothing
+                    //
                 }
             }
-            else
+            catch (OpcException opcEx)
             {
-                // manual, nothing
-                //
+                Lm.D(opcEx.ToString());
             }
         }
 

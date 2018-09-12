@@ -44,7 +44,7 @@ namespace PL
         /// </summary>
         public void Write()
         {
-            // todo: write _value to plc
+            // write _value to plc
             //
             WriteToOpc((int)_value);
         }

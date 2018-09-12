@@ -42,16 +42,22 @@ namespace PL
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool WriteToOpc(object value)
+        public void WriteToOpc(object value)
         {
             if (App.GetApp().Opc.IsConnected())
             {
                 var r = App.GetApp().Opc.Write(this.Address, value);
-                return r.ResultID == Opc.ResultID.S_OK;
+                if (r.ResultID != Opc.ResultID.S_OK)
+                {
+                    var message = string.Format("write opc '{0}' fail, result id is '{1}'",
+                        this.Address,
+                        r.ResultID);
+                    throw new OpcException(message);
+                }
             }
             else
             {
-                return false;
+                throw new InvalidOperationException("opc not connect");
             }
         }
     }
