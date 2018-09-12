@@ -250,6 +250,16 @@ namespace PLC
         /// <returns></returns>
         private Opc.Da.ItemValueResult[] ReadFromSubscription(Opc.Da.Item[] items)
         {
+            if(items == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if(items.Length == 0)
+            {
+                throw new ArgumentException("items length == 0");
+            }
+
             if (IsConnected())
             {
                 Opc.Da.ItemValueResult[] results = null;
@@ -261,13 +271,19 @@ namespace PLC
                 }
                 catch(Opc.ResultIDException resultIdEx)
                 {
-                    Lm.D(resultIdEx.ToString ());
-                    return new Opc.Da.ItemValueResult[0];
+                    //Lm.D(resultIdEx.ToString ());
+                    //return new Opc.Da.ItemValueResult[0];
+                    var msg = string.Format("read opc items '{0}' count '{1}', fail '{2}'", 
+                        items[0].ItemName, 
+                        items.Length,
+                        resultIdEx.Result);
+                    throw new OpcException(msg, resultIdEx);
                 }
             }
             else
             {
-                return new Opc.Da.ItemValueResult[0];
+                //return new Opc.Da.ItemValueResult[0];
+                throw new InvalidOperationException("opc not connect");
             }
         }
 
@@ -375,13 +391,17 @@ namespace PLC
                 }
                 catch (Exception ex)
                 {
-                    Lm.D(ex.ToString());
-                    return new Opc.IdentifiedResult[0];
+                    //Lm.D(ex.ToString());
+                    //return new Opc.IdentifiedResult[0];
+                    var msg = string.Format("write item '{0}' count '{1}' fail", 
+                        itemValues[0].ItemName, itemValues.Length);
+                    throw new OpcException(msg, ex);
                 }
             }
             else
             {
-                return new Opc.IdentifiedResult[0];
+                //return new Opc.IdentifiedResult[0];
+                throw new InvalidOperationException("opc not connect");
             }
         }
 
