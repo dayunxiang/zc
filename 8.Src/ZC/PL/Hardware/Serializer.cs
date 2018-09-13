@@ -51,7 +51,7 @@ namespace PL.Hardware
             Console.WriteLine(deserialDamDefines[0].Name);
 
 
-            var a2Json = JsonConvert.SerializeObject(new Address2());
+            var a2Json = JsonConvert.SerializeObject(new Gc());
             Console.WriteLine(a2Json);
 
         }

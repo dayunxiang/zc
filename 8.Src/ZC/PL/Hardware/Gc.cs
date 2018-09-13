@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace PL.Hardware
 {
 
-    public class Address2
+    public class Gc
     {
         public string AutoManual { get; set; }
         public string ZtPlcStatus { get; set; }
@@ -19,24 +19,26 @@ namespace PL.Hardware
         public string CycleMode { get; set; }
         public string WorkDam { get; set; }
         public string GunCountPerGroup { get; set; }
+        public string PlTimeRemaining { get; set; }
+        public string CycleEndStopPump { get; set; }
 
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        static public Address2 Instance
+        static public Gc Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    var json = File.ReadAllText("address2.json");
-                    _instance = JsonConvert.DeserializeObject<Address2>(json);
+                    var json = File.ReadAllText("gc.json");
+                    _instance = JsonConvert.DeserializeObject<Gc>(json);
                 }
                 return _instance;
             }
-        } static private Address2 _instance = null;
+        } static private Gc _instance = null;
 
     }
 }

@@ -94,7 +94,7 @@
     <EmbeddedResource Include="UcH.resx">
       <DependentUpon>UcH.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="address2.json">
+    <None Include="gc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="address.json">

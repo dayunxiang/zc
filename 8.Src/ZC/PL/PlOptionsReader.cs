@@ -55,14 +55,14 @@ namespace PL
         /// <returns></returns>
         private PlOptions ReadFact()
         {
-            var address2 = App.GetApp().Address2;
+            var gc = App.GetApp().Gc;
             var opcServer = App.GetApp().Opc;
             List<string> itemNames = new List<string>();
-            itemNames.Add(address2.CycleCount);
-            itemNames.Add(address2.CycleMode);
-            itemNames.Add(address2.GunCountPerGroup);
-            itemNames.Add(address2.PlTimeSecond);
-            itemNames.Add(address2.WorkDam);
+            itemNames.Add(gc.CycleCount);
+            itemNames.Add(gc.CycleMode);
+            itemNames.Add(gc.GunCountPerGroup);
+            itemNames.Add(gc.PlTimeSecond);
+            itemNames.Add(gc.WorkDam);
             var values = opcServer.Read(itemNames.ToArray());
 
             var plOptions = new PlOptions();

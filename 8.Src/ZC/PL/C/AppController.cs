@@ -24,12 +24,12 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public AppController(App app, Address2 address2)
+        public AppController(App app, Gc gc)
         {
             this._app = app;
-            this.ControllerStatus = new AppControllerStatus(address2.AppControlStatus, ControllerStatusEnum.Idle);
-            this.AutoManualStatus = new AutoManualStatus(address2.AutoManual);
-            this.ZtPlcStatus = new ZtPlcStatus(address2.ZtPlcStatus);
+            this.ControllerStatus = new AppControllerStatus(gc.AppControlStatus, ControllerStatusEnum.Idle);
+            this.AutoManualStatus = new AutoManualStatus(gc.AutoManual);
+            this.ZtPlcStatus = new ZtPlcStatus(gc.ZtPlcStatus);
             this.PlOptionsReader = new PlOptionsReader();
         }
 
@@ -135,7 +135,7 @@ namespace PL
                     r.Add(gun.Mark.Address);
                 }
             }
-            var a2 = Address2.Instance;
+            var a2 = Gc.Instance;
             r.Add(a2.AppControlStatus);
             r.Add(a2.AutoManual);
             r.Add(a2.CycleCount);

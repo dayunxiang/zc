@@ -27,9 +27,9 @@ namespace PL
         private App()
         {
             this.Dams = InitDams();
-            this.Address2 = InitAddress2();
+            this.Gc = InitGc();
             this.Opc = new SimpleOpcServer();
-            this.AppController = new AppController(this, this.Address2);
+            this.AppController = new AppController(this, this.Gc);
             //Lm.D("App()");
         }
 
@@ -37,10 +37,10 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private Address2 InitAddress2()
+        private Gc InitGc()
         {
-            var json = File.ReadAllText("address2.json");
-            var a2 = JsonConvert.DeserializeObject<Address2>(json);
+            var json = File.ReadAllText("gc.json");
+            var a2 = JsonConvert.DeserializeObject<Gc>(json);
             return a2;
         }
 
@@ -93,7 +93,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public Address2 Address2 { get; private set; }
+        public Gc Gc { get; private set; }
 
         /// <summary>
         /// 
