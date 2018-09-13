@@ -7,6 +7,6 @@
 	"CycleMode" : "[a]Global_Control.CycMode",
 	"WorkDam" : "[a]Global_Control.WorkDam",
 	"GunCountPerGroup" : "[a]Global_Control.GunCountPerGroup",
-	"PlTimeRemaining" : "Global_Control.PLtimeremaining",
-	"CycleEndStopPump" : "Global_Control.CycEndStoppump"
+	"PlTimeRemaining" : "[a]Global_Control.PLtimeremaining",
+	"CycleEndStopPump" : "[a]Global_Control.CycEndStoppump"
 }
