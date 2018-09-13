@@ -6,9 +6,10 @@ using PLC;
 
 namespace PL
 {
-    public enum FaultStatusEnum
+
+    public enum PumpStopEnum
     {
-        Normal = 0,
-        Fault = 1,
+        Run = 0,
+        Stop = 1,
     }
 }

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="C\GunsCheckResult.cs" />
+    <Compile Include="Defines\PumpStopEnum.cs" />
     <Compile Include="Hardware\Gc.cs" />
     <Compile Include="Hardware\DamDefine.cs" />
     <Compile Include="Hardware\GunDefine.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="C\PlCheckResult.cs" />
     <Compile Include="C\PlController.cs" />
     <Compile Include="M\PlcAddress.cs" />
+    <Compile Include="M\Pump.cs" />
     <Compile Include="M\WorkGunGroup.cs" />
     <Compile Include="PlOptions.cs" />
     <Compile Include="PlOptionsReader.cs" />
