@@ -135,15 +135,17 @@ namespace PL
                     r.Add(gun.Mark.Address);
                 }
             }
-            var a2 = Gc.Instance;
-            r.Add(a2.AppControlStatus);
-            r.Add(a2.AutoManual);
-            r.Add(a2.CycleCount);
-            r.Add(a2.CycleMode);
-            r.Add(a2.GunCountPerGroup);
-            r.Add(a2.PlTimeSecond);
-            r.Add(a2.WorkDam);
-            r.Add(a2.ZtPlcStatus);
+            var gc = Gc.Instance;
+            r.Add(gc.AppControlStatus);
+            r.Add(gc.AutoManual);
+            r.Add(gc.CycleCount);
+            r.Add(gc.CycleMode);
+            r.Add(gc.GunCountPerGroup);
+            r.Add(gc.PlTimeSecond);
+            r.Add(gc.WorkDam);
+            r.Add(gc.ZtPlcStatus);
+            r.Add(gc.PlTimeRemaining);
+            r.Add(gc.CycleEndStopPump);
             return r.ToArray();
 
             //var guns = _app.Dams.First.Value.Guns.ToArray();
