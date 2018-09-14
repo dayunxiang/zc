@@ -266,8 +266,128 @@
                 "Mark" : "[a]BD2[33].Mark",
                 "Fault" : "[a]BD2[33].Fault",
                 "Remote" : "[a]BD2[33].Remote"
+            },
+            {
+                "NO" : 34,
+                "Name" : "BD2-34",
+                "Switch" : "[a]BD2[34].Switch",
+                "Mark" : "[a]BD2[34].Mark",
+                "Fault" : "[a]BD2[34].Fault",
+                "Remote" : "[a]BD2[34].Remote"
+            },
+            {
+                "NO" : 35,
+                "Name" : "BD2-35",
+                "Switch" : "[a]BD2[35].Switch",
+                "Mark" : "[a]BD2[35].Mark",
+                "Fault" : "[a]BD2[35].Fault",
+                "Remote" : "[a]BD2[35].Remote"
+            },
+            {
+                "NO" : 36,
+                "Name" : "BD2-36",
+                "Switch" : "[a]BD2[36].Switch",
+                "Mark" : "[a]BD2[36].Mark",
+                "Fault" : "[a]BD2[36].Fault",
+                "Remote" : "[a]BD2[36].Remote"
+            },
+            {
+                "NO" : 37,
+                "Name" : "BD2-37",
+                "Switch" : "[a]BD2[37].Switch",
+                "Mark" : "[a]BD2[37].Mark",
+                "Fault" : "[a]BD2[37].Fault",
+                "Remote" : "[a]BD2[37].Remote"
+            },
+            {
+                "NO" : 38,
+                "Name" : "BD2-38",
+                "Switch" : "[a]BD2[38].Switch",
+                "Mark" : "[a]BD2[38].Mark",
+                "Fault" : "[a]BD2[38].Fault",
+                "Remote" : "[a]BD2[38].Remote"
+            },
+            {
+                "NO" : 39,
+                "Name" : "BD2-39",
+                "Switch" : "[a]BD2[39].Switch",
+                "Mark" : "[a]BD2[39].Mark",
+                "Fault" : "[a]BD2[39].Fault",
+                "Remote" : "[a]BD2[39].Remote"
+            },
+            {
+                "NO" : 40,
+                "Name" : "BD2-40",
+                "Switch" : "[a]BD2[40].Switch",
+                "Mark" : "[a]BD2[40].Mark",
+                "Fault" : "[a]BD2[40].Fault",
+                "Remote" : "[a]BD2[40].Remote"
+            },
+            {
+                "NO" : 41,
+                "Name" : "BD2-41",
+                "Switch" : "[a]BD2[41].Switch",
+                "Mark" : "[a]BD2[41].Mark",
+                "Fault" : "[a]BD2[41].Fault",
+                "Remote" : "[a]BD2[41].Remote"
+            },
+            {
+                "NO" : 42,
+                "Name" : "BD2-42",
+                "Switch" : "[a]BD2[42].Switch",
+                "Mark" : "[a]BD2[42].Mark",
+                "Fault" : "[a]BD2[42].Fault",
+                "Remote" : "[a]BD2[42].Remote"
+            },
+            {
+                "NO" : 43,
+                "Name" : "BD2-43",
+                "Switch" : "[a]BD2[43].Switch",
+                "Mark" : "[a]BD2[43].Mark",
+                "Fault" : "[a]BD2[43].Fault",
+                "Remote" : "[a]BD2[43].Remote"
+            },
+            {
+                "NO" : 44,
+                "Name" : "BD2-44",
+                "Switch" : "[a]BD2[44].Switch",
+                "Mark" : "[a]BD2[44].Mark",
+                "Fault" : "[a]BD2[44].Fault",
+                "Remote" : "[a]BD2[44].Remote"
+            },
+            {
+                "NO" : 45,
+                "Name" : "BD2-45",
+                "Switch" : "[a]BD2[45].Switch",
+                "Mark" : "[a]BD2[45].Mark",
+                "Fault" : "[a]BD2[45].Fault",
+                "Remote" : "[a]BD2[45].Remote"
+            },
+            {
+                "NO" : 46,
+                "Name" : "BD2-46",
+                "Switch" : "[a]BD2[46].Switch",
+                "Mark" : "[a]BD2[46].Mark",
+                "Fault" : "[a]BD2[46].Fault",
+                "Remote" : "[a]BD2[46].Remote"
+            },
+            {
+                "NO" : 47,
+                "Name" : "BD2-47",
+                "Switch" : "[a]BD2[47].Switch",
+                "Mark" : "[a]BD2[47].Mark",
+                "Fault" : "[a]BD2[47].Fault",
+                "Remote" : "[a]BD2[47].Remote"
+            },
+            {
+                "NO" : 48,
+                "Name" : "BD2-48",
+                "Switch" : "[a]BD2[48].Switch",
+                "Mark" : "[a]BD2[48].Mark",
+                "Fault" : "[a]BD2[48].Fault",
+                "Remote" : "[a]BD2[48].Remote"
             }
-        ]
+		]
     },
     {
         "Name" : "BD3",
@@ -926,128 +1046,8 @@
                 "Mark" : "[a]BD4[33].Mark",
                 "Fault" : "[a]BD4[33].Fault",
                 "Remote" : "[a]BD4[33].Remote"
-            },
-            {
-                "NO" : 34,
-                "Name" : "BD4-34",
-                "Switch" : "[a]BD4[34].Switch",
-                "Mark" : "[a]BD4[34].Mark",
-                "Fault" : "[a]BD4[34].Fault",
-                "Remote" : "[a]BD4[34].Remote"
-            },
-            {
-                "NO" : 35,
-                "Name" : "BD4-35",
-                "Switch" : "[a]BD4[35].Switch",
-                "Mark" : "[a]BD4[35].Mark",
-                "Fault" : "[a]BD4[35].Fault",
-                "Remote" : "[a]BD4[35].Remote"
-            },
-            {
-                "NO" : 36,
-                "Name" : "BD4-36",
-                "Switch" : "[a]BD4[36].Switch",
-                "Mark" : "[a]BD4[36].Mark",
-                "Fault" : "[a]BD4[36].Fault",
-                "Remote" : "[a]BD4[36].Remote"
-            },
-            {
-                "NO" : 37,
-                "Name" : "BD4-37",
-                "Switch" : "[a]BD4[37].Switch",
-                "Mark" : "[a]BD4[37].Mark",
-                "Fault" : "[a]BD4[37].Fault",
-                "Remote" : "[a]BD4[37].Remote"
-            },
-            {
-                "NO" : 38,
-                "Name" : "BD4-38",
-                "Switch" : "[a]BD4[38].Switch",
-                "Mark" : "[a]BD4[38].Mark",
-                "Fault" : "[a]BD4[38].Fault",
-                "Remote" : "[a]BD4[38].Remote"
-            },
-            {
-                "NO" : 39,
-                "Name" : "BD4-39",
-                "Switch" : "[a]BD4[39].Switch",
-                "Mark" : "[a]BD4[39].Mark",
-                "Fault" : "[a]BD4[39].Fault",
-                "Remote" : "[a]BD4[39].Remote"
-            },
-            {
-                "NO" : 40,
-                "Name" : "BD4-40",
-                "Switch" : "[a]BD4[40].Switch",
-                "Mark" : "[a]BD4[40].Mark",
-                "Fault" : "[a]BD4[40].Fault",
-                "Remote" : "[a]BD4[40].Remote"
-            },
-            {
-                "NO" : 41,
-                "Name" : "BD4-41",
-                "Switch" : "[a]BD4[41].Switch",
-                "Mark" : "[a]BD4[41].Mark",
-                "Fault" : "[a]BD4[41].Fault",
-                "Remote" : "[a]BD4[41].Remote"
-            },
-            {
-                "NO" : 42,
-                "Name" : "BD4-42",
-                "Switch" : "[a]BD4[42].Switch",
-                "Mark" : "[a]BD4[42].Mark",
-                "Fault" : "[a]BD4[42].Fault",
-                "Remote" : "[a]BD4[42].Remote"
-            },
-            {
-                "NO" : 43,
-                "Name" : "BD4-43",
-                "Switch" : "[a]BD4[43].Switch",
-                "Mark" : "[a]BD4[43].Mark",
-                "Fault" : "[a]BD4[43].Fault",
-                "Remote" : "[a]BD4[43].Remote"
-            },
-            {
-                "NO" : 44,
-                "Name" : "BD4-44",
-                "Switch" : "[a]BD4[44].Switch",
-                "Mark" : "[a]BD4[44].Mark",
-                "Fault" : "[a]BD4[44].Fault",
-                "Remote" : "[a]BD4[44].Remote"
-            },
-            {
-                "NO" : 45,
-                "Name" : "BD4-45",
-                "Switch" : "[a]BD4[45].Switch",
-                "Mark" : "[a]BD4[45].Mark",
-                "Fault" : "[a]BD4[45].Fault",
-                "Remote" : "[a]BD4[45].Remote"
-            },
-            {
-                "NO" : 46,
-                "Name" : "BD4-46",
-                "Switch" : "[a]BD4[46].Switch",
-                "Mark" : "[a]BD4[46].Mark",
-                "Fault" : "[a]BD4[46].Fault",
-                "Remote" : "[a]BD4[46].Remote"
-            },
-            {
-                "NO" : 47,
-                "Name" : "BD4-47",
-                "Switch" : "[a]BD4[47].Switch",
-                "Mark" : "[a]BD4[47].Mark",
-                "Fault" : "[a]BD4[47].Fault",
-                "Remote" : "[a]BD4[47].Remote"
-            },
-            {
-                "NO" : 48,
-                "Name" : "BD4-48",
-                "Switch" : "[a]BD4[48].Switch",
-                "Mark" : "[a]BD4[48].Mark",
-                "Fault" : "[a]BD4[48].Fault",
-                "Remote" : "[a]BD4[48].Remote"
             }
-        ]
+		]
     },
     {
         "Name" : "BDQ3",
@@ -1388,55 +1388,7 @@
                 "Mark" : "[a]BDQ3[42].Mark",
                 "Fault" : "[a]BDQ3[42].Fault",
                 "Remote" : "[a]BDQ3[42].Remote"
-            },
-            {
-                "NO" : 43,
-                "Name" : "BDQ3-43",
-                "Switch" : "[a]BDQ3[43].Switch",
-                "Mark" : "[a]BDQ3[43].Mark",
-                "Fault" : "[a]BDQ3[43].Fault",
-                "Remote" : "[a]BDQ3[43].Remote"
-            },
-            {
-                "NO" : 44,
-                "Name" : "BDQ3-44",
-                "Switch" : "[a]BDQ3[44].Switch",
-                "Mark" : "[a]BDQ3[44].Mark",
-                "Fault" : "[a]BDQ3[44].Fault",
-                "Remote" : "[a]BDQ3[44].Remote"
-            },
-            {
-                "NO" : 45,
-                "Name" : "BDQ3-45",
-                "Switch" : "[a]BDQ3[45].Switch",
-                "Mark" : "[a]BDQ3[45].Mark",
-                "Fault" : "[a]BDQ3[45].Fault",
-                "Remote" : "[a]BDQ3[45].Remote"
-            },
-            {
-                "NO" : 46,
-                "Name" : "BDQ3-46",
-                "Switch" : "[a]BDQ3[46].Switch",
-                "Mark" : "[a]BDQ3[46].Mark",
-                "Fault" : "[a]BDQ3[46].Fault",
-                "Remote" : "[a]BDQ3[46].Remote"
-            },
-            {
-                "NO" : 47,
-                "Name" : "BDQ3-47",
-                "Switch" : "[a]BDQ3[47].Switch",
-                "Mark" : "[a]BDQ3[47].Mark",
-                "Fault" : "[a]BDQ3[47].Fault",
-                "Remote" : "[a]BDQ3[47].Remote"
-            },
-            {
-                "NO" : 48,
-                "Name" : "BDQ3-48",
-                "Switch" : "[a]BDQ3[48].Switch",
-                "Mark" : "[a]BDQ3[48].Mark",
-                "Fault" : "[a]BDQ3[48].Fault",
-                "Remote" : "[a]BDQ3[48].Remote"
             }
         ]
     }
-        ]
+]
