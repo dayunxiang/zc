@@ -10,6 +10,12 @@ namespace PL
 
     public class Pump : PlcAddress
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static public readonly Pump Instance = new Pump(Hardware.Gc.Instance.CycleEndStopPump);
+
         /// <summary>
         /// 
         /// </summary>

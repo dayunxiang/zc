@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using PLC;
 using NLog;
+using PL.Hardware;
 
 namespace PL
 {
@@ -18,7 +19,6 @@ namespace PL
         private PlOptions _plOptions;
         private DateTime _openDt;
         private DateTime _closeDt;
-
         #endregion //Members
 
         /// <summary>
@@ -27,7 +27,6 @@ namespace PL
         /// <param name="guns"></param>
         public GunsController(WorkGunGroup workGunGroup, PlOptions plOptions)
         {
-            // todo: init options
             _workGunGroup = workGunGroup;
             _plOptions = plOptions;
         }
@@ -167,6 +166,8 @@ namespace PL
         /// <returns></returns>
         internal GunsCheckResult Check()
         {
+            WriteRemainingTime();
+
             bool isTimeOut = _plOptions.IsTimeout(_openDt);
             if(isTimeOut)
             {
@@ -215,6 +216,15 @@ namespace PL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void WriteRemainingTime()
+        {
+            var remaining = this.RemainingTimeWithSecond;
+            PlTimeRemaining.Instance.Write(remaining);
+        }
+
         ///// <summary>
         ///// 
         ///// </summary>
@@ -228,7 +238,6 @@ namespace PL
 
         //    Open();
         //}
-
         public DateTime DiscardDt { get; set; }
 
         /// <summary>
@@ -250,7 +259,35 @@ namespace PL
             {
                 return false;
             }
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int RunningTimeWithSecond
+        {
+            get
+            {
+                var ts = DateTime.Now - _openDt;
+                return (int)ts.TotalSeconds;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int RemainingTimeWithSecond
+        {
+            get
+            {
+                var plTime = (int)this._plOptions.PlTimeSpan.TotalSeconds;
+                var remainingTime = plTime - RunningTimeWithSecond;
+                if (remainingTime < 0)
+                {
+                    remainingTime = 0;
+                }
+                return remainingTime;
+            }
         }
     }
 }

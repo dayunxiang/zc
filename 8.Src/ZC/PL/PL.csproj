@@ -87,6 +87,7 @@
     <Compile Include="C\PlCheckResult.cs" />
     <Compile Include="C\PlController.cs" />
     <Compile Include="M\PlcAddress.cs" />
+    <Compile Include="M\PlTimeRemaining.cs" />
     <Compile Include="M\Pump.cs" />
     <Compile Include="M\WorkGunGroup.cs" />
     <Compile Include="PlOptions.cs" />

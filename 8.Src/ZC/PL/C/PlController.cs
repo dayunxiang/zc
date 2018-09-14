@@ -12,12 +12,22 @@ namespace PL
     public class PlController
     {
 
+        private enum PlControllerStatus
+        {
+            Init = 0,
+            Working = 1,
+            StopPump = 2,
+            //End = 3,
+        }
+
         #region Members
         static private Logger _logger = LogManager.GetCurrentClassLogger();
 
-        private bool _isWorking;
+        //private bool _isWorking;
+        private PlControllerStatus _plControllerStatus;
         private DateTime _beginDt;
         private DateTime _endDt;
+        private DateTime _stopPumpDt;
         private GunsController _discardGunsController;
         private GunsController _gunsController;
         private int _cycleCount = 0;
@@ -30,6 +40,7 @@ namespace PL
         public PlController(PlOptions options)
         {
             this.PlOptions = options;
+            _plControllerStatus = PlControllerStatus.Init;
         }
 
         /// <summary>
@@ -45,9 +56,19 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsWorking()
+        public bool IsInitStatus()
         {
-            return _isWorking;
+            return _plControllerStatus == PlControllerStatus.Init;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsWorkingStatus()
+        {
+            return _plControllerStatus == PlControllerStatus.Working;
+                // || _plControllerStatus == PlControllerStatus.StopPump;
         }
 
         /// <summary>
@@ -64,9 +85,10 @@ namespace PL
         /// </summary>
         public void Start()
         {
-            if (!_isWorking)
+            //if (!IsWorkingStatus())
+            if (IsInitStatus())
             {
-                _isWorking = true;
+                _plControllerStatus = PlControllerStatus.Working;
                 _beginDt = DateTime.Now;
                 // 1. get guns -> working guns
                 // 2. guns open
@@ -80,6 +102,70 @@ namespace PL
         /// 
         /// </summary>
         internal PlCheckResult Check()
+        {
+            if (IsStopPumpStatus())
+            {
+                return CheckStopPump();
+            }
+            else if (IsWorkingStatus())
+            {
+                return CheckWorking();
+            }
+            else
+            {
+                throw new InvalidOperationException("pl controller status invalid");
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsStopPumpTimeOut()
+        {
+            var ts = DateTime .Now - _stopPumpDt;
+            if(ts < TimeSpan.Zero || ts .TotalSeconds >= Config.GunsCloseDelaySecondWhenStopPump)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsStopPumpStatus()
+        {
+            return _plControllerStatus == PlControllerStatus.StopPump;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private PlCheckResult CheckStopPump()
+        {
+            if (IsStopPumpTimeOut())
+            {
+                _gunsController.Close();
+                _gunsController = null;
+                return PlCheckResult.Completed;
+            }
+            else
+            {
+                return PlCheckResult.Working;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private PlCheckResult CheckWorking()
         {
             // 0. discard guns controller close
             //
@@ -119,9 +205,21 @@ namespace PL
 
                     if(_cycleCount > this.PlOptions.CycleTimes)
                     {
-                        gunsController.Close();
-                        return PlCheckResult.Completed;
+                        //gunsController.Close();
+                        //return PlCheckResult.Completed;
+                        StopPump();
+                        this._plControllerStatus = PlControllerStatus.StopPump;
+
+                        return PlCheckResult.Working;
                     }
+                }
+
+                // if discardGunsController not null, need close discard guns
+                //
+                if(_discardGunsController != null)
+                {
+                    _discardGunsController.Close();
+                    _discardGunsController = null;
                 }
 
                 _discardGunsController = gunsController;
@@ -143,6 +241,15 @@ namespace PL
                 return PlCheckResult.Working;
             }
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void StopPump()
+        {
+            Pump.Instance.Stop();
+            this._stopPumpDt = DateTime.Now;
         }
 
         /// <summary>
@@ -171,7 +278,9 @@ namespace PL
         /// </summary>
         internal void Stop()
         {
-            if(IsWorking())
+            // todo:
+            //
+            if(IsWorkingStatus())
             {
                 if(_discardGunsController != null)
                 {

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "≈Á¡‹øÿ÷∆≥Ã–Ú"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1.0.0"
 #define MyAppPublisher "PL"
 #define MyAppURL "PL"
 #define MyAppExeName "PLForm.exe"
@@ -21,7 +21,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
-OutputBaseFilename=PL_1.0.0.0
+OutputBaseFilename=PL_1.1.0.0
 Compression=lzma
 SolidCompression=yes
 
@@ -47,7 +47,7 @@ Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\Xdgk.Common.dll"; DestDir: "{app
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\Z.ExtensionMethods.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\log\log.txt"; DestDir: "{app}\log"; Flags: ignoreversion
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\address.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\address2.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\gc.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\PLForm.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
