@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "≈Á¡‹øÿ÷∆≥Ã–Ú"
-#define MyAppVersion "1.1.0.0"
+#define MyAppVersion "1.2.0.0"
 #define MyAppPublisher "PL"
 #define MyAppURL "PL"
 #define MyAppExeName "PLForm.exe"
@@ -21,7 +21,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
-OutputBaseFilename=PL_1.1.0.0
+OutputBaseFilename=PL_1.2.0.0
 Compression=lzma
 SolidCompression=yes
 
