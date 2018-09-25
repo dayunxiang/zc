@@ -153,12 +153,22 @@ namespace PL
             {
                 _gunsController.Close();
                 _gunsController = null;
+                GetCurrentWorkingDamStatus().Write(0);
                 return PlCheckResult.Completed;
             }
             else
             {
                 return PlCheckResult.Working;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private CurrentWorkingDamStatus GetCurrentWorkingDamStatus()
+        {
+            return App.GetApp().AppController.CurrentWorkingDamStatus;
         }
 
         /// <summary>
