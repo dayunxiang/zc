@@ -15,7 +15,7 @@ namespace PL
         /// </summary>
         /// <param name="address"></param>
         public ZtPlcStatus(string address)
-            :base(address)
+            : base(address)
         {
 
         }
@@ -26,7 +26,7 @@ namespace PL
         /// <returns></returns>
         public ZtPlcStatusEnum Read()
         {
-            if(Config.IsMock)
+            if (Config.IsMock)
             {
                 return ReadMock();
             }
@@ -54,7 +54,7 @@ namespace PL
         private ZtPlcStatusEnum ReadMock()
         {
             //todo:
-            if(ZtPlcStatusUI.Text.Length==0)
+            if (ZtPlcStatusUI.Text.Length == 0)
             {
                 return ZtPlcStatusEnum.Stop;
             }
