@@ -70,6 +70,7 @@
     <Compile Include="C\AppControllerStatus.cs" />
     <Compile Include="Defines\ControllerStatusEnum.cs" />
     <Compile Include="Defines\CycleMode.cs" />
+    <Compile Include="M\CurrentWorkingDamStatus.cs" />
     <Compile Include="M\Dam.cs" />
     <Compile Include="M\DamLinkedList.cs" />
     <Compile Include="M\Fault.cs" />
