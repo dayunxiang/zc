@@ -144,7 +144,21 @@ namespace PL
                 gun.Switch.Open();
             }
 
+            // set current working dam
+            //
+            var damValue = _workGunGroup.GetDamValue();
+            GetCurrentWorkingDamStatus().Write(damValue);
+
             this._openDt = DateTime.Now;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private CurrentWorkingDamStatus GetCurrentWorkingDamStatus()
+        {
+            return App.GetApp().AppController.CurrentWorkingDamStatus;
         }
 
         /// <summary>
