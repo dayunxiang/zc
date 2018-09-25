@@ -30,6 +30,7 @@ namespace PL
             this.ControllerStatus = new AppControllerStatus(gc.AppControlStatus, ControllerStatusEnum.Idle);
             this.AutoManualStatus = new AutoManualStatus(gc.AutoManual);
             this.ZtPlcStatus = new ZtPlcStatus(gc.ZtPlcStatus);
+            this.CurrentWorkingDamStatus = new CurrentWorkingDamStatus(gc.CurrentWorkingDam);
             this.PlOptionsReader = new PlOptionsReader();
         }
 
@@ -108,6 +109,15 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
+        public CurrentWorkingDamStatus CurrentWorkingDamStatus
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Check()
         {
             if (!_isChecking)
@@ -146,6 +156,7 @@ namespace PL
             r.Add(gc.ZtPlcStatus);
             r.Add(gc.PlTimeRemaining);
             r.Add(gc.CycleEndStopPump);
+            r.Add(gc.CurrentWorkingDam);
             return r.ToArray();
 
             //var guns = _app.Dams.First.Value.Guns.ToArray();
