@@ -25,6 +25,7 @@ namespace PL
             get;
             set;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -41,6 +42,20 @@ namespace PL
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>
+        /// DB2  - 1
+        /// DB3  - 2
+        /// DB4  - 4
+        /// DBQ3 - 8
+        /// </returns>
+        public int GetDamValue()
+        {
+            return Convert.ToInt32(Math.Pow(2, this.No));
         }
 
         /// <summary>
