@@ -69,5 +69,19 @@ namespace PL
         {
             return this.SearchGuns.IsIncludeGun(tailGun);
         }
+
+        /// <summary>
+        /// get first gun.dam value
+        /// </summary>
+        public int GetDamValue()
+        {
+            if (this.WorkGuns.Count == 0)
+            {
+                throw new InvalidOperationException("work guns count == 0");
+            }
+
+            var gun = this.WorkGuns.GetFirst();
+            return gun.Dam.GetDamValue();
+        }
     }
 }
