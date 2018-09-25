@@ -21,6 +21,7 @@ namespace PL.Hardware
         public string GunCountPerGroup { get; set; }
         public string PlTimeRemaining { get; set; }
         public string CycleEndStopPump { get; set; }
+        public string CurrentWorkingDam { get; set; }
 
 
         /// <summary>
