@@ -239,6 +239,11 @@ namespace PL
                         StopPump();
                         this._plControllerStatus = PlControllerStatus.StopPump;
 
+                        // clear cycle count
+                        //
+                        this._cycleCount = 0;
+                        CycleCountChanged();
+
                         return PlCheckResult.Working;
                     }
                 }
