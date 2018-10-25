@@ -31,6 +31,7 @@ namespace PL
             this.AutoManualStatus = new AutoManualStatus(gc.AutoManual);
             this.ZtPlcStatus = new ZtPlcStatus(gc.ZtPlcStatus);
             this.CurrentWorkingDamStatus = new CurrentWorkingDamStatus(gc.CurrentWorkingDam);
+            this.CurrentDoneCycleCountStatus = new CurrentDoneCycleCountStatus(gc.CurrentDoneCycleCount);
             this.PlOptionsReader = new PlOptionsReader();
         }
 
@@ -118,6 +119,15 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
+        public CurrentDoneCycleCountStatus CurrentDoneCycleCountStatus
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Check()
         {
             if (!_isChecking)
@@ -157,25 +167,8 @@ namespace PL
             r.Add(gc.PlTimeRemaining);
             r.Add(gc.CycleEndStopPump);
             r.Add(gc.CurrentWorkingDam);
+            r.Add(gc.CurrentDoneCycleCount);
             return r.ToArray();
-
-            //var guns = _app.Dams.First.Value.Guns.ToArray();
-            //foreach( var gun in guns)
-            //{
-            //    r.Add(gun.Fault.Address);
-            //    r.Add(gun.Remote.Address);
-            //    r.Add(gun.Mark.Address);
-            //}
-
-            //r.Add("[a]Global_Control.AutoManual");
-            //r.Add("[a]Global_Control.ztplcstatus");
-            //r.Add("[a]Global_Control.AppControlStatus");
-            //r.Add("[a]Global_Control.CycleCount");
-            //r.Add("[a]Global_Control.PLtimeSecond");
-            //r.Add("[a]Global_Control.CycMode");
-            //r.Add("[a]Global_Control.WorkDam");
-            //r.Add("[a]Global_Control.GunCountPerGroup");
-            //return r.ToArray();
         }
 
         /// <summary>
