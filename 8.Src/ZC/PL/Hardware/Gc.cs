@@ -22,6 +22,7 @@ namespace PL.Hardware
         public string PlTimeRemaining { get; set; }
         public string CycleEndStopPump { get; set; }
         public string CurrentWorkingDam { get; set; }
+        public string CurrentDoneCycleCount { get; set; }
 
 
         /// <summary>
