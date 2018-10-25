@@ -11,7 +11,6 @@ namespace PL
 
     public class PlController
     {
-
         private enum PlControllerStatus
         {
             Init = 0,
@@ -64,6 +63,15 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
+        private void CycleCountChanged()
+        {
+            var doneCycleCountStatus = GetCurrentDoneCycleCountStatus();
+            doneCycleCountStatus.Write(_cycleCount);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public bool IsWorkingStatus()
         {
@@ -95,6 +103,7 @@ namespace PL
                 var gunsController = GetGunsController();
                 gunsController.Open();
                 _cycleCount = 1;
+                CycleCountChanged();
             }
         }
 
@@ -175,6 +184,15 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
+        private CurrentDoneCycleCountStatus GetCurrentDoneCycleCountStatus()
+        {
+            return App.GetApp().AppController.CurrentDoneCycleCountStatus;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private PlCheckResult CheckWorking()
         {
             // 0. discard guns controller close
@@ -212,6 +230,7 @@ namespace PL
                 if (isPassTail)
                 {
                     this._cycleCount += 1;
+                    CycleCountChanged();
 
                     if(_cycleCount > this.PlOptions.CycleTimes)
                     {
