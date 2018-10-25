@@ -9,5 +9,7 @@
 	"GunCountPerGroup" : "[a]Global_Control.GunCountPerGroup",
 	"PlTimeRemaining" : "[a]Global_Control.PLtimeremaining",
 	"CycleEndStopPump" : "[a]Global_Control.CycEndStoppump",
-	"CurrentWorkingDam" : "[a]Global_Control.CurrentWorkingDam"
+	"CurrentWorkingDam" : "[a]Global_Control.CurrentWorkingDam",
+	"CurrentDoneCycleCount" : "[a]Global_Control.CurrentDoneCycleCount"
+
 }
