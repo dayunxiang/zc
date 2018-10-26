@@ -125,6 +125,7 @@ namespace PLForm
             try
             {
                 s = File.ReadAllText(keyFile);
+                s = s.Trim();
             }
             catch(Exception)
             {
