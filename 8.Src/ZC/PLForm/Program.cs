@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Management;
+using System.Security.Cryptography;
 using Xdgk.Common;
 
 namespace PLForm
@@ -14,6 +18,15 @@ namespace PLForm
         [STAThread]
         static void Main()
         {
+            var encode=Encode(GetBoardID());
+            var key = ReadKey();
+
+            if (!key.Equals(encode))
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("无效的注册码");
+                return;
+            }
+
             if(Xdgk.Common.Diagnostics.HasPreInstance())
             {
                 NUnit.UiKit.UserMessage.DisplayInfo("程序已经启动");
@@ -63,5 +76,61 @@ namespace PLForm
             Application.Exit();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        static public string GetBoardID()
+        {
+            string st = "unknown";
+            try
+            {
+                ManagementObjectSearcher mos = new ManagementObjectSearcher("Select * from Win32_BaseBoard");
+                foreach (ManagementObject mo in mos.Get())
+                {
+                    st = mo["SerialNumber"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return st;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        static public string Encode(string source)
+        {
+            const string s = "__";
+            var s2 = string.Format("{0}{1}{2}", s, source, s);
+            var bs = ASCIIEncoding.ASCII.GetBytes(s2);
+
+            var md5 = MD5.Create();
+            var bs2 = md5.ComputeHash(bs);
+            return Convert.ToBase64String(bs2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        static private string ReadKey()
+        {
+            const string keyFile = "plkey.txt";
+
+            string s = string.Empty;
+            try
+            {
+                s = File.ReadAllText(keyFile);
+            }
+            catch(Exception)
+            {
+                
+            }
+            return s;
+        }
     }
 }
