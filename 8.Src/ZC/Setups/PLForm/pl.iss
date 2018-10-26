@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "≈Á¡‹øÿ÷∆≥Ã–Ú"
-#define MyAppVersion "1.3.0.0"
+#define MyAppVersion "1.4.0.0"
 #define MyAppPublisher "PL"
 #define MyAppURL "PL"
 #define MyAppExeName "PLForm.exe"
@@ -21,7 +21,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
-OutputBaseFilename=PL_1.3.0.0
+OutputBaseFilename=PL_1.4.0.0
 Compression=lzma
 SolidCompression=yes
 
@@ -33,6 +33,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\PLForm.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\plkey.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\DbNetLink.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\Microsoft.Data.ConnectionUI.Dialog.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\ZCPROJECT\8.Src\ZC\PLForm\bin\Debug\Microsoft.Data.ConnectionUI.dll"; DestDir: "{app}"; Flags: ignoreversion
