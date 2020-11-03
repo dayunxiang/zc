@@ -6,11 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace PL.Hardware
-{
+namespace PL.Hardware {
 
-    public class Gc
-    {
+    public class Gc {
         public string AutoManual { get; set; }
         public string ZtPlcStatus { get; set; }
         public string AppControlStatus { get; set; }
@@ -29,12 +27,9 @@ namespace PL.Hardware
         /// 
         /// </summary>
         /// <returns></returns>
-        static public Gc Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
+        static public Gc Instance {
+            get {
+                if (_instance == null) {
                     var json = File.ReadAllText("gc.json");
                     _instance = JsonConvert.DeserializeObject<Gc>(json);
                 }

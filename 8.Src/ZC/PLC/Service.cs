@@ -6,19 +6,16 @@ using System.Threading.Tasks;
 using System.Threading;
 using NLog;
 
-namespace PLC
-{
+namespace PLC {
 
-    public class Service : IService
-    {
-        static private Logger _logger = LogManager.GetCurrentClassLogger();
+    public class Service : IService {
+        static private Logger _logger = NLog.LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
-        static private void Debug(object obj)
-        {
+        static private void Debug(object obj) {
             _logger.Debug(obj);
             //Console.WriteLine(obj);
         }
@@ -35,22 +32,17 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsConnected()
-        {
+        public bool IsConnected() {
             return _server != null && _server.IsConnected;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private void LoopRead()
-        {
-            try
-            {
-                if(_task != null && _task.IsCanceled == false)
-                {
-                    while (true)
-                    {
+        private void LoopRead() {
+            try {
+                if (_task != null && _task.IsCanceled == false) {
+                    while (true) {
                         _token.ThrowIfCancellationRequested();
 
                         Read();
@@ -58,9 +50,7 @@ namespace PLC
                         Thread.Sleep(sleep);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 Debug(ex);
                 _task = null;
                 _tokenSource = null;
@@ -70,27 +60,19 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        private void Read()
-        {
-            try
-            {
+        private void Read() {
+            try {
                 Opc.Da.ItemValueResult[] itemValueResults = _server.Read(GetItems());
 
-                foreach (Opc.Da.ItemValueResult ivr in itemValueResults)
-                {
-                    if (ivr.ResultID == Opc.ResultID.S_OK)
-                    {
+                foreach (Opc.Da.ItemValueResult ivr in itemValueResults) {
+                    if (ivr.ResultID == Opc.ResultID.S_OK) {
                         //ItemDefine itemDefine = this.ItemDefines.SetValue(ivr.ItemPath, ivr.ItemName, ivr.Value);
                         this.ItemDefines.SetValue(ivr.ItemPath, ivr.ItemName, ivr.Value);
-                    }
-                    else
-                    {
+                    } else {
 
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 Debug(ex);
             }
         }
@@ -101,13 +83,10 @@ namespace PLC
         /// </summary>
         private void TestRead()//CancellationToken token)
         {
-            try
-            {
-                if (_task != null && _task.IsCanceled == false)
-                {
-                    while (true)
-                    {
-                        ItemDefines.SetValue("", "abc",DateTime.Now);
+            try {
+                if (_task != null && _task.IsCanceled == false) {
+                    while (true) {
+                        ItemDefines.SetValue("", "abc", DateTime.Now);
                         Debug("read()...");
                         _token.ThrowIfCancellationRequested();
 
@@ -115,9 +94,7 @@ namespace PLC
                         Thread.Sleep(sleep);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 Debug(ex);
                 _task = null;
                 _tokenSource = null;
@@ -130,18 +107,14 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        public void StartLoop()
-        {
-            if (_task == null)
-            {
+        public void StartLoop() {
+            if (_task == null) {
                 Action action = TestRead; // LoopRead
                 _tokenSource = new CancellationTokenSource();
                 _token = _tokenSource.Token;
                 _task = new Task(action, _token);
                 _task.Start();
-            }
-            else
-            {
+            } else {
                 throw new InvalidOperationException("started");
             }
         }
@@ -149,10 +122,8 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        public void StopLoop()
-        {
-            if (_task != null)
-            {
+        public void StopLoop() {
+            if (_task != null) {
                 _tokenSource.Cancel();
                 //_tokenSource.Token.ThrowIfCancellationRequested();
                 //_task = null;
@@ -164,8 +135,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsLoop()
-        {
+        public bool IsLoop() {
             return _task != null;
         }
 
@@ -173,14 +143,10 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public Opc.Da.ServerStatus GetStatus()
-        {
-            if (_server != null)
-            {
+        public Opc.Da.ServerStatus GetStatus() {
+            if (_server != null) {
                 return _server.GetStatus();
-            }
-            else
-            {
+            } else {
                 return null;
             }
         }
@@ -189,15 +155,11 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        public bool Connect()
-        {
+        public bool Connect() {
             _server = new Opc.Da.Server(GetFactory(), GetConnectUrl());
-            try
-            {
+            try {
                 _server.Connect(GetConnectData());
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 Debug(ex);
                 _server = null;
             }
@@ -209,8 +171,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        private Opc.Factory GetFactory()
-        {
+        private Opc.Factory GetFactory() {
             return new OpcCom.Factory();
         }
 
@@ -218,8 +179,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        private Opc.ConnectData GetConnectData()
-        {
+        private Opc.ConnectData GetConnectData() {
             return new Opc.ConnectData(null, null);
         }
 
@@ -227,8 +187,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        private Opc.URL GetConnectUrl()
-        {
+        private Opc.URL GetConnectUrl() {
             var machine = "localhost";
             var url = string.Format(
                     "opcda://{0}/RSLinx OPC Server/{a05bb6d5-2f8a-11d1-9bb0-080009d01446}",
@@ -242,20 +201,15 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        public ItemDefineList ItemDefines
-        {
-            get
-            {
-                if (_itemDefines == null)
-                {
+        public ItemDefineList ItemDefines {
+            get {
+                if (_itemDefines == null) {
                     _itemDefines = new ItemDefineList();
                 }
                 return _itemDefines;
             }
-            set
-            {
-                if (_itemDefines != value)
-                {
+            set {
+                if (_itemDefines != value) {
                     _itemDefines = value;
                     _items = null;
                 }
@@ -266,10 +220,8 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public Opc.Da.Item[] GetItems()
-        {
-            if (_items == null)
-            {
+        public Opc.Da.Item[] GetItems() {
+            if (_items == null) {
                 _items = this.ItemDefines.Create();
             }
             return _items;

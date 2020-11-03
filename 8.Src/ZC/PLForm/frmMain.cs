@@ -12,10 +12,8 @@ using Xdgk.Common;
 using NUnit.UiKit;
 using PL;
 
-namespace PLForm
-{
-    public partial class frmMain : Form
-    {
+namespace PLForm {
+    public partial class frmMain : Form {
         /// <summary>
         /// 
         /// </summary>
@@ -24,8 +22,7 @@ namespace PLForm
         /// <summary>
         /// 
         /// </summary>
-        public frmMain()
-        {
+        public frmMain() {
             InitializeComponent();
         }
 
@@ -34,15 +31,14 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmMain_Load(object sender, EventArgs e)
-        {
+        private void frmMain_Load(object sender, EventArgs e) {
 
             this.Text = AppConfigReader.Read<string>("MainText", "---");
-            this.Text +=" - " + Application.ProductVersion;
+            this.Text += " - " + Application.ProductVersion;
 
             tssAppStatus.Text = "OPC 未连接";
 
-            PLC.Lm.Logs.Add(new TxtLog(this.txtLog));
+            PLC.MyLogManager.Logs.Add(new TxtLog(this.txtLog));
             App.GetApp().Opc.ConnectedEvent += Opc_ConnectedEvent;
             App.GetApp().AppController.Start();
         }
@@ -52,8 +48,7 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Opc_ConnectedEvent(object sender, EventArgs e)
-        {
+        private void Opc_ConnectedEvent(object sender, EventArgs e) {
             this.tssAppStatus.Text = "OPC 已连接, " + DateTime.Now.ToString();
         }
 
@@ -62,8 +57,7 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tsbClearLogs_Click(object sender, EventArgs e)
-        {
+        private void tsbClearLogs_Click(object sender, EventArgs e) {
             this.txtLog.Clear();
         }
 
@@ -72,24 +66,18 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tsbExit_Click(object sender, EventArgs e)
-        {
+        private void tsbExit_Click(object sender, EventArgs e) {
             var appController = App.GetApp().AppController;
-            
-            if (appController.ControllerStatus.IsWorking())
-            {
+
+            if (appController.ControllerStatus.IsWorking()) {
                 var s = "工作中, 无法退出!";
                 NUnit.UiKit.UserMessage.DisplayFailure(s);
-            }
-            else
-            {
+            } else {
                 var s = "确定退出吗?";
-                if (UserMessage.Ask(s) == System.Windows.Forms.DialogResult.Yes)
-                {
+                if (UserMessage.Ask(s) == System.Windows.Forms.DialogResult.Yes) {
                     _isClose = true;
                     var opc = App.GetApp().Opc;
-                    if(opc.IsConnected())
-                    {
+                    if (opc.IsConnected()) {
                         appController.ControllerStatus.Value = ControllerStatusEnum.NotRun;
                     }
                     Close();
@@ -102,10 +90,8 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!_isClose)
-            {
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e) {
+            if (!_isClose) {
                 e.Cancel = true;
                 this.WindowState = FormWindowState.Minimized;
             }
@@ -116,21 +102,17 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tsbSaveLog_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        private void tsbSaveLog_Click(object sender, EventArgs e) {
+            try {
                 var dt = DateTime.Now;
-                string fileName = string.Format (
-                    "{0}\\log\\{1}.txt", 
+                string fileName = string.Format(
+                    "{0}\\log\\{1}.txt",
                     Application.StartupPath,
-                    dt.ToString ("yyyy_MM_dd_HH_mm_ss")
+                    dt.ToString("yyyy_MM_dd_HH_mm_ss")
                     );
                 File.WriteAllText(fileName, this.txtLog.Text);
                 NUnit.UiKit.UserMessage.DisplayInfo("日志保存成功");
-            }
-            catch(Exception ex)
-            {
+            } catch (Exception ex) {
                 ExceptionLogger.Log(ex);
             }
         }

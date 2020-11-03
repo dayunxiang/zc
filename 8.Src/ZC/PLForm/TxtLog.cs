@@ -12,43 +12,39 @@ using Xdgk.Common;
 using NUnit.UiKit;
 using PL;
 
-namespace PLForm
-{
+namespace PLForm {
 
     /// <summary>
     /// 
     /// </summary>
-    public class TxtLog : PLC.ILog
-    {
+    public class TxtLog : PLC.ILog {
         private const int MAX = 5000;
+
         private int _count = 0;
-        private RichTextBox _txt;
+        private RichTextBox _richTextBox;
 
         /// <summary>
         /// 
         /// </summary>
-        public TxtLog(RichTextBox txt)
-        {
-            _txt = txt;
+        public TxtLog(RichTextBox richTextBox) {
+            _richTextBox = richTextBox;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="s"></param>
-        public void D(string s)
-        {
-            if(_count > MAX)
-            {
+        public void Output(string s) {
+            if (_count > MAX) {
                 _count = 0;
-                _txt.Clear();
+                _richTextBox.Clear();
             }
 
-            var text = string.Format("{0} {1}{2}", 
-                DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
-                s, 
+            var text = string.Format("{0} {1}{2}",
+                DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                s,
                 Environment.NewLine);
-            _txt.AppendText(text);
+            _richTextBox.AppendText(text);
             _count++;
         }
     }

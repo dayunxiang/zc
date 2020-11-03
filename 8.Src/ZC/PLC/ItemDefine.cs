@@ -5,21 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using NLog;
 
-namespace PLC
-{
+namespace PLC {
 
-    public class ItemDefine
-    {
+    public class ItemDefine {
         public string ItemPath { get; set; }
         public string ItemName { get; set; }
         public object Tag { get; set; }
-        public object ItemValue
-        {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object ItemValue {
             get { return _itemValue; }
-            set
-            {
-                if (_itemValue != value)
-                {
+            set {
+                if (_itemValue != value) {
                     _itemValue = value;
                 }
             }
@@ -29,8 +28,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public Opc.Da.Item Create()
-        {
+        public Opc.Da.Item Create() {
             Opc.ItemIdentifier itemIdentifier = new Opc.ItemIdentifier(this.ItemPath, this.ItemName);
             Opc.Da.Item item = new Opc.Da.Item(itemIdentifier);
             return item;
@@ -40,8 +38,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
+        public override string ToString() {
             return string.Format("Name={0}, Path={1}, Tag={2}", ItemName, ItemValue, Tag);
         }
     }

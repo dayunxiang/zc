@@ -8,11 +8,9 @@ using PLC;
 using NLog;
 using PL.Hardware;
 
-namespace PL
-{
+namespace PL {
 
-    public class AppController
-    {
+    public class AppController {
         #region Members
         static private Logger _logger = LogManager.GetCurrentClassLogger();
         private bool _isChecking = false;
@@ -24,8 +22,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public AppController(App app, Gc gc)
-        {
+        public AppController(App app, Gc gc) {
             this._app = app;
             this.ControllerStatus = new AppControllerStatus(gc.AppControlStatus, ControllerStatusEnum.Idle);
             this.AutoManualStatus = new AutoManualStatus(gc.AutoManual);
@@ -39,8 +36,7 @@ namespace PL
         /// 
         /// </summary>
         /// <param name="msg"></param>
-        static private void D(string msg)
-        {
+        static private void Debug(string msg) {
             _logger.Debug(msg);
         }
 
@@ -49,8 +45,7 @@ namespace PL
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="args"></param>
-        static private void D(string msg, params object[] args)
-        {
+        static private void Debug(string msg, params object[] args) {
             _logger.Debug(msg, args);
         }
 
@@ -58,24 +53,21 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsChecking()
-        {
+        public bool IsChecking() {
             return _isChecking;
         }
 
         /// <summary>
         /// call it when app exit
         /// </summary>
-        public void Close()
-        {
+        public void Close() {
             this.ControllerStatus.Value = ControllerStatusEnum.NotRun;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public AutoManualStatus AutoManualStatus
-        {
+        public AutoManualStatus AutoManualStatus {
             get;
             private set;
         }
@@ -83,8 +75,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public AppControllerStatus ControllerStatus
-        {
+        public AppControllerStatus ControllerStatus {
             get;
             private set;
         }
@@ -92,8 +83,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public PlOptionsReader PlOptionsReader
-        {
+        public PlOptionsReader PlOptionsReader {
             get;
             private set;
         }
@@ -101,8 +91,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public ZtPlcStatus ZtPlcStatus
-        {
+        public ZtPlcStatus ZtPlcStatus {
             get;
             private set;
         }
@@ -110,8 +99,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public CurrentWorkingDamStatus CurrentWorkingDamStatus
-        {
+        public CurrentWorkingDamStatus CurrentWorkingDamStatus {
             get;
             private set;
         }
@@ -119,8 +107,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public CurrentDoneCycleCountStatus CurrentDoneCycleCountStatus
-        {
+        public CurrentDoneCycleCountStatus CurrentDoneCycleCountStatus {
             get;
             private set;
         }
@@ -128,10 +115,8 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public void Check()
-        {
-            if (!_isChecking)
-            {
+        public void Check() {
+            if (!_isChecking) {
                 _isChecking = true;
                 OnCheck();
                 _isChecking = false;
@@ -142,13 +127,10 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        string[] GetSubscriptionItemNames()
-        {
+        string[] GetSubscriptionItemNames() {
             var r = new List<string>(2000);
-            foreach (var dam in _app.Dams.ToArray())
-            {
-                foreach(var gun in dam.Guns.ToArray())
-                {
+            foreach (var dam in _app.Dams.ToArray()) {
+                foreach (var gun in dam.Guns.ToArray()) {
                     r.Add(gun.Switch.Address);
                     r.Add(gun.Fault.Address);
                     r.Add(gun.Remote.Address);
@@ -174,18 +156,14 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        private void OnCheck()
-        {
-            try
-            {
-                Lm.D("Check...");
+        private void OnCheck() {
+            try {
+                MyLogManager.Output("Check...");
 
-                if (!_app.Opc.IsConnected())
-                {
+                if (!_app.Opc.IsConnected()) {
                     var subscriptionItemNames = GetSubscriptionItemNames();
                     bool success = _app.Opc.Connect();
-                    if (success)
-                    {
+                    if (success) {
                         var itemNames = GetSubscriptionItemNames();
                         _app.Opc.AddSubscriptionItems(itemNames);
 
@@ -195,97 +173,70 @@ namespace PL
                     return;
                 }
 
-                if (AutoManualStatus.Read() == AutoManualStatusEnum.Auto)
-                {
+                if (AutoManualStatus.Read() == AutoManualStatusEnum.Auto) {
                     var controllerStatusEnum = this.ControllerStatus.Value;
                     var ztPlcStatusEnum = ZtPlcStatus.Read();
-                    if (ztPlcStatusEnum == ZtPlcStatusEnum.Start)
-                    {
+                    if (ztPlcStatusEnum == ZtPlcStatusEnum.Start) {
                         #region start
                         if (controllerStatusEnum == ControllerStatusEnum.Idle ||
-                            controllerStatusEnum == ControllerStatusEnum.Completed)
-                        {
+                            controllerStatusEnum == ControllerStatusEnum.Completed) {
                             this.ControllerStatus.Value = ControllerStatusEnum.Working;
                             var options = this.PlOptionsReader.Read();
                             _plController = new PlController(options);
                             _plController.Start();
-                        }
-                        else if (controllerStatusEnum == ControllerStatusEnum.Working)
-                        {
+                        } else if (controllerStatusEnum == ControllerStatusEnum.Working) {
                             var checkResult = _plController.Check();
-                            if (checkResult == PlCheckResult.Completed)
-                            {
+                            if (checkResult == PlCheckResult.Completed) {
                                 this.ControllerStatus.Value = ControllerStatusEnum.Completed;
                                 this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
                                 _plController.Close();
                                 _plController = null;
-                            }
-                            else
-                            {
+                            } else {
                                 // working
                                 //
                             }
-                        }
-                        else
-                        {
+                        } else {
                             // NotRun ?
-                            D("unknown controller status: {0}", controllerStatusEnum);
+                            Debug("unknown controller status: {0}", controllerStatusEnum);
                         }
                         #endregion start
-                    }
-                    else if (ztPlcStatusEnum == ZtPlcStatusEnum.Stop)
-                    {
+                    } else if (ztPlcStatusEnum == ZtPlcStatusEnum.Stop) {
                         #region stop
                         if (controllerStatusEnum == ControllerStatusEnum.Idle ||
-                         controllerStatusEnum == ControllerStatusEnum.Completed)
-                        {
+                         controllerStatusEnum == ControllerStatusEnum.Completed) {
                             //nothing
                             //
-                        }
-                        else if (controllerStatusEnum == ControllerStatusEnum.Working)
-                        {
-                            Debug.Assert(_plController != null);
+                        } else if (controllerStatusEnum == ControllerStatusEnum.Working) {
+                            System.Diagnostics.Debug.Assert(_plController != null);
 
                             _plController.Stop();
                             this.ControllerStatus.Value = ControllerStatusEnum.Completed;
                             this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
 
-                        }
-                        else
-                        {
-                            D("unknown controller status: {0}", controllerStatusEnum);
+                        } else {
+                            Debug("unknown controller status: {0}", controllerStatusEnum);
                         }
                         #endregion stop
-                    }
-                    else if (ztPlcStatusEnum == ZtPlcStatusEnum.Completed)
-                    {
+                    } else if (ztPlcStatusEnum == ZtPlcStatusEnum.Completed) {
                         // nothind
                         //
+                    } else {
+                        Debug("unknown ztPlcStatus: {0}", ztPlcStatusEnum);
                     }
-                    else
-                    {
-                        D("unknown ztPlcStatus: {0}", ztPlcStatusEnum);
-                    }
-                }
-                else
-                {
+                } else {
                     // manual, nothing
                     //
                 }
-            }
-            catch (OpcException opcEx)
-            {
-                Lm.D(opcEx.ToString());
+            } catch (OpcException opcEx) {
+                MyLogManager.Output(opcEx.ToString());
             }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public void Start()
-        {
-            if (_timer == null)
-            {
+        public void Start() {
+            if (_timer == null) {
                 _timer = new Timer();
                 _timer.Interval = Config.CheckInterval;
                 _timer.Tick += _timer_Tick;
@@ -298,8 +249,7 @@ namespace PL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _timer_Tick(object sender, EventArgs e)
-        {
+        private void _timer_Tick(object sender, EventArgs e) {
             Check();
         }
 
@@ -307,18 +257,15 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsStarted()
-        {
+        public bool IsStarted() {
             return _timer != null && _timer.Enabled;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public void Stop()
-        {
-            if (_timer != null)
-            {
+        public void Stop() {
+            if (_timer != null) {
                 _timer.Stop();
                 _timer = null;
             }

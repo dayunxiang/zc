@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PLC
-{
+namespace PLC {
 
     /// <summary>
     /// 
     /// </summary>
-    public interface ILog
-    {
-        void D(string s);
+    public interface ILog {
+        void Output(string s);
     }
 }

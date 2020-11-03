@@ -6,10 +6,8 @@ using System.Text;
 using PLC;
 using NLog;
 
-namespace PL
-{
-    public enum GunsCheckResult
-    {
+namespace PL {
+    public enum GunsCheckResult {
         Working = 0,
         Timeout = 1,
     }

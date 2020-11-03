@@ -5,18 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using NLog;
 
-namespace PLC
-{
+namespace PLC {
     /// <summary>
     /// 
     /// </summary>
-    public class SimpleOpcServer
-    {
-        static private Logger _logger = LogManager.GetCurrentClassLogger();
+    public class SimpleOpcServer {
+        static private Logger _logger = NLog.LogManager.GetCurrentClassLogger();
 
+        private Opc.Da.Subscription _subscription;
         private Opc.Da.Server _server;
         private ItemCache _itemCache;
-        private Opc.Da.Subscription _subscription;
 
         /// <summary>
         /// 
@@ -26,8 +24,7 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        public SimpleOpcServer()
-        {
+        public SimpleOpcServer() {
             _itemCache = new ItemCache();
         }
 
@@ -35,8 +32,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsConnected()
-        {
+        public bool IsConnected() {
             return _server != null && _server.IsConnected;
         }
 
@@ -45,8 +41,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        private Opc.Factory GetFactory()
-        {
+        private Opc.Factory GetFactory() {
             return new OpcCom.Factory();
         }
 
@@ -54,8 +49,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        private Opc.ConnectData GetConnectData()
-        {
+        private Opc.ConnectData GetConnectData() {
             return new Opc.ConnectData(null, null);
         }
 
@@ -63,12 +57,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        private Opc.URL GetConnectUrl(string machine)
-        {
-            //var url = string.Format(
-            //        @"opcda://{0}/RSLinx OPC Server/{a05bb6d5-2f8a-11d1-9bb0-080009d01446}",
-            //        machine
-            //        );
+        private Opc.URL GetConnectUrl(string machine) {
             var url = "opcda://" + machine + "/RSLinx OPC Server/{a05bb6d5-2f8a-11d1-9bb0-080009d01446}";
             return new Opc.URL(url);
         }
@@ -78,39 +67,33 @@ namespace PLC
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public bool Connect()
-        {
+        public bool Connect() {
             _server = new Opc.Da.Server(GetFactory(), GetConnectUrl("localhost"));
-            //Lm.D("Connect...");
-            try
-            {
+            try {
                 _server.Connect(GetConnectData());
 
                 // create subscription state
-                var state = new Opc.Da.SubscriptionState();
-                state.ClientHandle = null;
-                state.ServerHandle = null;
-                state.Name = "OPCSample";
-                state.Active = false;
-                state.UpdateRate = 1000;
-                state.KeepAlive = 0;
-                state.Deadband = 0;
-                state.Locale = null;
-                state.ClientHandle = Guid.NewGuid().ToString();
+                var subscriptionState = new Opc.Da.SubscriptionState();
+                subscriptionState.ClientHandle = null;
+                subscriptionState.ServerHandle = null;
+                subscriptionState.Name = "OPCSample";
+                subscriptionState.Active = false;
+                subscriptionState.UpdateRate = 1000;
+                subscriptionState.KeepAlive = 0;
+                subscriptionState.Deadband = 0;
+                subscriptionState.Locale = null;
+                subscriptionState.ClientHandle = Guid.NewGuid().ToString();
 
-                _subscription = (Opc.Da.Subscription)_server.CreateSubscription(state);
-            }
-            catch (Exception ex)
-            {
+                _subscription = (Opc.Da.Subscription)_server.CreateSubscription(subscriptionState);
+            } catch (Exception ex) {
                 Debug(ex);
                 _server = null;
             }
 
             bool success = _server != null && _server.IsConnected;
-            Lm.D("Connect: " + success);
+            MyLogManager.Output("Connect: " + success);
 
-            if(success )
-            {
+            if (success) {
                 OnConnected();
             }
             return success;
@@ -119,10 +102,8 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        private void OnConnected()
-        {
-            if(ConnectedEvent != null)
-            {
+        private void OnConnected() {
+            if (ConnectedEvent != null) {
                 ConnectedEvent(this, EventArgs.Empty);
             }
         }
@@ -131,19 +112,17 @@ namespace PLC
         /// 
         /// </summary>
         /// <param name="itemNames"></param>
-        public void AddSubscriptionItems(string[] itemNames)
-        {
+        public void AddSubscriptionItems(string[] itemNames) {
             _logger.Debug("AddSubscriptionItems - begin");
 
             _itemCache.Clear();
             var items = CreateSubscriptionItems(itemNames);
-            var itemResults =  _subscription.AddItems(items);
+            var itemResults = _subscription.AddItems(items);
 
             _itemCache.Set(_subscription.Items);
 
-            foreach (var itemResult in itemResults)
-            {
-                _logger.Debug("ItemName: {0}, ResultId: {1}", 
+            foreach (var itemResult in itemResults) {
+                _logger.Debug("ItemName: {0}, ResultId: {1}",
                     itemResult.ItemName,
                     itemResult.ResultID.ToString());
             }
@@ -154,11 +133,9 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        private Opc.Da.Item[] CreateSubscriptionItems(string[] itemNames)
-        {
+        private Opc.Da.Item[] CreateSubscriptionItems(string[] itemNames) {
             var r = new List<Opc.Da.Item>();
-            foreach (var itemName in itemNames)
-            {
+            foreach (var itemName in itemNames) {
                 var itemId = new Opc.ItemIdentifier(itemName);
                 var item = new Opc.Da.Item(itemId);
                 r.Add(item);
@@ -170,16 +147,11 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        public void Disconnect()
-        {
-            if (_server != null)
-            {
-                try
-                {
+        public void Disconnect() {
+            if (_server != null) {
+                try {
                     _server.Disconnect();
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     Debug(ex);
                 }
                 _server.Dispose();
@@ -191,9 +163,8 @@ namespace PLC
         /// 
         /// </summary>
         /// <param name="ex"></param>
-        private void Debug(Exception ex)
-        {
-            Lm.D(ex.ToString());
+        private void Debug(Exception ex) {
+            MyLogManager.Output(ex.ToString());
             Console.WriteLine(ex);
         }
 
@@ -202,8 +173,7 @@ namespace PLC
         /// </summary>
         /// <param name="itemName"></param>
         /// <returns></returns>
-        public object Read(string itemName)
-        {
+        public object Read(string itemName) {
             var values = Read(new[] { itemName });
             return values[0];
         }
@@ -213,13 +183,11 @@ namespace PLC
         /// </summary>
         /// <param name="itemNames"></param>
         /// <returns></returns>
-        public object[] Read(string[] itemNames)
-        {
+        public object[] Read(string[] itemNames) {
             var items = _itemCache.Get(itemNames);
             var itemValueResults = Read(items);
-            List<object> values = new List<object> (itemNames.Length);
-            foreach (var itemValueResult in itemValueResults)
-            {
+            List<object> values = new List<object>(itemNames.Length);
+            foreach (var itemValueResult in itemValueResults) {
                 //itemValueResult.Quality
                 values.Add(itemValueResult.Value);
             }
@@ -230,8 +198,7 @@ namespace PLC
         /// 
         /// </summary>
         /// <param name="items"></param>
-        private Opc.Da.ItemValueResult[] Read(Opc.Da.Item[] items)
-        {
+        private Opc.Da.ItemValueResult[] Read(Opc.Da.Item[] items) {
             // use subsctiption read
             //
             return ReadFromSubscription(items);
@@ -248,40 +215,31 @@ namespace PLC
         /// </summary>
         /// <param name="items"></param>
         /// <returns></returns>
-        private Opc.Da.ItemValueResult[] ReadFromSubscription(Opc.Da.Item[] items)
-        {
-            if(items == null)
-            {
+        private Opc.Da.ItemValueResult[] ReadFromSubscription(Opc.Da.Item[] items) {
+            if (items == null) {
                 throw new ArgumentNullException();
             }
 
-            if(items.Length == 0)
-            {
+            if (items.Length == 0) {
                 throw new ArgumentException("items length == 0");
             }
 
-            if (IsConnected())
-            {
+            if (IsConnected()) {
                 Opc.Da.ItemValueResult[] results = null;
-                try
-                {
+                try {
                     results = _subscription.Read(items);
                     LogReadInfo(items, results);
                     return results;
-                }
-                catch(Opc.ResultIDException resultIdEx)
-                {
+                } catch (Opc.ResultIDException resultIdEx) {
                     //Lm.D(resultIdEx.ToString ());
                     //return new Opc.Da.ItemValueResult[0];
-                    var msg = string.Format("read opc items '{0}' count '{1}', fail '{2}'", 
-                        items[0].ItemName, 
+                    var msg = string.Format("read opc items '{0}' count '{1}', fail '{2}'",
+                        items[0].ItemName,
                         items.Length,
                         resultIdEx.Result);
                     throw new OpcException(msg, resultIdEx);
                 }
-            }
-            else
-            {
+            } else {
                 //return new Opc.Da.ItemValueResult[0];
                 throw new InvalidOperationException("opc not connect");
             }
@@ -314,15 +272,13 @@ namespace PLC
         /// </summary>
         /// <param name="items"></param>
         /// <param name="results"></param>
-        private void LogReadInfo(Opc.Da.Item[] items, Opc.Da.ItemValueResult[] results)
-        {
+        private void LogReadInfo(Opc.Da.Item[] items, Opc.Da.ItemValueResult[] results) {
             var sb = new StringBuilder();
             sb.Append("read: ");
-            for (int i = 0; i < items.Length ; i++)
-            {
+            for (int i = 0; i < items.Length; i++) {
                 sb.AppendFormat("{0}->{1}({2})", items[i].ItemName, results[i].Value, results[i].ResultID);
             }
-            Lm.D(sb.ToString());
+            MyLogManager.Output(sb.ToString());
         }
 
         /// <summary>
@@ -331,8 +287,7 @@ namespace PLC
         /// <param name="itemName"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public Opc.IdentifiedResult Write(string itemName, object value)
-        {
+        public Opc.IdentifiedResult Write(string itemName, object value) {
             var s = Write(new string[] { itemName }, new object[] { value });
             return s[0];
         }
@@ -343,12 +298,10 @@ namespace PLC
         /// <param name="itemNames"></param>
         /// <param name="values"></param>
         /// <returns></returns>
-        public Opc.IdentifiedResult[] Write(string[] itemNames, object[] values)
-        {
+        public Opc.IdentifiedResult[] Write(string[] itemNames, object[] values) {
             List<Opc.Da.ItemValue> itemValues = new List<Opc.Da.ItemValue>();
 
-            for (int i = 0; i < itemNames.Length; i++)
-            {
+            for (int i = 0; i < itemNames.Length; i++) {
                 var itemName = itemNames[i];
                 var value = values[i];
 
@@ -379,27 +332,20 @@ namespace PLC
         /// </summary>
         /// <param name="itemValues"></param>
         /// <returns></returns>
-        public Opc.IdentifiedResult[] Write(Opc.Da.ItemValue[] itemValues)
-        {
-            if (IsConnected())
-            {
-                try
-                {
+        public Opc.IdentifiedResult[] Write(Opc.Da.ItemValue[] itemValues) {
+            if (IsConnected()) {
+                try {
                     var r = _subscription.Write(itemValues);
                     LogWriteInfo(itemValues, r);
                     return r;
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     //Lm.D(ex.ToString());
                     //return new Opc.IdentifiedResult[0];
-                    var msg = string.Format("write item '{0}' count '{1}' fail", 
+                    var msg = string.Format("write item '{0}' count '{1}' fail",
                         itemValues[0].ItemName, itemValues.Length);
                     throw new OpcException(msg, ex);
                 }
-            }
-            else
-            {
+            } else {
                 //return new Opc.IdentifiedResult[0];
                 throw new InvalidOperationException("opc not connect");
             }
@@ -408,99 +354,17 @@ namespace PLC
         /// <summary>
         /// 
         /// </summary>
-        private void LogWriteInfo(Opc.Da.ItemValue[] itemValues, Opc.IdentifiedResult[] results)
-        {
+        private void LogWriteInfo(Opc.Da.ItemValue[] itemValues, Opc.IdentifiedResult[] results) {
             var sb = new StringBuilder();
             sb.Append("write: ");
-            for (int i = 0; i < itemValues.Length; i++)
-            {
-                sb.AppendFormat("{0}({1})->{2}, ", 
-                    itemValues[i].ItemName, 
-                    itemValues[i].Value, 
+            for (int i = 0; i < itemValues.Length; i++) {
+                sb.AppendFormat("{0}({1})->{2}, ",
+                    itemValues[i].ItemName,
+                    itemValues[i].Value,
                     results[i].ResultID);
             }
-            Lm.D(sb.ToString());
+            MyLogManager.Output(sb.ToString());
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        internal class ItemCache
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            private Dictionary<string, Opc.Da.Item> _dict = new Dictionary<string, Opc.Da.Item>(1000);
-
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="itemName"></param>
-            /// <returns></returns>
-            public Opc.Da.Item Get(string itemName)
-            {
-                if (_dict.ContainsKey(itemName))
-                {
-                    return _dict[itemName];
-                }
-                else
-                {
-                    //var identifier = new Opc.ItemIdentifier(itemName);
-                    //var item = new Opc.Da.Item(identifier);
-                    //_dict[itemName] = item;
-                    //return item;
-                    throw new ArgumentException(
-                        string.Format("cannot find item by name '{0}'", itemName)
-                        );
-                }
-            }
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="itemNames"></param>
-            /// <returns></returns>
-            public Opc.Da.Item[] Get(string [] itemNames)
-            {
-                List<Opc.Da.Item> r = new List<Opc.Da.Item>();
-                foreach (var itemName in itemNames)
-                {
-                    var item = Get(itemName);
-                    r.Add(item);
-                }
-                return r.ToArray();
-            }
-
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="itemName"></param>
-            /// <param name="item"></param>
-            public void Set(string itemName, Opc.Da.Item item)
-            {
-                this._dict[itemName] = item;
-            }
-
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="items"></param>
-            public void Set(Opc.Da.Item[] items)
-            {
-                foreach (var item in items)
-                {
-                    this.Set(item.ItemName, item);
-                }
-            }
-
-
-            /// <summary>
-            /// 
-            /// </summary>
-            internal void Clear()
-            {
-                this._dict.Clear();
-            }
-        }
     }
 }

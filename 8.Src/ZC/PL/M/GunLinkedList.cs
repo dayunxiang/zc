@@ -5,16 +5,13 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class GunLinkedList : LinkedList<Gun>
-    {
+    public class GunLinkedList : LinkedList<Gun> {
         /// <summary>
         /// 
         /// </summary>
-        public GunLinkedList()
-        {
+        public GunLinkedList() {
         }
 
         /// <summary>
@@ -22,10 +19,8 @@ namespace PL
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        internal WorkGunGroup GetFirstGuns(int count)
-        {
-            if (this.Count == 0)
-            {
+        internal WorkGunGroup GetFirstGuns(int count) {
+            if (this.Count == 0) {
                 throw new InvalidOperationException("gun linked list count == 0");
             }
 
@@ -34,20 +29,17 @@ namespace PL
             //GunList r = new GunList();
 
             var currentGun = this.First.Value;
-            while (count > 0)
-            {
+            while (count > 0) {
                 Debug.Assert(currentGun != null);
 
-                if (currentGun.CanUse())
-                {
+                if (currentGun.CanUse()) {
                     wgg.WorkGuns.Add(currentGun);
                     count--;
                 }
 
                 wgg.SearchGuns.Add(currentGun);
                 currentGun = currentGun.Next;
-                if (currentGun == null)
-                {
+                if (currentGun == null) {
                     break;
                 }
             }

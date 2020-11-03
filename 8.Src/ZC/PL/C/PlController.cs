@@ -6,13 +6,10 @@ using System.Text;
 using PLC;
 using NLog;
 
-namespace PL
-{
+namespace PL {
 
-    public class PlController
-    {
-        private enum PlControllerStatus
-        {
+    public class PlController {
+        private enum PlControllerStatus {
             Init = 0,
             Working = 1,
             StopPump = 2,
@@ -24,9 +21,9 @@ namespace PL
 
         //private bool _isWorking;
         private PlControllerStatus _plControllerStatus;
-        private DateTime _beginDt;
-        private DateTime _endDt;
-        private DateTime _stopPumpDt;
+        private DateTime _beginDateTime;
+        private DateTime _endDateTime;
+        private DateTime _stopPumpDateTime;
         private GunsController _discardGunsController;
         private GunsController _gunsController;
         private int _cycleCount = 0;
@@ -36,8 +33,7 @@ namespace PL
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public PlController(PlOptions options)
-        {
+        public PlController(PlOptions options) {
             this.PlOptions = options;
             _plControllerStatus = PlControllerStatus.Init;
         }
@@ -46,8 +42,7 @@ namespace PL
         /// 
         /// </summary>
         /// <param name="msg"></param>
-        static private void D(string msg)
-        {
+        static private void Debug(string msg) {
             _logger.Debug(msg);
         }
 
@@ -55,16 +50,14 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsInitStatus()
-        {
+        public bool IsInitStatus() {
             return _plControllerStatus == PlControllerStatus.Init;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private void CycleCountChanged()
-        {
+        private void CycleCountChanged() {
             var doneCycleCountStatus = GetCurrentDoneCycleCountStatus();
             doneCycleCountStatus.Write(_cycleCount);
         }
@@ -73,17 +66,15 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsWorkingStatus()
-        {
+        public bool IsWorkingStatus() {
             return _plControllerStatus == PlControllerStatus.Working;
-                // || _plControllerStatus == PlControllerStatus.StopPump;
+            // || _plControllerStatus == PlControllerStatus.StopPump;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public PlOptions PlOptions
-        {
+        public PlOptions PlOptions {
             get;
             private set;
         }
@@ -91,13 +82,11 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public void Start()
-        {
+        public void Start() {
             //if (!IsWorkingStatus())
-            if (IsInitStatus())
-            {
+            if (IsInitStatus()) {
                 _plControllerStatus = PlControllerStatus.Working;
-                _beginDt = DateTime.Now;
+                _beginDateTime = DateTime.Now;
                 // 1. get guns -> working guns
                 // 2. guns open
                 var gunsController = GetGunsController();
@@ -110,18 +99,12 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        internal PlCheckResult Check()
-        {
-            if (IsStopPumpStatus())
-            {
+        internal PlCheckResult Check() {
+            if (IsStopPumpStatus()) {
                 return CheckStopPump();
-            }
-            else if (IsWorkingStatus())
-            {
+            } else if (IsWorkingStatus()) {
                 return CheckWorking();
-            }
-            else
-            {
+            } else {
                 throw new InvalidOperationException("pl controller status invalid");
             }
         }
@@ -130,15 +113,11 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool IsStopPumpTimeOut()
-        {
-            var ts = DateTime .Now - _stopPumpDt;
-            if(ts < TimeSpan.Zero || ts .TotalSeconds >= Config.GunsCloseDelaySecondWhenStopPump)
-            {
+        private bool IsStopPumpTimeOut() {
+            var ts = DateTime.Now - _stopPumpDateTime;
+            if (ts < TimeSpan.Zero || ts.TotalSeconds >= Config.GunsCloseDelaySecondWhenStopPump) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         }
@@ -147,8 +126,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool IsStopPumpStatus()
-        {
+        private bool IsStopPumpStatus() {
             return _plControllerStatus == PlControllerStatus.StopPump;
         }
 
@@ -156,17 +134,13 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private PlCheckResult CheckStopPump()
-        {
-            if (IsStopPumpTimeOut())
-            {
+        private PlCheckResult CheckStopPump() {
+            if (IsStopPumpTimeOut()) {
                 _gunsController.Close();
                 _gunsController = null;
                 GetCurrentWorkingDamStatus().Write(0);
                 return PlCheckResult.Completed;
-            }
-            else
-            {
+            } else {
                 return PlCheckResult.Working;
             }
         }
@@ -175,8 +149,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private CurrentWorkingDamStatus GetCurrentWorkingDamStatus()
-        {
+        private CurrentWorkingDamStatus GetCurrentWorkingDamStatus() {
             return App.GetApp().AppController.CurrentWorkingDamStatus;
         }
 
@@ -184,8 +157,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private CurrentDoneCycleCountStatus GetCurrentDoneCycleCountStatus()
-        {
+        private CurrentDoneCycleCountStatus GetCurrentDoneCycleCountStatus() {
             return App.GetApp().AppController.CurrentDoneCycleCountStatus;
         }
 
@@ -193,8 +165,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private PlCheckResult CheckWorking()
-        {
+        private PlCheckResult CheckWorking() {
             // 0. discard guns controller close
             //
             // 1. working guns timeout
@@ -207,11 +178,9 @@ namespace PL
             //        n - work completed
             //
             //    n - return
-            if (_discardGunsController != null)
-            {
+            if (_discardGunsController != null) {
                 var canClose = _discardGunsController.CanClose(Config.DiscardGunsCloseDelay);
-                if (canClose)
-                {
+                if (canClose) {
                     _discardGunsController.Close();
                     _discardGunsController = null;
                 }
@@ -221,19 +190,16 @@ namespace PL
 
             var gunsCr = gunsController.Check();
 
-            if (gunsCr == GunsCheckResult.Timeout)
-            {
+            if (gunsCr == GunsCheckResult.Timeout) {
                 //todo: check cycle count 
                 //
                 bool isPassTail;
                 var nextGuns = gunsController.GetNextWorkGunGroup(out isPassTail);
-                if (isPassTail)
-                {
+                if (isPassTail) {
                     this._cycleCount += 1;
                     CycleCountChanged();
 
-                    if(_cycleCount > this.PlOptions.CycleTimes)
-                    {
+                    if (_cycleCount > this.PlOptions.CycleTimes) {
                         //gunsController.Close();
                         //return PlCheckResult.Completed;
                         StopPump();
@@ -250,8 +216,7 @@ namespace PL
 
                 // if discardGunsController not null, need close discard guns
                 //
-                if(_discardGunsController != null)
-                {
+                if (_discardGunsController != null) {
                     _discardGunsController.Close();
                     _discardGunsController = null;
                 }
@@ -264,14 +229,10 @@ namespace PL
                 nextGunsController.Open();
 
                 return PlCheckResult.Working;
-            }
-            else if (gunsCr == GunsCheckResult.Working)
-            {
+            } else if (gunsCr == GunsCheckResult.Working) {
                 return PlCheckResult.Working;
-            }
-            else
-            {
-                D("unknown gunsCheckResult: " + gunsCr);
+            } else {
+                Debug("unknown gunsCheckResult: " + gunsCr);
                 return PlCheckResult.Working;
             }
 
@@ -280,20 +241,17 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        private void StopPump()
-        {
+        private void StopPump() {
             Pump.Instance.Stop();
-            this._stopPumpDt = DateTime.Now;
+            this._stopPumpDateTime = DateTime.Now;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        private GunsController GetGunsController()
-        {
-            if (_gunsController == null)
-            {
+        private GunsController GetGunsController() {
+            if (_gunsController == null) {
                 var guns = App.GetApp().Dams.GetFirstGuns(this.PlOptions);
                 _gunsController = new GunsController(guns, this.PlOptions);
             }
@@ -303,21 +261,17 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        internal void Close()
-        {
+        internal void Close() {
         }
 
         /// <summary>
         /// 
         /// </summary>
-        internal void Stop()
-        {
+        internal void Stop() {
             // todo:
             //
-            if(IsWorkingStatus())
-            {
-                if(_discardGunsController != null)
-                {
+            if (IsWorkingStatus()) {
+                if (_discardGunsController != null) {
                     _discardGunsController.Close();
                     _discardGunsController = null;
                 }

@@ -5,11 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using NLog;
 
-namespace PLC
-{
-
-    public interface IService
-    {
+namespace PLC {
+    public interface IService {
 
     }
 }

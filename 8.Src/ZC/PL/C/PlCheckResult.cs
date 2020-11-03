@@ -6,11 +6,9 @@ using System.Text;
 using PLC;
 using NLog;
 
-namespace PL
-{
+namespace PL {
 
-    public enum PlCheckResult
-    {
+    public enum PlCheckResult {
         Working = 0,
         Completed = 1,
     }

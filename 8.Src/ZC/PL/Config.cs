@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
-    public class Config
-    {
+namespace PL {
+    public class Config {
         /// <summary>
         /// 
         /// </summary>
-        static Config()
-        {
+        static Config() {
             DiscardGunsCloseDelay = 4;
             CheckInterval = 2000;
             GunsCloseDelaySecondWhenStopPump = 10;
@@ -22,8 +19,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        static public int DiscardGunsCloseDelay
-        {
+        static public int DiscardGunsCloseDelay {
             get;
             set;
         }
@@ -31,20 +27,17 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        static public int CheckInterval
-        {
+        static public int CheckInterval {
             get;
             set;
         }
 
-        static public bool IsMock
-        {
+        static public bool IsMock {
             get;
             set;
         }
 
-        static public int GunsCloseDelaySecondWhenStopPump
-        {
+        static public int GunsCloseDelaySecondWhenStopPump {
             get;
             set;
         }

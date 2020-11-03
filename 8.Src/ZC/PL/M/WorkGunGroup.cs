@@ -5,15 +5,12 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
-    public class WorkGunGroup
-    {
+namespace PL {
+    public class WorkGunGroup {
         /// <summary>
         /// 
         /// </summary>
-        public WorkGunGroup()
-        {
+        public WorkGunGroup() {
             this.WorkGuns = new GunList();
             this.SearchGuns = new GunList();
         }
@@ -21,8 +18,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public GunList WorkGuns
-        {
+        public GunList WorkGuns {
             get;
             set;
         }
@@ -30,8 +26,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public GunList SearchGuns
-        {
+        public GunList SearchGuns {
             get;
             set;
         }
@@ -40,8 +35,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public Gun GetFirstGun()
-        {
+        public Gun GetFirstGun() {
             if (this.SearchGuns.Count > 0)
                 return this.SearchGuns.First();
             else
@@ -52,8 +46,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public Gun GetLastGun()
-        {
+        public Gun GetLastGun() {
             if (this.SearchGuns.Count > 0)
                 return this.SearchGuns.Last();
             else
@@ -65,18 +58,15 @@ namespace PL
         /// </summary>
         /// <param name="tailGun"></param>
         /// <returns></returns>
-        internal bool IsIncludeGun(Gun tailGun)
-        {
+        internal bool IsIncludeGun(Gun tailGun) {
             return this.SearchGuns.IsIncludeGun(tailGun);
         }
 
         /// <summary>
         /// get first gun.dam value
         /// </summary>
-        public int GetDamValue()
-        {
-            if (this.WorkGuns.Count == 0)
-            {
+        public int GetDamValue() {
+            if (this.WorkGuns.Count == 0) {
                 throw new InvalidOperationException("work guns count == 0");
             }
 

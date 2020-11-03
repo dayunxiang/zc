@@ -8,27 +8,23 @@ using System.Management;
 using System.Security.Cryptography;
 using Xdgk.Common;
 
-namespace PLForm
-{
-    static class Program
-    {
+namespace PLForm {
+
+    static class Program {
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
-        {
-            var encode=Encode(GetBoardID());
+        static void Main() {
+            var encode = Encode(GetBoardID());
             var key = ReadKey();
 
-            if (!key.Equals(encode))
-            {
+            if (!key.Equals(encode)) {
                 NUnit.UiKit.UserMessage.DisplayFailure("无效的注册码");
                 return;
             }
 
-            if(Xdgk.Common.Diagnostics.HasPreInstance())
-            {
+            if (Xdgk.Common.Diagnostics.HasPreInstance()) {
                 NUnit.UiKit.UserMessage.DisplayInfo("程序已经启动");
                 return;
             }
@@ -38,7 +34,6 @@ namespace PLForm
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
             Application.Run(new frmMain());
         }
 
@@ -47,8 +42,7 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
-        {
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e) {
             ProcessException(e.Exception);
         }
 
@@ -57,8 +51,7 @@ namespace PLForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
             ProcessException(e.ExceptionObject as Exception);
         }
 
@@ -66,8 +59,7 @@ namespace PLForm
         /// 
         /// </summary>
         /// <param name="ex"></param>
-        static private void ProcessException(Exception ex)
-        {
+        static private void ProcessException(Exception ex) {
             ExceptionLogger.Log(ex);
             ExceptionHandler.Handle(ex);
             //set not run
@@ -80,19 +72,14 @@ namespace PLForm
         /// 
         /// </summary>
         /// <returns></returns>
-        static public string GetBoardID()
-        {
+        static public string GetBoardID() {
             string st = "unknown";
-            try
-            {
+            try {
                 ManagementObjectSearcher mos = new ManagementObjectSearcher("Select * from Win32_BaseBoard");
-                foreach (ManagementObject mo in mos.Get())
-                {
+                foreach (ManagementObject mo in mos.Get()) {
                     st = mo["SerialNumber"].ToString();
                 }
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
 
             }
             return st;
@@ -102,8 +89,7 @@ namespace PLForm
         /// 
         /// </summary>
         /// <returns></returns>
-        static public string Encode(string source)
-        {
+        static public string Encode(string source) {
             const string s = "__";
             var s2 = string.Format("{0}{1}{2}", s, source, s);
             var bs = ASCIIEncoding.ASCII.GetBytes(s2);
@@ -117,19 +103,14 @@ namespace PLForm
         /// 
         /// </summary>
         /// <returns></returns>
-        static private string ReadKey()
-        {
+        static private string ReadKey() {
             const string keyFile = "plkey.txt";
 
             string s = string.Empty;
-            try
-            {
+            try {
                 s = File.ReadAllText(keyFile);
                 s = s.Trim();
-            }
-            catch(Exception)
-            {
-                
+            } catch (Exception) {
             }
             return s;
         }

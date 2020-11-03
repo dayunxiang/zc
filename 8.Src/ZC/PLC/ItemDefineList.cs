@@ -5,22 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using NLog;
 
-namespace PLC
-{
+namespace PLC {
 
-    public class ItemDefineList : List<ItemDefine>
-    {
+    public class ItemDefineList : List<ItemDefine> {
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<ValueChangedEventArgs> ValueChanged;
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public Opc.Da.Item[] Create()
-        {
+        public Opc.Da.Item[] Create() {
             List<Opc.Da.Item> items = new List<Opc.Da.Item>();
-            foreach (var itemDefine in this)
-            {
+            foreach (var itemDefine in this) {
                 items.Add(itemDefine.Create());
             }
             return items.ToArray();
@@ -32,14 +31,12 @@ namespace PLC
         /// <param name="itemPath"></param>
         /// <param name="itemName"></param>
         /// <returns></returns>
-        internal ItemDefine Find(string itemPath, string itemName)
-        {
-            var cmp = StringComparer.CurrentCultureIgnoreCase;
-            return this.First((x) =>
-                    {
-                    return cmp.Compare(x.ItemPath, itemPath) == 0 &&
-                    cmp.Compare(x.ItemName, itemName) == 0;
-                    });
+        internal ItemDefine Find(string itemPath, string itemName) {
+            var comparer = StringComparer.CurrentCultureIgnoreCase;
+            return this.First((x) => {
+                return comparer.Compare(x.ItemPath, itemPath) == 0 &&
+                       comparer.Compare(x.ItemName, itemName) == 0;
+            });
         }
 
         /// <summary>
@@ -48,8 +45,7 @@ namespace PLC
         /// <param name="itemPath"></param>
         /// <param name="itemName"></param>
         /// <param name="value"></param>
-        public void SetValue(string itemPath, string itemName, object value)
-        {
+        public void SetValue(string itemPath, string itemName, object value) {
             var itemDefine = Find(itemPath, itemName);
             itemDefine.ItemValue = value;
             FireValueChanged(itemDefine);
@@ -60,10 +56,8 @@ namespace PLC
         /// 
         /// </summary>
         /// <param name="itemDefine"></param>
-        private void FireValueChanged(ItemDefine itemDefine)
-        {
-            if( ValueChanged != null)
-            {
+        private void FireValueChanged(ItemDefine itemDefine) {
+            if (ValueChanged != null) {
                 ValueChanged(this, new ValueChangedEventArgs(itemDefine));
             }
         }
@@ -72,11 +66,9 @@ namespace PLC
         /// 
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
+        public override string ToString() {
             var sb = new StringBuilder();
-            foreach( var i in this)
-            {
+            foreach (var i in this) {
                 sb.AppendFormat("{0}\r\n", i.ToString());
             }
             return sb.ToString();

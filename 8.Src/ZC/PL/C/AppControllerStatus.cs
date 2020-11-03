@@ -4,18 +4,15 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class AppControllerStatus : PlcAddress
-    {
+    public class AppControllerStatus : PlcAddress {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="initValue"></param>
         public AppControllerStatus(string address, ControllerStatusEnum initValue)
-            : base(address)
-        {
+            : base(address) {
             _value = initValue;
             //Write();
         }
@@ -23,16 +20,12 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public ControllerStatusEnum Value
-        {
-            get
-            {
+        public ControllerStatusEnum Value {
+            get {
                 return _value;
             }
-            set
-            {
-                if (_value != value)
-                {
+            set {
+                if (_value != value) {
                     _value = value;
                     Write();
                 }
@@ -42,8 +35,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public void Write()
-        {
+        public void Write() {
             // write _value to plc
             //
             WriteToOpc((int)_value);
@@ -53,8 +45,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsWorking()
-        {
+        public bool IsWorking() {
             return this.Value == ControllerStatusEnum.Working;
         }
     }
