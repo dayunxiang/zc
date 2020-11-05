@@ -15,7 +15,12 @@ namespace PL.Hardware {
         public string Mark { get; set; }
         public string Fault { get; set; }
         public string Remote { get; set; }
+        public decimal Location { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         internal Gun Create() {
             return new Gun() {
                 No = this.No,
@@ -24,7 +29,9 @@ namespace PL.Hardware {
                 Mark = new Mark(this.Mark),
                 Remote = new Remote(this.Remote),
                 Switch = new Switch(this.Switch),
+                Location = this.Location,
             };
         }
+
     }
 }
