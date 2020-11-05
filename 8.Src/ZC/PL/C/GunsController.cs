@@ -10,13 +10,10 @@ using PL.Hardware;
 namespace PL {
     public class GunsController {
         #region Members
-        //private DateTime _discardDt;
-        //private GunList _previousGuns;
-
-        private WorkGunGroup _workGunGroup;
+        private WorkGunGroup _workingGunGroup;
         private PlOptions _plOptions;
-        private DateTime _openDt;
-        private DateTime _closeDt;
+        private DateTime _openDateTime;
+        private DateTime _closeDateTime;
         #endregion //Members
 
         /// <summary>
@@ -24,10 +21,11 @@ namespace PL {
         /// </summary>
         /// <param name="guns"></param>
         public GunsController(WorkGunGroup workGunGroup, PlOptions plOptions) {
-            _workGunGroup = workGunGroup;
+            _workingGunGroup = workGunGroup;
             _plOptions = plOptions;
         }
 
+        #region GetNextWorkGunGroup
         /// <summary>
         /// 
         /// </summary>
@@ -37,11 +35,11 @@ namespace PL {
             isPassTail = false;
 
             var tailGun = GetTailGun();
-            if (_workGunGroup.IsIncludeGun(tailGun)) {
+            if (_workingGunGroup.IsIncludeGun(tailGun)) {
                 isPassTail = true;
             }
 
-            var lastGun = _workGunGroup.GetLastGun();
+            var lastGun = _workingGunGroup.GetLastGun();
             int count = _plOptions.GunCountPerGroup;
 
             WorkGunGroup wgg = new WorkGunGroup();
@@ -56,6 +54,7 @@ namespace PL {
             }
             return wgg;
         }
+        #endregion //GetNextWorkGunGroup
 
         /// <summary>
         /// 
@@ -91,7 +90,7 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         private Dam GetNextGunDam() {
-            var lastGun = _workGunGroup.GetLastGun();
+            var lastGun = _workingGunGroup.GetLastGun();
             var currentDam = lastGun.Dam;
             return GetNextDam(currentDam);
         }
@@ -119,16 +118,16 @@ namespace PL {
         /// 
         /// </summary>
         internal void Open() {
-            foreach (var gun in _workGunGroup.WorkGuns) {
+            foreach (var gun in _workingGunGroup.WorkGuns) {
                 gun.Switch.Open();
             }
 
             // set current working dam
             //
-            var damValue = _workGunGroup.GetDamValue();
+            var damValue = _workingGunGroup.GetDamValue();
             GetCurrentWorkingDamStatus().Write(damValue);
 
-            this._openDt = DateTime.Now;
+            this._openDateTime = DateTime.Now;
         }
 
         /// <summary>
@@ -143,13 +142,14 @@ namespace PL {
         /// 
         /// </summary>
         internal void Close() {
-            foreach (var gun in _workGunGroup.WorkGuns) {
+            foreach (var gun in _workingGunGroup.WorkGuns) {
                 gun.Switch.Close();
             }
 
-            this._closeDt = DateTime.Now;
+            this._closeDateTime = DateTime.Now;
         }
 
+        #region Check
         /// <summary>
         /// 
         /// </summary>
@@ -157,41 +157,66 @@ namespace PL {
         internal GunsCheckResult Check() {
             WriteRemainingTime();
 
-            bool isTimeOut = _plOptions.IsTimeout(_openDt);
+            bool isTimeOut = _plOptions.IsTimeout(_openDateTime);
             if (isTimeOut) {
                 return GunsCheckResult.Timeout;
             } else {
-                // todo: check fault gun
-                // 1. foreach changed workGuns
-                //
-                var workGunsCopy = this._workGunGroup.WorkGuns.ToList();
-                //foreach(var gun in this._workGunGroup.WorkGuns)
-                foreach (var gun in workGunsCopy) {
-                    if (gun.Fault.IsFault) {
-                        Gun last = _workGunGroup.GetLastGun();
-                        Gun nextGun = GetNextGun(last);
-
-                        while (nextGun != null) {
-                            if (!nextGun.CanUse()) {
-                                _workGunGroup.SearchGuns.Add(nextGun);
-                                nextGun = GetNextGun(nextGun);
-                            } else {
-                                _workGunGroup.WorkGuns.Add(nextGun);
-                                _workGunGroup.SearchGuns.Add(nextGun);
-                                nextGun.Switch.Open();
-
-                                // remove and close fault gun
-                                _workGunGroup.WorkGuns.Remove(gun);
-                                gun.Switch.Close();
-                                break;
-                            }
-                        }
-                    } else {
-                        // nothing
-                    }
-                }
+                ProcessWorkingGuns();
                 return GunsCheckResult.Working;
             }
+        }
+        #endregion //Check
+
+        #region ProcessWorkingGuns
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ProcessWorkingGuns() {
+            var workingGunsCopy = this._workingGunGroup.WorkGuns.ToList();
+            foreach (var workingGun in workingGunsCopy) {
+                if (IsGunNeedClose(workingGun)) {
+                    ProcessNeedCloseGun(workingGun);
+                }
+            }
+        }
+        #endregion //ProcessWorkingGuns
+
+        #region ProcessNeedCloseGun
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="workingGun"></param>
+        private void ProcessNeedCloseGun(Gun workingGun) {
+            Gun last = _workingGunGroup.GetLastGun();
+            Gun nextGun = GetNextGun(last);
+
+            while (nextGun != null) {
+                _workingGunGroup.SearchGuns.Add(nextGun);
+
+                if (!nextGun.CanUse()) {
+                    nextGun = GetNextGun(nextGun);
+                } else {
+                    _workingGunGroup.WorkGuns.Add(nextGun);
+                    nextGun.Switch.Open();
+
+                    // remove and close fault gun
+                    _workingGunGroup.WorkGuns.Remove(workingGun);
+                    workingGun.Switch.Close();
+                    break;
+                }
+            }
+        }
+        #endregion //ProcessNeedCloseGun
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="workingGun"></param>
+        /// <returns></returns>
+        private static bool IsGunNeedClose(Gun workingGun) {
+            return
+                workingGun.Fault.IsFault ||
+                workingGun.IsCoverCart();
         }
 
         /// <summary>
@@ -215,7 +240,7 @@ namespace PL {
 
         //    Open();
         //}
-        public DateTime DiscardDt { get; set; }
+        public DateTime DiscardDateTime { get; set; }
 
         /// <summary>
         /// 
@@ -224,8 +249,7 @@ namespace PL {
         public bool CanClose(int discardDelaySecond) {
             var tsDelay = TimeSpan.FromSeconds(discardDelaySecond);
 
-            var ts = DateTime.Now - this.DiscardDt;
-            //Lm.D(string.Format("tsDelay: {0}, ts: {1}, DiscardDt: {2}", tsDelay, ts, DiscardDt));
+            var ts = DateTime.Now - this.DiscardDateTime;
 
             if (ts < TimeSpan.Zero || ts >= tsDelay) {
                 return true;
@@ -234,16 +258,19 @@ namespace PL {
             }
         }
 
+        #region RunningTimeWithSecond
         /// <summary>
         /// 
         /// </summary>
         public int RunningTimeWithSecond {
             get {
-                var ts = DateTime.Now - _openDt;
+                var ts = DateTime.Now - _openDateTime;
                 return (int)ts.TotalSeconds;
             }
         }
+        #endregion //RunningTimeWithSecond
 
+        #region RemainingTimeWithSecond
         /// <summary>
         /// 
         /// </summary>
@@ -257,5 +284,6 @@ namespace PL {
                 return remainingTime;
             }
         }
+        #endregion //RemainingTimeWithSecond
     }
 }

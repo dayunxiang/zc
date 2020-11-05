@@ -9,6 +9,9 @@ using NLog;
 namespace PL {
 
     public class PlController {
+        /// <summary>
+        /// 
+        /// </summary>
         private enum PlControllerStatus {
             Init = 0,
             Working = 1,
@@ -29,6 +32,7 @@ namespace PL {
         private int _cycleCount = 0;
         #endregion //Members
 
+        #region PlController
         /// <summary>
         /// 
         /// </summary>
@@ -37,6 +41,7 @@ namespace PL {
             this.PlOptions = options;
             _plControllerStatus = PlControllerStatus.Init;
         }
+        #endregion //PlController
 
         /// <summary>
         /// 
@@ -46,6 +51,7 @@ namespace PL {
             _logger.Debug(msg);
         }
 
+        #region IsInitStatus
         /// <summary>
         /// 
         /// </summary>
@@ -53,7 +59,9 @@ namespace PL {
         public bool IsInitStatus() {
             return _plControllerStatus == PlControllerStatus.Init;
         }
+        #endregion //IsInitStatus
 
+        #region CycleCountChanged
         /// <summary>
         /// 
         /// </summary>
@@ -61,7 +69,10 @@ namespace PL {
             var doneCycleCountStatus = GetCurrentDoneCycleCountStatus();
             doneCycleCountStatus.Write(_cycleCount);
         }
+        #endregion //CycleCountChanged
 
+
+        #region IsWorkingStatus
         /// <summary>
         /// 
         /// </summary>
@@ -70,7 +81,9 @@ namespace PL {
             return _plControllerStatus == PlControllerStatus.Working;
             // || _plControllerStatus == PlControllerStatus.StopPump;
         }
+        #endregion //IsWorkingStatus
 
+        #region PlOptions
         /// <summary>
         /// 
         /// </summary>
@@ -78,7 +91,9 @@ namespace PL {
             get;
             private set;
         }
+        #endregion //PlOptions
 
+        #region Start
         /// <summary>
         /// 
         /// </summary>
@@ -95,7 +110,9 @@ namespace PL {
                 CycleCountChanged();
             }
         }
+        #endregion //Start
 
+        #region Check
         /// <summary>
         /// 
         /// </summary>
@@ -108,6 +125,7 @@ namespace PL {
                 throw new InvalidOperationException("pl controller status invalid");
             }
         }
+        #endregion //Check
 
         /// <summary>
         /// 
@@ -130,6 +148,7 @@ namespace PL {
             return _plControllerStatus == PlControllerStatus.StopPump;
         }
 
+        #region CheckStopPump
         /// <summary>
         /// 
         /// </summary>
@@ -144,6 +163,7 @@ namespace PL {
                 return PlCheckResult.Working;
             }
         }
+        #endregion //CheckStopPump
 
         /// <summary>
         /// 
@@ -161,11 +181,24 @@ namespace PL {
             return App.GetApp().AppController.CurrentDoneCycleCountStatus;
         }
 
+
+        #region RefreshCartLocation
+        /// <summary>
+        /// 
+        /// </summary>
+        private void RefreshCartLocation() {
+            App.GetApp().Carts.RefreshLocations();
+        }
+        #endregion //RefreshCartLocation
+
+        #region CheckWorking
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         private PlCheckResult CheckWorking() {
+            //-1. refresh cart location
+            //
             // 0. discard guns controller close
             //
             // 1. working guns timeout
@@ -178,19 +211,17 @@ namespace PL {
             //        n - work completed
             //
             //    n - return
-            if (_discardGunsController != null) {
-                var canClose = _discardGunsController.CanClose(Config.DiscardGunsCloseDelay);
-                if (canClose) {
-                    _discardGunsController.Close();
-                    _discardGunsController = null;
-                }
-            }
+
+            RefreshCartLocation();
+
+            CheckDiscardGuns();
+
 
             var gunsController = GetGunsController();
 
-            var gunsCr = gunsController.Check();
+            var gunsCheckResult = gunsController.Check();
 
-            if (gunsCr == GunsCheckResult.Timeout) {
+            if (gunsCheckResult == GunsCheckResult.Timeout) {
                 //todo: check cycle count 
                 //
                 bool isPassTail;
@@ -222,22 +253,38 @@ namespace PL {
                 }
 
                 _discardGunsController = gunsController;
-                _discardGunsController.DiscardDt = DateTime.Now;
+                _discardGunsController.DiscardDateTime = DateTime.Now;
 
                 var nextGunsController = new GunsController(nextGuns, this.PlOptions);
                 _workingGunsController = nextGunsController;
                 nextGunsController.Open();
 
                 return PlCheckResult.Working;
-            } else if (gunsCr == GunsCheckResult.Working) {
+            } else if (gunsCheckResult == GunsCheckResult.Working) {
                 return PlCheckResult.Working;
             } else {
-                Debug("unknown gunsCheckResult: " + gunsCr);
+                Debug("unknown gunsCheckResult: " + gunsCheckResult);
                 return PlCheckResult.Working;
             }
-
         }
+        #endregion //CheckWorking
 
+        #region CheckDiscardGuns
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CheckDiscardGuns() {
+            if (_discardGunsController != null) {
+                var canClose = _discardGunsController.CanClose(Config.DiscardGunsCloseDelay);
+                if (canClose) {
+                    _discardGunsController.Close();
+                    _discardGunsController = null;
+                }
+            }
+        }
+        #endregion //CheckDiscardGuns
+
+        #region StopPump
         /// <summary>
         /// 
         /// </summary>
@@ -245,6 +292,7 @@ namespace PL {
             Pump.Instance.Stop();
             this._stopPumpDateTime = DateTime.Now;
         }
+        #endregion //StopPump
 
         /// <summary>
         /// 
