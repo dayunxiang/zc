@@ -13,6 +13,7 @@ namespace PL {
             DiscardGunsCloseDelay = 4;
             CheckInterval = 2000;
             GunsCloseDelaySecondWhenStopPump = 10;
+            CartRange = 75m;
             IsMock = false;
         }
 
@@ -38,6 +39,11 @@ namespace PL {
         }
 
         static public int GunsCloseDelaySecondWhenStopPump {
+            get;
+            set;
+        }
+
+        public static decimal CartRange {
             get;
             set;
         }
