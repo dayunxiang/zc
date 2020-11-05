@@ -25,7 +25,7 @@ namespace PL {
         private DateTime _endDateTime;
         private DateTime _stopPumpDateTime;
         private GunsController _discardGunsController;
-        private GunsController _gunsController;
+        private GunsController _workingGunsController;
         private int _cycleCount = 0;
         #endregion //Members
 
@@ -136,8 +136,8 @@ namespace PL {
         /// <returns></returns>
         private PlCheckResult CheckStopPump() {
             if (IsStopPumpTimeOut()) {
-                _gunsController.Close();
-                _gunsController = null;
+                _workingGunsController.Close();
+                _workingGunsController = null;
                 GetCurrentWorkingDamStatus().Write(0);
                 return PlCheckResult.Completed;
             } else {
@@ -225,7 +225,7 @@ namespace PL {
                 _discardGunsController.DiscardDt = DateTime.Now;
 
                 var nextGunsController = new GunsController(nextGuns, this.PlOptions);
-                _gunsController = nextGunsController;
+                _workingGunsController = nextGunsController;
                 nextGunsController.Open();
 
                 return PlCheckResult.Working;
@@ -251,11 +251,11 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         private GunsController GetGunsController() {
-            if (_gunsController == null) {
+            if (_workingGunsController == null) {
                 var guns = App.GetApp().Dams.GetFirstGuns(this.PlOptions);
-                _gunsController = new GunsController(guns, this.PlOptions);
+                _workingGunsController = new GunsController(guns, this.PlOptions);
             }
-            return _gunsController;
+            return _workingGunsController;
         }
 
         /// <summary>
@@ -275,8 +275,8 @@ namespace PL {
                     _discardGunsController.Close();
                     _discardGunsController = null;
                 }
-                _gunsController.Close();
-                _gunsController = null;
+                _workingGunsController.Close();
+                _workingGunsController = null;
             }
         }
     }
