@@ -7,12 +7,16 @@ using PLC;
 namespace PL {
 
     public class Gun {
+        #region ctor
         /// <summary>
         /// 
         /// </summary>
         public Gun() {
 
         }
+        #endregion //ctor
+
+        #region Members
 
         public int No { get; set; }
         public LinkedListNode<Gun> GunNode { get; set; }
@@ -21,12 +25,32 @@ namespace PL {
         public Remote Remote { get; set; }
         public Switch Switch { get; set; }
         public Dam Dam { get; set; }
-
         /// <summary>
         /// 
         /// </summary>
         public string Name { get; set; }
+        #endregion //Members
 
+        #region Area
+        /// <summary>
+        /// 
+        /// </summary>
+        public Area Area {
+            get {
+                if (_area == null) {
+                    _area = Area.Empty;
+                }
+                return _area;
+            }
+            set {
+                if (_area != value) {
+                    _area = value;
+                }
+            }
+        } private Area _area;
+        #endregion //Area
+
+        #region Next
         /// <summary>
         /// 
         /// </summary>
@@ -40,7 +64,9 @@ namespace PL {
                 }
             }
         }
+        #endregion //Next
 
+        #region Eq
         /// <summary>
         /// 
         /// </summary>
@@ -50,7 +76,9 @@ namespace PL {
             return this.Dam.No == this.Dam.No &&
                 this.No == gun.No;
         }
+        #endregion //Eq
 
+        #region Gt
         /// <summary>
         /// 
         /// </summary>
@@ -67,6 +95,9 @@ namespace PL {
 
             return false;
         }
+        #endregion //Gt
+
+        #region Lt
 
         /// <summary>
         /// 
@@ -84,7 +115,9 @@ namespace PL {
 
             return false;
         }
+        #endregion //Lt
 
+        #region CanUse
         /// <summary>
         /// 
         /// </summary>
@@ -93,7 +126,9 @@ namespace PL {
             return
                 this.Fault.IsFault == false &&
                 this.Mark.IsMarked == false &&
-                this.Remote.IsRemote == true;
+                this.Remote.IsRemote == true &&
+                this.Area.CanWet();
         }
+        #endregion //CanUse
     }
 }

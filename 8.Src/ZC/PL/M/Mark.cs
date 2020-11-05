@@ -5,30 +5,22 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class Mark : PlcAddress
-    {
+    public class Mark : PlcAddress {
         public Mark(string address)
-            : base(address)
-        {
+            : base(address) {
         }
 
         public ItemDefine ItemDefine { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool IsMarked
-        {
-            get
-            {
-                if (Config.IsMock)
-                {
+        public bool IsMarked {
+            get {
+                if (Config.IsMock) {
                     return IsMarkedMock();
-                }
-                else
-                {
+                } else {
                     return IsMarkedFact();
                 }
             }
@@ -38,8 +30,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool IsMarkedMock()
-        {
+        private bool IsMarkedMock() {
             return MarkUI.Checked;
         }
 
@@ -47,8 +38,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool IsMarkedFact()
-        {
+        private bool IsMarkedFact() {
             var v = ReadFromOpc();
             var n = Convert.ToInt32(v);
             return n == (int)MarkStatusEnum.Marked;
@@ -56,8 +46,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public CheckBox MarkUI
-        {
+        public CheckBox MarkUI {
             get;
             set;
         }

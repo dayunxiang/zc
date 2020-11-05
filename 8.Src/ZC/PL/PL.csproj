@@ -62,6 +62,7 @@
     <Compile Include="Hardware\DamDefine.cs" />
     <Compile Include="Hardware\GunDefine.cs" />
     <Compile Include="Hardware\Serializer.cs" />
+    <Compile Include="M\Area.cs" />
     <Compile Include="M\AutoManualStatus.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Defines\AutoManualStatusEnum.cs" />
@@ -70,9 +71,14 @@
     <Compile Include="C\AppControllerStatus.cs" />
     <Compile Include="Defines\ControllerStatusEnum.cs" />
     <Compile Include="Defines\CycleMode.cs" />
+    <Compile Include="M\Cart\Cart.cs" />
+    <Compile Include="M\Cart\CartList.cs" />
+    <Compile Include="M\Cart\CartLocationEventArgs.cs" />
+    <Compile Include="M\CurrentDoneCycleCountStatus.cs" />
     <Compile Include="M\CurrentWorkingDamStatus.cs" />
     <Compile Include="M\Dam.cs" />
     <Compile Include="M\DamLinkedList.cs" />
+    <Compile Include="M\DamList.cs" />
     <Compile Include="M\Fault.cs" />
     <Compile Include="Defines\FaultStatusEnum.cs" />
     <Compile Include="M\Gun.cs" />
@@ -81,12 +87,11 @@
     <Compile Include="C\GunsController.cs" />
     <Compile Include="Defines\GunStatus.cs" />
     <Compile Include="Hardware\Class1.cs" />
-    <Compile Include="ILog.cs" />
-    <Compile Include="Lm.cs" />
     <Compile Include="M\Mark.cs" />
     <Compile Include="Defines\MarkStatusEnum.cs" />
     <Compile Include="C\PlCheckResult.cs" />
     <Compile Include="C\PlController.cs" />
+    <Compile Include="M\Material.cs" />
     <Compile Include="M\PlcAddress.cs" />
     <Compile Include="M\PlTimeRemaining.cs" />
     <Compile Include="M\Pump.cs" />
@@ -105,6 +110,9 @@
       <Project>{a6973e11-e96e-45c1-8a3f-3d2e6f07b64a}</Project>
       <Name>PLC</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="M\Gun\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
