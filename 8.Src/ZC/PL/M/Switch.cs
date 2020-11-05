@@ -6,17 +6,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using PLC;
 
-namespace PL
-{
-    public class Switch : PlcAddress
-    {
+namespace PL {
+    public class Switch : PlcAddress {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="address"></param>
         public Switch(string address)
-            : base(address)
-        {
+            : base(address) {
         }
 
         /// <summary>
@@ -27,16 +24,11 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public bool IsOpened
-        {
-            get
-            {
-                if (Config.IsMock)
-                {
+        public bool IsOpened {
+            get {
+                if (Config.IsMock) {
                     return IsOpenedMock();
-                }
-                else
-                {
+                } else {
                     return IsOpenedFact();
                 }
             }
@@ -45,14 +37,10 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public void Open()
-        {
-            if (Config.IsMock)
-            {
+        public void Open() {
+            if (Config.IsMock) {
                 OpenMock();
-            }
-            else
-            {
+            } else {
                 OpenFact();
             }
         }
@@ -60,14 +48,10 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public void Close()
-        {
-            if (Config.IsMock)
-            {
+        public void Close() {
+            if (Config.IsMock) {
                 CloseMock();
-            }
-            else
-            {
+            } else {
                 CloseFact();
             }
         }
@@ -77,8 +61,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool IsOpenedFact()
-        {
+        private bool IsOpenedFact() {
             var val = ReadFromOpc();
             var n = Convert.ToInt32(val);
             return n == (int)GunStatus.Open;
@@ -87,16 +70,14 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        private void OpenFact()
-        {
+        private void OpenFact() {
             WriteToOpc((int)GunStatus.Open);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private void CloseFact()
-        {
+        private void CloseFact() {
             WriteToOpc((int)GunStatus.Close);
         }
         #endregion //fact
@@ -106,16 +87,14 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool IsOpenedMock()
-        {
+        private bool IsOpenedMock() {
             return SwitchUI.BackColor == Color.Green;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private void CloseMock()
-        {
+        private void CloseMock() {
             this.SwitchUI.BackColor = SystemColors.Control;
         }
 
@@ -123,16 +102,14 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        private void OpenMock()
-        {
+        private void OpenMock() {
             this.SwitchUI.BackColor = Color.Green;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public Label SwitchUI
-        {
+        public Label SwitchUI {
             get;
             set;
         }
