@@ -58,6 +58,7 @@
     <Compile Include="App.cs" />
     <Compile Include="C\GunsCheckResult.cs" />
     <Compile Include="Defines\PumpStopEnum.cs" />
+    <Compile Include="Hardware\CartDefine.cs" />
     <Compile Include="Hardware\Gc.cs" />
     <Compile Include="Hardware\DamDefine.cs" />
     <Compile Include="Hardware\GunDefine.cs" />
@@ -81,9 +82,9 @@
     <Compile Include="M\DamList.cs" />
     <Compile Include="M\Fault.cs" />
     <Compile Include="Defines\FaultStatusEnum.cs" />
-    <Compile Include="M\Gun.cs" />
-    <Compile Include="M\GunLinkedList.cs" />
-    <Compile Include="M\GunList.cs" />
+    <Compile Include="M\Gun\Gun.cs" />
+    <Compile Include="M\Gun\GunLinkedList.cs" />
+    <Compile Include="M\Gun\GunList.cs" />
     <Compile Include="C\GunsController.cs" />
     <Compile Include="Defines\GunStatus.cs" />
     <Compile Include="Hardware\Class1.cs" />
@@ -111,9 +112,7 @@
       <Name>PLC</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="M\Gun\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
