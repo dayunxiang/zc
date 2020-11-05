@@ -29,6 +29,8 @@ namespace PL {
         /// 
         /// </summary>
         public string Name { get; set; }
+
+        public Cart AssociateCart { get; set; }
         #endregion //Members
 
         #region Area
@@ -117,6 +119,36 @@ namespace PL {
         }
         #endregion //Lt
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsNotCoverCart() {
+            return !IsCoverCart();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsCoverCart() {
+            if (this.AssociateCart == null) {
+                return false;
+            } else {
+                var endLocation = this.AssociateCart.Location + Config.CartRange;
+
+                var beginLocation = this.AssociateCart.Location - Config.CartRange;
+                if (beginLocation < 0) {
+                    beginLocation = 0;
+                }
+
+                return
+                    this.Location >= beginLocation &&
+                    this.Location <= endLocation;
+            }
+        }
+
         #region CanUse
         /// <summary>
         /// 
@@ -127,8 +159,19 @@ namespace PL {
                 this.Fault.IsFault == false &&
                 this.Mark.IsMarked == false &&
                 this.Remote.IsRemote == true &&
-                this.Area.CanWet();
+                this.Area.CanWet() &&
+                this.IsNotCoverCart();
         }
         #endregion //CanUse
+
+        #region Location
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal Location {
+            get;
+            set;
+        }
+        #endregion //Location
     }
 }
