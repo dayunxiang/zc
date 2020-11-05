@@ -7,17 +7,15 @@ using PLC;
 
 namespace PL {
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public class CurrentWorkingDamStatus : PlcAddress {
+    public class CurrentDoneCycleCountStatus : PlcAddress {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="address"></param>
-        public CurrentWorkingDamStatus(string address)
+        public CurrentDoneCycleCountStatus(string address)
             : base(address) {
-        }
+
+            }
 
         /// <summary>
         /// 
@@ -54,19 +52,19 @@ namespace PL {
         /// 
         /// </summary>
         /// <param name="damValue"></param>
-        public void Write(int damValue) {
+        public void Write(int doneCycleCount) {
             if (Config.IsMock) {
-                WriteMock(damValue);
+                WriteMock(doneCycleCount);
             } else {
-                WriteFact(damValue);
+                WriteFact(doneCycleCount);
             }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private void WriteFact(int damValue) {
-            WriteToOpc(damValue);
+        private void WriteFact(int doneCycleCount) {
+            WriteToOpc(doneCycleCount);
         }
 
         /// <summary>

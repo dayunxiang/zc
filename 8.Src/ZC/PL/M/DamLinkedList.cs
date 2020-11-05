@@ -4,16 +4,13 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class DamLinkedList : LinkedList<Dam>
-    {
+    public class DamLinkedList : LinkedList<Dam> {
         /// <summary>
         /// 
         /// </summary>
-        public DamLinkedList()
-        {
+        public DamLinkedList() {
 
         }
 
@@ -23,8 +20,7 @@ namespace PL
         /// <param name="count"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public WorkGunGroup GetFirstGuns(PlOptions options)
-        {
+        public WorkGunGroup GetFirstGuns(PlOptions options) {
             Dam firstDam = this.First.Value;
             var workDam = GetWorkDam(firstDam, options);
             return workDam.GetFirstGuns(options.GunCountPerGroup);
@@ -37,14 +33,10 @@ namespace PL
         /// <param name="dam"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        private Dam GetWorkDam(Dam dam, PlOptions options)
-        {
-            if (options.IsWorkDam(dam))
-            {
+        private Dam GetWorkDam(Dam dam, PlOptions options) {
+            if (options.IsWorkDam(dam)) {
                 return dam;
-            }
-            else
-            {
+            } else {
                 var nextDam = dam.GetNextDam();
                 return GetWorkDam(nextDam, options);
             }
@@ -55,50 +47,23 @@ namespace PL
         /// </summary>
         /// <param name="_plOptions"></param>
         /// <returns></returns>
-        internal DamList GetWorkDams(PlOptions _plOptions)
-        {
-            if (_plOptions.CycleMode == CycleMode.AllDam)
-            {
+        internal DamList GetWorkDams(PlOptions _plOptions) {
+            if (_plOptions.CycleMode == CycleMode.AllDam) {
                 return new DamList(this.ToArray());
-            }
-            else
-            {
+            } else {
                 var r = new DamList();
 
                 int[] mask = new int[] { 1, 2, 4, 8 };
                 int n = 0;
-                foreach (var dam in this)
-                {
+                foreach (var dam in this) {
                     bool isSelected = (_plOptions.WorkDam & mask[n]) > 0;
-                    if (isSelected)
-                    {
+                    if (isSelected) {
                         r.Add(dam);
                     }
                     n++;
                 }
                 return r;
             }
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class DamList : List<Dam>
-    {
-        public DamList()
-        {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="collection"></param>
-        public DamList(IEnumerable<Dam> collection)
-            : base(collection)
-        {
-
         }
     }
 }

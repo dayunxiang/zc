@@ -5,11 +5,9 @@ using System.Text;
 using System.Windows.Forms;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class PlTimeRemaining : PlcAddress
-    {
+    public class PlTimeRemaining : PlcAddress {
 
         /// <summary>
         /// 
@@ -21,8 +19,7 @@ namespace PL
         /// </summary>
         /// <param name="address"></param>
         public PlTimeRemaining(string address)
-            : base(address)
-        {
+            : base(address) {
 
         }
 
@@ -30,8 +27,7 @@ namespace PL
         /// 
         /// </summary>
         /// <param name="remainingTime"></param>
-        public void Write(int remainingTime)
-        {
+        public void Write(int remainingTime) {
             WriteFact(remainingTime);
         }
 
@@ -39,8 +35,7 @@ namespace PL
         /// 
         /// </summary>
         /// <param name="remainingTime"></param>
-        private void WriteFact(int remainingTime)
-        {
+        private void WriteFact(int remainingTime) {
             this.WriteToOpc(remainingTime);
         }
     }

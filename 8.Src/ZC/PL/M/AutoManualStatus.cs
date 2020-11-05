@@ -5,32 +5,25 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class AutoManualStatus : PlcAddress
-    {
+    public class AutoManualStatus : PlcAddress {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="address"></param>
         public AutoManualStatus(string address)
-            : base(address)
-        {
+            : base(address) {
 
         }
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public AutoManualStatusEnum Read()
-        {
-            if (Config.IsMock)
-            {
+        public AutoManualStatusEnum Read() {
+            if (Config.IsMock) {
                 return ReadMock();
-            }
-            else
-            {
+            } else {
                 return ReadFact();
             }
         }
@@ -39,8 +32,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private AutoManualStatusEnum ReadMock()
-        {
+        private AutoManualStatusEnum ReadMock() {
             return AutoManualUI.Checked ?
                 AutoManualStatusEnum.Auto : AutoManualStatusEnum.Manual;
         }
@@ -49,8 +41,7 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        private AutoManualStatusEnum ReadFact()
-        {
+        private AutoManualStatusEnum ReadFact() {
             var val = ReadFromOpc();
             var n = Convert.ToInt32(val);
             return (AutoManualStatusEnum)n;
@@ -60,8 +51,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public CheckBox AutoManualUI
-        {
+        public CheckBox AutoManualUI {
             get;
             set;
         }

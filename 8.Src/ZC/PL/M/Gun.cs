@@ -4,16 +4,13 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class Gun
-    {
+    public class Gun {
         /// <summary>
         /// 
         /// </summary>
-        public Gun()
-        {
+        public Gun() {
 
         }
 
@@ -33,17 +30,12 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        public Gun Next
-        {
-            get
-            {
+        public Gun Next {
+            get {
                 var nextNode = this.GunNode.Next;
-                if(nextNode != null)
-                {
+                if (nextNode != null) {
                     return nextNode.Value;
-                }
-                else
-                {
+                } else {
                     return null;
                 }
             }
@@ -54,8 +46,7 @@ namespace PL
         /// </summary>
         /// <param name="gun"></param>
         /// <returns></returns>
-        public bool Eq(Gun gun)
-        {
+        public bool Eq(Gun gun) {
             return this.Dam.No == this.Dam.No &&
                 this.No == gun.No;
         }
@@ -65,15 +56,12 @@ namespace PL
         /// </summary>
         /// <param name="gun"></param>
         /// <returns></returns>
-        public bool Gt(Gun gun)
-        {
-            if(this.Dam.No > gun.Dam.No)
-            {
+        public bool Gt(Gun gun) {
+            if (this.Dam.No > gun.Dam.No) {
                 return true;
             }
 
-            if(this.Dam.No == gun.Dam.No)
-            {
+            if (this.Dam.No == gun.Dam.No) {
                 return this.No > gun.No;
             }
 
@@ -85,15 +73,12 @@ namespace PL
         /// </summary>
         /// <param name="gun"></param>
         /// <returns></returns>
-        public bool Lt(Gun gun)
-        {
-            if(this.Dam.No < gun.Dam.No)
-            {
+        public bool Lt(Gun gun) {
+            if (this.Dam.No < gun.Dam.No) {
                 return true;
             }
 
-            if(this.Dam.No == gun.Dam.No)
-            {
+            if (this.Dam.No == gun.Dam.No) {
                 return this.No < gun.No;
             }
 
@@ -104,9 +89,9 @@ namespace PL
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool CanUse()
-        {
-            return this.Fault.IsFault == false &&
+        public bool CanUse() {
+            return
+                this.Fault.IsFault == false &&
                 this.Mark.IsMarked == false &&
                 this.Remote.IsRemote == true;
         }
