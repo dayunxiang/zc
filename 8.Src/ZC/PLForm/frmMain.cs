@@ -116,5 +116,16 @@ namespace PLForm {
                 ExceptionLogger.Log(ex);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbGunInfo_Click(object sender, EventArgs e) {
+            var frmGunLocation = new frmGunInfo();
+            frmGunLocation.Dams = App.GetApp().Dams;
+            frmGunLocation.ShowDialog();
+        }
     }
 }

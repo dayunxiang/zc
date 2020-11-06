@@ -87,7 +87,7 @@
     <Compile Include="M\Gun\GunList.cs" />
     <Compile Include="C\GunsController.cs" />
     <Compile Include="Defines\GunStatus.cs" />
-    <Compile Include="Hardware\Class1.cs" />
+    <Compile Include="Hardware\Define.cs" />
     <Compile Include="M\Mark.cs" />
     <Compile Include="Defines\MarkStatusEnum.cs" />
     <Compile Include="C\PlCheckResult.cs" />

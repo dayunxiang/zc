@@ -58,6 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmGunInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGunInfo.Designer.cs">
+      <DependentUpon>frmGunInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     <Compile Include="UcH.Designer.cs">
       <DependentUpon>UcH.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmGunInfo.resx">
+      <DependentUpon>frmGunInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>

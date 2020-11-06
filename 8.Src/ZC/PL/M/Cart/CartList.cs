@@ -15,5 +15,16 @@ namespace PL {
         public void RefreshLocations() {
             this.ForEach(cart => cart.RefreshLocation());
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        internal Cart GetByName(string cartName) {
+            var comparer = StringComparer.OrdinalIgnoreCase;
+            var r = this.First(cart => comparer.Compare(cart.Name, cartName) == 0);
+            return r;
+        }
     }
 }

@@ -16,12 +16,16 @@ namespace PL.Hardware {
         public string Fault { get; set; }
         public string Remote { get; set; }
         public decimal Location { get; set; }
+        public string AssociateCartName { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        internal Gun Create() {
+        internal Gun Create(CartList carts) {
+            if (carts == null) {
+                throw new ArgumentNullException("carts");
+            }
             return new Gun() {
                 No = this.No,
                 Name = this.Name,
@@ -30,6 +34,7 @@ namespace PL.Hardware {
                 Remote = new Remote(this.Remote),
                 Switch = new Switch(this.Switch),
                 Location = this.Location,
+                AssociateCart = carts.GetByName(this.AssociateCartName),
             };
         }
 

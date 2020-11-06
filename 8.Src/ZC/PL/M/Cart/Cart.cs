@@ -61,6 +61,10 @@ namespace PL {
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int No { get; set; }
 
         /// <summary>
         /// 
@@ -69,6 +73,16 @@ namespace PL {
             var val = base.ReadFromOpc();
             int intValue = Convert.ToInt32(val);
             this.Location = intValue;
+        }
+
+        public override string ToString() {
+            var f = "{{No={0}, Name={1}, Address={2}, Location={3}}}";
+            return string.Format(
+                f,
+                this.No,
+                this.Name,
+                this.Address,
+                this.Location);
         }
     }
 }

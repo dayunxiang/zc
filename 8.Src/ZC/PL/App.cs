@@ -26,8 +26,10 @@ namespace PL {
         /// 
         /// </summary>
         private App() {
-            this.Carts = InitCarts();
-            this.Dams = InitDams();
+            var define = InitDefine();
+
+            this.Carts = InitCarts(define);
+            this.Dams = InitDams(define, this.Carts);
 
             this.Gc = InitGc();
             this.Opc = new SimpleOpcServer();
@@ -40,10 +42,10 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        private CartList InitCarts() {
-            // todo:
-            //
-            throw new NotImplementedException();
+        private CartList InitCarts(Define define) {
+            var carts = new CartList();
+            define.CartDefines.ForEach(d => carts.Add(d.Create()));
+            return carts;
         }
         #endregion //InitCarts
 
@@ -64,15 +66,12 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        private DamLinkedList InitDams() {
+        private DamLinkedList InitDams(Define define, CartList carts) {
             var r = new DamLinkedList();
 
-            var json = File.ReadAllText("address.json");
-            var damDefines = JsonConvert.DeserializeObject<List<DamDefine>>(json);
-
             LinkedListNode<Dam> lastDamNode = null;
-            foreach (var damDefine in damDefines) {
-                var dam = damDefine.Create();
+            foreach (var damDefine in define.DamDefines) {
+                var dam = damDefine.Create(carts);
                 if (lastDamNode == null) {
                     lastDamNode = r.AddFirst(dam);
                 } else {
@@ -83,6 +82,18 @@ namespace PL {
             return r;
         }
         #endregion //InitDams
+
+        #region InitDefine
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Define InitDefine() {
+            var json = File.ReadAllText("address.json");
+            var define = JsonConvert.DeserializeObject<Define>(json);
+            return define;
+        }
+        #endregion //InitDefine
 
         #region AppController
         /// <summary>

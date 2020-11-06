@@ -9,9 +9,13 @@ using Newtonsoft.Json;
 namespace PL.Hardware {
 
     public class DamDefine {
+        /// <summary>
+        /// 
+        /// </summary>
         public DamDefine() {
             this.GunDefines = new List<GunDefine>();
         }
+
         public string Name { get; set; }
         public int No { get; set; }
         public List<GunDefine> GunDefines { get; set; }
@@ -21,8 +25,8 @@ namespace PL.Hardware {
         /// 
         /// </summary>
         /// <returns></returns>
-        public Dam Create() {
-            var guns = CreateGuns();
+        public Dam Create(CartList carts) {
+            var guns = CreateGuns(carts);
 
             var r = new Dam() {
                 No = this.No,
@@ -40,12 +44,12 @@ namespace PL.Hardware {
         /// 
         /// </summary>
         /// <returns></returns>
-        private GunLinkedList CreateGuns() {
+        private GunLinkedList CreateGuns(CartList carts) {
             GunLinkedList guns = new GunLinkedList();
 
             LinkedListNode<Gun> lastNode = null;
             foreach (var gunDefine in GunDefines) {
-                Gun gun = gunDefine.Create();
+                Gun gun = gunDefine.Create(carts);
                 if (lastNode == null) {
                     lastNode = guns.AddFirst(gun);
                 } else {

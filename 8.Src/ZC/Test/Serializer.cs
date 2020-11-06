@@ -4,33 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using PL.Hardware;
 
-namespace PL.Hardware {
+namespace Test{
 
     public class Serializer {
-
-
-        static public void test() {
+        static public Define CreateDefine() {
             var damDefines = CreateDamDefines();
             var cartDefines = CreateCartDefines();
             var define = new Define() {
                 CartDefines = cartDefines,
                 DamDefines = damDefines,
             };
+            return define;
 
 
-            var s = JsonConvert.SerializeObject(damDefines);
-            Console.WriteLine(s);
+            //var deserialDamDefines = JsonConvert.DeserializeObject<List<DamDefine>>(s);
+            //Console.WriteLine(deserialDamDefines.Count);
+            //Console.WriteLine(deserialDamDefines[0].Name);
 
 
-            var deserialDamDefines = JsonConvert.DeserializeObject<List<DamDefine>>(s);
-            Console.WriteLine(deserialDamDefines.Count);
-            Console.WriteLine(deserialDamDefines[0].Name);
-
-
-            var a2Json = JsonConvert.SerializeObject(new Gc());
-            Console.WriteLine(a2Json);
+            //var a2Json = JsonConvert.SerializeObject(new Gc());
+            //Console.WriteLine(a2Json);
 
         }
 

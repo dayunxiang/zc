@@ -36,6 +36,8 @@
             this.tsbSaveLog = new System.Windows.Forms.ToolStripButton();
             this.tsbClearLogs = new System.Windows.Forms.ToolStripButton();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
+            this.tsbGunInfo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +75,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSaveLog,
             this.tsbClearLogs,
+            this.tsbGunInfo,
+            this.toolStripSeparator1,
             this.tsbExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -110,6 +114,21 @@
             this.tsbExit.Text = "退出";
             this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
+            // tsbGunInfo
+            // 
+            this.tsbGunInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbGunInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsbGunInfo.Image")));
+            this.tsbGunInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGunInfo.Name = "tsbGunInfo";
+            this.tsbGunInfo.Size = new System.Drawing.Size(60, 22);
+            this.tsbGunInfo.Text = "喷枪信息";
+            this.tsbGunInfo.Click += new System.EventHandler(this.tsbGunInfo_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -141,5 +160,7 @@
         private System.Windows.Forms.ToolStripButton tsbClearLogs;
         private System.Windows.Forms.ToolStripButton tsbExit;
         private System.Windows.Forms.ToolStripButton tsbSaveLog;
+        private System.Windows.Forms.ToolStripButton tsbGunInfo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

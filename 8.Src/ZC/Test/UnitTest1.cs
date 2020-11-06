@@ -18,4 +18,15 @@ namespace Test {
             Assert.IsFalse(gun.Area.CanWet());
         }
     }
+
+
+    [TestClass]
+    public class DefineTest{
+        [TestMethod]
+        public void Test() {
+            //var d = new PL.Hardware.Define();
+            var d = Serializer.CreateDefine();
+            Console.WriteLine(d.ToJson());
+        }
+    }
 }

@@ -9,7 +9,20 @@ using Newtonsoft.Json;
 namespace PL.Hardware {
 
     public class CartDefine {
+        public int No { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal Cart Create() {
+            var c = new Cart(this.Address) {
+                No = this.No,
+                Name = this.Name,
+            };
+            return c;
+        }
     }
 }
