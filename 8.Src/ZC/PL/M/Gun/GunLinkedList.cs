@@ -37,7 +37,7 @@ namespace PL {
                     count--;
                 }
 
-                wgg.SearchGuns.Add(currentGun);
+                wgg.SearchedGuns.Add(currentGun);
                 currentGun = currentGun.Next;
                 if (currentGun == null) {
                     break;

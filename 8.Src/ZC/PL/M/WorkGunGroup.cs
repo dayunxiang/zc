@@ -12,7 +12,7 @@ namespace PL {
         /// </summary>
         public WorkGunGroup() {
             this.WorkGuns = new GunList();
-            this.SearchGuns = new GunList();
+            this.SearchedGuns = new GunList();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public GunList SearchGuns {
+        public GunList SearchedGuns {
             get;
             set;
         }
@@ -36,8 +36,8 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public Gun GetFirstGun() {
-            if (this.SearchGuns.Count > 0)
-                return this.SearchGuns.First();
+            if (this.SearchedGuns.Count > 0)
+                return this.SearchedGuns.First();
             else
                 return null;
         }
@@ -47,8 +47,8 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public Gun GetLastGun() {
-            if (this.SearchGuns.Count > 0)
-                return this.SearchGuns.Last();
+            if (this.SearchedGuns.Count > 0)
+                return this.SearchedGuns.Last();
             else
                 return null;
         }
@@ -59,13 +59,13 @@ namespace PL {
         /// <param name="tailGun"></param>
         /// <returns></returns>
         internal bool IsIncludeGun(Gun tailGun) {
-            return this.SearchGuns.IsIncludeGun(tailGun);
+            return this.SearchedGuns.IsIncludeGun(tailGun);
         }
 
         /// <summary>
         /// get first gun.dam value
         /// </summary>
-        public int GetDamValue() {
+        public int GetWorkingDamValue() {
             if (this.WorkGuns.Count == 0) {
                 throw new InvalidOperationException("work guns count == 0");
             }

@@ -57,6 +57,10 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="C\GunsCheckResult.cs" />
+    <Compile Include="M\GunWorkStatus.cs" />
+    <Compile Include="M\GunWorkStatusEnum.cs" />
+    <Compile Include="M\MaterialHeap\CanWetEnum.cs" />
+    <Compile Include="M\MaterialHeap\MaterialHeapList.cs" />
     <Compile Include="PlException.cs" />
     <Compile Include="Defines\PumpStopEnum.cs" />
     <Compile Include="Hardware\CartDefine.cs" />
@@ -78,9 +82,9 @@
     <Compile Include="M\Cart\CartLocationEventArgs.cs" />
     <Compile Include="M\CurrentDoneCycleCountStatus.cs" />
     <Compile Include="M\CurrentWorkingDamStatus.cs" />
-    <Compile Include="M\Dam.cs" />
-    <Compile Include="M\DamLinkedList.cs" />
-    <Compile Include="M\DamList.cs" />
+    <Compile Include="M\Dam\Dam.cs" />
+    <Compile Include="M\Dam\DamLinkedList.cs" />
+    <Compile Include="M\Dam\DamList.cs" />
     <Compile Include="M\Fault.cs" />
     <Compile Include="Defines\FaultStatusEnum.cs" />
     <Compile Include="M\Gun\Gun.cs" />
@@ -93,8 +97,8 @@
     <Compile Include="Defines\MarkStatusEnum.cs" />
     <Compile Include="C\PlCheckResult.cs" />
     <Compile Include="C\PlController.cs" />
-    <Compile Include="M\Material.cs" />
-    <Compile Include="M\MaterialHeap.cs" />
+    <Compile Include="M\MaterialHeap\Material.cs" />
+    <Compile Include="M\MaterialHeap\MaterialHeap.cs" />
     <Compile Include="M\PlcAddress.cs" />
     <Compile Include="M\PlTimeRemaining.cs" />
     <Compile Include="M\Pump.cs" />

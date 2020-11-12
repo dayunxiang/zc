@@ -15,6 +15,7 @@ namespace Test{
             var define = new Define() {
                 CartDefines = cartDefines,
                 DamDefines = damDefines,
+                MaterialHeapDefines = CreateMaterialHeaps(),
             };
             return define;
 
@@ -27,6 +28,23 @@ namespace Test{
             //var a2Json = JsonConvert.SerializeObject(new Gc());
             //Console.WriteLine(a2Json);
 
+        }
+
+        private static List<MaterialHeapDefine> CreateMaterialHeaps() {
+            var r = new List<MaterialHeapDefine>();
+            r.Add(CreateMaterialHeap(1));
+            r.Add(CreateMaterialHeap(2));
+            return r;
+        }
+
+        private static MaterialHeapDefine CreateMaterialHeap(int n) {
+            return new MaterialHeapDefine() {
+                DamAddress = "damAddress" + n,
+                MaterialIdAddress = "materialIdAddress" + n,
+                BeginLocationAddress = "beginLocalAddress" + n,
+                EndLocationAddress = "endLocationAddress" + n,
+                CanWetAddress = "canWetAddress" + n,
+            };
         }
 
         private static List<CartDefine> CreateCartDefines() {

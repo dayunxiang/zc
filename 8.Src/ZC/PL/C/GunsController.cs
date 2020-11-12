@@ -49,7 +49,7 @@ namespace PL {
                     wgg.WorkGuns.Add(gun);
                     count--;
                 }
-                wgg.SearchGuns.Add(gun);
+                wgg.SearchedGuns.Add(gun);
                 lastGun = gun;
             }
             return wgg;
@@ -124,7 +124,7 @@ namespace PL {
 
             // set current working dam
             //
-            var damValue = _workingGunGroup.GetDamValue();
+            var damValue = _workingGunGroup.GetWorkingDamValue();
             GetCurrentWorkingDamStatus().Write(damValue);
 
             this._openDateTime = DateTime.Now;
@@ -144,6 +144,12 @@ namespace PL {
         internal void Close() {
             foreach (var gun in _workingGunGroup.WorkGuns) {
                 gun.Switch.Close();
+            }
+
+            // reset gun work status
+            //
+            foreach (var gun in _workingGunGroup.SearchedGuns) {
+                gun.GunWorkStatus.Status = GunWorkStatusEnum.Normal;
             }
 
             this._closeDateTime = DateTime.Now;
@@ -187,11 +193,13 @@ namespace PL {
         /// </summary>
         /// <param name="workingGun"></param>
         private void ProcessNeedCloseGun(Gun workingGun) {
+            workingGun.GunWorkStatus.Status = GunWorkStatusEnum.NotWorkWithCart;
+
             Gun last = _workingGunGroup.GetLastGun();
             Gun nextGun = GetNextGun(last);
 
             while (nextGun != null) {
-                _workingGunGroup.SearchGuns.Add(nextGun);
+                _workingGunGroup.SearchedGuns.Add(nextGun);
 
                 if (!nextGun.CanUse()) {
                     nextGun = GetNextGun(nextGun);

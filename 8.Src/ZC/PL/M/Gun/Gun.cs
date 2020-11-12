@@ -25,6 +25,7 @@ namespace PL {
         public Mark Mark { get; set; }
         public Remote Remote { get; set; }
         public Switch Switch { get; set; }
+        public GunWorkStatus GunWorkStatus { get; set; }
         public Dam Dam { get; set; }
         /// <summary>
         /// 
@@ -151,18 +152,60 @@ namespace PL {
         }
 
         #region CanUse
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public bool CanUse() {
-            return
-                this.Fault.IsFault == false &&
-                this.Mark.IsMarked == false &&
-                this.Remote.IsRemote == true &&
-                //this.Area.CanWet() &&
-                this.CanWet() &&
-                this.IsNotCoverCart();
+            GunWorkStatusEnum gunWorkStatusEnum;
+            bool r = CanUse(out gunWorkStatusEnum);
+
+            // set plc gun status
+            //
+            this.GunWorkStatus.Status = gunWorkStatusEnum;
+            return r;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool CanUse(out GunWorkStatusEnum gunWorkStatusEnum) {
+            //return
+            //    this.Fault.IsFault == false &&
+            //    this.Mark.IsMarked == false &&
+            //    this.Remote.IsRemote == true &&
+            //    //this.Area.CanWet() &&
+            //    this.CanWet() &&
+            //    this.IsNotCoverCart();
+
+            if (this.Fault.IsFault) {
+                gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithFault;
+                return false;
+            }
+
+            if (this.Mark.IsMarked) {
+                gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithMark;
+                return false;
+            }
+
+            if (this.Remote.IsRemote) {
+                gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithRemote;
+                return false;
+            }
+            if (!this.IsMaterialHeapCanWet()) {
+                gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithMaterialHeap;
+                return false;
+            }
+
+            if (this.IsCoverCart()) {
+                gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithCart;
+                return false;
+            }
+
+            gunWorkStatusEnum = GunWorkStatusEnum.Normal;
+            return true;
         }
         #endregion //CanUse
 
@@ -180,7 +223,7 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool CanWet() {
+        public bool IsMaterialHeapCanWet() {
             var materialHeap = this.Dam.MaterialHeaps.FindByGun(this);
             if (materialHeap != null) {
                 Debug.Assert(materialHeap.IsReadedFromPlc);

@@ -128,7 +128,7 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        string[] GetSubscriptionItemNames() {
+        private string[] GetSubscriptionItemNames() {
             // todo:
             //
             var r = new List<string>(2000);
@@ -138,8 +138,21 @@ namespace PL {
                     r.Add(gun.Fault.Address);
                     r.Add(gun.Remote.Address);
                     r.Add(gun.Mark.Address);
+                    r.Add(gun.GunWorkStatus.Address);
                 }
             }
+
+            _app.Carts.ForEach((cart) => r.Add(cart.Address));
+
+            _app.MaterialHeaps.ForEach((materialHeap) => {
+                var mhDefine = materialHeap.Define;
+                r.Add(mhDefine.DamAddress);
+                r.Add(mhDefine.MaterialIdAddress);
+                r.Add(mhDefine.BeginLocationAddress);
+                r.Add(mhDefine.EndLocationAddress);
+                r.Add(mhDefine.CanWetAddress);
+            });
+
             var gc = Gc.Instance;
             r.Add(gc.AppControlStatus);
             r.Add(gc.AutoManual);
