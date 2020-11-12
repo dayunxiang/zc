@@ -11,7 +11,7 @@ namespace PL {
         /// 
         /// </summary>
         public Dam() {
-
+            this.MaterialHeaps = new MaterialHeapList();
         }
 
         /// <summary>
@@ -36,6 +36,15 @@ namespace PL {
         public LinkedListNode<Dam> DamNode {
             get;
             set;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public MaterialHeapList MaterialHeaps {
+            get;
+            private set;
         }
 
         /// <summary>

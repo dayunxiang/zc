@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -128,6 +129,8 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         string[] GetSubscriptionItemNames() {
+            // todo:
+            //
             var r = new List<string>(2000);
             foreach (var dam in _app.Dams.ToArray()) {
                 foreach (var gun in dam.Guns.ToArray()) {
@@ -181,6 +184,7 @@ namespace PL {
                         if (controllerStatusEnum == ControllerStatusEnum.Idle ||
                             controllerStatusEnum == ControllerStatusEnum.Completed) {
                             this.ControllerStatus.Value = ControllerStatusEnum.Working;
+                            RefreshMaterialHeaps();
                             var options = this.PlOptionsReader.Read();
                             _plController = new PlController(options);
                             _plController.Start();
@@ -229,6 +233,42 @@ namespace PL {
                 }
             } catch (OpcException opcEx) {
                 MyLogManager.Output(opcEx.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void RefreshMaterialHeaps() {
+            var materialHeaps = this._app.MaterialHeaps;
+            var dams = this._app.Dams;
+
+            materialHeaps.ReadFromPlc();
+            BindMaterialHeapDam(materialHeaps, dams);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="materialHeaps"></param>
+        /// <param name="dams"></param>
+        private void BindMaterialHeapDam(MaterialHeapList materialHeaps, DamLinkedList dams) {
+
+            foreach (var dam in dams) {
+                dam.MaterialHeaps.Clear();
+            }
+
+            foreach (var materialHeap in materialHeaps) {
+                var dam = dams.FindDamByValue(materialHeap.DamValue);
+                if (dam != null) {
+                    dam.MaterialHeaps.Add(materialHeap);
+                    materialHeap.Dam = dam;
+                } else {
+                    var msg = string.Format("can not find dam by value '{0}'", materialHeap.DamValue);
+                    //throw new PlException(msg);
+                    Debug(msg);
+                }
+
             }
         }
 

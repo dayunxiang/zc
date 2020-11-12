@@ -30,12 +30,29 @@ namespace PL {
 
             this.Carts = InitCarts(define);
             this.Dams = InitDams(define, this.Carts);
+            this.MaterialHeaps = InitMaterialHeaps(define);
 
             this.Gc = InitGc();
             this.Opc = new SimpleOpcServer();
             this.AppController = new AppController(this, this.Gc);
         }
         #endregion //ctor
+
+        #region InitMaterialHeaps
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="define"></param>
+        /// <returns></returns>
+        private MaterialHeapList InitMaterialHeaps(Define define) {
+            var r = new MaterialHeapList();
+            foreach (var materialHeapDefine in define.MaterialHeapDefines) {
+                var materialHeap = materialHeapDefine.Create();
+                r.Add(materialHeap);
+            }
+            return r;
+        }
+        #endregion //InitMaterialHeaps
 
         #region InitCarts
         /// <summary>
@@ -144,5 +161,15 @@ namespace PL {
             private set;
         }
         #endregion //Carts
+
+        #region MaterialHeaps
+        /// <summary>
+        /// 
+        /// </summary>
+        public MaterialHeapList MaterialHeaps {
+            get;
+            private set;
+        }
+        #endregion //MaterialHeaps
     }
 }

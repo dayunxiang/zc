@@ -14,6 +14,7 @@ namespace PL {
             CheckInterval = 2000;
             GunsCloseDelaySecondWhenStopPump = 10;
             CartRange = 75m;
+            GunRadius = 0m;
             IsMock = false;
         }
 
@@ -44,6 +45,11 @@ namespace PL {
         }
 
         public static decimal CartRange {
+            get;
+            set;
+        }
+
+        public static decimal GunRadius {
             get;
             set;
         }

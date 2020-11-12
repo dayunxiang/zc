@@ -10,12 +10,12 @@ namespace Test {
             Console.WriteLine("test area");
 
             var gun = new Gun();
-            Console.WriteLine(gun.Area.ToString());
+            //Console.WriteLine(gun.Area.ToString());
 
-            Assert.IsTrue(gun.Area.CanWet());
+            //Assert.IsTrue(gun.Area.CanWet());
 
-            Material.Empty.CanWet = false;
-            Assert.IsFalse(gun.Area.CanWet());
+            //Material.Empty.CanWet = false;
+            //Assert.IsFalse(gun.Area.CanWet());
         }
     }
 

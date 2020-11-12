@@ -65,5 +65,23 @@ namespace PL {
                 return r;
             }
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="damValue"></param>
+        /// <returns></returns>
+        public Dam FindDamByValue(int damValue) {
+            // todo: find dam by value
+            //
+            foreach (var dam in this) {
+                if (dam.No == damValue) {
+                    return dam;
+                }
+            }
+
+            return null;
+        }
     }
 }

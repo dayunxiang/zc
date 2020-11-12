@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,24 +34,24 @@ namespace PL {
         public Cart AssociateCart { get; set; }
         #endregion //Members
 
-        #region Area
-        /// <summary>
-        /// 
-        /// </summary>
-        public Area Area {
-            get {
-                if (_area == null) {
-                    _area = Area.Empty;
-                }
-                return _area;
-            }
-            set {
-                if (_area != value) {
-                    _area = value;
-                }
-            }
-        } private Area _area;
-        #endregion //Area
+        //#region Area
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public Area Area {
+        //    get {
+        //        if (_area == null) {
+        //            _area = Area.Empty;
+        //        }
+        //        return _area;
+        //    }
+        //    set {
+        //        if (_area != value) {
+        //            _area = value;
+        //        }
+        //    }
+        //} private Area _area;
+        //#endregion //Area
 
         #region Next
         /// <summary>
@@ -159,7 +160,8 @@ namespace PL {
                 this.Fault.IsFault == false &&
                 this.Mark.IsMarked == false &&
                 this.Remote.IsRemote == true &&
-                this.Area.CanWet() &&
+                //this.Area.CanWet() &&
+                this.CanWet() &&
                 this.IsNotCoverCart();
         }
         #endregion //CanUse
@@ -173,5 +175,19 @@ namespace PL {
             set;
         }
         #endregion //Location
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool CanWet() {
+            var materialHeap = this.Dam.MaterialHeaps.FindByGun(this);
+            if (materialHeap != null) {
+                Debug.Assert(materialHeap.IsReadedFromPlc);
+                return materialHeap.CanWet;
+            } else {
+                return true;
+            }
+        }
     }
 }
