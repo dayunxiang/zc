@@ -36,6 +36,15 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
+        public App App {
+            get {
+                return _app;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="msg"></param>
         static private void Debug(string msg) {
             _logger.Debug(msg);
@@ -153,7 +162,8 @@ namespace PL {
                 r.Add(mhDefine.CanWetAddress);
             });
 
-            var gc = Gc.Instance;
+            //var gc = Gc.Instance;
+            var gc = _app.Gc;
             r.Add(gc.AppControlStatus);
             r.Add(gc.AutoManual);
             r.Add(gc.CycleCount);
@@ -199,7 +209,7 @@ namespace PL {
                             this.ControllerStatus.Value = ControllerStatusEnum.Working;
                             RefreshMaterialHeaps();
                             var options = this.PlOptionsReader.Read();
-                            _plController = new PlController(options);
+                            _plController = new PlController(this, options);
                             _plController.Start();
                         } else if (controllerStatusEnum == ControllerStatusEnum.Working) {
                             var checkResult = _plController.Check();

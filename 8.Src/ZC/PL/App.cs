@@ -33,6 +33,8 @@ namespace PL {
             this.MaterialHeaps = InitMaterialHeaps(define);
 
             this.Gc = define.Gc;
+            this.PlTimeRemaining = new PlTimeRemaining(this.Gc.PlTimeRemaining);
+            this.Pump = new Pump(this.Gc.CycleEndStopPump);
             this.Opc = new SimpleOpcServer();
             this.AppController = new AppController(this, this.Gc);
         }
@@ -149,6 +151,22 @@ namespace PL {
             private set;
         }
         #endregion //Carts
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PlTimeRemaining PlTimeRemaining {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Pump Pump {
+            get;
+            private set;
+        }
 
         #region MaterialHeaps
         /// <summary>

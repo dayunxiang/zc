@@ -20,12 +20,12 @@ namespace PLForm {
             var key = ReadKey();
 
             if (!key.Equals(encode)) {
-                NUnit.UiKit.UserMessage.DisplayFailure("无效的注册码");
+                NUnit.UiKit.UserMessage.DisplayFailure(S.InvalidSn);
                 return;
             }
 
             if (Xdgk.Common.Diagnostics.HasPreInstance()) {
-                NUnit.UiKit.UserMessage.DisplayInfo("程序已经启动");
+                NUnit.UiKit.UserMessage.DisplayInfo(S.ProgramRunning);
                 return;
             }
 
@@ -75,12 +75,12 @@ namespace PLForm {
         static public string GetBoardID() {
             string st = "unknown";
             try {
-                ManagementObjectSearcher mos = new ManagementObjectSearcher("Select * from Win32_BaseBoard");
+                ManagementObjectSearcher mos = new ManagementObjectSearcher(
+                    "Select * from Win32_BaseBoard");
                 foreach (ManagementObject mo in mos.Get()) {
                     st = mo["SerialNumber"].ToString();
                 }
             } catch (Exception) {
-
             }
             return st;
         }

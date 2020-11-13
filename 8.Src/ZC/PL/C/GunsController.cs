@@ -10,6 +10,7 @@ using PL.Hardware;
 namespace PL {
     public class GunsController {
         #region Members
+        private PlController _plController;
         private WorkGunGroup _workingGunGroup;
         private PlOptions _plOptions;
         private DateTime _openDateTime;
@@ -20,7 +21,8 @@ namespace PL {
         /// 
         /// </summary>
         /// <param name="guns"></param>
-        public GunsController(WorkGunGroup workGunGroup, PlOptions plOptions) {
+        public GunsController(PlController plController, WorkGunGroup workGunGroup, PlOptions plOptions) {
+            _plController = plController;
             _workingGunGroup = workGunGroup;
             _plOptions = plOptions;
         }
@@ -61,11 +63,12 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         private Gun GetTailGun() {
-            DamList dams = App.GetApp().Dams.GetWorkDams(_plOptions);
-            if (dams.Count == 0) {
+            //DamList workDams = App.GetApp().Dams.GetWorkDams(_plOptions);
+            DamList workDams = _plController.App.Dams.GetWorkDams(_plOptions);
+            if (workDams.Count == 0) {
                 throw new InvalidOperationException("dams count == 0");
             }
-            var lastDam = dams[dams.Count - 1];
+            var lastDam = workDams[workDams.Count - 1];
             var lastGun = lastDam.Guns.Last.Value;
             return lastGun;
         }
@@ -135,7 +138,8 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         private CurrentWorkingDamStatus GetCurrentWorkingDamStatus() {
-            return App.GetApp().AppController.CurrentWorkingDamStatus;
+            //return App.GetApp().AppController.CurrentWorkingDamStatus;
+            return _plController.GetCurrentWorkingDamStatus();
         }
 
         /// <summary>
@@ -232,7 +236,9 @@ namespace PL {
         /// </summary>
         private void WriteRemainingTime() {
             var remaining = this.RemainingTimeWithSecond;
-            PlTimeRemaining.Instance.Write(remaining);
+            //PlTimeRemaining.Instance.Write(remaining);
+            var plTimeRemaining = _plController.App.PlTimeRemaining;
+            plTimeRemaining.Write(remaining);
         }
 
         ///// <summary>

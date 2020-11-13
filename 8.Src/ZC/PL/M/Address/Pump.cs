@@ -14,7 +14,7 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        static public readonly Pump Instance = new Pump(Hardware.Gc.Instance.CycleEndStopPump);
+        //static public readonly Pump Instance = new Pump(Hardware.Gc.Instance.CycleEndStopPump);
 
         /// <summary>
         /// 

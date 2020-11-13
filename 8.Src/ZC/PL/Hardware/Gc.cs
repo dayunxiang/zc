@@ -27,11 +27,11 @@ namespace PL.Hardware {
         /// 
         /// </summary>
         /// <returns></returns>
-        static public Gc Instance {
-            get {
-                return App.GetApp().Gc;
-            }
-        } 
+        //static public Gc Instance {
+        //    get {
+        //        return App.GetApp().Gc;
+        //    }
+        //} 
 
     }
 }

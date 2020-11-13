@@ -23,6 +23,7 @@ namespace PL {
         static private Logger _logger = LogManager.GetCurrentClassLogger();
 
         //private bool _isWorking;
+        private AppController _appController;
         private PlControllerStatusEnum _plControllerStatus;
         private DateTime _beginDateTime;
         private DateTime _endDateTime;
@@ -37,7 +38,8 @@ namespace PL {
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public PlController(PlOptions options) {
+        public PlController(AppController appController, PlOptions options) {
+            this._appController = appController;
             this.PlOptions = options;
             _plControllerStatus = PlControllerStatusEnum.Init;
         }
@@ -169,8 +171,19 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        private CurrentWorkingDamStatus GetCurrentWorkingDamStatus() {
-            return App.GetApp().AppController.CurrentWorkingDamStatus;
+        public App App {
+            get {
+                return this._appController.App;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public CurrentWorkingDamStatus GetCurrentWorkingDamStatus() {
+            //return App.GetApp().AppController.CurrentWorkingDamStatus;
+            return _appController.CurrentWorkingDamStatus;
         }
 
         /// <summary>
@@ -178,7 +191,8 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         private CurrentDoneCycleCountStatus GetCurrentDoneCycleCountStatus() {
-            return App.GetApp().AppController.CurrentDoneCycleCountStatus;
+            //return App.GetApp().AppController.CurrentDoneCycleCountStatus;
+            return _appController.CurrentDoneCycleCountStatus;
         }
 
 
@@ -187,7 +201,8 @@ namespace PL {
         /// 
         /// </summary>
         private void RefreshCartLocation() {
-            App.GetApp().Carts.RefreshLocations();
+            var carts = _appController.App.Carts;
+            carts.RefreshLocations();
         }
         #endregion //RefreshCartLocation
 
@@ -255,7 +270,7 @@ namespace PL {
                 _discardGunsController = gunsController;
                 _discardGunsController.DiscardDateTime = DateTime.Now;
 
-                var nextGunsController = new GunsController(nextGuns, this.PlOptions);
+                var nextGunsController = new GunsController(this, nextGuns, this.PlOptions);
                 _workingGunsController = nextGunsController;
                 nextGunsController.Open();
 
@@ -289,7 +304,9 @@ namespace PL {
         /// 
         /// </summary>
         private void StopPump() {
-            Pump.Instance.Stop();
+            //Pump.Instance.Stop();
+            var pump = _appController.App.Pump;
+            pump.Stop();
             this._stopPumpDateTime = DateTime.Now;
         }
         #endregion //StopPump
@@ -300,8 +317,10 @@ namespace PL {
         /// <returns></returns>
         private GunsController GetGunsController() {
             if (_workingGunsController == null) {
-                var guns = App.GetApp().Dams.GetFirstGuns(this.PlOptions);
-                _workingGunsController = new GunsController(guns, this.PlOptions);
+                //WorkGunGroup guns = App.GetApp().Dams.GetFirstGuns(this.PlOptions);
+                var dams = _appController.App.Dams;
+                WorkGunGroup guns = dams.GetFirstGuns(this.PlOptions);
+                _workingGunsController = new GunsController(this, guns, this.PlOptions);
             }
             return _workingGunsController;
         }
