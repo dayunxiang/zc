@@ -62,7 +62,7 @@
     <Compile Include="M\MaterialHeap\CanWetEnum.cs" />
     <Compile Include="M\MaterialHeap\MaterialHeapList.cs" />
     <Compile Include="PlException.cs" />
-    <Compile Include="Defines\PumpStopEnum.cs" />
+    <Compile Include="Defines\Enums\PumpStopEnum.cs" />
     <Compile Include="Hardware\CartDefine.cs" />
     <Compile Include="Hardware\Gc.cs" />
     <Compile Include="Hardware\DamDefine.cs" />
@@ -71,12 +71,12 @@
     <Compile Include="M\Area.cs" />
     <Compile Include="M\AutoManualStatus.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Defines\AutoManualStatusEnum.cs" />
+    <Compile Include="Defines\Enums\AutoManualStatusEnum.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="C\AppController.cs" />
     <Compile Include="C\AppControllerStatus.cs" />
-    <Compile Include="Defines\ControllerStatusEnum.cs" />
-    <Compile Include="Defines\CycleMode.cs" />
+    <Compile Include="Defines\Enums\ControllerStatusEnum.cs" />
+    <Compile Include="Defines\Enums\CycleModeEnum.cs" />
     <Compile Include="M\Cart\Cart.cs" />
     <Compile Include="M\Cart\CartList.cs" />
     <Compile Include="M\Cart\CartLocationEventArgs.cs" />
@@ -86,15 +86,15 @@
     <Compile Include="M\Dam\DamLinkedList.cs" />
     <Compile Include="M\Dam\DamList.cs" />
     <Compile Include="M\Fault.cs" />
-    <Compile Include="Defines\FaultStatusEnum.cs" />
+    <Compile Include="Defines\Enums\FaultStatusEnum.cs" />
     <Compile Include="M\Gun\Gun.cs" />
     <Compile Include="M\Gun\GunLinkedList.cs" />
     <Compile Include="M\Gun\GunList.cs" />
     <Compile Include="C\GunsController.cs" />
-    <Compile Include="Defines\GunStatus.cs" />
+    <Compile Include="Defines\Enums\SwitchStatusEnum.cs" />
     <Compile Include="Hardware\Define.cs" />
     <Compile Include="M\Mark.cs" />
-    <Compile Include="Defines\MarkStatusEnum.cs" />
+    <Compile Include="Defines\Enums\MarkStatusEnum.cs" />
     <Compile Include="C\PlCheckResult.cs" />
     <Compile Include="C\PlController.cs" />
     <Compile Include="M\MaterialHeap\Material.cs" />
@@ -107,10 +107,10 @@
     <Compile Include="PlOptionsReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="M\Remote.cs" />
-    <Compile Include="Defines\RemoteStatusEnum.cs" />
+    <Compile Include="Defines\Enums\RemoteStatusEnum.cs" />
     <Compile Include="M\Switch.cs" />
     <Compile Include="M\ZtPlcStatus.cs" />
-    <Compile Include="Defines\ZtPlcStatusEnum.cs" />
+    <Compile Include="Defines\Enums\ZtPlcStatusEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PLC\PLC.csproj">

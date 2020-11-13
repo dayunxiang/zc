@@ -11,7 +11,7 @@ namespace PL
     {
         public int CycleTimes { get; set; }
         public TimeSpan PlTimeSpan { get; set; }
-        public CycleMode CycleMode { get; set; }
+        public CycleModeEnum CycleMode { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -56,7 +56,7 @@ namespace PL
         {
             var dams = App.GetApp().Dams;
 
-            if (this.CycleMode == CycleMode.AllDam)
+            if (this.CycleMode == CycleModeEnum.AllDam)
             {
                 return new DamList(dams.ToArray());
             }

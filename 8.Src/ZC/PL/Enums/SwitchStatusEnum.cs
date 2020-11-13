@@ -1,7 +1,7 @@
 
 namespace PL {
 
-    public enum GunStatusEnum {
+    public enum SwitchStatusEnum {
         Close = 0,
         Open = 1,
     }

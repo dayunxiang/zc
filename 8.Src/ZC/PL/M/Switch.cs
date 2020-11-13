@@ -64,21 +64,21 @@ namespace PL {
         private bool IsOpenedFact() {
             var val = ReadFromOpc();
             var n = Convert.ToInt32(val);
-            return n == (int)GunStatusEnum.Open;
+            return n == (int)SwitchStatusEnum.Open;
         }
 
         /// <summary>
         /// 
         /// </summary>
         private void OpenFact() {
-            WriteToOpc((int)GunStatusEnum.Open);
+            WriteToOpc((int)SwitchStatusEnum.Open);
         }
 
         /// <summary>
         /// 
         /// </summary>
         private void CloseFact() {
-            WriteToOpc((int)GunStatusEnum.Close);
+            WriteToOpc((int)SwitchStatusEnum.Close);
         }
         #endregion //fact
 

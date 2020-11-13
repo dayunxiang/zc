@@ -41,7 +41,7 @@ namespace PL
         {
             return new PlOptions()
             {
-                CycleMode = CycleMode.AllDam,
+                CycleMode = CycleModeEnum.AllDam,
                 CycleTimes = 2,
                 PlTimeSpan = TimeSpan.FromSeconds(5),
                 GunCountPerGroup = 4,
@@ -67,7 +67,7 @@ namespace PL
 
             var plOptions = new PlOptions();
             plOptions.CycleTimes = Convert.ToInt32(values[0]);
-            plOptions.CycleMode = (CycleMode)Convert.ToInt32(values[1]);
+            plOptions.CycleMode = (CycleModeEnum)Convert.ToInt32(values[1]);
             plOptions.GunCountPerGroup = Convert.ToInt32(values[2]);
             plOptions.PlTimeSpan = TimeSpan.FromSeconds(Convert.ToInt32(values[3]));
             plOptions.WorkDam = Convert.ToInt32(values[4]);

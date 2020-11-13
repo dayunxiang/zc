@@ -48,7 +48,7 @@ namespace PL {
         /// <param name="_plOptions"></param>
         /// <returns></returns>
         internal DamList GetWorkDams(PlOptions _plOptions) {
-            if (_plOptions.CycleMode == CycleMode.AllDam) {
+            if (_plOptions.CycleMode == CycleModeEnum.AllDam) {
                 return new DamList(this.ToArray());
             } else {
                 var r = new DamList();
