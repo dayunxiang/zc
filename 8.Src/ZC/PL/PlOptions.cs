@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class PlOptions
-    {
+    public class PlOptions {
+
+        private App _app;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PlOptions(App app) {
+            this._app = app;
+        }
+
         public int CycleTimes { get; set; }
         public TimeSpan PlTimeSpan { get; set; }
         public CycleModeEnum CycleMode { get; set; }
@@ -30,8 +38,7 @@ namespace PL
         /// </summary>
         /// <param name="nextDam"></param>
         /// <returns></returns>
-        internal bool IsWorkDam(Dam dam)
-        {
+        internal bool IsWorkDam(Dam dam) {
             var workDams = GetWorkDams();
             return workDams.Contains(dam);
         }
@@ -41,8 +48,7 @@ namespace PL
         /// </summary>
         /// <param name="_openDt"></param>
         /// <returns></returns>
-        internal bool IsTimeout(DateTime openDateTime)
-        {
+        internal bool IsTimeout(DateTime openDateTime) {
             var ts = DateTime.Now - openDateTime;
             return ts < TimeSpan.Zero || ts >= PlTimeSpan;
         }
@@ -52,25 +58,20 @@ namespace PL
         /// </summary>
         /// <param name="_plOptions"></param>
         /// <returns></returns>
-        internal DamList GetWorkDams()
-        {
-            var dams = App.GetApp().Dams;
+        internal DamList GetWorkDams() {
+            //var dams = App.GetApp().Dams;
+            var dams = this._app.Dams;
 
-            if (this.CycleMode == CycleModeEnum.AllDam)
-            {
+            if (this.CycleMode == CycleModeEnum.AllDam) {
                 return new DamList(dams.ToArray());
-            }
-            else
-            {
+            } else {
                 var r = new DamList();
 
                 int[] mask = new int[] { 1, 2, 4, 8 };
                 int n = 0;
-                foreach (var dam in dams)
-                {
+                foreach (var dam in dams) {
                     bool isSelected = (this.WorkDam & mask[n]) > 0;
-                    if (isSelected)
-                    {
+                    if (isSelected) {
                         r.Add(dam);
                     }
                     n++;

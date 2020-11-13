@@ -11,12 +11,15 @@ namespace PLForm {
         /// 
         /// </summary>
         private bool _isClose = false;
+        private App _app;
+
 
         /// <summary>
         /// 
         /// </summary>
         public frmMain() {
             InitializeComponent();
+            _app = App.GetApp();
         }
 
         /// <summary>
@@ -32,8 +35,8 @@ namespace PLForm {
             tssAppStatus.Text = "OPC 未连接";
 
             PLC.MyLogManager.Logs.Add(new TxtLog(this.txtLog));
-            App.GetApp().Opc.ConnectedEvent += Opc_ConnectedEvent;
-            App.GetApp().AppController.Start();
+            _app.Opc.ConnectedEvent += Opc_ConnectedEvent;
+            _app.AppController.Start();
         }
 
         /// <summary>
@@ -60,16 +63,14 @@ namespace PLForm {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void tsbExit_Click(object sender, EventArgs e) {
-            var appController = App.GetApp().AppController;
+            var appController = _app.AppController;
 
             if (appController.ControllerStatus.IsWorking()) {
-                var s = "工作中, 无法退出!";
-                NUnit.UiKit.UserMessage.DisplayFailure(s);
+                NUnit.UiKit.UserMessage.DisplayFailure(S.CannotExit);
             } else {
-                var s = "确定退出吗?";
-                if (UserMessage.Ask(s) == System.Windows.Forms.DialogResult.Yes) {
+                if (UserMessage.Ask(S.SureExit) == DialogResult.Yes) {
                     _isClose = true;
-                    var opc = App.GetApp().Opc;
+                    var opc = _app.Opc;
                     if (opc.IsConnected()) {
                         appController.ControllerStatus.Value = ControllerStatusEnum.NotRun;
                     }
@@ -117,7 +118,7 @@ namespace PLForm {
         /// <param name="e"></param>
         private void tsbGunInfo_Click(object sender, EventArgs e) {
             var frmGunLocation = new frmGunInfo();
-            frmGunLocation.Dams = App.GetApp().Dams;
+            frmGunLocation.Dams = _app.Dams;
             frmGunLocation.ShowDialog();
         }
     }

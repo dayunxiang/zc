@@ -41,7 +41,7 @@ namespace Test {
             Assert.IsTrue(app.MaterialHeaps.Count>0);
 
             var appController = new AppController(app, app.Gc);
-            var plOptions = new PlOptions();
+            var plOptions = new PlOptions(app);
             var plController = new PlController(appController, plOptions);
             appController.AutoManualStatus.Read();
             Console.WriteLine(appController.AutoManualStatus);

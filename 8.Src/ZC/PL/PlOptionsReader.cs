@@ -4,59 +4,56 @@ using System.Linq;
 using System.Text;
 using PLC;
 
-namespace PL
-{
+namespace PL {
 
-    public class PlOptionsReader
-    {
+    public class PlOptionsReader {
+
+        private App _app;
+
         /// <summary>
         /// 
         /// </summary>
-        public PlOptionsReader()
-        {
-
+        public PlOptionsReader(App app) {
+            _app = app;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public PlOptions Read()
-        {
-            if (Config.IsMock)
-            {
-                return ReadMock();
-            }
-            else
-            {
+        public PlOptions Read() {
+            if (Config.IsMock) {
+                //return ReadMock();
+                throw new NotImplementedException();
+            } else {
                 return ReadFact();
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private PlOptions ReadMock()
-        {
-            return new PlOptions()
-            {
-                CycleMode = CycleModeEnum.AllDam,
-                CycleTimes = 2,
-                PlTimeSpan = TimeSpan.FromSeconds(5),
-                GunCountPerGroup = 4,
-                WorkDam = 0,
-            };
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //private PlOptions ReadMock()
+        //{
+        //    return new PlOptions()
+        //    {
+        //        CycleMode = CycleModeEnum.AllDam,
+        //        CycleTimes = 2,
+        //        PlTimeSpan = TimeSpan.FromSeconds(5),
+        //        GunCountPerGroup = 4,
+        //        WorkDam = 0,
+        //    };
+        //}
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        private PlOptions ReadFact()
-        {
-            var gc = App.GetApp().Gc;
-            var opcServer = App.GetApp().Opc;
+        private PlOptions ReadFact() {
+            var gc = _app.Gc;
+            var opcServer = _app.Opc;
+
             List<string> itemNames = new List<string>();
             itemNames.Add(gc.CycleCount);
             itemNames.Add(gc.CycleMode);
@@ -65,7 +62,7 @@ namespace PL
             itemNames.Add(gc.WorkDam);
             var values = opcServer.Read(itemNames.ToArray());
 
-            var plOptions = new PlOptions();
+            var plOptions = new PlOptions(this._app);
             plOptions.CycleTimes = Convert.ToInt32(values[0]);
             plOptions.CycleMode = (CycleModeEnum)Convert.ToInt32(values[1]);
             plOptions.GunCountPerGroup = Convert.ToInt32(values[2]);

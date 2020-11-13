@@ -30,7 +30,7 @@ namespace PL {
             this.ZtPlcStatus = new ZtPlcStatus(gc.ZtPlcStatus);
             this.CurrentWorkingDamStatus = new CurrentWorkingDamStatus(gc.CurrentWorkingDam);
             this.CurrentDoneCycleCountStatus = new CurrentDoneCycleCountStatus(gc.CurrentDoneCycleCount);
-            this.PlOptionsReader = new PlOptionsReader();
+            this.PlOptionsReader = new PlOptionsReader(this._app);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace PL {
                 MyLogManager.Output("Check...");
 
                 if (!_app.Opc.IsConnected()) {
-                    var subscriptionItemNames = GetSubscriptionItemNames();
+                    //var subscriptionItemNames = GetSubscriptionItemNames();
                     bool success = _app.Opc.Connect();
                     if (success) {
                         var itemNames = GetSubscriptionItemNames();
