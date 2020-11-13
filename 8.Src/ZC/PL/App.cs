@@ -32,7 +32,7 @@ namespace PL {
             this.Dams = InitDams(define, this.Carts);
             this.MaterialHeaps = InitMaterialHeaps(define);
 
-            this.Gc = InitGc();
+            this.Gc = define.Gc;
             this.Opc = new SimpleOpcServer();
             this.AppController = new AppController(this, this.Gc);
         }
@@ -65,18 +65,6 @@ namespace PL {
             return carts;
         }
         #endregion //InitCarts
-
-        #region InitGc
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private Gc InitGc() {
-            var json = File.ReadAllText("gc.json");
-            var a2 = JsonConvert.DeserializeObject<Gc>(json);
-            return a2;
-        }
-        #endregion //InitGc
 
         #region InitDams
         /// <summary>

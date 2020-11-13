@@ -29,13 +29,9 @@ namespace PL.Hardware {
         /// <returns></returns>
         static public Gc Instance {
             get {
-                if (_instance == null) {
-                    var json = File.ReadAllText("gc.json");
-                    _instance = JsonConvert.DeserializeObject<Gc>(json);
-                }
-                return _instance;
+                return App.GetApp().Gc;
             }
-        } static private Gc _instance = null;
+        } 
 
     }
 }

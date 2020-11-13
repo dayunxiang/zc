@@ -29,4 +29,20 @@ namespace Test {
             Console.WriteLine(d.ToJson());
         }
     }
+
+
+    [TestClass]
+    public class AppTest{
+        [TestMethod]
+        public void Test() {
+            var app = App.GetApp();
+            Assert.IsTrue(app.Dams.Count > 0);
+            Assert.IsTrue(app.Carts.Count > 0);
+            Assert.IsTrue(app.MaterialHeaps.Count>0);
+
+            var plOptions = new PlOptions();
+            var plController = new PlController(plOptions);
+        }
+    }
+
 }

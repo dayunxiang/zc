@@ -13,6 +13,7 @@ namespace PL.Hardware
         public List<CartDefine> CartDefines { get; set; }
         public List<DamDefine> DamDefines { get; set; }
         public List<MaterialHeapDefine> MaterialHeapDefines { get; set; }
+        public Gc Gc { get; set; }
 
 
         /// <summary>
