@@ -40,8 +40,11 @@ namespace Test {
             Assert.IsTrue(app.Carts.Count > 0);
             Assert.IsTrue(app.MaterialHeaps.Count>0);
 
+            var appController = new AppController(app, app.Gc);
             var plOptions = new PlOptions();
-            var plController = new PlController(plOptions);
+            var plController = new PlController(appController, plOptions);
+            appController.AutoManualStatus.Read();
+            Console.WriteLine(appController.AutoManualStatus);
         }
     }
 
