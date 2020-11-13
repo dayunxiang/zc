@@ -8,7 +8,7 @@ using NLog;
 
 namespace PL {
 
-    public enum PlCheckResult {
+    public enum PlCheckResultEnum {
         Working = 0,
         Completed = 1,
     }

@@ -160,15 +160,15 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        internal GunsCheckResult Check() {
+        internal GunsCheckResultEnum Check() {
             WriteRemainingTime();
 
             bool isTimeOut = _plOptions.IsTimeout(_openDateTime);
             if (isTimeOut) {
-                return GunsCheckResult.Timeout;
+                return GunsCheckResultEnum.Timeout;
             } else {
                 ProcessWorkingGuns();
-                return GunsCheckResult.Working;
+                return GunsCheckResultEnum.Working;
             }
         }
         #endregion //Check

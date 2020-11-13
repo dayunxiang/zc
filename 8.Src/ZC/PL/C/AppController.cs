@@ -203,7 +203,7 @@ namespace PL {
                             _plController.Start();
                         } else if (controllerStatusEnum == ControllerStatusEnum.Working) {
                             var checkResult = _plController.Check();
-                            if (checkResult == PlCheckResult.Completed) {
+                            if (checkResult == PlCheckResultEnum.Completed) {
                                 this.ControllerStatus.Value = ControllerStatusEnum.Completed;
                                 this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
                                 _plController.Close();

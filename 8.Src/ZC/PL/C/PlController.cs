@@ -12,7 +12,7 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        private enum PlControllerStatus {
+        private enum PlControllerStatusEnum {
             Init = 0,
             Working = 1,
             StopPump = 2,
@@ -23,7 +23,7 @@ namespace PL {
         static private Logger _logger = LogManager.GetCurrentClassLogger();
 
         //private bool _isWorking;
-        private PlControllerStatus _plControllerStatus;
+        private PlControllerStatusEnum _plControllerStatus;
         private DateTime _beginDateTime;
         private DateTime _endDateTime;
         private DateTime _stopPumpDateTime;
@@ -39,7 +39,7 @@ namespace PL {
         /// <param name="options"></param>
         public PlController(PlOptions options) {
             this.PlOptions = options;
-            _plControllerStatus = PlControllerStatus.Init;
+            _plControllerStatus = PlControllerStatusEnum.Init;
         }
         #endregion //PlController
 
@@ -57,7 +57,7 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool IsInitStatus() {
-            return _plControllerStatus == PlControllerStatus.Init;
+            return _plControllerStatus == PlControllerStatusEnum.Init;
         }
         #endregion //IsInitStatus
 
@@ -78,7 +78,7 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool IsWorkingStatus() {
-            return _plControllerStatus == PlControllerStatus.Working;
+            return _plControllerStatus == PlControllerStatusEnum.Working;
             // || _plControllerStatus == PlControllerStatus.StopPump;
         }
         #endregion //IsWorkingStatus
@@ -100,7 +100,7 @@ namespace PL {
         public void Start() {
             //if (!IsWorkingStatus())
             if (IsInitStatus()) {
-                _plControllerStatus = PlControllerStatus.Working;
+                _plControllerStatus = PlControllerStatusEnum.Working;
                 _beginDateTime = DateTime.Now;
                 // 1. get guns -> working guns
                 // 2. guns open
@@ -116,7 +116,7 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        internal PlCheckResult Check() {
+        internal PlCheckResultEnum Check() {
             if (IsStopPumpStatus()) {
                 return CheckStopPump();
             } else if (IsWorkingStatus()) {
@@ -145,7 +145,7 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         private bool IsStopPumpStatus() {
-            return _plControllerStatus == PlControllerStatus.StopPump;
+            return _plControllerStatus == PlControllerStatusEnum.StopPump;
         }
 
         #region CheckStopPump
@@ -153,14 +153,14 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        private PlCheckResult CheckStopPump() {
+        private PlCheckResultEnum CheckStopPump() {
             if (IsStopPumpTimeOut()) {
                 _workingGunsController.Close();
                 _workingGunsController = null;
                 GetCurrentWorkingDamStatus().Write(0);
-                return PlCheckResult.Completed;
+                return PlCheckResultEnum.Completed;
             } else {
-                return PlCheckResult.Working;
+                return PlCheckResultEnum.Working;
             }
         }
         #endregion //CheckStopPump
@@ -196,7 +196,7 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        private PlCheckResult CheckWorking() {
+        private PlCheckResultEnum CheckWorking() {
             //-1. refresh cart location
             //
             // 0. discard guns controller close
@@ -221,7 +221,7 @@ namespace PL {
 
             var gunsCheckResult = gunsController.Check();
 
-            if (gunsCheckResult == GunsCheckResult.Timeout) {
+            if (gunsCheckResult == GunsCheckResultEnum.Timeout) {
                 //todo: check cycle count 
                 //
                 bool isPassTail;
@@ -234,14 +234,14 @@ namespace PL {
                         //gunsController.Close();
                         //return PlCheckResult.Completed;
                         StopPump();
-                        this._plControllerStatus = PlControllerStatus.StopPump;
+                        this._plControllerStatus = PlControllerStatusEnum.StopPump;
 
                         // clear cycle count
                         //
                         this._cycleCount = 0;
                         CycleCountChanged();
 
-                        return PlCheckResult.Working;
+                        return PlCheckResultEnum.Working;
                     }
                 }
 
@@ -259,12 +259,12 @@ namespace PL {
                 _workingGunsController = nextGunsController;
                 nextGunsController.Open();
 
-                return PlCheckResult.Working;
-            } else if (gunsCheckResult == GunsCheckResult.Working) {
-                return PlCheckResult.Working;
+                return PlCheckResultEnum.Working;
+            } else if (gunsCheckResult == GunsCheckResultEnum.Working) {
+                return PlCheckResultEnum.Working;
             } else {
                 Debug("unknown gunsCheckResult: " + gunsCheckResult);
-                return PlCheckResult.Working;
+                return PlCheckResultEnum.Working;
             }
         }
         #endregion //CheckWorking

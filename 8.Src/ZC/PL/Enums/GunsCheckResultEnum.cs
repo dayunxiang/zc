@@ -7,7 +7,7 @@ using PLC;
 using NLog;
 
 namespace PL {
-    public enum GunsCheckResult {
+    public enum GunsCheckResultEnum {
         Working = 0,
         Timeout = 1,
     }
