@@ -73,5 +73,14 @@ namespace PL {
             var gun = this.WorkGuns.GetFirst();
             return gun.Dam.GetDamValue();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="part"></param>
+        internal void Merge(WorkGunGroup other) {
+            this.WorkGuns.AddRange(other.WorkGuns);
+            this.SearchedGuns.AddRange(other.SearchedGuns);
+        }
     }
 }
