@@ -16,21 +16,24 @@ namespace PLForm {
         /// </summary>
         [STAThread]
         static void Main() {
+
+            PLC.OpcServerManager.Instance.IsMock = PL.Config.IsMock;
+
             var encode = Encode(GetBoardID());
             var key = ReadKey();
 
-            if (!key.Equals(encode)) {
-                NUnit.UiKit.UserMessage.DisplayFailure(S.InvalidSn);
-                return;
-            }
+            //if (!key.Equals(encode)) {
+            //    NUnit.UiKit.UserMessage.DisplayFailure(S.InvalidSn);
+            //    return;
+            //}
 
             if (Xdgk.Common.Diagnostics.HasPreInstance()) {
                 NUnit.UiKit.UserMessage.DisplayInfo(S.ProgramRunning);
                 return;
             }
 
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            Application.ThreadException += Application_ThreadException;
+            //AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            //Application.ThreadException += Application_ThreadException;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

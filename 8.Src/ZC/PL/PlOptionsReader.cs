@@ -22,12 +22,7 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public PlOptions Read() {
-            if (Config.IsMock) {
-                //return ReadMock();
-                throw new NotImplementedException();
-            } else {
-                return ReadFact();
-            }
+            return ReadFact();
         }
 
         ///// <summary>
@@ -52,7 +47,7 @@ namespace PL {
         /// <returns></returns>
         private PlOptions ReadFact() {
             var gc = _app.Gc;
-            var opcServer = _app.Opc;
+            var opcServer = OpcServerManager.Instance.OpcServer;
 
             List<string> itemNames = new List<string>();
             itemNames.Add(gc.CycleCount);

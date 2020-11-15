@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PL.Hardware;
-
+using PLC;
 namespace PL {
 
     public class MaterialHeap {
@@ -52,7 +52,8 @@ namespace PL {
                 this.Define.CanWetAddress,
             };
 
-            var values = App.GetApp().Opc.Read(itemNames);
+            var values = OpcServerManager.Instance.OpcServer.Read(itemNames);
+
             this.DamValue = Convert.ToInt32(values[0]);
             //this.Dam = dams.FindDamByValue(this.DamValue);
             //this.Dam.MaterialHeaps.Add(this);

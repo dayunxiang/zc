@@ -21,20 +21,7 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public AutoManualStatusEnum Read() {
-            if (Config.IsMock) {
-                return ReadMock();
-            } else {
                 return ReadFact();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private AutoManualStatusEnum ReadMock() {
-            return AutoManualUI.Checked ?
-                AutoManualStatusEnum.Auto : AutoManualStatusEnum.Manual;
         }
 
         /// <summary>
@@ -45,15 +32,6 @@ namespace PL {
             var val = ReadFromOpc();
             var n = Convert.ToInt32(val);
             return (AutoManualStatusEnum)n;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public CheckBox AutoManualUI {
-            get;
-            set;
         }
     }
 }

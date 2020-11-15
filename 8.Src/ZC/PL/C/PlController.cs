@@ -319,6 +319,8 @@ namespace PL {
             if (_workingGunsController == null) {
                 //WorkGunGroup guns = App.GetApp().Dams.GetFirstGuns(this.PlOptions);
                 var dams = _appController.App.Dams;
+                // todo: guns count may be 0, when dam material heap can not wet
+                //
                 WorkGunGroup guns = dams.GetFirstGuns(this.PlOptions);
                 _workingGunsController = new GunsController(this, guns, this.PlOptions);
             }

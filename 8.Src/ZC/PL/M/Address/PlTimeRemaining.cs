@@ -12,12 +12,6 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        //static public readonly PlTimeRemaining Instance = new PlTimeRemaining(
-        //    Hardware.Gc.Instance.PlTimeRemaining);
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="address"></param>
         public PlTimeRemaining(string address)
             : base(address) {

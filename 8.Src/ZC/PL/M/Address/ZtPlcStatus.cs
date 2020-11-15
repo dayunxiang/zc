@@ -26,14 +26,7 @@ namespace PL
         /// <returns></returns>
         public ZtPlcStatusEnum Read()
         {
-            if (Config.IsMock)
-            {
-                return ReadMock();
-            }
-            else
-            {
                 return ReadFact();
-            }
         }
 
         /// <summary>
@@ -50,33 +43,10 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
-        private ZtPlcStatusEnum ReadMock()
-        {
-            //todo:
-            if (ZtPlcStatusUI.Text.Length == 0)
-            {
-                return ZtPlcStatusEnum.Stop;
-            }
-
-            int n = int.Parse(ZtPlcStatusUI.Text);
-            return (ZtPlcStatusEnum)n;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="ztPlcStatusEnum"></param>
         internal void Write(ZtPlcStatusEnum ztPlcStatusEnum)
         {
-            if (Config.IsMock)
-            {
-                WriteMock(ztPlcStatusEnum);
-            }
-            else
-            {
                 WriteFact(ztPlcStatusEnum);
-            }
         }
 
         /// <summary>
@@ -86,24 +56,6 @@ namespace PL
         private void WriteFact(ZtPlcStatusEnum ztPlcStatusEnum)
         {
             WriteToOpc((int)ztPlcStatusEnum);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ztPlcStatusEnum"></param>
-        private void WriteMock(ZtPlcStatusEnum ztPlcStatusEnum)
-        {
-            this.ZtPlcStatusUI.Text = ((int)ztPlcStatusEnum).ToString();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public TextBox ZtPlcStatusUI
-        {
-            get;
-            set;
         }
     }
 }

@@ -18,20 +18,8 @@ namespace PL {
         /// </summary>
         public bool IsMarked {
             get {
-                if (Config.IsMock) {
-                    return IsMarkedMock();
-                } else {
                     return IsMarkedFact();
-                }
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private bool IsMarkedMock() {
-            return MarkUI.Checked;
         }
 
         /// <summary>
@@ -42,13 +30,6 @@ namespace PL {
             var v = ReadFromOpc();
             var n = Convert.ToInt32(v);
             return n == (int)MarkStatusEnum.Marked;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public CheckBox MarkUI {
-            get;
-            set;
         }
     }
 

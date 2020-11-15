@@ -50,6 +50,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmOpcValues.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOpcValues.Designer.cs">
+      <DependentUpon>frmOpcValues.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemCache.cs" />
     <Compile Include="OpcException.cs" />
     <Compile Include="ILog.cs" />
@@ -68,6 +76,11 @@
     <Compile Include="X\Service.cs" />
     <Compile Include="SimpleOpcServer.cs" />
     <Compile Include="ValueChangedEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmOpcValues.resx">
+      <DependentUpon>frmOpcValues.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,24 +28,8 @@ namespace PL
         {
             get
             {
-                if (Config.IsMock)
-                {
-                    return IsFaultMock();
-                }
-                else
-                {
                     return IsFaultFact();
-                }
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private bool IsFaultMock()
-        {
-            return FaultUI.Checked;
         }
 
         /// <summary>
@@ -57,15 +41,6 @@ namespace PL
             var val = ReadFromOpc();
             var n = Convert.ToInt32(val);
             return n == (int)FaultStatusEnum.Fault;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public CheckBox FaultUI
-        {
-            get;
-            set;
         }
     }
 }

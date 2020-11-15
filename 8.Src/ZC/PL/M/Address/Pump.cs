@@ -14,11 +14,6 @@ namespace PL
         /// <summary>
         /// 
         /// </summary>
-        //static public readonly Pump Instance = new Pump(Hardware.Gc.Instance.CycleEndStopPump);
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="address"></param>
         public Pump(string address)
             :base(address)

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Xdgk.Common;
 using NUnit.UiKit;
 using PL;
+using PLC;
 
 namespace PLForm {
     public partial class frmMain : Form {
@@ -29,13 +30,15 @@ namespace PLForm {
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e) {
 
+            //frmOpcValues.Instance.Show();
+
             this.Text = AppConfigReader.Read<string>("MainText", "---");
             this.Text += " - " + Application.ProductVersion;
 
             tssAppStatus.Text = "OPC 未连接";
 
             PLC.MyLogManager.Logs.Add(new TxtLog(this.txtLog));
-            _app.Opc.ConnectedEvent += Opc_ConnectedEvent;
+            //_app.Opc.ConnectedEvent += Opc_ConnectedEvent;
             _app.AppController.Start();
         }
 
@@ -70,8 +73,8 @@ namespace PLForm {
             } else {
                 if (UserMessage.Ask(S.SureExit) == DialogResult.Yes) {
                     _isClose = true;
-                    var opc = _app.Opc;
-                    if (opc.IsConnected()) {
+                    var opcServer = OpcServerManager.Instance.OpcServer;
+                    if (opcServer.IsConnected()) {
                         appController.ControllerStatus.Value = ControllerStatusEnum.NotRun;
                     }
                     Close();

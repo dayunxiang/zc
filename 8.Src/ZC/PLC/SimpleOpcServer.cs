@@ -6,10 +6,101 @@ using System.Threading.Tasks;
 using NLog;
 
 namespace PLC {
+
+    public interface IOpcServer {
+        bool Connect();
+        bool IsConnected();
+        void Disconnect();
+
+        object Read(string itemName);
+        object[] Read(string[] itemNames);
+        void Write(string itemName, object value);
+
+        void AddSubscriptionItems(string[] itemNames);
+    }
+
+ 
+
+    public class OpcServerManager {
+
+        public static readonly OpcServerManager Instance = new OpcServerManager();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private OpcServerManager() {
+        }
+
+        public bool IsMock { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public IOpcServer OpcServer {
+            get {
+                if (_opcServer == null) {
+                    bool b = TryConnect();
+                    if (!b) {
+                        throw new OpcException("get opc server fail");
+                    }
+                }
+                return _opcServer;
+            }
+            set {
+                _opcServer = value;
+            }
+        }  private IOpcServer _opcServer;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsConnected() {
+            return this._opcServer != null &&
+                   this._opcServer.IsConnected();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool TryConnect() {
+            if (IsMock) {
+                _opcServer = CreateMockOpcServer();
+            }
+            else {
+                _opcServer = CreateAndConnectSimpleOpcServer();
+            }
+
+            return _opcServer != null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private IOpcServer CreateAndConnectSimpleOpcServer() {
+            var simpleOpcServer = new SimpleOpcServer();
+            if (simpleOpcServer.Connect()) {
+                return simpleOpcServer;
+            }
+            else {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private IOpcServer CreateMockOpcServer() {
+            return new MockOpcServer();
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
-    public class SimpleOpcServer {
+    public class SimpleOpcServer : IOpcServer {
         static private Logger _logger = NLog.LogManager.GetCurrentClassLogger();
 
         private Opc.Da.Subscription _subscription;
@@ -85,7 +176,8 @@ namespace PLC {
                 subscriptionState.ClientHandle = Guid.NewGuid().ToString();
 
                 _subscription = (Opc.Da.Subscription)_server.CreateSubscription(subscriptionState);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 Debug(ex);
                 _server = null;
             }
@@ -151,7 +243,8 @@ namespace PLC {
             if (_server != null) {
                 try {
                     _server.Disconnect();
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Debug(ex);
                 }
                 _server.Dispose();
@@ -230,7 +323,8 @@ namespace PLC {
                     results = _subscription.Read(items);
                     LogReadInfo(items, results);
                     return results;
-                } catch (Opc.ResultIDException resultIdEx) {
+                }
+                catch (Opc.ResultIDException resultIdEx) {
                     //Lm.D(resultIdEx.ToString ());
                     //return new Opc.Da.ItemValueResult[0];
                     var msg = string.Format("read opc items '{0}' count '{1}', fail '{2}'",
@@ -239,7 +333,8 @@ namespace PLC {
                         resultIdEx.Result);
                     throw new OpcException(msg, resultIdEx);
                 }
-            } else {
+            }
+            else {
                 //return new Opc.Da.ItemValueResult[0];
                 throw new InvalidOperationException("opc not connect");
             }
@@ -287,9 +382,18 @@ namespace PLC {
         /// <param name="itemName"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public Opc.IdentifiedResult Write(string itemName, object value) {
+        //public Opc.IdentifiedResult Write(string itemName, object value) {
+        public void Write(string itemName, object value) {
             var s = Write(new string[] { itemName }, new object[] { value });
-            return s[0];
+            var r = s[0];
+
+            if (r.ResultID != Opc.ResultID.S_OK) {
+                var message = string.Format(
+                    "write opc '{0}' fail, result id is '{1}'",
+                    itemName,
+                    r.ResultID);
+                throw new OpcException(message);
+            }
         }
 
         /// <summary>
@@ -338,14 +442,16 @@ namespace PLC {
                     var r = _subscription.Write(itemValues);
                     LogWriteInfo(itemValues, r);
                     return r;
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     //Lm.D(ex.ToString());
                     //return new Opc.IdentifiedResult[0];
                     var msg = string.Format("write item '{0}' count '{1}' fail",
                         itemValues[0].ItemName, itemValues.Length);
                     throw new OpcException(msg, ex);
                 }
-            } else {
+            }
+            else {
                 //return new Opc.IdentifiedResult[0];
                 throw new InvalidOperationException("opc not connect");
             }

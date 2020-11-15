@@ -27,8 +27,8 @@ namespace PLForm
             this.ucH1.CreateUI(dams);
 
             var ac = App.GetApp().AppController;
-            ac.AutoManualStatus.AutoManualUI = chkAutoManual;
-            ac.ZtPlcStatus.ZtPlcStatusUI = txtZtPlcStatus;
+            //ac.AutoManualStatus.AutoManualUI = chkAutoManual;
+            //ac.ZtPlcStatus.ZtPlcStatusUI = txtZtPlcStatus;
         }
 
         /// <summary>

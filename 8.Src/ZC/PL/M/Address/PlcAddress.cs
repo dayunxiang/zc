@@ -29,7 +29,8 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public object ReadFromOpc() {
-            return App.GetApp().Opc.Read(this.Address);
+            //return App.GetApp().Opc.Read(this.Address);
+            return OpcServerManager.Instance.OpcServer.Read(this.Address);
         }
 
         /// <summary>
@@ -38,17 +39,19 @@ namespace PL {
         /// <param name="value"></param>
         /// <returns></returns>
         public void WriteToOpc(object value) {
-            if (App.GetApp().Opc.IsConnected()) {
-                var r = App.GetApp().Opc.Write(this.Address, value);
-                if (r.ResultID != Opc.ResultID.S_OK) {
-                    var message = string.Format("write opc '{0}' fail, result id is '{1}'",
-                        this.Address,
-                        r.ResultID);
-                    throw new OpcException(message);
-                }
-            } else {
-                throw new InvalidOperationException("opc not connect");
-            }
+            //if (App.GetApp().Opc.IsConnected()) {
+            //    App.GetApp().Opc.Write(this.Address, value);
+            //    //if (r.ResultID != Opc.ResultID.S_OK) {
+            //    //    var message = string.Format("write opc '{0}' fail, result id is '{1}'",
+            //    //        this.Address,
+            //    //        r.ResultID);
+            //    //    throw new OpcException(message);
+            //    //}
+            //} else {
+            //    throw new InvalidOperationException("opc not connect");
+            //}
+
+            OpcServerManager.Instance.OpcServer.Write(this.Address, value);
         }
     }
 }

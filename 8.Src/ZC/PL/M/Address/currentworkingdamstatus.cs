@@ -24,21 +24,7 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public int Read() {
-            if (Config.IsMock) {
-                return ReadMock();
-            } else {
                 return ReadFact();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private int ReadMock() {
-            //todo:
-            //
-            return 0;
         }
 
         /// <summary>
@@ -55,11 +41,7 @@ namespace PL {
         /// </summary>
         /// <param name="damValue"></param>
         public void Write(int damValue) {
-            if (Config.IsMock) {
-                WriteMock(damValue);
-            } else {
                 WriteFact(damValue);
-            }
         }
 
         /// <summary>
@@ -69,12 +51,5 @@ namespace PL {
             WriteToOpc(damValue);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private void WriteMock(int damValue) {
-            //todo:
-            //
-        }
     }
 }

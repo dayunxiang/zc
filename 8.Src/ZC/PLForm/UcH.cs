@@ -97,10 +97,10 @@ namespace PLForm
                     y += height + 5;
                     //x = 5;
 
-                    gun.Switch.SwitchUI = lblGun;
-                    gun.Remote.RemoteUI = chkRemote;
-                    gun.Fault.FaultUI = chkFault;
-                    gun.Mark.MarkUI = chkMark;
+                    //gun.Switch.SwitchUI = lblGun;
+                    //gun.Remote.RemoteUI = chkRemote;
+                    //gun.Fault.FaultUI = chkFault;
+                    //gun.Mark.MarkUI = chkMark;
                 }
                 n++;
             }

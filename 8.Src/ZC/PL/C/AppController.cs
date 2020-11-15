@@ -186,12 +186,15 @@ namespace PL {
             try {
                 MyLogManager.Output("Check...");
 
-                if (!_app.Opc.IsConnected()) {
-                    //var subscriptionItemNames = GetSubscriptionItemNames();
-                    bool success = _app.Opc.Connect();
+                //if (!_app.Opc.IsConnected()) {
+                var opcSm = OpcServerManager.Instance;
+                
+                if(!opcSm.IsConnected()){
+                    bool success = opcSm.TryConnect();
                     if (success) {
+                        var opcServer = opcSm.OpcServer;
                         var itemNames = GetSubscriptionItemNames();
-                        _app.Opc.AddSubscriptionItems(itemNames);
+                        opcServer.AddSubscriptionItems(itemNames);
 
                         this.ControllerStatus.Value = ControllerStatusEnum.Idle;
                         this.ControllerStatus.Write();
@@ -276,7 +279,6 @@ namespace PL {
         /// <param name="materialHeaps"></param>
         /// <param name="dams"></param>
         private void BindMaterialHeapDam(MaterialHeapList materialHeaps, DamLinkedList dams) {
-
             foreach (var dam in dams) {
                 dam.MaterialHeaps.Clear();
             }

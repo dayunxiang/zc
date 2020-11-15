@@ -19,18 +19,9 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public ItemDefine ItemDefine { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public bool IsOpened {
             get {
-                if (Config.IsMock) {
-                    return IsOpenedMock();
-                } else {
                     return IsOpenedFact();
-                }
             }
         }
 
@@ -38,22 +29,14 @@ namespace PL {
         /// 
         /// </summary>
         public void Open() {
-            if (Config.IsMock) {
-                OpenMock();
-            } else {
                 OpenFact();
-            }
         }
 
         /// <summary>
         /// 
         /// </summary>
         public void Close() {
-            if (Config.IsMock) {
-                CloseMock();
-            } else {
                 CloseFact();
-            }
         }
 
         #region fact
@@ -81,38 +64,5 @@ namespace PL {
             WriteToOpc((int)SwitchStatusEnum.Close);
         }
         #endregion //fact
-
-        #region mock
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private bool IsOpenedMock() {
-            return SwitchUI.BackColor == Color.Green;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void CloseMock() {
-            this.SwitchUI.BackColor = SystemColors.Control;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void OpenMock() {
-            this.SwitchUI.BackColor = Color.Green;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Label SwitchUI {
-            get;
-            set;
-        }
-        #endregion //mock
     }
 }

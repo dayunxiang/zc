@@ -18,8 +18,6 @@ namespace PL
         {
         }
 
-        public ItemDefine ItemDefine { get; set; }
-
         /// <summary>
         /// 
         /// </summary>
@@ -27,24 +25,8 @@ namespace PL
         {
             get
             {
-                if(Config.IsMock)
-                {
-                    return IsRemoteMock();
-                }
-                else
-                {
                     return IsRemoteFact();
-                }
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private bool IsRemoteMock()
-        {
-            return RemoteUI.Checked;
         }
 
         /// <summary>
@@ -58,13 +40,5 @@ namespace PL
             return n == (int)RemoteStatusEnum.Remote;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public CheckBox RemoteUI
-        {
-            get;
-            set;
-        }
     }
 }

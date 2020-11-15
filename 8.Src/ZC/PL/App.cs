@@ -35,7 +35,7 @@ namespace PL {
             this.Gc = define.Gc;
             this.PlTimeRemaining = new PlTimeRemaining(this.Gc.PlTimeRemaining);
             this.Pump = new Pump(this.Gc.CycleEndStopPump);
-            this.Opc = new SimpleOpcServer();
+            //this.Opc = new SimpleOpcServer();
             this.AppController = new AppController(this, this.Gc);
         }
         #endregion //ctor
@@ -95,7 +95,7 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        private Define InitDefine() {
+        public Define InitDefine() {
             var json = File.ReadAllText("address.json");
             var define = JsonConvert.DeserializeObject<Define>(json);
             return define;
@@ -133,13 +133,13 @@ namespace PL {
         #endregion //Gc
 
         #region Opc
-        /// <summary>
-        /// 
-        /// </summary>
-        public SimpleOpcServer Opc {
-            get;
-            private set;
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public SimpleOpcServer Opc {
+        //    get;
+        //    private set;
+        //}
         #endregion //Opc
 
         #region Carts
