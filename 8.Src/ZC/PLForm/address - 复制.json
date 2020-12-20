@@ -46,7 +46,7 @@
 					"Remote" : "[a]BD2[1].Remote",
 					"WorkStatus" : "workStatus0",
 					"Location" : 0.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 2,
@@ -57,7 +57,7 @@
 					"Remote" : "[a]BD2[2].Remote",
 					"WorkStatus" : "workStatus1",
 					"Location" : 64.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 3,
@@ -68,7 +68,7 @@
 					"Remote" : "[a]BD2[3].Remote",
 					"WorkStatus" : "workStatus2",
 					"Location" : 128.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 4,
@@ -79,7 +79,7 @@
 					"Remote" : "[a]BD2[4].Remote",
 					"WorkStatus" : "workStatus3",
 					"Location" : 192.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 5,
@@ -90,7 +90,7 @@
 					"Remote" : "[a]BD2[5].Remote",
 					"WorkStatus" : "workStatus4",
 					"Location" : 256.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 6,
@@ -101,7 +101,7 @@
 					"Remote" : "[a]BD2[6].Remote",
 					"WorkStatus" : "workStatus5",
 					"Location" : 320.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 7,
@@ -112,7 +112,7 @@
 					"Remote" : "[a]BD2[7].Remote",
 					"WorkStatus" : "workStatus6",
 					"Location" : 384.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 8,
@@ -123,7 +123,7 @@
 					"Remote" : "[a]BD2[8].Remote",
 					"WorkStatus" : "workStatus7",
 					"Location" : 448.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 9,
@@ -134,7 +134,7 @@
 					"Remote" : "[a]BD2[9].Remote",
 					"WorkStatus" : "workStatus8",
 					"Location" : 512.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 10,
@@ -145,7 +145,7 @@
 					"Remote" : "[a]BD2[10].Remote",
 					"WorkStatus" : "workStatus9",
 					"Location" : 576.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 11,
@@ -156,7 +156,7 @@
 					"Remote" : "[a]BD2[11].Remote",
 					"WorkStatus" : "workStatus10",
 					"Location" : 640.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 12,
@@ -167,7 +167,7 @@
 					"Remote" : "[a]BD2[12].Remote",
 					"WorkStatus" : "workStatus11",
 					"Location" : 704.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 13,
@@ -178,7 +178,7 @@
 					"Remote" : "[a]BD2[13].Remote",
 					"WorkStatus" : "workStatus12",
 					"Location" : 768.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 14,
@@ -189,7 +189,7 @@
 					"Remote" : "[a]BD2[14].Remote",
 					"WorkStatus" : "workStatus13",
 					"Location" : 832.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 15,
@@ -200,7 +200,7 @@
 					"Remote" : "[a]BD2[15].Remote",
 					"WorkStatus" : "workStatus14",
 					"Location" : 896.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 16,
@@ -211,7 +211,7 @@
 					"Remote" : "[a]BD2[16].Remote",
 					"WorkStatus" : "workStatus15",
 					"Location" : 960.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 17,
@@ -222,7 +222,7 @@
 					"Remote" : "[a]BD2[17].Remote",
 					"WorkStatus" : "workStatus16",
 					"Location" : 1024.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 18,
@@ -233,7 +233,7 @@
 					"Remote" : "[a]BD2[18].Remote",
 					"WorkStatus" : "workStatus17",
 					"Location" : 1088.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 19,
@@ -244,7 +244,7 @@
 					"Remote" : "[a]BD2[19].Remote",
 					"WorkStatus" : "workStatus18",
 					"Location" : 1152.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 20,
@@ -255,7 +255,7 @@
 					"Remote" : "[a]BD2[20].Remote",
 					"WorkStatus" : "workStatus19",
 					"Location" : 1216.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 21,
@@ -266,7 +266,7 @@
 					"Remote" : "[a]BD2[21].Remote",
 					"WorkStatus" : "workStatus20",
 					"Location" : 1280.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 22,
@@ -277,7 +277,7 @@
 					"Remote" : "[a]BD2[22].Remote",
 					"WorkStatus" : "workStatus21",
 					"Location" : 1344.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 23,
@@ -288,7 +288,7 @@
 					"Remote" : "[a]BD2[23].Remote",
 					"WorkStatus" : "workStatus22",
 					"Location" : 1408.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 24,
@@ -299,7 +299,7 @@
 					"Remote" : "[a]BD2[24].Remote",
 					"WorkStatus" : "workStatus23",
 					"Location" : 1472.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 25,
@@ -310,7 +310,7 @@
 					"Remote" : "[a]BD2[25].Remote",
 					"WorkStatus" : "workStatus24",
 					"Location" : 1536.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 26,
@@ -321,7 +321,7 @@
 					"Remote" : "[a]BD2[26].Remote",
 					"WorkStatus" : "workStatus25",
 					"Location" : 1600.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 27,
@@ -332,7 +332,7 @@
 					"Remote" : "[a]BD2[27].Remote",
 					"WorkStatus" : "workStatus26",
 					"Location" : 1664.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 28,
@@ -343,7 +343,7 @@
 					"Remote" : "[a]BD2[28].Remote",
 					"WorkStatus" : "workStatus27",
 					"Location" : 1728.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 29,
@@ -354,7 +354,7 @@
 					"Remote" : "[a]BD2[29].Remote",
 					"WorkStatus" : "workStatus28",
 					"Location" : 1792.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 30,
@@ -365,7 +365,7 @@
 					"Remote" : "[a]BD2[30].Remote",
 					"WorkStatus" : "workStatus29",
 					"Location" : 1856.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 31,
@@ -376,7 +376,7 @@
 					"Remote" : "[a]BD2[31].Remote",
 					"WorkStatus" : "workStatus30",
 					"Location" : 1920.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 32,
@@ -387,7 +387,7 @@
 					"Remote" : "[a]BD2[32].Remote",
 					"WorkStatus" : "workStatus31",
 					"Location" : 1984.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 33,
@@ -398,7 +398,7 @@
 					"Remote" : "[a]BD2[33].Remote",
 					"WorkStatus" : "workStatus32",
 					"Location" : 2048.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 34,
@@ -409,7 +409,7 @@
 					"Remote" : "[a]BD2[34].Remote",
 					"WorkStatus" : "workStatus33",
 					"Location" : 2112.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 35,
@@ -420,7 +420,7 @@
 					"Remote" : "[a]BD2[35].Remote",
 					"WorkStatus" : "workStatus34",
 					"Location" : 2176.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 36,
@@ -431,7 +431,7 @@
 					"Remote" : "[a]BD2[36].Remote",
 					"WorkStatus" : "workStatus35",
 					"Location" : 2240.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 37,
@@ -442,7 +442,7 @@
 					"Remote" : "[a]BD2[37].Remote",
 					"WorkStatus" : "workStatus36",
 					"Location" : 2304.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 38,
@@ -453,7 +453,7 @@
 					"Remote" : "[a]BD2[38].Remote",
 					"WorkStatus" : "workStatus37",
 					"Location" : 2368.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 39,
@@ -464,7 +464,7 @@
 					"Remote" : "[a]BD2[39].Remote",
 					"WorkStatus" : "workStatus38",
 					"Location" : 2432.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 40,
@@ -475,7 +475,7 @@
 					"Remote" : "[a]BD2[40].Remote",
 					"WorkStatus" : "workStatus39",
 					"Location" : 2496.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 41,
@@ -486,7 +486,7 @@
 					"Remote" : "[a]BD2[41].Remote",
 					"WorkStatus" : "workStatus40",
 					"Location" : 2560.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 42,
@@ -497,7 +497,7 @@
 					"Remote" : "[a]BD2[42].Remote",
 					"WorkStatus" : "workStatus41",
 					"Location" : 2624.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 43,
@@ -508,7 +508,7 @@
 					"Remote" : "[a]BD2[43].Remote",
 					"WorkStatus" : "workStatus42",
 					"Location" : 2688.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 44,
@@ -519,7 +519,7 @@
 					"Remote" : "[a]BD2[44].Remote",
 					"WorkStatus" : "workStatus43",
 					"Location" : 2752.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 45,
@@ -530,7 +530,7 @@
 					"Remote" : "[a]BD2[45].Remote",
 					"WorkStatus" : "workStatus44",
 					"Location" : 2816.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 46,
@@ -541,7 +541,7 @@
 					"Remote" : "[a]BD2[46].Remote",
 					"WorkStatus" : "workStatus45",
 					"Location" : 2880.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 47,
@@ -552,7 +552,7 @@
 					"Remote" : "[a]BD2[47].Remote",
 					"WorkStatus" : "workStatus46",
 					"Location" : 2944.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				},
 				{
 					"No" : 48,
@@ -563,7 +563,7 @@
 					"Remote" : "[a]BD2[48].Remote",
 					"WorkStatus" : "workStatus47",
 					"Location" : 3008.0,
-					"AssociateCartName" : "CartBD2"
+					"AssociateDamAreaName" : "2C"
 				}
 			]
 		},
