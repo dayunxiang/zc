@@ -3,22 +3,22 @@
 		{
 			"No" : 1,
 			"Name" : "CartBD2",
-			"Address" : "cartDB2Address"
+			"Address" : "BM_GPSPosition.BD2"
 		},
 		{
 			"No" : 2,
 			"Name" : "CartBD3",
-			"Address" : "cartDB3Address"
+			"Address" : "BM_GPSPosition.BD3"
 		},
 		{
 			"No" : 3,
 			"Name" : "CartBD4",
-			"Address" : "cartDB4Address"
+			"Address" : "BM_GPSPosition.BD4"
 		},
 		{
 			"No" : 4,
 			"Name" : "CartBDQ3",
-			"Address" : "cartDBQ3Address"
+			"Address" : "BM_GPSPosition.BDQ3"
 		}
 	],
 	"DamDefines" : [
