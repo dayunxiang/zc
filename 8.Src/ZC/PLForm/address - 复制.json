@@ -3,28 +3,39 @@
 		{
 			"No" : 1,
 			"Name" : "CartBD2",
-			"Address" : "cartDB2Address"
+			"Address" : "BM_GPSPosition.BD2"
 		},
 		{
 			"No" : 2,
 			"Name" : "CartBD3",
-			"Address" : "cartDB3Address"
+			"Address" : "BM_GPSPosition.BD3"
 		},
 		{
 			"No" : 3,
 			"Name" : "CartBD4",
-			"Address" : "cartDB4Address"
+			"Address" : "BM_GPSPosition.BD4"
 		},
 		{
 			"No" : 4,
 			"Name" : "CartBDQ3",
-			"Address" : "cartDBQ3Address"
+			"Address" : "BM_GPSPosition.BDQ3"
 		}
 	],
+
 	"DamDefines" : [
 		{
 			"Name" : "BD2",
 			"No" : 0,
+            "DamAreaDefines" : [
+                {
+                    "No" : 0,
+                    "Name" : "2C"
+                }, 
+                {
+                    "No" : 1,
+                    "Name" : "2D"
+                }
+            ],
 			"GunDefines" : [
 				{
 					"No" : 1,
@@ -559,6 +570,16 @@
 		{
 			"Name" : "BD3",
 			"No" : 1,
+            "DamAreaDefines" : [
+                {
+                    "No" : 0,
+                    "Name" : "2E"
+                }, 
+                {
+                    "No" : 1,
+                    "Name" : "2F"
+                }
+            ],
 			"GunDefines" : [
 				{
 					"No" : 1,
@@ -1093,6 +1114,16 @@
 		{
 			"Name" : "BD4",
 			"No" : 2,
+            "DamAreaDefines" : [
+                {
+                    "No" : 0,
+                    "Name" : "2G"
+                }, 
+                {
+                    "No" : 1,
+                    "Name" : "2H"
+                }
+            ],
 			"GunDefines" : [
 				{
 					"No" : 1,
@@ -1462,6 +1493,16 @@
 		{
 			"Name" : "BDQ3",
 			"No" : 3,
+            "DamAreaDefines" : [
+                {
+                    "No" : 0,
+                    "Name" : "2A"
+                }, 
+                {
+                    "No" : 1,
+                    "Name" : "2B"
+                }
+            ],
 			"GunDefines" : [
 				{
 					"No" : 1,
@@ -1928,6 +1969,7 @@
 			]
 		}
 	],
+
 	"MaterialHeapDefines" : [
 		{
 			"DamAddress" : "damAddress1",
