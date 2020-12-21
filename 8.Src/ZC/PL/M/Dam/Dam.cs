@@ -12,7 +12,6 @@ namespace PL {
         /// 
         /// </summary>
         public Dam() {
-            //this.MaterialHeaps = new MaterialHeapList();
             this.DamAreas = new DamAreaList();
         }
 
@@ -39,14 +38,6 @@ namespace PL {
             get;
             set;
         }
-
-
-        //public MaterialHeapList MaterialHeaps {
-        //    get;
-        //    private set;
-        //}
-
-        //public Dam
 
         /// <summary>
         /// 

@@ -35,6 +35,8 @@ namespace PL {
             this.Gc = define.Gc;
             this.PlTimeRemaining = new PlTimeRemaining(this.Gc.PlTimeRemaining);
             this.Pump = new Pump(this.Gc.CycleEndStopPump);
+
+            AssociateDamCart(this.Dams, this.Carts);
             //this.Opc = new SimpleOpcServer();
             this.AppController = new AppController(this, this.Gc);
         }
@@ -47,20 +49,12 @@ namespace PL {
         /// <param name="define"></param>
         /// <returns></returns>
         private MaterialAreaList InitMaterialAreas(Define define) {
-            // todo:
-            //
             var r = new MaterialAreaList();
             define.MaterialAreaDefines.ForEach(mad => {
                 var ma = mad.Create();
                 r.Add(ma);
             });
-            //foreach (var materialHeapDefine in define.MaterialHeapDefines) {
-            //    var materialHeap = materialHeapDefine.Create();
-            //    r.Add(materialHeap);
-            //}
             return r;
-
-            throw new NotImplementedException();
         }
         #endregion //InitMaterialAreas
 
@@ -109,6 +103,18 @@ namespace PL {
             return define;
         }
         #endregion //InitDefine
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dams"></param>
+        /// <param name="carts"></param>
+        private void AssociateDamCart(DamLinkedList dams, CartList carts) {
+            // todo
+            //
+            carts.ForEach(c => {
+            });
+        }
 
         #region AppController
         /// <summary>

@@ -21,13 +21,28 @@ namespace PL {
             this.Define = define;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MaterialHeapPositionDefine Define { get; private set; }
 
-        public bool IsReadedFromPlc { get; private set; }
-        public DateTime ReadDateTime { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public decimal ReadStartPosition() {
+            var r = OpcServerManager.Instance.OpcServer.Read(this.Define.StartPositionAddress);
+            return Convert.ToDecimal(r);
+        }
 
-        public decimal StartPosition { get; set; }
-        public decimal EndPosition { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public decimal ReadEndPosition() {
+            var r = OpcServerManager.Instance.OpcServer.Read(this.Define.EndPositionAddress);
+            return Convert.ToDecimal(r);
+        }
 
         /// <summary>
         /// 
@@ -36,26 +51,8 @@ namespace PL {
         /// <returns></returns>
         public bool IsInRange(decimal location) {
             return
-                location > this.StartPosition &&
-                location < this.EndPosition;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void ReadFromPlc() {
-            var itemNames = new string[]{
-                this.Define.StartPositionAddress,
-                this.Define.EndPositionAddress,
-            };
-
-            var values = OpcServerManager.Instance.OpcServer.Read(itemNames);
-
-            this.StartPosition = Convert.ToDecimal(values[0]);
-            this.EndPosition = Convert.ToDecimal(values[1]);
-
-            this.IsReadedFromPlc = true;
-            this.ReadDateTime = DateTime.Now;
+                location > this.ReadStartPosition() &&
+                location < this.ReadEndPosition();
         }
     }
 }

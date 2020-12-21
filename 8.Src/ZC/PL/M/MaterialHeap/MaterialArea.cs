@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PL.Hardware;
+using PLC;
 
 namespace PL {
 
@@ -29,6 +30,16 @@ namespace PL {
         public MaterialHeapPositionList MaterialHeapPositions {
             get;
             private set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string ReadStockGroupIdString() {
+            var r = OpcServerManager.Instance.OpcServer.Read(this.Define.StockGroupIdStringAddress);
+            return r.ToString();
+
         }
     }
 }

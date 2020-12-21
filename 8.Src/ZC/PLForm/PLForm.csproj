@@ -111,9 +111,6 @@
     <None Include="address.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="address.json.bak">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="app.config" />
     <Content Include="plkey.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

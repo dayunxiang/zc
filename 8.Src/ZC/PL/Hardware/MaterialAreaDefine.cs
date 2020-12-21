@@ -16,7 +16,6 @@ namespace PL.Hardware {
         public MaterialHeapPositionDefine[] MaterialHeapPositionDefines { get; set; }
 
         public MaterialArea Create() {
-
             var materialArea = new MaterialArea(this);
             foreach (var materialHeapPositionDefine in this.MaterialHeapPositionDefines) {
                 var materialHeapPosition = materialHeapPositionDefine.Create();

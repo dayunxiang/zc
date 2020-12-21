@@ -7,42 +7,30 @@ using PL.Hardware;
 
 namespace PL {
 
-
     public class MaterialHeapPositionList : List<MaterialHeapPosition> {
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="dams"></param>
-        public void ReadFromPlc() {
-            foreach (var materialHeapPosition in this) {
-                materialHeapPosition.ReadFromPlc();
-            }
-        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="gun"></param>
         /// <returns></returns>
-        internal MaterialHeapPosition FindByGun(Gun gun) {
-            //foreach (var materialHeap in this) {
-            //    if (materialHeap.Dam == gun.Dam) {
-            //        decimal gunBeginLocation = gun.Location - Config.GunRadius;
-            //        decimal gunEndLocation = gun.Location + Config.GunRadius;
+        internal MaterialHeapPositionList FindByGun(Gun gun) {
+            MaterialHeapPositionList r = new MaterialHeapPositionList();
 
-            //        if (materialHeap.IsInRange(gunBeginLocation) ||
-            //                materialHeap.IsInRange(gunEndLocation)) {
-            //            return materialHeap;
-            //        }
-            //    }
-            //}
+            decimal gunBeginLocation = gun.Location - Config.GunRadius;
+            gunBeginLocation =  Math.Max(gunBeginLocation, 0m);
 
-            //return null;
+            decimal gunEndLocation = gun.Location + Config.GunRadius;
 
-            // todo
-            //
-            throw new NotImplementedException();
+            foreach (var materialHeapPosition in this) {
+                if (materialHeapPosition.IsInRange(gunBeginLocation) ||
+                    materialHeapPosition.IsInRange(gunEndLocation)) {
+
+                    r.Add(materialHeapPosition);
+
+                }
+            }
+            return r;
         }
     }
 }
