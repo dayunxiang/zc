@@ -153,7 +153,7 @@ namespace PL {
             // reset gun work status
             //
             foreach (var gun in _workingGunGroup.SearchedGuns) {
-                gun.GunWorkStatus.Status = GunWorkStatusEnum.Normal;
+                //gun.GunWorkStatus.Status = GunWorkStatusEnum.Normal;
             }
 
             this._closeDateTime = DateTime.Now;
@@ -197,7 +197,7 @@ namespace PL {
         /// </summary>
         /// <param name="workingGun"></param>
         private void ProcessNeedCloseGun(Gun workingGun) {
-            workingGun.GunWorkStatus.Status = GunWorkStatusEnum.NotWorkWithCart;
+            //workingGun.GunWorkStatus.Status = GunWorkStatusEnum.NotWorkWithCart;
 
             Gun last = _workingGunGroup.GetLastGun();
             Gun nextGun = GetNextGun(last);

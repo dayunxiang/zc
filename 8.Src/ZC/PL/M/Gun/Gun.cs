@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PLC;
+using PL.Hardware;
 
 namespace PL {
 
@@ -12,47 +13,30 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public Gun() {
+        public Gun(GunDefine define) {
+            if (define == null) {
+                throw new ArgumentNullException("gunDefine");
+            }
 
+            this.Define = define;
         }
         #endregion //ctor
 
         #region Members
+        public GunDefine Define { get; private set; }
 
-        public int No { get; set; }
+        public string Name { get { return this.Define.Name; } }
+        public int No { get { return this.Define.No; } }
         public LinkedListNode<Gun> GunNode { get; set; }
         public Fault Fault { get; set; }
         public Mark Mark { get; set; }
         public Remote Remote { get; set; }
         public Switch Switch { get; set; }
-        public GunWorkStatus GunWorkStatus { get; set; }
+        //public GunWorkStatus GunWorkStatus { get; set; }
         public Dam Dam { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Name { get; set; }
 
-        public Cart AssociateCart { get; set; }
+        public DamArea AssociateDamArea { get; set; }
         #endregion //Members
-
-        //#region Area
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //public Area Area {
-        //    get {
-        //        if (_area == null) {
-        //            _area = Area.Empty;
-        //        }
-        //        return _area;
-        //    }
-        //    set {
-        //        if (_area != value) {
-        //            _area = value;
-        //        }
-        //    }
-        //} private Area _area;
-        //#endregion //Area
 
         #region Next
         /// <summary>
@@ -135,20 +119,24 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool IsCoverCart() {
-            if (this.AssociateCart == null) {
-                return false;
-            } else {
-                var endLocation = this.AssociateCart.Location + Config.CartRange;
+            // todo
+            //
+            //if (this.AssociateCart == null) {
+            //    return false;
+            //} else {
+            //    var endLocation = this.AssociateCart.Location + Config.CartRange;
 
-                var beginLocation = this.AssociateCart.Location - Config.CartRange;
-                if (beginLocation < 0) {
-                    beginLocation = 0;
-                }
+            //    var beginLocation = this.AssociateCart.Location - Config.CartRange;
+            //    if (beginLocation < 0) {
+            //        beginLocation = 0;
+            //    }
 
-                return
-                    this.Location >= beginLocation &&
-                    this.Location <= endLocation;
-            }
+            //    return
+            //        this.Location >= beginLocation &&
+            //        this.Location <= endLocation;
+            //}
+
+            throw new NotImplementedException();
         }
 
         #region CanUse
@@ -163,7 +151,7 @@ namespace PL {
 
             // set plc gun status
             //
-            this.GunWorkStatus.Status = gunWorkStatusEnum;
+            //this.GunWorkStatus.Status = gunWorkStatusEnum;
             return r;
         }
 
@@ -214,8 +202,9 @@ namespace PL {
         /// 
         /// </summary>
         public decimal Location {
-            get;
-            set;
+            get {
+                return this.Define.Location;
+            }
         }
         #endregion //Location
 
@@ -224,13 +213,17 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool IsMaterialHeapCanWet() {
-            var materialHeap = this.Dam.MaterialHeaps.FindByGun(this);
-            if (materialHeap != null) {
-                Debug.Assert(materialHeap.IsReadedFromPlc);
-                return materialHeap.CanWet;
-            } else {
-                return true;
-            }
+            // todo
+            //
+            //var materialHeap = this.Dam.MaterialHeaps.FindByGun(this);
+            //if (materialHeap != null) {
+            //    Debug.Assert(materialHeap.IsReadedFromPlc);
+            //    return materialHeap.CanWet;
+            //} else {
+            //    return true;
+            //}
+
+            throw new NotImplementedException();
         }
     }
 }

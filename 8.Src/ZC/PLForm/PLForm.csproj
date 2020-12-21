@@ -108,10 +108,10 @@
     <EmbeddedResource Include="UcH.resx">
       <DependentUpon>UcH.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="address - 复制.json">
+    <None Include="address.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="address.json">
+    <None Include="address.json.bak">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="app.config" />

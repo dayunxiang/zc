@@ -57,10 +57,17 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Enums\GunsCheckResultEnum.cs" />
+    <Compile Include="Hardware\DamAreaDefine.cs" />
+    <Compile Include="Hardware\MaterialAreaDefine.cs" />
+    <Compile Include="Hardware\MaterialHeapDefine.cs" />
     <Compile Include="M\Address\GunWorkStatus.cs" />
     <Compile Include="Enums\GunWorkStatusEnum.cs" />
     <Compile Include="Enums\CanWetEnum.cs" />
-    <Compile Include="M\MaterialHeap\MaterialHeapList.cs" />
+    <Compile Include="M\Dam\DamArea.cs" />
+    <Compile Include="M\Dam\DamAreaList.cs" />
+    <Compile Include="M\MaterialHeap\MaterialArea.cs" />
+    <Compile Include="M\MaterialHeap\MaterialAreaList.cs" />
+    <Compile Include="M\MaterialHeap\MaterialHeapPositionList.cs" />
     <Compile Include="PlException.cs" />
     <Compile Include="Enums\PumpStopEnum.cs" />
     <Compile Include="Hardware\CartDefine.cs" />
@@ -98,7 +105,7 @@
     <Compile Include="Enums\PlCheckResultEnum.cs" />
     <Compile Include="C\PlController.cs" />
     <Compile Include="M\X\Material.cs" />
-    <Compile Include="M\MaterialHeap\MaterialHeap.cs" />
+    <Compile Include="M\MaterialHeap\MaterialHeapPosition.cs" />
     <Compile Include="M\Address\PlcAddress.cs" />
     <Compile Include="M\Address\PlTimeRemaining.cs" />
     <Compile Include="M\Address\Pump.cs" />

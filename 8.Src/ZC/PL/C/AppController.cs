@@ -145,19 +145,21 @@ namespace PL {
                     r.Add(gun.Fault.Address);
                     r.Add(gun.Remote.Address);
                     r.Add(gun.Mark.Address);
-                    r.Add(gun.GunWorkStatus.Address);
+                    //r.Add(gun.GunWorkStatus.Address);
                 }
             }
 
             _app.Carts.ForEach((cart) => r.Add(cart.Address));
 
-            _app.MaterialHeaps.ForEach((materialHeap) => {
-                var mhDefine = materialHeap.Define;
-                r.Add(mhDefine.DamAddress);
-                r.Add(mhDefine.MaterialIdAddress);
-                r.Add(mhDefine.BeginLocationAddress);
-                r.Add(mhDefine.EndLocationAddress);
-                r.Add(mhDefine.CanWetAddress);
+            _app.MaterialAreas.ForEach((materialArea) => {
+                r.Add(materialArea.Define.MaterialAttributeAddress);
+                r.Add(materialArea.Define.MaterialIdAddress);
+                r.Add(materialArea.Define.StockGroupIdAddress);
+                r.Add(materialArea.Define.StockGroupIdStringAddress);
+                materialArea.MaterialHeapPositions.ForEach(mhp => {
+                    r.Add(mhp.Define.StartPositionAddress);
+                    r.Add(mhp.Define.EndPositionAddress);
+                });
             });
 
             //var gc = Gc.Instance;
@@ -264,11 +266,13 @@ namespace PL {
         /// 
         /// </summary>
         private void RefreshMaterialHeaps() {
-            var materialHeaps = this._app.MaterialHeaps;
-            var dams = this._app.Dams;
+            // todo:
+            //
+            //var materialHeaps = this._app.MaterialHeaps;
+            //var dams = this._app.Dams;
 
-            materialHeaps.ReadFromPlc();
-            BindMaterialHeapDam(materialHeaps, dams);
+            //materialHeaps.ReadFromPlc();
+            //BindMaterialHeapDam(materialHeaps, dams);
         }
 
         /// <summary>
@@ -276,21 +280,24 @@ namespace PL {
         /// </summary>
         /// <param name="materialHeaps"></param>
         /// <param name="dams"></param>
-        private void BindMaterialHeapDam(MaterialHeapList materialHeaps, DamLinkedList dams) {
+        private void BindMaterialHeapDam(MaterialAreaList materialHeaps, DamLinkedList dams) {
             foreach (var dam in dams) {
-                dam.MaterialHeaps.Clear();
+                // todo
+                //dam.MaterialaHeaps.Clear();
             }
 
             foreach (var materialHeap in materialHeaps) {
-                var dam = dams.FindDamByValue(materialHeap.DamValue);
-                if (dam != null) {
-                    dam.MaterialHeaps.Add(materialHeap);
-                    materialHeap.Dam = dam;
-                } else {
-                    var msg = string.Format("can not find dam by value '{0}'", materialHeap.DamValue);
-                    //throw new PlException(msg);
-                    Debug(msg);
-                }
+                // todo
+                //
+                //var dam = dams.FindDamByValue(materialHeap.DamValue);
+                //if (dam != null) {
+                //    dam.MaterialHeaps.Add(materialHeap);
+                //    materialHeap.Dam = dam;
+                //} else {
+                //    var msg = string.Format("can not find dam by value '{0}'", materialHeap.DamValue);
+                //    //throw new PlException(msg);
+                //    Debug(msg);
+                //}
 
             }
         }

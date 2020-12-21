@@ -74,7 +74,7 @@ namespace PL.Hardware {
                 Remote = "remote" + n,
                 Switch = "switch" + n,
                 Location = n * 10,
-                AssociateCartName = "Cart" + n,
+                //AssociateCartName = "Cart" + n,
             };
         }
 

@@ -8,22 +8,6 @@ using Newtonsoft.Json;
 
 namespace PL.Hardware {
 
-    public class MaterialHeapDefine {
-        public string DamAddress { get; set; }
-        public string MaterialIdAddress { get; set; }
-        public string BeginLocationAddress { get; set; }
-        public string EndLocationAddress { get; set; }
-        public string CanWetAddress { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public MaterialHeap Create() {
-            return new MaterialHeap(this);
-        }
-    }
-
     public class DamDefine {
         /// <summary>
         /// 
@@ -34,6 +18,7 @@ namespace PL.Hardware {
 
         public string Name { get; set; }
         public int No { get; set; }
+        public List<DamAreaDefine> DamAreaDefines { get; set; }
         public List<GunDefine> GunDefines { get; set; }
 
 
@@ -42,30 +27,54 @@ namespace PL.Hardware {
         /// </summary>
         /// <returns></returns>
         public Dam Create(CartList carts) {
-            var guns = CreateGuns(carts);
+            var gunLinkedList = CreateGunLinkedList();
 
-            var r = new Dam() {
+            var dam = new Dam() {
                 No = this.No,
                 Name = this.Name,
-                Guns = guns,
+                Guns = gunLinkedList,
             };
 
-            foreach (var gun in guns) {
-                gun.Dam = r;
+            foreach (var damAreaDefine in this.DamAreaDefines) {
+                var damArea = damAreaDefine.Create();
+                dam.DamAreas.Add(damArea);
             }
-            return r;
+
+            foreach (var gun in gunLinkedList) {
+                gun.Dam = dam;
+
+                var damArea = dam.DamAreas.GetByName(gun.Define.AssociateDamAreaName);
+                gun.AssociateDamArea = damArea;
+                damArea.Guns.Add(gun);
+            }
+
+            return dam;
         }
 
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="damAreaDefine"></param>
+        /// <param name="gunLinkedList"></param>
         /// <returns></returns>
-        private GunLinkedList CreateGuns(CartList carts) {
+        private DamArea CreateDamArea(DamAreaDefine damAreaDefine, GunLinkedList gunLinkedList) {
+            var damArea = damAreaDefine.Create();
+            foreach (var gun in gunLinkedList) {
+                //if(gun)
+            }
+
+            return damArea;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private GunLinkedList CreateGunLinkedList() {
             GunLinkedList guns = new GunLinkedList();
 
             LinkedListNode<Gun> lastNode = null;
             foreach (var gunDefine in GunDefines) {
-                Gun gun = gunDefine.Create(carts);
+                Gun gun = gunDefine.Create();
                 if (lastNode == null) {
                     lastNode = guns.AddFirst(gun);
                 } else {

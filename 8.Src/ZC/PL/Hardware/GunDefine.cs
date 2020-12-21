@@ -15,28 +15,21 @@ namespace PL.Hardware {
         public string Mark { get; set; }
         public string Fault { get; set; }
         public string Remote { get; set; }
-        public string WorkStatus { get; set; }
+        //public string WorkStatus { get; set; }
         public decimal Location { get; set; }
-        public string AssociateCartName { get; set; }
+        public string AssociateDamAreaName { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        internal Gun Create(CartList carts) {
-            if (carts == null) {
-                throw new ArgumentNullException("carts");
-            }
-            return new Gun() {
-                No = this.No,
-                Name = this.Name,
+        internal Gun Create() {
+            return new Gun(this) {
                 Fault = new Fault(this.Fault),
                 Mark = new Mark(this.Mark),
                 Remote = new Remote(this.Remote),
-                GunWorkStatus = new GunWorkStatus(this.WorkStatus),
+                //GunWorkStatus = new GunWorkStatus(this.WorkStatus),
                 Switch = new Switch(this.Switch),
-                Location = this.Location,
-                AssociateCart = carts.GetByName(this.AssociateCartName),
             };
         }
 

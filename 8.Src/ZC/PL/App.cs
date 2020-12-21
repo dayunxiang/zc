@@ -30,7 +30,7 @@ namespace PL {
 
             this.Carts = InitCarts(define);
             this.Dams = InitDams(define, this.Carts);
-            this.MaterialHeaps = InitMaterialHeaps(define);
+            this.MaterialAreas= InitMaterialAreas(define);
 
             this.Gc = define.Gc;
             this.PlTimeRemaining = new PlTimeRemaining(this.Gc.PlTimeRemaining);
@@ -40,21 +40,29 @@ namespace PL {
         }
         #endregion //ctor
 
-        #region InitMaterialHeaps
+        #region InitMaterialAreas
         /// <summary>
         /// 
         /// </summary>
         /// <param name="define"></param>
         /// <returns></returns>
-        private MaterialHeapList InitMaterialHeaps(Define define) {
-            var r = new MaterialHeapList();
-            foreach (var materialHeapDefine in define.MaterialHeapDefines) {
-                var materialHeap = materialHeapDefine.Create();
-                r.Add(materialHeap);
-            }
+        private MaterialAreaList InitMaterialAreas(Define define) {
+            // todo:
+            //
+            var r = new MaterialAreaList();
+            define.MaterialAreaDefines.ForEach(mad => {
+                var ma = mad.Create();
+                r.Add(ma);
+            });
+            //foreach (var materialHeapDefine in define.MaterialHeapDefines) {
+            //    var materialHeap = materialHeapDefine.Create();
+            //    r.Add(materialHeap);
+            //}
             return r;
+
+            throw new NotImplementedException();
         }
-        #endregion //InitMaterialHeaps
+        #endregion //InitMaterialAreas
 
         #region InitCarts
         /// <summary>
@@ -168,14 +176,14 @@ namespace PL {
             private set;
         }
 
-        #region MaterialHeaps
+        #region MaterialAreas
         /// <summary>
         /// 
         /// </summary>
-        public MaterialHeapList MaterialHeaps {
+        public MaterialAreaList MaterialAreas{
             get;
             private set;
         }
-        #endregion //MaterialHeaps
+        #endregion //MaterialAreas
     }
 }

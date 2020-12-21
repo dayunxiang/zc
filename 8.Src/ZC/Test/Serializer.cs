@@ -15,7 +15,9 @@ namespace Test{
             var define = new Define() {
                 CartDefines = cartDefines,
                 DamDefines = damDefines,
-                MaterialHeapDefines = CreateMaterialHeaps(),
+                // todo
+                //
+                //MaterialHeapDefines = CreateMaterialHeaps(),
             };
             return define;
 
@@ -30,22 +32,22 @@ namespace Test{
 
         }
 
-        private static List<MaterialHeapDefine> CreateMaterialHeaps() {
-            var r = new List<MaterialHeapDefine>();
-            r.Add(CreateMaterialHeap(1));
-            r.Add(CreateMaterialHeap(2));
-            return r;
-        }
+        //private static List<MaterialHeapDefine> CreateMaterialHeaps() {
+        //    var r = new List<MaterialHeapDefine>();
+        //    r.Add(CreateMaterialHeap(1));
+        //    r.Add(CreateMaterialHeap(2));
+        //    return r;
+        //}
 
-        private static MaterialHeapDefine CreateMaterialHeap(int n) {
-            return new MaterialHeapDefine() {
-                DamAddress = "damAddress" + n,
-                MaterialIdAddress = "materialIdAddress" + n,
-                BeginLocationAddress = "beginLocalAddress" + n,
-                EndLocationAddress = "endLocationAddress" + n,
-                CanWetAddress = "canWetAddress" + n,
-            };
-        }
+        //private static MaterialHeapDefine CreateMaterialHeap(int n) {
+        //    return new MaterialHeapDefine() {
+        //        DamAddress = "damAddress" + n,
+        //        MaterialIdAddress = "materialIdAddress" + n,
+        //        BeginLocationAddress = "beginLocalAddress" + n,
+        //        EndLocationAddress = "endLocationAddress" + n,
+        //        CanWetAddress = "canWetAddress" + n,
+        //    };
+        //}
 
         private static List<CartDefine> CreateCartDefines() {
             var r = new List<CartDefine>();
@@ -87,7 +89,7 @@ namespace Test{
                 Remote = "remote" + n,
                 Switch = "switch" + n,
                 Location = n * 10,
-                AssociateCartName = "Cart" + n,
+                //AssociateCartName = "Cart" + n,
             };
         }
 

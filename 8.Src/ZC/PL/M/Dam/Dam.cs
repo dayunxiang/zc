@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PLC;
+using PL.Hardware;
 
 namespace PL {
 
@@ -11,7 +12,8 @@ namespace PL {
         /// 
         /// </summary>
         public Dam() {
-            this.MaterialHeaps = new MaterialHeapList();
+            //this.MaterialHeaps = new MaterialHeapList();
+            this.DamAreas = new DamAreaList();
         }
 
         /// <summary>
@@ -39,13 +41,12 @@ namespace PL {
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public MaterialHeapList MaterialHeaps {
-            get;
-            private set;
-        }
+        //public MaterialHeapList MaterialHeaps {
+        //    get;
+        //    private set;
+        //}
+
+        //public Dam
 
         /// <summary>
         /// 
@@ -84,6 +85,11 @@ namespace PL {
         /// 
         /// </summary>
         public GunLinkedList Guns {
+            get;
+            set;
+        }
+
+        public DamAreaList DamAreas {
             get;
             set;
         }
