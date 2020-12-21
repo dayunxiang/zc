@@ -1799,20 +1799,1670 @@
         }
     ],
 
-    "MaterialHeapDefines" : [
+    "MaterialAreaDefines" : [
         {
-            "DamAddress" : "damAddress1",
-            "MaterialIdAddress" : "materialIdAddress1",
-            "BeginLocationAddress" : "beginLocalAddress1",
-            "EndLocationAddress" : "endLocationAddress1",
-            "CanWetAddress" : "canWetAddress1"
+            "StockGroupIdAddress" : "StockGPS[0].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[0].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[0].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[0].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[0].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[0].Material_Position[49].Material_EndPosition"
+                }
+            ]
         },
         {
-            "DamAddress" : "damAddress2",
-            "MaterialIdAddress" : "materialIdAddress2",
-            "BeginLocationAddress" : "beginLocalAddress2",
-            "EndLocationAddress" : "endLocationAddress2",
-            "CanWetAddress" : "canWetAddress2"
+            "StockGroupIdAddress" : "StockGPS[1].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[1].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[1].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[1].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[1].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[1].Material_Position[49].Material_EndPosition"
+                }
+            ]
+        },
+        {
+            "StockGroupIdAddress" : "StockGPS[2].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[2].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[2].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[2].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[2].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[2].Material_Position[49].Material_EndPosition"
+                }
+            ]
+        },
+        {
+            "StockGroupIdAddress" : "StockGPS[3].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[3].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[3].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[3].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[3].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[3].Material_Position[49].Material_EndPosition"
+                }
+            ]
+        },
+        {
+            "StockGroupIdAddress" : "StockGPS[4].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[4].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[4].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[4].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[4].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[4].Material_Position[49].Material_EndPosition"
+                }
+            ]
+        },
+        {
+            "StockGroupIdAddress" : "StockGPS[5].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[5].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[5].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[5].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[5].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[5].Material_Position[49].Material_EndPosition"
+                }
+            ]
+        },
+        {
+            "StockGroupIdAddress" : "StockGPS[6].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[6].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[6].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[6].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[6].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[6].Material_Position[49].Material_EndPosition"
+                }
+            ]
+        },
+        {
+            "StockGroupIdAddress" : "StockGPS[7].Stock_Ground_ID",
+            "StockGroupIdStringAddress" : "StockGPS[7].Stock_Ground_IDString",
+            "MaterialIdAddress" : "StockGPS[7].Material_ID",
+            "MaterialAttributeAddress" : "StockGPS[7].Material_Attribute",
+            "MaterialHeapPositionDefines" : [
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[0].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[0].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[1].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[1].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[2].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[2].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[3].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[3].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[4].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[4].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[5].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[5].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[6].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[6].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[7].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[7].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[8].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[8].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[9].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[9].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[10].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[10].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[11].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[11].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[12].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[12].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[13].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[13].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[14].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[14].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[15].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[15].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[16].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[16].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[17].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[17].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[18].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[18].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[19].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[19].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[20].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[20].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[21].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[21].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[22].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[22].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[23].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[23].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[24].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[24].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[25].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[25].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[26].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[26].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[27].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[27].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[28].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[28].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[29].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[29].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[30].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[30].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[31].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[31].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[32].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[32].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[33].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[33].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[34].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[34].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[35].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[35].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[36].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[36].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[37].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[37].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[38].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[38].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[39].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[39].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[40].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[40].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[41].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[41].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[42].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[42].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[43].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[43].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[44].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[44].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[45].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[45].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[46].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[46].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[47].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[47].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[48].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[48].Material_EndPosition"
+                },
+                {
+                    "StartPositionAddress" : "StockGPS[7].Material_Position[49].Material_StartPosition",
+                    "EndPositionAddress" : "StockGPS[7].Material_Position[49].Material_EndPosition"
+                }
+            ]
         }
     ],
 
