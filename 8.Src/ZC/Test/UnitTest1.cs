@@ -61,17 +61,17 @@ namespace Test {
                 var mhpds = new List<MaterialHeapPositionDefine>();
                 for (int k = 0; k < 50; k++) {
                     var mhpd = new MaterialHeapPositionDefine() {
-                        IdAddress               = string.Format("StockGPS[{0}].Material_Position[{1}].Material_ID", i, k),
-                        AttributeAddress        = string.Format("StockGPS[{0}].Material_Position[{1}].Material_Attribute", i, k),
-                        StartPositionAddress    = string.Format("StockGPS[{0}].Material_Position[{1}].Material_StartPosition", i, k),
-                        EndPositionAddress      = string.Format("StockGPS[{0}].Material_Position[{1}].Material_EndPosition", i, k),
+                        IdAddress               = string.Format("StockGPS[{0}].Material[{1}].ID", i, k),
+                        AttributeAddress        = string.Format("StockGPS[{0}].Material[{1}].Attribute", i, k),
+                        StartPositionAddress    = string.Format("StockGPS[{0}].Material[{1}].Start_Position", i, k),
+                        EndPositionAddress      = string.Format("StockGPS[{0}].Material[{1}].End_Position", i, k),
                     };
                     mhpds.Add(mhpd);
                 }
 
                 var mad = new MaterialAreaDefine() {
-                    StockGroupIdAddress         = string.Format("StockGPS[{0}].Stock_Ground_ID", i),
-                    StockGroupIdStringAddress   = string.Format("StockGPS[{0}].Stock_Ground_IDString", i),
+                    StockGroupIdAddress         = string.Format("StockGPS[{0}].Ground_ID", i),
+                    StockGroupIdStringAddress   = string.Format("StockGPS[{0}].GroundID_String", i),
                     //MaterialIdAddress = string.Format("StockGPS[{0}].Material_ID", i),
                     //MaterialAttributeAddress = string.Format("StockGPS[{0}].Material_Attribute", i),
                     MaterialHeapPositionDefines = mhpds.ToArray(),

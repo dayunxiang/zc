@@ -110,14 +110,14 @@ namespace PLC {
             //"CurrentWorkingDam" : "[a]Global_Control.CurrentWorkingDam",
             //"CurrentDoneCycleCount" : "[a]Global_Control.CurrentDoneCycleCount"
 
-            Set("StockGPS[0].Stock_Ground_IDString", "2A");
-            Set("StockGPS[1].Stock_Ground_IDString", "2B");
-            Set("StockGPS[2].Stock_Ground_IDString", "2C");
-            Set("StockGPS[3].Stock_Ground_IDString", "2D");
-            Set("StockGPS[4].Stock_Ground_IDString", "2E");
-            Set("StockGPS[5].Stock_Ground_IDString", "2F");
-            Set("StockGPS[6].Stock_Ground_IDString", "2G");
-            Set("StockGPS[7].Stock_Ground_IDString", "2H");
+            Set("StockGPS[0].GroundID_String", "2A");
+            Set("StockGPS[1].GroundID_String", "2B");
+            Set("StockGPS[2].GroundID_String", "2C");
+            Set("StockGPS[3].GroundID_String", "2D");
+            Set("StockGPS[4].GroundID_String", "2E");
+            Set("StockGPS[5].GroundID_String", "2F");
+            Set("StockGPS[6].GroundID_String", "2G");
+            Set("StockGPS[7].GroundID_String", "2H");
         }
 
         /// <summary>

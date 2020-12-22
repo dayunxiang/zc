@@ -73,8 +73,11 @@ namespace PLForm {
             } else {
                 if (UserMessage.Ask(S.SureExit) == DialogResult.Yes) {
                     _isClose = true;
-                    var opcServer = OpcServerManager.Instance.OpcServer;
-                    if (opcServer.IsConnected()) {
+                    if (OpcServerManager.Instance.IsConnected()) {
+                        var opcServer = OpcServerManager.Instance.OpcServer;
+                        //if (opcServer.IsConnected()) {
+                        //    appController.ControllerStatus.Value = ControllerStatusEnum.NotRun;
+                        //}
                         appController.ControllerStatus.Value = ControllerStatusEnum.NotRun;
                     }
                     Close();

@@ -79,7 +79,6 @@
     <Compile Include="M\Address\AutoManualStatus.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Enums\AutoManualStatusEnum.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="C\AppController.cs" />
     <Compile Include="C\AppControllerStatus.cs" />
     <Compile Include="Enums\ControllerStatusEnum.cs" />
