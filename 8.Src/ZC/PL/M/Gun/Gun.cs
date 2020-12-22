@@ -120,7 +120,7 @@ namespace PL {
         /// <returns></returns>
         public bool IsCoverCart() {
             var cart = GetAssociateCart();
-            var cartLocation = cart.Location;
+            var cartLocation = cart.ReadLocation();
             var gunBeginLocation = this.Location - Config.GunRadius;
             gunBeginLocation = Math.Max(gunBeginLocation, 0m);
 

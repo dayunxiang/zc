@@ -26,8 +26,14 @@ namespace PL {
         /// </summary>
         public DamAreaDefine Define { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get { return this.Define.Name; } }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public GunList Guns {
             get;
             private set;

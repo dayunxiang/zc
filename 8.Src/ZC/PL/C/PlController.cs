@@ -196,15 +196,15 @@ namespace PL {
         }
 
 
-        #region RefreshCartLocation
-        /// <summary>
-        /// 
-        /// </summary>
-        private void RefreshCartLocation() {
-            var carts = _appController.App.Carts;
-            carts.RefreshLocations();
-        }
-        #endregion //RefreshCartLocation
+        //#region RefreshCartLocation
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //private void RefreshCartLocation() {
+        //    var carts = _appController.App.Carts;
+        //    //carts.RefreshLocations();
+        //}
+        //#endregion //RefreshCartLocation
 
         #region CheckWorking
         /// <summary>
@@ -227,7 +227,7 @@ namespace PL {
             //
             //    n - return
 
-            RefreshCartLocation();
+            //RefreshCartLocation();
 
             CheckDiscardGuns();
 

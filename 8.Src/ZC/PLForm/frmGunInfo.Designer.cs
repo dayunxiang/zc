@@ -26,7 +26,7 @@
             this.lv = new System.Windows.Forms.ListView();
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chAssociateCart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chAssociateMaterialArea = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -34,7 +34,7 @@
             this.lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chName,
             this.chLocation,
-            this.chAssociateCart});
+            this.chAssociateMaterialArea});
             this.lv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
@@ -55,10 +55,10 @@
             this.chLocation.Text = "位置";
             this.chLocation.Width = 50;
             // 
-            // chAssociateCart
+            // chAssociateMaterialArea
             // 
-            this.chAssociateCart.Text = "大机";
-            this.chAssociateCart.Width = 100;
+            this.chAssociateMaterialArea.Text = "料区";
+            this.chAssociateMaterialArea.Width = 100;
             // 
             // frmGunLocation
             // 
@@ -80,6 +80,6 @@
         private System.Windows.Forms.ListView lv;
         private System.Windows.Forms.ColumnHeader chName;
         private System.Windows.Forms.ColumnHeader chLocation;
-        private System.Windows.Forms.ColumnHeader chAssociateCart;
+        private System.Windows.Forms.ColumnHeader chAssociateMaterialArea;
     }
 }

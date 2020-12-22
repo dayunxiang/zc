@@ -49,7 +49,7 @@ namespace PLForm {
         /// <param name="gun"></param>
         /// <returns></returns>
         private ListViewItem CreateListViewItem(Gun gun) {
-            var items = new string[] { gun.Name, gun.Location.ToString(), "cartName(x)"};
+            var items = new string[] { gun.Name, gun.Location.ToString(), gun.AssociateDamArea.Name};
             var r = new ListViewItem(items);
             return r;
         }

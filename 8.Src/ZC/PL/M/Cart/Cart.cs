@@ -17,7 +17,7 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public EventHandler<CartLocationEventArgs> Changed;
+        //public EventHandler<CartLocationEventArgs> Changed;
 
         /// <summary>
         /// 
@@ -31,30 +31,30 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public decimal Location {
-            get { return _location; }
-            set {
-                if (value <= 0M) {
-                    _logger.Error("Cart.Location must >= 0, current is: " + value);
-                }
+        //public decimal Location {
+        //    get { return _location; }
+        //    set {
+        //        if (value <= 0M) {
+        //            _logger.Error("Cart.Location must >= 0, current is: " + value);
+        //        }
 
-                if (_location != value) {
-                    _location = value;
-                    OnLocationChanged();
-                }
-            }
-        } private decimal _location = 0M;
+        //        if (_location != value) {
+        //            _location = value;
+        //            OnLocationChanged();
+        //        }
+        //    }
+        //} private decimal _location = 0M;
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected void OnLocationChanged() {
-            if (this.Changed != null) {
-                var e = new CartLocationEventArgs(this, this.Location);
-                this.Changed(this, e);
-            }
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //protected void OnLocationChanged() {
+        //    if (this.Changed != null) {
+        //        var e = new CartLocationEventArgs(this, this.Location);
+        //        this.Changed(this, e);
+        //    }
+        //}
 
         /// <summary>
         /// 
@@ -69,10 +69,9 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public void RefreshLocation() {
+        public decimal ReadLocation() {
             var val = base.ReadFromOpc();
-            int intValue = Convert.ToInt32(val);
-            this.Location = intValue;
+            return Convert.ToDecimal(val);
         }
 
         public override string ToString() {
@@ -82,7 +81,7 @@ namespace PL {
                 this.No,
                 this.Name,
                 this.Address,
-                this.Location);
+                this.ReadLocation());
         }
     }
 }

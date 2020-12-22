@@ -26,13 +26,13 @@ namespace PLC {
             this.dgvOpcValues.DataSource = this.Items;
         }
 
-        public int Read(string name) {
+        public object Read(string name) {
             foreach (DataGridViewRow row in this.dgvOpcValues.Rows) {
                 if (((string)row.Cells[0].Value).Equals(name)) {
                     var cell = row.Cells[1];
                     //cell.Style.BackColor = Color.Green;
                     new CellColorTimer(cell, Color.Green);
-                    return Convert.ToInt32(row.Cells[1].Value);
+                    return row.Cells[1].Value;
                 }
             }
 
@@ -91,7 +91,7 @@ namespace PLC {
 
     public class Item {
         public string Name { get; set; }
-        public int Value { get; set; }
+        public object Value { get; set; }
     }
 
     public class Items : List<Item> {
@@ -109,6 +109,15 @@ namespace PLC {
             //"CycleEndStopPump" : "[a]Global_Control.CycEndStoppump",
             //"CurrentWorkingDam" : "[a]Global_Control.CurrentWorkingDam",
             //"CurrentDoneCycleCount" : "[a]Global_Control.CurrentDoneCycleCount"
+
+            Set("StockGPS[0].Stock_Ground_IDString", "2A");
+            Set("StockGPS[1].Stock_Ground_IDString", "2B");
+            Set("StockGPS[2].Stock_Ground_IDString", "2C");
+            Set("StockGPS[3].Stock_Ground_IDString", "2D");
+            Set("StockGPS[4].Stock_Ground_IDString", "2E");
+            Set("StockGPS[5].Stock_Ground_IDString", "2F");
+            Set("StockGPS[6].Stock_Ground_IDString", "2G");
+            Set("StockGPS[7].Stock_Ground_IDString", "2H");
         }
 
         /// <summary>
@@ -116,7 +125,7 @@ namespace PLC {
         /// </summary>
         /// <param name="name"></param>
         /// <param name="n"></param>
-        private void Set(string name, int n) {
+        private void Set(string name, object n) {
             foreach (var item in this) {
                 if (StringComparer.OrdinalIgnoreCase.Equals(item.Name, name)) {
                     item.Value = n;

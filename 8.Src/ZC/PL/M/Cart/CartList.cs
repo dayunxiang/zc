@@ -12,9 +12,9 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public void RefreshLocations() {
-            this.ForEach(cart => cart.RefreshLocation());
-        }
+        //public void RefreshLocations() {
+        //    this.ForEach(cart => cart.ReadLocation());
+        //}
 
         /// <summary>
         /// 
