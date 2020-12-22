@@ -15,7 +15,7 @@ namespace Test{
             var define = new Define() {
                 CartDefines = cartDefines,
                 DamDefines = damDefines,
-                // todo
+                // 
                 //
                 //MaterialHeapDefines = CreateMaterialHeaps(),
             };

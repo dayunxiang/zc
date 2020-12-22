@@ -25,6 +25,8 @@ namespace PL.Hardware {
     //}
 
     public class MaterialHeapPositionDefine {
+        public string IdAddress { get; set; }
+        public string AttributeAddress { get; set; }
         public string StartPositionAddress { get; set; }
         public string EndPositionAddress { get; set; }
 

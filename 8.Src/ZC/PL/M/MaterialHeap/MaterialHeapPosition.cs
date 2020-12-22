@@ -47,6 +47,24 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        public int ReadAttribute() {
+            var r = OpcServerManager.Instance.OpcServer.Read(this.Define.AttributeAddress);
+            return Convert.ToInt32(r);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int ReadMaterialId() {
+            var r = OpcServerManager.Instance.OpcServer.Read(this.Define.IdAddress);
+            return Convert.ToInt32(r);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
         public bool IsInRange(decimal location) {
@@ -60,9 +78,9 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool CanWet() {
-            // todo
-            //
-            return true;
+            int attribute = ReadAttribute();
+            return attribute == (int)CanWetEnum.Yes;
+
         }
 
         /// <summary>

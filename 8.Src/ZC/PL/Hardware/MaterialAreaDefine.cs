@@ -11,8 +11,8 @@ namespace PL.Hardware {
     public class MaterialAreaDefine {
         public string StockGroupIdAddress { get; set; }
         public string StockGroupIdStringAddress { get; set; }
-        public string MaterialIdAddress { get; set; }
-        public string MaterialAttributeAddress { get; set; }
+        //public string MaterialIdAddress { get; set; }
+        //public string MaterialAttributeAddress { get; set; }
         public MaterialHeapPositionDefine[] MaterialHeapPositionDefines { get; set; }
 
         public MaterialArea Create() {

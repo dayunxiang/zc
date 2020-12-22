@@ -150,11 +150,13 @@ namespace PL {
             _app.Carts.ForEach((cart) => r.Add(cart.Address));
 
             _app.MaterialAreas.ForEach((materialArea) => {
-                r.Add(materialArea.Define.MaterialAttributeAddress);
-                r.Add(materialArea.Define.MaterialIdAddress);
+                //r.Add(materialArea.Define.MaterialAttributeAddress);
+                //r.Add(materialArea.Define.MaterialIdAddress);
                 r.Add(materialArea.Define.StockGroupIdAddress);
                 r.Add(materialArea.Define.StockGroupIdStringAddress);
                 materialArea.MaterialHeapPositions.ForEach(mhp => {
+                    r.Add(mhp.Define.IdAddress);
+                    r.Add(mhp.Define.AttributeAddress);
                     r.Add(mhp.Define.StartPositionAddress);
                     r.Add(mhp.Define.EndPositionAddress);
                 });
