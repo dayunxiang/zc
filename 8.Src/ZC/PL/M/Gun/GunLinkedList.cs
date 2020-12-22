@@ -32,7 +32,7 @@ namespace PL {
             while (count > 0) {
                 Debug.Assert(currentGun != null);
 
-                if (currentGun.CanUse()) {
+                if (currentGun.CanUse(App.GetApp().MaterialAreas)) {
                     wgg.WorkGuns.Add(currentGun);
                     count--;
                 }

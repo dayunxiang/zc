@@ -80,7 +80,18 @@ namespace PL {
             set;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public DamAreaList DamAreas {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Cart AssociateCart { 
             get;
             set;
         }

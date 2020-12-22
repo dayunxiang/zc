@@ -109,11 +109,21 @@ namespace PL {
         /// </summary>
         /// <param name="dams"></param>
         /// <param name="carts"></param>
+        /// <remarks>cart.name -- dam.name</remarks>
         private void AssociateDamCart(DamLinkedList dams, CartList carts) {
-            // todo
-            //
             carts.ForEach(c => {
+                var cartNamePart = c.Name.Trim().ToUpper().Replace("CART", "");
+                Dam dam = dams.GetDamByName(cartNamePart);
+                dam.AssociateCart = c;
             });
+
+            // verify dams
+            foreach (var dam in dams) {
+                if (dam.AssociateCart == null) {
+                    var msg = string.Format("has not associate cart for dam '{0}'", dam.Name);
+                    throw new PlException(msg);
+                }
+            }
         }
 
         #region AppController

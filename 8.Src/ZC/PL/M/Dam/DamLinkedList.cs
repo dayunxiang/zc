@@ -80,7 +80,7 @@ namespace PL {
         /// <param name="damValue"></param>
         /// <returns></returns>
         public Dam FindDamByValue(int damValue) {
-            // todo: find dam by value
+            // find dam by value
             //
             foreach (var dam in this) {
                 if (dam.No == damValue) {
@@ -89,6 +89,16 @@ namespace PL {
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cartNamePart"></param>
+        /// <returns></returns>
+        internal Dam GetDamByName(string damName) {
+            var dam = this.First(d => d.Name.Trim().ToUpper() == damName.Trim().ToUpper());
+            return dam;
         }
     }
 }

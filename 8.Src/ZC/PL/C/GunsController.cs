@@ -47,7 +47,7 @@ namespace PL {
             WorkGunGroup wgg = new WorkGunGroup();
             while (count > 0) {
                 var gun = GetNextGun(lastGun);
-                if (gun.CanUse()) {
+                if (gun.CanUse(App.GetApp().MaterialAreas)) {
                     wgg.WorkGuns.Add(gun);
                     count--;
                 }
@@ -205,7 +205,7 @@ namespace PL {
             while (nextGun != null) {
                 _workingGunGroup.SearchedGuns.Add(nextGun);
 
-                if (!nextGun.CanUse()) {
+                if (!nextGun.CanUse(App.GetApp().MaterialAreas)) {
                     nextGun = GetNextGun(nextGun);
                 } else {
                     _workingGunGroup.WorkGuns.Add(nextGun);

@@ -54,5 +54,23 @@ namespace PL {
                 location > this.ReadStartPosition() &&
                 location < this.ReadEndPosition();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool CanWet() {
+            // todo
+            //
+            return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool CanNotWet() {
+            return !CanWet();
+        }
     }
 }

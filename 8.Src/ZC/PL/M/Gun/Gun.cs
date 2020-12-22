@@ -119,24 +119,16 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool IsCoverCart() {
-            // todo
-            //
-            //if (this.AssociateCart == null) {
-            //    return false;
-            //} else {
-            //    var endLocation = this.AssociateCart.Location + Config.CartRange;
+            var cart = GetAssociateCart();
+            var cartLocation = cart.Location;
+            var gunBeginLocation = this.Location - Config.GunRadius;
+            gunBeginLocation = Math.Max(gunBeginLocation, 0m);
 
-            //    var beginLocation = this.AssociateCart.Location - Config.CartRange;
-            //    if (beginLocation < 0) {
-            //        beginLocation = 0;
-            //    }
+            var gunEndLocation = this.Location + Config.GunRadius;
 
-            //    return
-            //        this.Location >= beginLocation &&
-            //        this.Location <= endLocation;
-            //}
-
-            throw new NotImplementedException();
+            return
+                cartLocation >= gunBeginLocation && 
+                cartLocation <= gunEndLocation;
         }
 
         #region CanUse
@@ -145,9 +137,9 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool CanUse() {
+        public bool CanUse(MaterialAreaList materialAreas ) {
             GunWorkStatusEnum gunWorkStatusEnum;
-            bool r = CanUse(out gunWorkStatusEnum);
+            bool r = CanUse(materialAreas, out gunWorkStatusEnum);
 
             // set plc gun status
             //
@@ -159,7 +151,7 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool CanUse(out GunWorkStatusEnum gunWorkStatusEnum) {
+        public bool CanUse(MaterialAreaList materialAreas, out GunWorkStatusEnum gunWorkStatusEnum) {
             //return
             //    this.Fault.IsFault == false &&
             //    this.Mark.IsMarked == false &&
@@ -182,7 +174,7 @@ namespace PL {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithRemote;
                 return false;
             }
-            if (!this.IsMaterialHeapCanWet()) {
+            if (!this.IsMaterialHeapCanWet(materialAreas)) {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithMaterialHeap;
                 return false;
             }
@@ -212,18 +204,23 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsMaterialHeapCanWet() {
-            // todo
-            //
-            //var materialHeap = this.Dam.MaterialHeaps.FindByGun(this);
-            //if (materialHeap != null) {
-            //    Debug.Assert(materialHeap.IsReadedFromPlc);
-            //    return materialHeap.CanWet;
-            //} else {
-            //    return true;
-            //}
+        public bool IsMaterialHeapCanWet(MaterialAreaList materialAreas) {
+            var damAreaName = this.AssociateDamArea.Name;
+            var ma = materialAreas.GetByName(damAreaName);
+            var coveredMaterialHeapPostions = ma.MaterialHeapPositions.FindByGun(this);
+            return coveredMaterialHeapPostions.CanWet();
+        }
 
-            throw new NotImplementedException();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Cart GetAssociateCart() {
+            var cart = this.Dam.AssociateCart;
+            if (cart == null) {
+                throw new PlException("gun cart is null");
+            }
+            return cart;
         }
     }
 }

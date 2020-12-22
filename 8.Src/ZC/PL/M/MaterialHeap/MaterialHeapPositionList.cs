@@ -32,5 +32,19 @@ namespace PL {
             }
             return r;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool CanWet() {
+            foreach (var mhp in this) {
+                if (mhp.CanNotWet()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
