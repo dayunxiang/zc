@@ -35,10 +35,11 @@ namespace PLForm {
             this.Text = AppConfigReader.Read<string>("MainText", "---");
             this.Text += " - " + Application.ProductVersion;
 
-            tssAppStatus.Text = "OPC 未连接";
+            tssAppStatus.Text = S.OpcNotConnected;
 
             PLC.MyLogManager.Logs.Add(new TxtLog(this.txtLog));
             //_app.Opc.ConnectedEvent += Opc_ConnectedEvent;
+            OpcServerManager.Instance.ConnectedEvent += Opc_ConnectedEvent;
             _app.AppController.Start();
         }
 
@@ -48,7 +49,7 @@ namespace PLForm {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Opc_ConnectedEvent(object sender, EventArgs e) {
-            this.tssAppStatus.Text = "OPC 已连接, " + DateTime.Now.ToString();
+            this.tssAppStatus.Text = string.Format(S.OpcConnectedWithDt, DateTime.Now);
         }
 
         /// <summary>
@@ -111,9 +112,10 @@ namespace PLForm {
                     dt.ToString("yyyy_MM_dd_HH_mm_ss")
                     );
                 File.WriteAllText(fileName, this.txtLog.Text);
-                NUnit.UiKit.UserMessage.DisplayInfo("日志保存成功");
+                NUnit.UiKit.UserMessage.DisplayInfo(S.LogFileSaved);
             } catch (Exception ex) {
                 ExceptionLogger.Log(ex);
+                NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
             }
         }
 
