@@ -15,6 +15,7 @@ namespace PL {
             GunsCloseDelaySecondWhenStopPump = 10;
             //CartRange = 75m;
             GunRadius = 40m;
+
             IsMock = false;
         }
 

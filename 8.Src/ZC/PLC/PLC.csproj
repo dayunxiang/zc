@@ -59,14 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmOpcValues.cs">
+    <Compile Include="Mock\CellColorTimer.cs" />
+    <Compile Include="Mock\frmOpcValues.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOpcValues.Designer.cs">
+    <Compile Include="Mock\frmOpcValues.Designer.cs">
       <DependentUpon>frmOpcValues.cs</DependentUpon>
     </Compile>
     <Compile Include="IOpcServer.cs" />
     <Compile Include="ItemCache.cs" />
+    <Compile Include="Mock\Item.cs" />
+    <Compile Include="Mock\Items.cs" />
+    <Compile Include="Mock\MockOpcServer.cs" />
     <Compile Include="OpcException.cs" />
     <Compile Include="ILog.cs" />
     <Compile Include="IService.cs" />
@@ -80,7 +84,7 @@
     <Compile Include="ValueChangedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmOpcValues.resx">
+    <EmbeddedResource Include="Mock\frmOpcValues.resx">
       <DependentUpon>frmOpcValues.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
