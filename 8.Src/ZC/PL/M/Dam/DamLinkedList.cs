@@ -22,14 +22,10 @@ namespace PL {
         /// <param name="options"></param>
         /// <returns></returns>
         public WorkGunGroup GetFirstGuns(PlOptions options) {
-            //Dam firstDam = this.First.Value;
-            //var workDam = GetWorkDam(firstDam, options);
-            //return workDam.GetFirstGuns(options.GunCountPerGroup);
-
             DamList workDams = GetWorkDams(options);
             WorkGunGroup workGunGroup = workDams.GetFirstGuns(options.GunCountPerGroup);
 
-            Debug.Assert(options.GunCountPerGroup == workGunGroup.WorkGuns.Count);
+            //Debug.Assert(options.GunCountPerGroup == workGunGroup.WorkGuns.Count);
             return workGunGroup;
         }
 
