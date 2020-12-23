@@ -209,10 +209,14 @@ namespace PL {
                         #region start
                         if (controllerStatusEnum == ControllerStatusEnum.Idle ||
                             controllerStatusEnum == ControllerStatusEnum.Completed) {
-                            this.ControllerStatus.Value = ControllerStatusEnum.Working;
                             var options = this.PlOptionsReader.Read();
                             _plController = new PlController(this, options);
-                            _plController.Start();
+                            if (_plController.Start()) {
+                                this.ControllerStatus.Value = ControllerStatusEnum.Working;
+                            } else {
+                                this.ControllerStatus.Value = ControllerStatusEnum.Completed;
+                                this.ZtPlcStatus.Write(ZtPlcStatusEnum.Completed);
+                            }
                         } else if (controllerStatusEnum == ControllerStatusEnum.Working) {
                             var checkResult = _plController.Check();
                             if (checkResult == PlCheckResultEnum.Completed) {
