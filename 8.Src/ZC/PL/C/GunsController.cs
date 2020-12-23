@@ -22,6 +22,20 @@ namespace PL {
         /// </summary>
         /// <param name="guns"></param>
         public GunsController(PlController plController, WorkGunGroup workGunGroup, PlOptions plOptions) {
+            if (plController == null) {
+                throw new ArgumentNullException("plController");
+            }
+            if (workGunGroup== null) {
+                throw new ArgumentNullException("workGunGroup");
+            }
+            if (plOptions == null) {
+                throw new ArgumentNullException("plOptions");
+            }
+
+            if (workGunGroup.WorkGuns.Count == 0) {
+                throw new ArgumentException("workGunGroup guns count == 0");
+            }
+
             _plController = plController;
             _workingGunGroup = workGunGroup;
             _plOptions = plOptions;
@@ -41,12 +55,20 @@ namespace PL {
                 isPassTail = true;
             }
 
-            var lastGun = _workingGunGroup.GetLastGun();
+            // var lastGun = _workingGunGroup.GetLastGun();
+            var lastGun = _workingGunGroup.WorkGuns.GetLast();
             int count = _plOptions.GunCountPerGroup;
 
             WorkGunGroup wgg = new WorkGunGroup();
             while (count > 0) {
                 var gun = GetNextGun(lastGun);
+
+                // searched to working gun
+                //
+                if (_workingGunGroup.WorkGuns.Contains(gun)) {
+                    break;
+                }
+
                 if (gun.CanUse(App.GetApp().MaterialAreas)) {
                     wgg.WorkGuns.Add(gun);
                     count--;
@@ -59,11 +81,10 @@ namespace PL {
         #endregion //GetNextWorkGunGroup
 
         /// <summary>
-        /// 
+        /// get last gun for work dams
         /// </summary>
         /// <returns></returns>
         private Gun GetTailGun() {
-            //DamList workDams = App.GetApp().Dams.GetWorkDams(_plOptions);
             DamList workDams = _plController.App.Dams.GetWorkDams(_plOptions);
             if (workDams.Count == 0) {
                 throw new InvalidOperationException("dams count == 0");
@@ -88,15 +109,15 @@ namespace PL {
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private Dam GetNextGunDam() {
-            var lastGun = _workingGunGroup.GetLastGun();
-            var currentDam = lastGun.Dam;
-            return GetNextDam(currentDam);
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //private Dam GetNextGunDam() {
+        //    var lastGun = _workingGunGroup.GetLastGun();
+        //    var currentDam = lastGun.Dam;
+        //    return GetNextDam(currentDam);
+        //}
 
         /// <summary>
         /// 
