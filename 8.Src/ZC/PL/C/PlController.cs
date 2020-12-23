@@ -31,6 +31,7 @@ namespace PL {
         private GunsController _discardGunsController;
         private GunsController _workingGunsController;
         private int _cycleCount = 0;
+        private bool _isWorkGunGroupCreated = false;
         #endregion //Members
 
         #region PlController
@@ -99,18 +100,25 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public void Start() {
-            //if (!IsWorkingStatus())
-            if (IsInitStatus()) {
-                _plControllerStatus = PlControllerStatusEnum.Working;
-                _beginDateTime = DateTime.Now;
-                // 1. get guns -> working guns
-                // 2. guns open
-                var gunsController = GetGunsController();
-                gunsController.Open();
-                _cycleCount = 1;
-                CycleCountChanged();
+        public bool Start() {
+            if (!IsInitStatus()) {
+                return false;
             }
+
+            var gunsController = GetGunsController();
+            if (gunsController == null) {
+                return false;
+            }
+
+            // 1. get guns -> working guns
+            // 2. guns open
+            gunsController.Open();
+            _cycleCount = 1;
+            CycleCountChanged();
+
+            _plControllerStatus = PlControllerStatusEnum.Working;
+            _beginDateTime = DateTime.Now;
+            return true;
         }
         #endregion //Start
 
@@ -182,7 +190,6 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public CurrentWorkingDamStatus GetCurrentWorkingDamStatus() {
-            //return App.GetApp().AppController.CurrentWorkingDamStatus;
             return _appController.CurrentWorkingDamStatus;
         }
 
@@ -191,20 +198,8 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         private CurrentDoneCycleCountStatus GetCurrentDoneCycleCountStatus() {
-            //return App.GetApp().AppController.CurrentDoneCycleCountStatus;
             return _appController.CurrentDoneCycleCountStatus;
         }
-
-
-        //#region RefreshCartLocation
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //private void RefreshCartLocation() {
-        //    var carts = _appController.App.Carts;
-        //    //carts.RefreshLocations();
-        //}
-        //#endregion //RefreshCartLocation
 
         #region CheckWorking
         /// <summary>
@@ -227,8 +222,6 @@ namespace PL {
             //
             //    n - return
 
-            //RefreshCartLocation();
-
             CheckDiscardGuns();
 
 
@@ -237,28 +230,6 @@ namespace PL {
             var gunsCheckResult = gunsController.Check();
 
             if (gunsCheckResult == GunsCheckResultEnum.Timeout) {
-                // check cycle count 
-                //
-                bool isPassTail;
-                var nextGuns = gunsController.GetNextWorkGunGroup(out isPassTail);
-                if (isPassTail) {
-                    this._cycleCount += 1;
-                    CycleCountChanged();
-
-                    if (_cycleCount > this.PlOptions.CycleTimes) {
-                        //gunsController.Close();
-                        //return PlCheckResult.Completed;
-                        StopPump();
-                        this._plControllerStatus = PlControllerStatusEnum.StopPump;
-
-                        // clear cycle count
-                        //
-                        this._cycleCount = 0;
-                        CycleCountChanged();
-
-                        return PlCheckResultEnum.Working;
-                    }
-                }
 
                 // if discardGunsController not null, need close discard guns
                 //
@@ -270,11 +241,39 @@ namespace PL {
                 _discardGunsController = gunsController;
                 _discardGunsController.DiscardDateTime = DateTime.Now;
 
-                var nextGunsController = new GunsController(this, nextGuns, this.PlOptions);
-                _workingGunsController = nextGunsController;
-                nextGunsController.Open();
+                // check cycle count 
+                //
+                bool isPassTail;
+                var nextGuns = gunsController.GetNextWorkGunGroup(out isPassTail);
+                if (nextGuns.WorkGuns.Count == 0) {
+                    StopPump();
+                    this._plControllerStatus = PlControllerStatusEnum.StopPump;
+                } else {
+                    if (isPassTail) {
+                        this._cycleCount += 1;
+                        CycleCountChanged();
+
+                        if (_cycleCount > this.PlOptions.CycleTimes) {
+                            StopPump();
+                            this._plControllerStatus = PlControllerStatusEnum.StopPump;
+
+                            // clear cycle count
+                            //
+                            this._cycleCount = 0;
+                            CycleCountChanged();
+
+                            return PlCheckResultEnum.Working;
+                        }
+                    }
+
+                    var nextGunsController = new GunsController(this, nextGuns, this.PlOptions);
+                    _workingGunsController = nextGunsController;
+                    nextGunsController.Open();
+                }
 
                 return PlCheckResultEnum.Working;
+
+
             } else if (gunsCheckResult == GunsCheckResultEnum.Working) {
                 return PlCheckResultEnum.Working;
             } else {
@@ -312,17 +311,24 @@ namespace PL {
         #endregion //StopPump
 
         /// <summary>
-        /// 
+        /// get current working guns controller, 
+        /// if current is null create it, 
+        /// if create fail return null
         /// </summary>
-        /// <returns></returns>
+        /// <returns>may return null</returns>
         private GunsController GetGunsController() {
-            if (_workingGunsController == null) {
+            if (_workingGunsController == null && 
+                !_isWorkGunGroupCreated) {
                 //WorkGunGroup guns = App.GetApp().Dams.GetFirstGuns(this.PlOptions);
                 var dams = _appController.App.Dams;
                 // guns count may be 0, when dam material heap can not wet
                 //
-                WorkGunGroup guns = dams.GetFirstGuns(this.PlOptions);
-                _workingGunsController = new GunsController(this, guns, this.PlOptions);
+                WorkGunGroup workGunGroup = dams.GetFirstGuns(this.PlOptions);
+                if (workGunGroup.WorkGuns.Count > 0) {
+                    _workingGunsController = new GunsController(this, workGunGroup, this.PlOptions);
+                }
+                _isWorkGunGroupCreated = true;
+
             }
             return _workingGunsController;
         }
