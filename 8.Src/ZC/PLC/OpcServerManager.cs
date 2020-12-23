@@ -17,7 +17,14 @@ namespace PLC {
         private OpcServerManager() {
         }
 
-        public bool IsMock { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsMock {
+            get;
+            set;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -41,7 +48,8 @@ namespace PLC {
         /// </summary>
         /// <returns></returns>
         public bool IsConnected() {
-            return this._opcServer != null &&
+            return 
+                this._opcServer != null &&
                 this._opcServer.IsConnected();
         }
 
@@ -57,6 +65,10 @@ namespace PLC {
                 _opcServer = CreateAndConnectSimpleOpcServer();
             }
 
+            if (_opcServer != null && 
+                this.ConnectedEvent != null) {
+                this.ConnectedEvent(this, EventArgs.Empty);
+            }
             return _opcServer != null;
         }
 
@@ -81,5 +93,10 @@ namespace PLC {
         private IOpcServer CreateMockOpcServer() {
             return new MockOpcServer();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler ConnectedEvent;
     }
 }
