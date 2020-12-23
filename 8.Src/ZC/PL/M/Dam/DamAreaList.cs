@@ -10,11 +10,20 @@ namespace PL {
     public class DamAreaList : List<DamArea> {
 
         public DamArea GetByName(string damAreaName) {
-            var r = this.First(
+            if(string.IsNullOrEmpty(damAreaName)) {
+                throw new ArgumentException("damAreaName null or empty");
+            }
+
+            var da = this.FirstOrDefault(
                 damArea =>
                 damArea.Define.Name.Trim().ToUpper() ==
                 damAreaName.Trim().ToUpper());
-            return r;
+
+            if (da == null) {
+                var s = string.Format("can not find dam area by name '{0}'", damAreaName);
+                throw new ArgumentException(s);
+            }
+            return da;
         }
     }
 }
