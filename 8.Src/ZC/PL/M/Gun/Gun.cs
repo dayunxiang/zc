@@ -207,8 +207,17 @@ namespace PL {
         public bool IsMaterialHeapCanWet(MaterialAreaList materialAreas) {
             var damAreaName = this.AssociateDamArea.Name;
             var ma = materialAreas.GetByName(damAreaName);
-            var coveredMaterialHeapPostions = ma.MaterialHeapPositions.FindByGun(this);
-            return coveredMaterialHeapPostions.CanWet();
+            
+            var gunBegin = Math.Max(this.Location - Config.GunRadius, 0m);
+            var gunEnd = this.Location + Config.GunRadius;
+
+            var gunRange = new LineRange(gunBegin , gunEnd);
+            var hasCross = ma.MaterialHeapPositions.Any(mhp => {
+                var mhpRange = new LineRange(mhp.ReadStartPosition(), mhp.ReadEndPosition());
+                return gunRange.DiscernRelation(mhpRange) != LineRangeRelation.Disconnection;
+            });
+
+            return !hasCross;
         }
 
         /// <summary>
