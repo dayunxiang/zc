@@ -60,6 +60,8 @@
     <Compile Include="Hardware\DamAreaDefine.cs" />
     <Compile Include="Hardware\MaterialAreaDefine.cs" />
     <Compile Include="Hardware\MaterialHeapDefine.cs" />
+    <Compile Include="LineRange.cs" />
+    <Compile Include="LineRangeRelation.cs" />
     <Compile Include="M\Address\GunWorkStatus.cs" />
     <Compile Include="Enums\GunWorkStatusEnum.cs" />
     <Compile Include="Enums\CanWetEnum.cs" />

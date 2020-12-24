@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PL{
+namespace PL {
     public class PlException : Exception {
-        public PlException(string msg) : base (msg){
+        public PlException(string msg)
+            : base(msg) {
 
         }
     }

@@ -105,4 +105,26 @@ namespace Test {
             Console.WriteLine(appController.AutoManualStatus);
         }
     }
+
+    [TestClass]
+    public class LineRangeTest {
+        [TestMethod]
+        public void t1() {
+            var b = new LineRange(5, 10);
+            var early = new LineRange(0, 3);
+            var later = new LineRange(20, 23);
+            var include = new LineRange(6,9);
+            var beinclude = new LineRange(3, 12);
+            var crossBegin = new LineRange(3,6);
+            var crossEnd= new LineRange(7,12);
+
+            Assert.AreEqual(b.DiscernRelation(early), LineRangeRelation.Disconnection);
+            Assert.AreEqual(b.DiscernRelation(later), LineRangeRelation.Disconnection);
+            Assert.AreEqual(b.DiscernRelation(include), LineRangeRelation.Include);
+            Assert.AreEqual(b.DiscernRelation(beinclude), LineRangeRelation.BeIncluded);
+            Assert.AreEqual(b.DiscernRelation(crossBegin), LineRangeRelation.CrossAtBegin);
+            Assert.AreEqual(b.DiscernRelation(crossEnd), LineRangeRelation.CrossAtEnd);
+
+        }
+    }
 }
