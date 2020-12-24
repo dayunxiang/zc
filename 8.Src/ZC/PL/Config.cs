@@ -16,7 +16,7 @@ namespace PL {
             //CartRange = 75m;
             GunRadius = 40m;
 
-            IsMock = !false;
+            IsMock = false;
         }
 
         /// <summary>

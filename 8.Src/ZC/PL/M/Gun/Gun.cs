@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using PLC;
 using PL.Hardware;
+using NLog;
 
 namespace PL {
 
@@ -23,6 +24,9 @@ namespace PL {
         #endregion //ctor
 
         #region Members
+
+        static private Logger _logger = LogManager.GetCurrentClassLogger();
+         
         public GunDefine Define { get; private set; }
 
         public string Name { get { return this.Define.Name; } }
@@ -121,14 +125,23 @@ namespace PL {
         public bool IsCoverCart() {
             var cart = GetAssociateCart();
             var cartLocation = cart.ReadLocation();
-            var gunBeginLocation = this.Location - Config.GunRadius;
-            gunBeginLocation = Math.Max(gunBeginLocation, 0m);
 
+            var gunBeginLocation = Math.Max(this.Location - Config.GunRadius, 0m);
             var gunEndLocation = this.Location + Config.GunRadius;
 
-            return
-                cartLocation >= gunBeginLocation && 
+            var isCross =
+                cartLocation >= gunBeginLocation &&
                 cartLocation <= gunEndLocation;
+
+            if (isCross) {
+                var s = string.Format(
+                    "{0} cross cart {1}[{2}]", 
+                    this.Name, 
+                    cart.Name, 
+                    cartLocation);
+                MyLogManager.Output(s);
+            }
+            return isCross;
         }
 
         #region CanUse
@@ -137,7 +150,7 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool CanUse(MaterialAreaList materialAreas ) {
+        public bool CanUse(MaterialAreaList materialAreas) {
             GunWorkStatusEnum gunWorkStatusEnum;
             bool r = CanUse(materialAreas, out gunWorkStatusEnum);
 
@@ -152,38 +165,36 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool CanUse(MaterialAreaList materialAreas, out GunWorkStatusEnum gunWorkStatusEnum) {
-            //return
-            //    this.Fault.IsFault == false &&
-            //    this.Mark.IsMarked == false &&
-            //    this.Remote.IsRemote == true &&
-            //    //this.Area.CanWet() &&
-            //    this.CanWet() &&
-            //    this.IsNotCoverCart();
-
             if (this.Fault.IsFault) {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithFault;
+                MyLogManager.Output(string.Format("{0} can't by fault", this.Name));
                 return false;
             }
 
             if (this.Mark.IsMarked) {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithMark;
+                MyLogManager.Output(string.Format("{0} can't by mark", this.Name));
                 return false;
             }
 
             if (this.Remote.IsRemote) {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithRemote;
+                MyLogManager.Output(string.Format("{0} can't by remote", this.Name));
                 return false;
             }
             if (!this.IsMaterialHeapCanWet(materialAreas)) {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithMaterialHeap;
+                MyLogManager.Output(string.Format("{0} can't by material", this.Name));
                 return false;
             }
 
             if (this.IsCoverCart()) {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithCart;
+                MyLogManager.Output(string.Format("{0} can't by cart", this.Name));
                 return false;
             }
 
+            MyLogManager.Output(string.Format("{0} can use", this.Name));
             gunWorkStatusEnum = GunWorkStatusEnum.Normal;
             return true;
         }
@@ -207,14 +218,25 @@ namespace PL {
         public bool IsMaterialHeapCanWet(MaterialAreaList materialAreas) {
             var damAreaName = this.AssociateDamArea.Name;
             var ma = materialAreas.GetByName(damAreaName);
-            
+
             var gunBegin = Math.Max(this.Location - Config.GunRadius, 0m);
             var gunEnd = this.Location + Config.GunRadius;
 
-            var gunRange = new LineRange(gunBegin , gunEnd);
+            var gunRange = new LineRange(gunBegin, gunEnd);
             var hasCross = ma.MaterialHeapPositions.Any(mhp => {
                 var mhpRange = new LineRange(mhp.ReadStartPosition(), mhp.ReadEndPosition());
-                return gunRange.DiscernRelation(mhpRange) != LineRangeRelation.Disconnection;
+                var relation = gunRange.DiscernRelation(mhpRange);
+                bool isCross = (relation != LineRangeRelation.Disconnection);
+                if (isCross) {
+                    var s = string.Format("{0} cross {1}[{2}, {3}]",
+                        this.Name,
+                        ma.ReadStockGroupIdString(),
+                        mhp.ReadStartPosition(),
+                        mhp.ReadEndPosition());
+
+                    MyLogManager.Output(s);
+                }
+                return isCross;
             });
 
             return !hasCross;

@@ -17,7 +17,7 @@ namespace PLC {
             //"ZtPlcStatus" : "[a]Global_Control.ztplcstatus",
             //"AppControlStatus" : "[a]Global_Control.AppControlStatus",
             Set("[a]Global_Control.CycleCount", 2);
-            Set("[a]Global_Control.PLtimeSecond", 30);
+            Set("[a]Global_Control.PLtimeSecond", 300);
             //"CycleMode" : "[a]Global_Control.CycMode",
             //"WorkDam" : "[a]Global_Control.WorkDam",
             Set("[a]Global_Control.GunCountPerGroup", 6);
@@ -34,13 +34,13 @@ namespace PLC {
             Set("[a]StockGPS[6].GroundID_String", "2G");
             Set("[a]StockGPS[7].GroundID_String", "2H");
 
-            // set remote = 1, can not use
-            //
-            this.ForEach(a => {
-                if (a.Name.ToUpper().Contains("REMOTE")) {
-                    a.Value = 1;
-                }
-            });
+            //// set remote = 1, can not use
+            ////
+            //this.ForEach(a => {
+            //    if (a.Name.ToUpper().Contains("REMOTE")) {
+            //        a.Value = 1;
+            //    }
+            //});
 
         }
 
