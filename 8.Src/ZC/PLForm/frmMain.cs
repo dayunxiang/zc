@@ -125,9 +125,14 @@ namespace PLForm {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void tsbGunInfo_Click(object sender, EventArgs e) {
-            var frmGunLocation = new frmGunInfo();
-            frmGunLocation.Dams = _app.Dams;
-            frmGunLocation.ShowDialog();
+
+            if (OpcServerManager.Instance.IsConnected()) {
+                var frmInfo = new frmInfomation();
+                frmInfo.Dams = _app.Dams;
+                frmInfo.MaterialAreas = _app.MaterialAreas;
+                frmInfo.Carts = _app.Carts;
+                frmInfo.ShowDialog();
+            }
         }
     }
 }
