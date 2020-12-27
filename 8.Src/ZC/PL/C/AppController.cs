@@ -147,7 +147,10 @@ namespace PL {
                 }
             }
 
-            _app.Carts.ForEach((cart) => r.Add(cart.Address));
+            _app.Carts.ForEach((cart) => {
+                r.Add(cart.Address);
+                r.Add(cart.FaultAddress);
+            });
 
             _app.MaterialAreas.ForEach((materialArea) => {
                 //r.Add(materialArea.Define.MaterialAttributeAddress);
