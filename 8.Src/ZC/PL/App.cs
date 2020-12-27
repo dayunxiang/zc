@@ -112,17 +112,24 @@ namespace PL {
         /// <remarks>cart.name -- dam.name</remarks>
         private void AssociateDamCart(DamLinkedList dams, CartList carts) {
             carts.ForEach(c => {
-                var cartNamePart = c.Name.Trim().ToUpper().Replace("CART", "");
-                Dam dam = dams.GetDamByName(cartNamePart);
-                dam.AssociateCart = c;
+                //var cartNamePart = c.Name.Trim().ToUpper().Replace("CART", "");
+                //Dam dam = dams.GetDamByName(cartNamePart);
+                //dam.AssociateCart = c;
+                var damForCart = dams.GetMatchedDamsByCartName(c.Name);
+                damForCart.AssociateCarts.Add(c);
             });
 
             // verify dams
+            int totalCount = 0;
             foreach (var dam in dams) {
-                if (dam.AssociateCart == null) {
+                if (dam.AssociateCarts.Count == 0) {
                     var msg = string.Format("has not associate cart for dam '{0}'", dam.Name);
                     throw new PlException(msg);
                 }
+                totalCount += dam.AssociateCarts.Count;
+            }
+            if (totalCount != 6) {
+                throw new PlException("total cart count error");
             }
         }
 
