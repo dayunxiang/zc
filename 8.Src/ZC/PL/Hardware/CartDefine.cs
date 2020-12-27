@@ -12,16 +12,14 @@ namespace PL.Hardware {
         public int No { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public string FaultAddress { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         internal Cart Create() {
-            var c = new Cart(this.Address) {
-                No = this.No,
-                Name = this.Name,
-            };
+            var c = new Cart(this);
             return c;
         }
     }

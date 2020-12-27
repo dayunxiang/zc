@@ -4,83 +4,106 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLog;
+using PLC;
+using PL.Hardware;
 
 namespace PL {
 
-    public class Cart : PlcAddress {
+    public class Cart {
 
         /// <summary>
         /// 
         /// </summary>
         private Logger _logger = LogManager.GetCurrentClassLogger();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        //public EventHandler<CartLocationEventArgs> Changed;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="address"></param>
-        public Cart(string address)
-            : base(address) {
+        private CartDefine _cartDefine;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="define"></param>
+        public Cart(CartDefine define){
+            if (define == null) {
+                throw new ArgumentNullException("define");
+            }
+            this._cartDefine = define;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        //public decimal Location {
-        //    get { return _location; }
-        //    set {
-        //        if (value <= 0M) {
-        //            _logger.Error("Cart.Location must >= 0, current is: " + value);
-        //        }
-
-        //        if (_location != value) {
-        //            _location = value;
-        //            OnLocationChanged();
-        //        }
-        //    }
-        //} private decimal _location = 0M;
-
-
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //protected void OnLocationChanged() {
-        //    if (this.Changed != null) {
-        //        var e = new CartLocationEventArgs(this, this.Location);
-        //        this.Changed(this, e);
-        //    }
-        //}
+        public CartDefine CartDefine {
+            get { return _cartDefine; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name {
+            get {
+                return _cartDefine.Name;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Name { get; set; }
+        public int No {
+            get {
+                return _cartDefine.No;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public int No { get; set; }
+        public string Address {
+            get {
+                return _cartDefine.Address;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string FaultAddress {
+            get {
+                return _cartDefine.FaultAddress;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         public decimal ReadLocation() {
-            var val = base.ReadFromOpc();
+            var val = OpcServerManager.Instance.OpcServer.Read(_cartDefine.Address);
             return Convert.ToDecimal(val);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool ReadFault() {
+            var val = OpcServerManager.Instance.OpcServer.Read(_cartDefine.FaultAddress);
+            return Convert.ToBoolean(val);
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() {
             var f = "{{No={0}, Name={1}, Address={2}, Location={3}}}";
             return string.Format(
                 f,
                 this.No,
                 this.Name,
-                this.Address,
+                this._cartDefine.Address,
                 this.ReadLocation());
         }
     }

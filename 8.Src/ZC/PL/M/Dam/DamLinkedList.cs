@@ -39,7 +39,8 @@ namespace PL {
         private Dam GetWorkDam(Dam dam, PlOptions options) {
             if (options.IsWorkDam(dam)) {
                 return dam;
-            } else {
+            }
+            else {
                 var nextDam = dam.GetNextDam();
                 return GetWorkDam(nextDam, options);
             }
@@ -53,7 +54,8 @@ namespace PL {
         internal DamList GetWorkDams(PlOptions plOptions) {
             if (plOptions.CycleMode == CycleModeEnum.AllDam) {
                 return new DamList(this.ToArray());
-            } else {
+            }
+            else {
                 var r = new DamList();
 
                 int[] mask = new int[] { 1, 2, 4, 8 };
@@ -95,6 +97,25 @@ namespace PL {
         internal Dam GetDamByName(string damName) {
             var dam = this.First(d => d.Name.Trim().ToUpper() == damName.Trim().ToUpper());
             return dam;
+        }
+
+        /// <summary>
+        /// if cartName contains dam name then is matched
+        /// cartName: cartBD2S2
+        /// damName: BD2
+        /// </summary>
+        /// <returns></returns>
+        public Dam GetMatchedDamsByCartName(string cartName) {
+            foreach (var dam in this) {
+                cartName = cartName.Trim().ToUpper();
+                var damName = dam.Name.Trim().ToUpper();
+                if (cartName.Contains(damName)) {
+                    return dam;
+                }
+            }
+
+            var s = string.Format("not find dam by cart name '{0}'", cartName);
+            throw new ArgumentException(s);
         }
     }
 }

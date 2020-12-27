@@ -115,15 +115,37 @@ namespace PL {
         /// </summary>
         /// <returns></returns>
         public bool IsNotCoverCart() {
-            return !IsCoverCart();
+            return !IsCoverCarts();
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool IsCoverCart() {
-            var cart = GetAssociateCart();
+        public bool IsCoverCarts() {
+            var carts = GetAssociateCarts();
+            foreach (var cart in carts) {
+                bool isCover = IsCoverCart(cart);
+                if (isCover) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// 1. check not fault
+        /// 2. check cart location
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
+        private bool IsCoverCart(Cart cart) {
+            var isFault = cart.ReadFault();
+            if (isFault) {
+                return false;
+            }
+
             var cartLocation = cart.ReadLocation();
 
             var gunBeginLocation = Math.Max(this.Location - Config.GunRadius, 0m);
@@ -188,7 +210,7 @@ namespace PL {
                 return false;
             }
 
-            if (this.IsCoverCart()) {
+            if (this.IsCoverCarts()) {
                 gunWorkStatusEnum = GunWorkStatusEnum.NotWorkWithCart;
                 MyLogManager.Output(string.Format("{0} can't by cart", this.Name));
                 return false;
@@ -246,12 +268,12 @@ namespace PL {
         /// 
         /// </summary>
         /// <returns></returns>
-        private Cart GetAssociateCart() {
-            var cart = this.Dam.AssociateCart;
-            if (cart == null) {
-                throw new PlException("gun cart is null");
+        private CartList GetAssociateCarts() {
+            var carts = this.Dam.AssociateCarts;
+            if (carts == null || carts.Count == 0) {
+                throw new PlException("gun cart is null or empty");
             }
-            return cart;
+            return carts;
         }
     }
 }

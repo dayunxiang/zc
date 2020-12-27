@@ -249,7 +249,7 @@ namespace PL {
         private static bool IsGunNeedClose(Gun workingGun) {
             return
                 workingGun.Fault.IsFault ||
-                workingGun.IsCoverCart();
+                workingGun.IsCoverCarts();
         }
 
         /// <summary>

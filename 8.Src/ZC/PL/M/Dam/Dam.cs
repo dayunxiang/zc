@@ -13,6 +13,7 @@ namespace PL {
         /// </summary>
         public Dam() {
             this.DamAreas = new DamAreaList();
+            this.AssociateCarts = new CartList();
         }
 
         /// <summary>
@@ -91,9 +92,9 @@ namespace PL {
         /// <summary>
         /// 
         /// </summary>
-        public Cart AssociateCart { 
+        public CartList AssociateCarts { 
             get;
-            set;
+            private set;
         }
 
         /// <summary>
