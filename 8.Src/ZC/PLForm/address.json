@@ -2,23 +2,39 @@
     "CartDefines" : [
         {
             "No" : 1,
-            "Name" : "CartBD2",
-            "Address" : "[a]BM_GPSPosition.BD2"
+            "Name" : "CartBD2R3",
+            "Address" : "[a]BM_GPS_Pos.BD2_R3",
+			"FaultAddress" : "[a]BM_GPSComm_Fault.BD2_R3"
         },
         {
             "No" : 2,
-            "Name" : "CartBD3",
-            "Address" : "[a]BM_GPSPosition.BD3"
+            "Name" : "CartBD2S2",
+            "Address" : "[a]BM_GPS_Pos.BD2_S2",
+			"FaultAddress" : "[a]BM_GPSComm_Fault.BD2_S2"
         },
         {
             "No" : 3,
-            "Name" : "CartBD4",
-            "Address" : "[a]BM_GPSPosition.BD4"
+            "Name" : "CartBD3R4",
+            "Address" : "[a]BM_GPS_Pos.BD3_R4",
+			"FaultAddress" : "[a]BM_GPSComm_Fault.BD3_R4"
         },
         {
             "No" : 4,
-            "Name" : "CartBDQ3",
-            "Address" : "[a]BM_GPSPosition.BDQ3"
+            "Name" : "CartBD3S3",
+            "Address" : "[a]BM_GPS_Pos.BD3_S3",
+			"FaultAddress" : "[a]BM_GPSComm_Fault.BD3_S3"
+        },
+        {
+            "No" : 5,
+            "Name" : "CartBD4S4",
+            "Address" : "[a]BM_GPS_Pos.BD4_S4",
+			"FaultAddress" : "[a]BM_GPSComm_Fault.BD4_S4"
+        },
+        {
+            "No" : 6,
+            "Name" : "CartBDQ3SR3",
+            "Address" : "[a]BM_GPS_Pos.BDQ3_SR3",
+			"FaultAddress" : "[a]BM_GPSComm_Fault.BDQ3_SR3"
         }
     ],
 
