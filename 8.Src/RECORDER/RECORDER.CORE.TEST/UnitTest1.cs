@@ -28,12 +28,12 @@ namespace RECORDER.CORE.TEST {
         }
 
         private Record CreateRecord() {
-            var r = new Record(DateTime.Now, TimeSpan.FromSeconds(0.5));
-            //var framesCount = 20 * 60 * 2;
+            var r = new Record();
+            var framesCount = 20 * 60 * 2;
 
-            var framesCount = 2;
-            while (framesCount-- > 0) {
-                r.Frames.Add(CreateFrame());
+            //var framesCount = 20;
+            for (int i = 0; i < framesCount ; i++) {
+                r.Frames.Add(CreateFrame(i));
             }
             return r;
         }
@@ -42,11 +42,13 @@ namespace RECORDER.CORE.TEST {
         /// 
         /// </summary>
         /// <returns></returns>
-        private Frame CreateFrame() {
+        private Frame CreateFrame(int frameIndex) {
+            DateTime begin = DateTime.Parse("2000-1-1");
             var f = new Frame();
+            f.DateTime = begin + TimeSpan.FromSeconds(frameIndex * 0.5);
 
-            //int itemsCount = 200;
-            int itemsCount = 2;
+            int itemsCount = 200;
+            //int itemsCount = 2;
             for (int i = 0; i < itemsCount; i++) {
                 var nvp = CreateNameValuePair(i);
                 f.NameValuePairs.Add(nvp);
@@ -98,7 +100,7 @@ namespace RECORDER.CORE.TEST {
             sw.Restart();
             var record = JsonConvert.DeserializeObject<Record>(json);
             Assert.IsNotNull(record);
-            Console.WriteLine(record.StartDateTime);
+            //Console.WriteLine(record.StartDateTime);
             sw.Stop();
             Console.WriteLine("deserialize json: {0} size, use: {1}", json.Length, sw.Elapsed);
         }

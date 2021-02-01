@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using RECORDER.CORE;
 
 namespace RECORDER {
-    public partial class Form1 : Form {
+    public partial class frmMain : Form {
 
         private Recorder _recorder = new Recorder(TimeSpan.FromSeconds(0.5));
         private frmDatas _frmDatas;
@@ -18,7 +18,7 @@ namespace RECORDER {
         /// <summary>
         /// 
         /// </summary>
-        public Form1() {
+        public frmMain() {
             InitializeComponent();
 
             var player = App.Instance.Player;
@@ -141,9 +141,9 @@ namespace RECORDER {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void _player_PlayingFrame(object sender, PlayFrameEventArgs e) {
-            Console.WriteLine("play frame: " + e.FrameIndex);
+            Console.WriteLine("play frame: " + e.Frame.FrameIndex);
             //this.dgv.DataSource = e.Frame.NameValuePairs;
-            _frmDatas.SetFrame(e.Frame, e.FrameIndex);
+            _frmDatas.SetFrame(e.Frame, e.Frame.FrameIndex);
         }
     }
 }

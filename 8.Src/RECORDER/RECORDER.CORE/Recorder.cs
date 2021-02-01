@@ -8,8 +8,6 @@ namespace RECORDER.CORE {
 
     public class Recorder {
 
-        public DateTime StartDateTime { get; private set; }
-
         public DateTime LastSaveDateTime { get; private set; }
 
         public Record Record { get; private set; }
@@ -51,8 +49,8 @@ namespace RECORDER.CORE {
         /// <returns></returns>
         public bool Start() {
             if (this.Status == RecorderStatusEnum.Idle) {
-                this.StartDateTime = DateTime.Now;
-                this.Record = new Record(this.StartDateTime, _frameTimeSpan);
+                //this.StartDateTime = DateTime.Now;
+                this.Record = new Record();
                 this.Status = RecorderStatusEnum.Recording;
                 return true;
             } else {

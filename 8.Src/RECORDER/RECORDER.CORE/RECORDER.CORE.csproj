@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="App.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="Frames.cs" />
     <Compile Include="NameValuePair.cs" />

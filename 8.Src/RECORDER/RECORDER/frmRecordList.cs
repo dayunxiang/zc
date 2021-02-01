@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Xdgk.Common;
 using RECORDER.CORE;
 
 namespace RECORDER {
@@ -22,15 +23,23 @@ namespace RECORDER {
             this.listBox1.DataSource = RecordInfoLinkedListManager.Instance.RecordInfoLinkedList.ToList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox1_DoubleClick(object sender, EventArgs e) {
             //var index = this.listBox1.SelectedIndex;
             var item = this.listBox1.SelectedItem;
             if (item != null) {
-                var recordInfoNode = (RecordInfo)item;
 
-                var node = RecordInfoLinkedListManager.Instance.RecordInfoLinkedList.Find(recordInfoNode);
-                App.Instance.Player.RecordInfoNode = node;
-                App.Instance.Player.Play();
+                using (new CP.Windows.Forms.WaitCursor()) {
+                    var recordInfoNode = (RecordInfo)item;
+
+                    var node = RecordInfoLinkedListManager.Instance.RecordInfoLinkedList.Find(recordInfoNode);
+                    App.Instance.Player.RecordInfoNode = node;
+                    App.Instance.Player.Play();
+                }
             }
         }
 

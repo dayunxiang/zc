@@ -58,6 +58,7 @@
             this.tbRecord.TabIndex = 1;
             this.tbRecord.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbRecord.Value = 5;
+            this.tbRecord.Scroll += new System.EventHandler(this.tbRecord_Scroll);
             // 
             // toolStrip1
             // 
@@ -157,7 +158,8 @@
             this.tsbSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tsbSpeed.Name = "tsbSpeed";
             this.tsbSpeed.Size = new System.Drawing.Size(75, 39);
-            this.tsbSpeed.Click += new System.EventHandler(this.tsbSpeed_Click);
+            this.tsbSpeed.ToolTipText = "播放速度";
+            this.tsbSpeed.SelectedIndexChanged += new System.EventHandler(this.tsbSpeed_SelectedIndexChanged);
             // 
             // tsbRecordList
             // 

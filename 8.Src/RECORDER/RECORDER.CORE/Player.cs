@@ -18,9 +18,11 @@ namespace RECORDER.CORE {
         private const decimal SPEED_MIN = 0.5m;
 
         private Record _record;
+        private Frame _currentFrame;
         private Frame _nextFrame;
-        private int _nextFrameIndex;
-        private int _startFrameIndex;
+        private DateTime _currentFramePlayDatetime;
+
+
         private Timer _timer;
 
         /// <summary>
@@ -28,15 +30,12 @@ namespace RECORDER.CORE {
         /// </summary>
         /// <param name="record"></param>
         public Player() {
-            //if (record == null) {
-            //    throw new ArgumentNullException("record");
-            //}
-            //this.Record = record;
             this.Speed = 1.0m;
             this.Status = PlayerStatusEnum.Init;
 
+            this._currentFrame = null;
             this._nextFrame = null;
-            this._nextFrameIndex = -1;
+            //this._nextFrameIndex = -1;
 
             this._timer = new Timer();
             this._timer.Interval = 30;
@@ -78,6 +77,9 @@ namespace RECORDER.CORE {
                     _recordInfoNode = value;
 
                     if (_recordInfoNode != null) {
+                        if (this.Status.IsPlaying() || this.Status.IsPaused()) {
+                            Stop();
+                        }
                         _record = Record.FromJsonFile(_recordInfoNode.Value.Name);
                     }
                     OnRecrodInfoNodeChanged();
@@ -141,17 +143,66 @@ namespace RECORDER.CORE {
             }
 
             if (this.Status == PlayerStatusEnum.Init || this.Status == PlayerStatusEnum.End) {
-                if (FillNextFrame()) {
-                    this.PlayDateTime = DateTime.Now;
+                Frame first = GetFirstFrame();
+                if (first != null) {
+                    SetCurrentFrame(first);
                     this.Status = PlayerStatusEnum.Playing;
+
+                    PlayCurrentFrame();
+
+                    SetNextFrame();
                     this._timer.Start();
                     return true;
                 } else {
                     return false;
                 }
+
+                //if (FillNextFrame()) {
+                //    this.PlayDateTime = DateTime.Now;
+                //    this.Status = PlayerStatusEnum.Playing;
+                //    this._timer.Start();
+                //    return true;
+                //} else {
+                //    return false;
+                //}
             } else {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool SetNextFrame() {
+            var nextIndex = this._currentFrame.FrameIndex + 1;
+            this._nextFrame = this.Record.GetFrame(nextIndex);
+            return this._nextFrame != null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="frame"></param>
+        private void SetCurrentFrame(Frame frame) {
+            this._currentFrame = frame;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void PlayCurrentFrame() {
+            OnPlayingFrame(_currentFrame);
+            OnPlayedFrame(_currentFrame);
+            this._currentFramePlayDatetime = DateTime.Now;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Frame GetFirstFrame() {
+            return this.Record.GetFirstFrame();
         }
 
         /// <summary>
@@ -170,7 +221,7 @@ namespace RECORDER.CORE {
         public bool Continue() {
             if (this.Status.IsPaused()) {
                 this.PlayDateTime = DateTime.Now;
-                this._startFrameIndex = _nextFrameIndex - 1;
+                //this._startFrameIndex = _nextFrameIndex - 1;
                 this.Status = PlayerStatusEnum.Playing;
 
                 return true;
@@ -187,9 +238,12 @@ namespace RECORDER.CORE {
             if (this.Status == PlayerStatusEnum.Playing ||
                     this.Status == PlayerStatusEnum.Paused) {
                 this.Status = PlayerStatusEnum.Init;
-                this._startFrameIndex = 0;
-                this._nextFrameIndex = -1;
+                //this._startFrameIndex = 0;
+                //this._nextFrameIndex = -1;
+                this._currentFrame = null;
                 this._nextFrame = null;
+                this._currentFramePlayDatetime = DateTime.MinValue;
+                this.PlayDateTime = DateTime.MinValue;
                 this._timer.Stop();
                 return true;
             } else {
@@ -207,19 +261,20 @@ namespace RECORDER.CORE {
         /// <returns></returns>
         public bool Check() {
             if (this.Status == PlayerStatusEnum.Playing) {
-                TimeSpan playTimeSpan = DateTime.Now - this.PlayDateTime;
-                TimeSpan recordTimeSpan = TimeSpan.FromTicks((long)(playTimeSpan.Ticks * this.Speed));
+                TimeSpan currentFramePlayTimeSpan = DateTime.Now - this._currentFramePlayDatetime;
+                TimeSpan recordTimeSpan = TimeSpan.FromTicks((long)(currentFramePlayTimeSpan.Ticks * this.Speed));
 
-                int no = (int)(recordTimeSpan.Ticks / this.Record.FrameTimeSpan.Ticks) + _startFrameIndex;
-                if (no >= _nextFrameIndex) {
-                    OnPlayingFrame(_nextFrame, _nextFrameIndex);
+                DateTime recordDateTime = _currentFrame.DateTime + recordTimeSpan;
 
-                    OnPlayedFrame(_nextFrame, _nextFrameIndex);
-                    if (FillNextFrame()) {
+                if (_nextFrame == null) {
+                    Stop();
+                    return true;
+                }
 
-                    } else {
-                        Stop();
-                    }
+                if (recordDateTime >= _nextFrame.DateTime) {
+                    SetCurrentFrame(_nextFrame);
+                    PlayCurrentFrame();
+                    SetNextFrame();
                 }
                 return true;
             } else {
@@ -232,25 +287,9 @@ namespace RECORDER.CORE {
         /// </summary>
         /// <param name="frame"></param>
         /// <param name="frameIndex"></param>
-        private void OnPlayedFrame(Frame frame, int frameIndex) {
+        private void OnPlayedFrame(Frame frame) {
             if (PlayedFrame != null) {
-                PlayedFrame(this, new PlayFrameEventArgs(frame, frameIndex));
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private bool FillNextFrame() {
-            _nextFrameIndex++;
-
-            if (_nextFrameIndex < this.Record.Frames.Count) {
-                _nextFrame = this.Record.Frames[(int)_nextFrameIndex];
-                return true;
-            } else {
-                _nextFrameIndex = -1;
-                _nextFrame = null;
-                return false;
+                PlayedFrame(this, new PlayFrameEventArgs(frame));
             }
         }
 
@@ -259,9 +298,9 @@ namespace RECORDER.CORE {
         /// </summary>
         /// <param name="frame"></param>
         /// <param name="no"></param>
-        protected void OnPlayingFrame(Frame frame, int no) {
+        protected void OnPlayingFrame(Frame frame) {
             if (PlayingFrame != null) {
-                PlayingFrame(this, new PlayFrameEventArgs(frame, no));
+                PlayingFrame(this, new PlayFrameEventArgs(frame));
             }
         }
 
@@ -285,6 +324,49 @@ namespace RECORDER.CORE {
         public bool SpeedDecrease() {
             if (this.Speed != SPEED_MIN) {
                 this.Speed /= 2;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool SetScroll(int scrollValue) {
+            Frame frame = this.Record.GetFrame(scrollValue);
+            if (frame != null) {
+                SetCurrentFrame(frame);
+                PlayCurrentFrame();
+                SetNextFrame();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool NextFrame() {
+            if (_nextFrame != null) {
+                SetCurrentFrame(_nextFrame);
+                PlayCurrentFrame();
+                SetNextFrame();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public bool PrevFrame() {
+            if (_currentFrame.FrameIndex > 0) {
+                Frame prevFrame =  _record.GetFrame(_currentFrame.FrameIndex - 1);
+                SetCurrentFrame(prevFrame);
+                PlayCurrentFrame();
+                SetNextFrame();
                 return true;
             } else {
                 return false;

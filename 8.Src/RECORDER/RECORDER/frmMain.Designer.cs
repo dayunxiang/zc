@@ -1,5 +1,5 @@
 ﻿namespace RECORDER {
-    partial class Form1 {
+    partial class frmMain {
         /// <summary>
         /// 必需的设计器变量。
         /// </summary>

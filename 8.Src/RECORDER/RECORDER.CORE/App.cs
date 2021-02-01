@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 
 namespace RECORDER.CORE {
-    public class Class1 {
-    }
-
     public class App {
 
         static public App Instance = new App();
