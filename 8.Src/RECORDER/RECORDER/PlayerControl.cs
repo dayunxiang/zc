@@ -21,8 +21,8 @@ namespace RECORDER {
             this.tsbPlay.Image = RECORDER.Properties.Resources.control_play_blue.ToBitmap();
             this.tsbPause.Image = RECORDER.Properties.Resources.control_pause_blue.ToBitmap();
             this.tsbStop.Image = RECORDER.Properties.Resources.control_stop_blue.ToBitmap();
-            this.tsbPrevRecord.Image = RECORDER.Properties.Resources.control_previous_record_blue.ToBitmap();
-            this.tsbPrevFrame.Image = RECORDER.Properties.Resources.control_rewind_blue.ToBitmap();
+            this.tsbPreviousRecord.Image = RECORDER.Properties.Resources.control_previous_record_blue.ToBitmap();
+            this.tsbPreviousFrame.Image = RECORDER.Properties.Resources.control_rewind_blue.ToBitmap();
             this.tsbNextFrame.Image = RECORDER.Properties.Resources.control_fastforward_blue.ToBitmap();
             this.tsbNextRecord.Image = RECORDER.Properties.Resources.control_next_record_blue.ToBitmap();
             this.tsbRecordList.Image = RECORDER.Properties.Resources.text_list_bullets;
@@ -34,7 +34,10 @@ namespace RECORDER {
 
 
             this.tsbRecordList.Click += tsbRecordList_Click;
-            UpdateControlsStatus(PlayerStatusEnum.Init);
+            //UpdateControlsStatus(PlayerStatusEnum.Init);
+
+            this.tsbPreviousRecord.Enabled = false;
+            this.tsbNextRecord.Enabled = false;
         }
 
         /// <summary>
@@ -70,23 +73,28 @@ namespace RECORDER {
         /// </summary>
         /// <param name="playerStatus"></param>
         private void UpdateControlsStatus(PlayerStatusEnum playerStatus) {
-            this.tsbPlay.Enabled = !playerStatus.IsPlaying();
+            this.tsbPlay.Enabled = this.Player.RecordInfoNode != null && !playerStatus.IsPlaying();
             this.tsbPause.Enabled = playerStatus.IsPlaying();
             this.tsbStop.Enabled = playerStatus.IsPlaying() || playerStatus.IsPaused();
 
-            this.tsbPrevRecord.Enabled = false;
-            this.tsbNextRecord.Enabled = false;
+            //this.tsbPreviousRecord.Enabled = false;
+            //this.tsbNextRecord.Enabled = false;
 
-            this.tsbPrevFrame.Enabled = playerStatus.IsPaused();
+            this.tsbPreviousFrame.Enabled = playerStatus.IsPaused();
             this.tsbNextFrame.Enabled = playerStatus.IsPaused();
 
             if (playerStatus == PlayerStatusEnum.Init) {
                 this.tbRecord.Value = 0;
 
-                if (_player != null) {
-                    this.lblPositionValue.Text = string.Format("{0} / {1}", 0, _player.Record.Frames.Count);
+                if (_player.RecordInfoNode != null) {
+                    this.lblPositionValue.Text = string.Format("{0} / {1}", 
+                        0, _player.RecordInfoNode.Value.FramesCount);
+                } else {
+                    this.lblPositionValue.Text = "-";
                 }
             }
+
+            this.tbRecord.Enabled = playerStatus.IsPlaying() || playerStatus.IsPaused();
         }
 
         /// <summary>
@@ -102,10 +110,16 @@ namespace RECORDER {
 
                     _player = value;
                     RegisterPlayerEvents(_player);
+
+                    UpdateControlsStatus(_player.Status);
                 }
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="player"></param>
         private void UnregisterPlayerEvents(CORE.Player player) {
             player.PlayedFrame -= player_PlayedFrame;
             player.StatusChanged -= player_StatusChanged;
@@ -135,6 +149,9 @@ namespace RECORDER {
             this.tbRecord.LargeChange = CalcLargeChange(this.tbRecord);
             this.lblRecordFileValue.Text = player.RecordInfoNode.Value.Name;
             this.lblRecordFileSizeValue.Text = player.RecordInfoNode.Value.Size.ToString();
+            this.tsbPreviousRecord.Enabled = _player.RecordInfoNode.Previous != null;
+            this.tsbNextRecord.Enabled = _player.RecordInfoNode.Next != null;
+
         }
 
         /// <summary>
@@ -200,12 +217,35 @@ namespace RECORDER {
             _player.Stop();
         }
 
-        private void tsbPrevRecord_Click(object sender, EventArgs e) {
-//_player.n
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbPreviousRecord_Click(object sender, EventArgs e) {
+            if (this._player.RecordInfoNode.Previous != null) {
+                var previousRecordInfoNode = this._player.RecordInfoNode.Previous;
+
+                _player.Stop();
+                _player.RecordInfoNode = previousRecordInfoNode;
+                _player.Play();
+            }
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbNextRecord_Click(object sender, EventArgs e) {
+            if (this._player.RecordInfoNode.Next != null) {
+                var nextRecordInfoNode = this._player.RecordInfoNode.Next;
+
+                _player.Stop();
+                _player.RecordInfoNode = nextRecordInfoNode;
+                _player.Play();
+            }
         }
 
         /// <summary>
