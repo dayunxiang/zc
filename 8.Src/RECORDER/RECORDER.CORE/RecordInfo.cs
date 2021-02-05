@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 namespace RECORDER.CORE {
 
     public class RecordInfo {
+        public RecordInfo() {
+            this.FramesCount = 1234;
+        }
         public string Name { get; set; }
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }

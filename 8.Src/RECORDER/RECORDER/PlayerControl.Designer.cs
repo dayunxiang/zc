@@ -29,8 +29,8 @@
             this.tsbPlay = new System.Windows.Forms.ToolStripButton();
             this.tsbPause = new System.Windows.Forms.ToolStripButton();
             this.tsbStop = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrevRecord = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrevFrame = new System.Windows.Forms.ToolStripButton();
+            this.tsbPreviousRecord = new System.Windows.Forms.ToolStripButton();
+            this.tsbPreviousFrame = new System.Windows.Forms.ToolStripButton();
             this.tsbNextFrame = new System.Windows.Forms.ToolStripButton();
             this.tsbNextRecord = new System.Windows.Forms.ToolStripButton();
             this.tsbSpeed = new System.Windows.Forms.ToolStripComboBox();
@@ -69,8 +69,8 @@
             this.tsbPlay,
             this.tsbPause,
             this.tsbStop,
-            this.tsbPrevRecord,
-            this.tsbPrevFrame,
+            this.tsbPreviousRecord,
+            this.tsbPreviousFrame,
             this.tsbNextFrame,
             this.tsbNextRecord,
             this.tsbSpeed,
@@ -113,23 +113,23 @@
             // 
             // tsbPrevRecord
             // 
-            this.tsbPrevRecord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrevRecord.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrevRecord.Image")));
-            this.tsbPrevRecord.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPrevRecord.Name = "tsbPrevRecord";
-            this.tsbPrevRecord.Size = new System.Drawing.Size(36, 36);
-            this.tsbPrevRecord.Text = "上一个录像";
-            this.tsbPrevRecord.Click += new System.EventHandler(this.tsbPrevRecord_Click);
+            this.tsbPreviousRecord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPreviousRecord.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrevRecord.Image")));
+            this.tsbPreviousRecord.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPreviousRecord.Name = "tsbPrevRecord";
+            this.tsbPreviousRecord.Size = new System.Drawing.Size(36, 36);
+            this.tsbPreviousRecord.Text = "上一个录像";
+            this.tsbPreviousRecord.Click += new System.EventHandler(this.tsbPreviousRecord_Click);
             // 
             // tsbPrevFrame
             // 
-            this.tsbPrevFrame.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPrevFrame.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrevFrame.Image")));
-            this.tsbPrevFrame.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPrevFrame.Name = "tsbPrevFrame";
-            this.tsbPrevFrame.Size = new System.Drawing.Size(36, 36);
-            this.tsbPrevFrame.Text = "上一帧";
-            this.tsbPrevFrame.Click += new System.EventHandler(this.tsbPrevFrame_Click);
+            this.tsbPreviousFrame.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPreviousFrame.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrevFrame.Image")));
+            this.tsbPreviousFrame.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPreviousFrame.Name = "tsbPrevFrame";
+            this.tsbPreviousFrame.Size = new System.Drawing.Size(36, 36);
+            this.tsbPreviousFrame.Text = "上一帧";
+            this.tsbPreviousFrame.Click += new System.EventHandler(this.tsbPrevFrame_Click);
             // 
             // tsbNextFrame
             // 
@@ -292,8 +292,8 @@
         private System.Windows.Forms.ToolStripButton tsbPlay;
         private System.Windows.Forms.ToolStripButton tsbPause;
         private System.Windows.Forms.ToolStripButton tsbStop;
-        private System.Windows.Forms.ToolStripButton tsbPrevRecord;
-        private System.Windows.Forms.ToolStripButton tsbPrevFrame;
+        private System.Windows.Forms.ToolStripButton tsbPreviousRecord;
+        private System.Windows.Forms.ToolStripButton tsbPreviousFrame;
         private System.Windows.Forms.ToolStripButton tsbNextFrame;
         private System.Windows.Forms.ToolStripButton tsbNextRecord;
         private System.Windows.Forms.ToolStripComboBox tsbSpeed;
