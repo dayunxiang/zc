@@ -33,13 +33,13 @@ namespace RECORDER {
             var item = this.listBox1.SelectedItem;
             if (item != null) {
 
-                using (new CP.Windows.Forms.WaitCursor()) {
+                //using (new CP.Windows.Forms.WaitCursor()) {
                     var recordInfoNode = (RecordInfo)item;
 
                     var node = RecordInfoLinkedListManager.Instance.RecordInfoLinkedList.Find(recordInfoNode);
                     App.Instance.Player.RecordInfoNode = node;
                     App.Instance.Player.Play();
-                }
+                //}
             }
         }
 
