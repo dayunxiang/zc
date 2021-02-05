@@ -80,13 +80,22 @@ namespace RECORDER.CORE {
                         if (this.Status.IsPlaying() || this.Status.IsPaused()) {
                             Stop();
                         }
-                        _record = Record.FromJsonFile(_recordInfoNode.Value.Name);
+                        //_record = Record.FromJsonFile(_recordInfoNode.Value.Name);
+                        LoadRecordFromFile();
                     }
                     OnRecrodInfoNodeChanged();
                 }
             }
         } private LinkedListNode<RecordInfo> _recordInfoNode;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LoadRecordFromFile() {
+            using (new CP.Windows.Forms.WaitCursor()) {
+                _record = Record.FromJsonFile(_recordInfoNode.Value.Name);
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -251,6 +260,16 @@ namespace RECORDER.CORE {
             }
         }
 
+        private bool End() {
+            if (this.Status.IsPlaying()) {
+                this.Status = PlayerStatusEnum.End;
+                this._timer.Stop();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public bool Reset() {
             throw new NotImplementedException();
         }
@@ -267,7 +286,9 @@ namespace RECORDER.CORE {
                 DateTime recordDateTime = _currentFrame.DateTime + recordTimeSpan;
 
                 if (_nextFrame == null) {
-                    Stop();
+                    //Stop();
+                    //Pause();
+                    End();
                     return true;
                 }
 
@@ -281,6 +302,7 @@ namespace RECORDER.CORE {
                 return false;
             }
         }
+
 
         /// <summary>
         /// 
